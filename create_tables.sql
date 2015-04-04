@@ -23,6 +23,7 @@ CREATE TABLE Mascota
   Tratamientos VARCHAR2(25), --ANALIZAR
   Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL;
   
+  
 CREATE TABLE Tipo_Mascota
   Especie VARCHAR2(15) CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie);
   
