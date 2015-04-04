@@ -21,11 +21,19 @@ CREATE TABLE Mascota
   Estado VARCHAR2(13) DEFAULT ('En abandono'),
   Notas VARCHAR2(75),
   Tratamientos VARCHAR2(25), --ANALIZAR
+  Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR(20)
+  Fecha_Modificacion DATE,
   Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL;
   
   
 CREATE TABLE Tipo_Mascota
   Especie VARCHAR2(15) CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie);
+  Usuario_creacion VARCHAR(20) CONSTRAINT tipo_mascota_usuario_creacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT tipo_mascota_fecha_creacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR(20)
+  Fecha_Modificacion DATE,
   
 INSERT ALL
   INTO Tipo_Mascota (Especie) VALUES ('Perro')
@@ -37,6 +45,10 @@ INSERT ALL
 CREATE TABLE Raza_Mascota
   Raza VARCHAR(30) CONSTRAINT raza_mascota_pk PRIMARY KEY (Raza),
   Grupo VARCHAR(15) CONSTRAINT grupo_raza_mascotas_nn NOT NULL,
+  Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR(20)
+  Fecha_Modificacion DATE,
   CONSTRAINT grupo_mascota_fk FOREIGN KEY (Grupo) REFERENCES Tipo_Mascota(Especie);
   
 INSERT ALL
@@ -67,12 +79,24 @@ CREATE TABLE Persona
   Apellido VARCHAR2(20) CONSTRAINT persona_apellido_nn NOT NULL,
   Provincia VARCHAR2(10) CONSTRAINT persona_provincia_nn NOT NULL,
   Username VARCHAR2(15) CONSTRAINT persona_username_fk FOREIGN KEY (Username) REFERENCES Usuario(Nombre);
+  Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR(20)
+  Fecha_Modificacion DATE,
   
 
 CREATE TABLE Rescatista
+  Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR(20)
+  Fecha_Modificacion DATE,
   
 
 CREATE TABLE Adoptante
+    Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR(20)
+  Fecha_Modificacion DATE,
 
 
 CREATE TABLE Califica_a
