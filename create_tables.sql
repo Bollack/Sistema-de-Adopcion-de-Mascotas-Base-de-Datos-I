@@ -1,7 +1,8 @@
 --Scripts de creación & alter de tablas
 
 CREATE TABLE Mascota
-  ID NUMBER(Identity(0,1) Constraint pk_mascotas PRIMARY KEY (ID),
+  ID NUMBER,
+  Constraint pk_mascotas PRIMARY KEY (ID),
   Nombre VARCHAR2(20),
   Tamaño VARCHAR2(10) CONSTRAINT tamano_mascota_nn NOT NULL,
   Color1  VARCHAR2(20) CONSTRAINT color1_mascota_nn NOT NULL,
@@ -40,7 +41,8 @@ INSERT ALL
   INTO Tipo_Mascota (Especie) VALUES ('Gato')
   INTO Tipo_Mascota (Especie) VALUES ('Ave')
   INTO Tipo_Mascota (Especie) VALUES ('Reptil')
-  INTO Tipo_Mascota (Especie) VALUES ('Roedor');
+  INTO Tipo_Mascota (Especie) VALUES ('Roedor')
+  SELECT * FROM dual;
   
 CREATE TABLE Raza_Mascota
   Raza VARCHAR(30) CONSTRAINT raza_mascota_pk PRIMARY KEY (Raza),
@@ -61,6 +63,7 @@ INTO Raza_Mascota (Raza,Grupo) VALUES(' ', '')
 INTO Raza_Mascota (Raza,Grupo) VALUES(' ', '')
 INTO Raza_Mascota (Raza,Grupo) VALUES(' ', '')
 INTO Raza_Mascota (Raza,Grupo) VALUES(' ', '')
+SELECT * FROM dual;
   
 ALTER TABLE Mascota
   ADD CONSTRAINT tipo_mascota_fk FOREIGN KEY (Tipo_mascota) REFERENCES Tipo_Mascota(Especie),
@@ -74,10 +77,13 @@ CREATE TABLE Usuario
   Password VARCHAR2(20);
 
 CREATE TABLE Persona
-  ID Number(Identity(0,1)) CONSTRAINT persona_pk PRIMARY KEY (ID),
-  Nombre VARCHAR2(20) CONSTRAINT persona_nombre_nn NOT NULL,
-  Apellido VARCHAR2(20) CONSTRAINT persona_apellido_nn NOT NULL,
-  Provincia VARCHAR2(10) CONSTRAINT persona_provincia_nn NOT NULL,
+  id Number,
+  CONSTRAINT persona_pk PRIMARY KEY (ID),
+  nombre VARCHAR2(20) CONSTRAINT persona_nombre_nn NOT NULL,
+  apellido VARCHAR2(20) CONSTRAINT persona_apellido_nn NOT NULL,
+  provincia VARCHAR2(10) CONSTRAINT persona_provincia_nn NOT NULL,
+  telefono VARCHAR2(10),
+  email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
   Username VARCHAR2(15) CONSTRAINT persona_username_fk FOREIGN KEY (Username) REFERENCES Usuario(Nombre);
   Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
@@ -86,6 +92,9 @@ CREATE TABLE Persona
   
 
 CREATE TABLE Rescatista
+  idN
+  persona Number,
+  CONSTRAINT rescatista_persona_pk PRIMARY KEY 
   Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
   Usuario_Modificacion VARCHAR(20)
@@ -93,7 +102,7 @@ CREATE TABLE Rescatista
   
 
 CREATE TABLE Adoptante
-    Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
   Usuario_Modificacion VARCHAR(20)
   Fecha_Modificacion DATE,
