@@ -1,6 +1,7 @@
 --Scripts de creación & alter de tablas
 
-CREATE TABLE Mascota
+CREATE TABLE Mascota --Creado
+(
   ID NUMBER,
   Constraint pk_mascotas PRIMARY KEY (ID),
   Nombre VARCHAR2(20),
@@ -12,12 +13,11 @@ CREATE TABLE Mascota
   Nivel_energia VARCHAR2(20),
   Enfermedades VARCHAR2(20), --ANALIZAR
   Veterinario VARCHAR2(20),
-  Fotografia_antes BLOB(200) CONSTRAINT foto_antes_mascota_nn NOT NULL,
+  Fotografia_antes BLOB CONSTRAINT foto_antes_mascota_nn NOT NULL,
   Correo_contacto VARCHAR2(30),
   Espacio_requerido VARCHAR2(10),
   Tipo_mascota VARCHAR2(15) CONSTRAINT tipo_mascota_nn NOT NULL, --Foreign Key a Tabla de Tipo
-  Raza VARCCHAR2(30), ---Foreign Key a Tabla de Raza
-  Veterinario VARCHAR2(25),
+  Raza VARCHAR2(30), ---Foreign Key a Tabla de Raza
   Medicamentos VARCHAR2(20), --ANALIZAR
   Estado VARCHAR2(13) DEFAULT ('En abandono'),
   Notas VARCHAR2(75),
@@ -26,17 +26,20 @@ CREATE TABLE Mascota
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
   Usuario_Modificacion VARCHAR(20)
   Fecha_Modificacion DATE,
-  Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL;
+  Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL
+);
   
   
-CREATE TABLE Tipo_Mascota
+CREATE TABLE Tipo_Mascota --Creado
+(
   Especie VARCHAR2(15) CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie);
   Usuario_creacion VARCHAR(20) CONSTRAINT tipo_mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT tipo_mascota_fecha_creacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR(20)
-  Fecha_Modificacion DATE,
+  Usuario_Modificacion VARCHAR(20),
+  Fecha_Modificacion DATE
+);
   
-INSERT ALL
+INSERT ALL --Añadir Triggers
   INTO Tipo_Mascota (Especie) VALUES ('Perro')
   INTO Tipo_Mascota (Especie) VALUES ('Gato')
   INTO Tipo_Mascota (Especie) VALUES ('Ave')
@@ -45,13 +48,15 @@ INSERT ALL
   SELECT * FROM dual;
   
 CREATE TABLE Raza_Mascota
+(
   Raza VARCHAR(30) CONSTRAINT raza_mascota_pk PRIMARY KEY (Raza),
   Grupo VARCHAR(15) CONSTRAINT grupo_raza_mascotas_nn NOT NULL,
   Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
   Usuario_Modificacion VARCHAR(20)
   Fecha_Modificacion DATE,
-  CONSTRAINT grupo_mascota_fk FOREIGN KEY (Grupo) REFERENCES Tipo_Mascota(Especie);
+  CONSTRAINT grupo_mascota_fk FOREIGN KEY (Grupo) REFERENCES Tipo_Mascota(Especie)
+);
   
 INSERT ALL
 INTO Raza_Mascota (Raza,Grupo) VALUES(' ', '')
@@ -73,8 +78,13 @@ ALTER TABLE Mascota
 --------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Usuario
-  Nombre VARCHAR2(15) CONSTRAINT usuario_nombre_pk PRIMARY KEY(Nombre),
-  Password VARCHAR2(20);
+(
+  id Number,
+  CONSTRAINT usuario_id_pk PRIMARY KEY(Nombre),
+  Nombre VARCHAR2(30),
+  CONSTRAINT usuario_nombre_un UNIQUE(nombre),
+  Password VARCHAR2(20) CONSTRAINT usuario_password_lenght CHECK(lenght(password>)7)
+);
 
 CREATE TABLE Persona
   id Number,
@@ -84,7 +94,7 @@ CREATE TABLE Persona
   provincia VARCHAR2(10) CONSTRAINT persona_provincia_nn NOT NULL,
   telefono VARCHAR2(10),
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
-  Username VARCHAR2(15) CONSTRAINT persona_username_fk FOREIGN KEY (Username) REFERENCES Usuario(Nombre);
+  usuario NUMBER CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id);
   Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
   Usuario_Modificacion VARCHAR(20)
