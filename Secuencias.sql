@@ -1,13 +1,12 @@
-----Persona ID
-
-CREATE OR REPLACE SEQUENCE id_employee
+---Secuencia para los id únicos de mascotas y usuarios.
+CREATE OR REPLACE SEQUENCE id_mascota
   MINVALUE 1
   MAXVALUE 10000
   START WITH 0
   INCREMENT BY 1
   CACHE 20;
-  
-CREATE OR REPLACE SEQUENCE id_mascota
+
+CREATE OR REPLACE SEQUENCE id_usuario
   MINVALUE 1
   MAXVALUE 10000
   START WITH 0
