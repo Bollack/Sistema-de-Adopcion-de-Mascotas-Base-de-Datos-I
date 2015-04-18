@@ -13,7 +13,6 @@ CREATE TABLE Mascota --Creado
   Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL,
   Tel_contacto VARCHAR2(20) CONSTRAINT tel_rescatista_mascota_nn NOT NULL,
   Correo_contacto VARCHAR2(30) CONSTRAINT correo_rescatista_mascota_nn NOT NULL,
-  Fecha_rescate DATE CONSTRAINT fecha_rescate_nn NOT NULL,
   Lugar VARCHAR2(20) CONSTRAINT lugar_mascota_nn NOT NULL,
   Nivel_energia NUMBER CONSTRAINT nivel_energia_check CHECK(-1<Nivel_energia<11),
   Espacio_requerido NUMBER CONSTRAINT espacio_requerido_check(-1<Espacio_requerido<6),
