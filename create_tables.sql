@@ -1,42 +1,50 @@
 --Scripts de creación & alter de tablas
-
+--Orden de creacion de tablas: Persona, Usuario, Tipo, Raza, Mascota
 CREATE TABLE Mascota --Creado
 (
   ID NUMBER,
-  Constraint pk_mascotas PRIMARY KEY (ID),
+  CONSTRAINT pk_mascotas PRIMARY KEY (ID),
+  Tipo VARCHAR2(15) CONSTRAINT tipo_mascota_nn NOT NULL,
+  Raza VARCHAR2(60) CONSTRAINT raza_mascota_nn NOT NULL,
   Nombre VARCHAR2(20),
   Tamaño VARCHAR2(10) CONSTRAINT tamano_mascota_nn NOT NULL,
   Color1  VARCHAR2(20) CONSTRAINT color1_mascota_nn NOT NULL,
   Color2  VARCHAR2(20),
+  Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL,
   Tel_contacto VARCHAR2(20) CONSTRAINT tel_rescatista_mascota_nn NOT NULL,
+  Correo_contacto VARCHAR2(30) CONSTRAINT correo_rescatista_mascota_nn NOT NULL,
+  Fecha_rescate DATE CONSTRAINT fecha_rescate_nn NOT NULL,
   Lugar VARCHAR2(20) CONSTRAINT lugar_mascota_nn NOT NULL,
   Nivel_energia NUMBER CONSTRAINT nivel_energia_check CHECK(-1<Nivel_energia<11),
-  Enfermedades VARCHAR2(20), --ANALIZAR
-  Veterinario VARCHAR2(20),
-  Fotografia_antes BLOB CONSTRAINT foto_antes_mascota_nn NOT NULL,
-  Correo_contacto VARCHAR2(30) CONSTRAINT correo_rescatista_mascota_nn NOT NULL,
   Espacio_requerido NUMBER CONSTRAINT espacio_requerido_check(-1<Espacio_requerido<6),
-  Tipo_mascota VARCHAR2(15) CONSTRAINT tipo_mascota_nn NOT NULL, --Foreign Key a Tabla de Tipo
-  Raza VARCHAR2(30), ---Foreign Key a Tabla de Raza
-  Medicamentos VARCHAR2(20), --ANALIZAR
+  Facilidad_entrenamiento VARCHAR2(20) CONSTRAINT facilidad_entrenamiento_nn NOT NULL,
+  Enfermedades VARCHAR2(200),
+  Veterinario VARCHAR2(200),
+  Medicamentos VARCHAR2(200),
+  Fotografia_antes BLOB CONSTRAINT foto_antes_mascota_nn NOT NULL,
   Estado VARCHAR2(13) DEFAULT ('En abandono'),
-  Notas VARCHAR2(140),
-  Tratamientos VARCHAR2(25), --ANALIZAR
-  Usuario_creacion VARCHAR2(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
-  Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR2(20)
+  Notas VARCHAR2(200),
+  Tratamientos VARCHAR2(200),
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT mascota_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT mascota_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE,
-  Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL
+  
   CONSTRAINT tel_contacto_fk FOREIGN KEY (Tel_contacto) REFERENCES Persona(telefono),
-  CONSTRAINT correo_contacto_fk FOREIGN KEY (Correo_contacto) REFERENCES Persona(email)
+  CONSTRAINT correo_contacto_fk FOREIGN KEY (Correo_contacto) REFERENCES Persona(email),
+  CONSTRAINT raza_fk FOREIGN KEY (Raza) REFERENCES Raza_Mascota(Raza),
+  CONSTRAINT tipo_fk FOREIGN KEY (Tipo) REFERENCES Tipo_Mascota(Especie),
+  CONSTRAINT 
 );
   
   
 CREATE TABLE Tipo_Mascota --Creado
 (
   Especie VARCHAR2(15) CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie);
-  Usuario_creacion VARCHAR2(20) CONSTRAINT tipo_mascota_usuario_creacion_nn NOT NULL,
-  Fecha_creacion DATE CONSTRAINT tipo_mascota_fecha_creacion_nn NOT NULL,
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT tipo_mascota_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT tipo_mascota_fcreacion_nn NOT NULL,
   Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE
 );
@@ -53,8 +61,9 @@ CREATE TABLE Raza_Mascota
 (
   Raza VARCHAR2(60) CONSTRAINT raza_mascota_pk PRIMARY KEY (Raza),
   Grupo VARCHAR2(15) CONSTRAINT grupo_raza_mascotas_nn NOT NULL,
-  Usuario_creacion VARCHAR2(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
-  Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT raza_mascota_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT raza_mascota_fcreacion_nn NOT NULL,
   Usuario_Modificacion VARCHAR2(20)
   Fecha_Modificacion DATE,
   CONSTRAINT grupo_mascota_fk FOREIGN KEY (Grupo) REFERENCES Tipo_Mascota(Especie)
@@ -129,21 +138,23 @@ INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
 INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
 SELECT * FROM dual;
   
-ALTER TABLE Mascota
-  ADD CONSTRAINT tipo_mascota_fk FOREIGN KEY (Tipo_mascota) REFERENCES Tipo_Mascota(Especie),
-  ADD CONSTRAINT raza_mascota_fk FOREIGN KEY (Raza) REFERENCES Raza_Mascota(Raza);
-  
-  
 --------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Usuario
 (
   id Number,
   CONSTRAINT usuario_pk PRIMARY KEY(id),
-  CONSTRAINT usuario_id_fk FOREIGN KEY (id) REFERENCES Persona(id),
   Nombre VARCHAR2(30),
   CONSTRAINT usuario_nombre_un UNIQUE(nombre),
-  Password VARCHAR2(20) CONSTRAINT usuario_password_lenght CHECK(lenght(password>)7)
+  CONSTRAINT usuario_nombre_nn NOT NULL,
+  Password VARCHAR2(20),
+  CONSTRAINT usuario_password_lenght CHECK(lenght(password>)7),
+  CONSTRAINT usuario_password_nn NOT NULL,
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT usuario_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT usuario_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
 );
 
 CREATE TABLE Persona
@@ -156,15 +167,16 @@ CREATE TABLE Persona
   telefono Telefono(10) CONSTRAINT persona_telefono_nn NOT NULL,
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
   fecha_nacimiento DATE CONTRAINT fecha_nacimiento_nn NOT NULL,
-  ---usuario NUMBER CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id);
-  Usuario_creacion VARCHAR2(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
-  Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
+  usuario NUMBER CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id);
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT persona_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT persona_fcreacion_nn NOT NULL,
   Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE
 );
 
 ----------------------------------------------------------------------------------------------------------------------------
-
+--Just in case
 
 --CREATE TABLE Rescatista
   --idN
