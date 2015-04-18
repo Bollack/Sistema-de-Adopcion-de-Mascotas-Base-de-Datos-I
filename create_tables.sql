@@ -27,6 +27,8 @@ CREATE TABLE Mascota --Creado
   Usuario_Modificacion VARCHAR2(20)
   Fecha_Modificacion DATE,
   Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL
+  CONSTRAINT tel_contacto_fk FOREIGN KEY (Tel_contacto) REFERENCES Persona(telefono),
+  CONSTRAINT correo_contacto_fk FOREIGN KEY (Correo_contacto) REFERENCES Persona(email)
 );
   
   
@@ -151,7 +153,7 @@ CREATE TABLE Persona
   nombre VARCHAR2(20) CONSTRAINT persona_nombre_nn NOT NULL,
   apellido VARCHAR2(20) CONSTRAINT persona_apellido_nn NOT NULL,
   provincia VARCHAR2(10) CONSTRAINT persona_provincia_nn NOT NULL,
-  --telefono VARCHAR2(10),
+  telefono Telefono(10) CONSTRAINT persona_telefono_nn NOT NULL,
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
   fecha_nacimiento DATE CONTRAINT fecha_nacimiento_nn NOT NULL,
   ---usuario NUMBER CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id);
@@ -162,13 +164,6 @@ CREATE TABLE Persona
 );
 
 ----------------------------------------------------------------------------------------------------------------------------
-CREATE TABLE Telefono
-(
-  id_Telefono Number CONSTRAINT telefono_pk PRIMARY KEY (idTelefono),
-  numero Varchar2(10) CONSTRAINT numero_nn NOT NULL, CONSTRAINT numero_uniquie UNIQUE(numero),
-  categoria Varchar2(20) CONTSTRAINT categoria_nn NOT NULL,      --- Foreign Key a tabla catalogo (falta hacer)
-  id_Persona Number Constraint id_Persona_fk FOREIGN KEY (id_Persona) REFERENCES Persona(id)
-);
 
 
 --CREATE TABLE Rescatista
