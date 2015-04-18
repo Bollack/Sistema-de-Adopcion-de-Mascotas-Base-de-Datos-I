@@ -22,9 +22,9 @@ CREATE TABLE Mascota --Creado
   Estado VARCHAR2(13) DEFAULT ('En abandono'),
   Notas VARCHAR2(140),
   Tratamientos VARCHAR2(25), --ANALIZAR
-  Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Usuario_creacion VARCHAR2(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR(20)
+  Usuario_Modificacion VARCHAR2(20)
   Fecha_Modificacion DATE,
   Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL
 );
@@ -33,9 +33,9 @@ CREATE TABLE Mascota --Creado
 CREATE TABLE Tipo_Mascota --Creado
 (
   Especie VARCHAR2(15) CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie);
-  Usuario_creacion VARCHAR(20) CONSTRAINT tipo_mascota_usuario_creacion_nn NOT NULL,
+  Usuario_creacion VARCHAR2(20) CONSTRAINT tipo_mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT tipo_mascota_fecha_creacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR(20),
+  Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE
 );
   
@@ -49,11 +49,11 @@ INSERT ALL --Añadir Triggers
   
 CREATE TABLE Raza_Mascota
 (
-  Raza VARCHAR(60) CONSTRAINT raza_mascota_pk PRIMARY KEY (Raza),
-  Grupo VARCHAR(15) CONSTRAINT grupo_raza_mascotas_nn NOT NULL,
-  Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Raza VARCHAR2(60) CONSTRAINT raza_mascota_pk PRIMARY KEY (Raza),
+  Grupo VARCHAR2(15) CONSTRAINT grupo_raza_mascotas_nn NOT NULL,
+  Usuario_creacion VARCHAR2(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR(20)
+  Usuario_Modificacion VARCHAR2(20)
   Fecha_Modificacion DATE,
   CONSTRAINT grupo_mascota_fk FOREIGN KEY (Grupo) REFERENCES Tipo_Mascota(Especie)
 );
@@ -155,9 +155,9 @@ CREATE TABLE Persona
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
   fecha_nacimiento DATE CONTRAINT fecha_nacimiento_nn NOT NULL,
   ---usuario NUMBER CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id);
-  Usuario_creacion VARCHAR(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
+  Usuario_creacion VARCHAR2(20) CONSTRAINT mascota_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fecha_creacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR(20),
+  Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE
 );
 
@@ -166,7 +166,7 @@ CREATE TABLE Telefono
 (
   id_Telefono Number CONSTRAINT telefono_pk PRIMARY KEY (idTelefono),
   numero Varchar2(10) CONSTRAINT numero_nn NOT NULL, CONSTRAINT numero_uniquie UNIQUE(numero),
-  categoria Varchar(20) CONTSTRAINT categoria_nn NOT NULL,      --- Foreign Key a tabla catalogo (falta hacer)
+  categoria Varchar2(20) CONTSTRAINT categoria_nn NOT NULL,      --- Foreign Key a tabla catalogo (falta hacer)
   id_Persona Number Constraint id_Persona_fk FOREIGN KEY (id_Persona) REFERENCES Persona(id)
 );
 
