@@ -2,26 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Images/logo.jpg</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Main_User.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/ResizableImage.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Buscar_Mascota.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Ver_Usuario.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Main_Admin.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Main_Visitante.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Registro_Usuario.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/Controller/Main.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/Model/Model.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Log_In.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Error_connection_db.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/Controller/Controller_Admin.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/Model/Database_Connection.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/User_Mascotas_Adoptadas.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Registro_Rescate_Mascota.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/Controller/Controller_User.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/GUI_View/Formulario.java</file>
-            <file>file:/C:/Users/Daniel/Dropbox/Bases%20de%20Datos-Semestre%20I%202015/Proyectos/Primero%20Proyecto%20Programado%20-%20Sistema%20de%20Adopción/App%20Java/Sistema%20Adopción%20Mascotas/src/Controller/Controller.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
