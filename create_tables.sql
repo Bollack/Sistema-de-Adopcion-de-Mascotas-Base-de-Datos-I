@@ -7,7 +7,7 @@ CREATE TABLE Mascota --Creado
   Tipo VARCHAR2(15) CONSTRAINT tipo_mascota_nn NOT NULL,
   Raza VARCHAR2(60) CONSTRAINT raza_mascota_nn NOT NULL,
   Nombre VARCHAR2(20),
-  Tamaño VARCHAR2(10) CONSTRAINT tamano_mascota_nn NOT NULL,
+  Tamano VARCHAR2(10) CONSTRAINT tamano_mascota_nn NOT NULL,
   Color1  VARCHAR2(20) CONSTRAINT color1_mascota_nn NOT NULL,
   Color2  VARCHAR2(20),
   Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE Tipo_Mascota --Creado
   Fecha_Modificacion DATE
 );
   
-INSERT ALL --Añadir Triggers
+INSERT ALL --Agregar Triggers
   INTO Tipo_Mascota (Especie) VALUES ('Perro')
   INTO Tipo_Mascota (Especie) VALUES ('Gato')
   INTO Tipo_Mascota (Especie) VALUES ('Ave')
@@ -167,6 +167,7 @@ CREATE TABLE Persona
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
   fecha_nacimiento DATE CONTRAINT fecha_nacimiento_nn NOT NULL,
   usuario NUMBER CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id);
+  genero VARCHAR2(20) CONSTRAINT persona_genero_bin CHECK(
   
   Usuario_creacion VARCHAR2(20) CONSTRAINT persona_ucreacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT persona_fcreacion_nn NOT NULL,
@@ -196,9 +197,19 @@ CREATE TABLE Persona
 
 CREATE TABLE Califica_a
 
-CREATE TABLE Añade_a_Lista_Negra
+CREATE TABLE Agega_a_Lista_Negra
 
 CREATE TABLE Historial_Devoluciones
   
+CREATE TABLE Tipo_Formulario
+
+CREATE TABLE Respuesta
+
+CREATE TABLE Pregunta
+
+  
+CREATE TABLE Formulario
+
+
   
   
