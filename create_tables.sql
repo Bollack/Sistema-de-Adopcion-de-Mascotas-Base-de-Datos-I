@@ -139,16 +139,14 @@ SELECT * FROM dual;
   
 --------------------------------------------------------------------------------------------------------------
 
-CREATE TABLE Usuario
+CREATE TABLE Usuario --CREADA
 (
   id Number,
   CONSTRAINT usuario_pk PRIMARY KEY(id),
-  Nombre VARCHAR2(30),
-  CONSTRAINT usuario_nombre_un UNIQUE(nombre),
-  CONSTRAINT usuario_nombre_nn NOT NULL,
-  Password VARCHAR2(20),
-  CONSTRAINT usuario_password_lenght CHECK(lenght(password>)7),
-  CONSTRAINT usuario_password_nn NOT NULL,
+  username VARCHAR2(30)CONSTRAINT usuario_username_nn NOT NULL,
+  CONSTRAINT usuario_username_un UNIQUE(username),
+  Password VARCHAR2(20) CONSTRAINT usuario_password_nn NOT NULL,
+  CONSTRAINT usuario_password_lenght CHECK(length(password)>7),
   
   Usuario_creacion VARCHAR2(20) CONSTRAINT usuario_ucreacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT usuario_fcreacion_nn NOT NULL,
@@ -163,11 +161,11 @@ CREATE TABLE Persona
   nombre VARCHAR2(20) CONSTRAINT persona_nombre_nn NOT NULL,
   apellido VARCHAR2(20) CONSTRAINT persona_apellido_nn NOT NULL,
   provincia VARCHAR2(10) CONSTRAINT persona_provincia_nn NOT NULL,
-  telefono Telefono(10) CONSTRAINT persona_telefono_nn NOT NULL,
+  telefono VARCHAR2(10) CONSTRAINT persona_telefono_nn NOT NULL,
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
-  fecha_nacimiento DATE CONTRAINT fecha_nacimiento_nn NOT NULL,
+  --fecha_nacimiento DATE CONTRAINT fecha_nacimiento_nn NOT NULL,
   usuario NUMBER CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id);
-  genero VARCHAR2(20) CONSTRAINT persona_genero_bin CHECK(
+  genero VARCHAR2(20) CONSTRAINT persona_genero_bin CHECK(genero IN ('Masculino', 'Femenino'),
   
   Usuario_creacion VARCHAR2(20) CONSTRAINT persona_ucreacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT persona_fcreacion_nn NOT NULL,
