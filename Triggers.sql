@@ -30,5 +30,27 @@ CREATE OR REPLACE TRIGGER BeforeUpdateRazaMascota
   BEFORE UPDATE ON Administrador.Raza_Mascota FOR EACH ROW
     :new.Fecha_modificacion:= sysdate;
 END  BeforeUpdateRazaMascota;
+
+CREATE OR REPLACE TRIGGER BeforeInsertUsuario
+  BUFORE INSERT ON Administrador.Usuario FOR EACH ROW
+    :new.Fecha_creacion:=sysdate;
+    :new.Fecha_modificacion:= sysdate;
+END BeforeInsertUsuario;
   
+CREATE OR REPLACE TRIGGER BeforeUpdateUsuario
+  BEFORE UPDATE ON Administrador.Usuario FOR EACH ROW
+    :new.Fecha_modificacion:= sysdate;
+END BeforeUpdateUsuario;
+
+CREATE OR REPLACE TRIGGER BeforeInsertPersona
+  BEFORE INSERT ON Administrador.Persona FOR EACH ROW
+    :new.Fecha_creacion:=sysdate;
+    :new.Fecha_modificacion:= sysdate;
+END BeforeInsertPersona;
+
+CREATE OR REPLACE TRIGGER BeforeUpdatePersona
+  BEFORE UPDATE ON Administrador.Persona FOR EACH ROW
+    :new.Fecha_modificacion:= sysdate;
+END BeforeUpdatePersona;
+
   --http://www.forosdelweb.com/f100/como-hacer-trigger-auditoria-oracle-578049/    CARLOS CACHE ESO
