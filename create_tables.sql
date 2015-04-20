@@ -1,6 +1,6 @@
 --Scripts de creaci√≥n & alter de tablas
 --Orden de creacion de tablas: Persona, Usuario, Tipo, Raza, Mascota
-CREATE TABLE Mascota --Creado
+CREATE TABLE Mascota 
 (
   ID NUMBER,
   CONSTRAINT pk_mascotas PRIMARY KEY (ID),
@@ -40,7 +40,8 @@ CREATE TABLE Mascota --Creado
   
 CREATE TABLE Tipo_Mascota --Creado
 (
-  Especie VARCHAR2(15) CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie);
+  Especie VARCHAR2(15),
+  CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie),
   
   Usuario_creacion VARCHAR2(20) CONSTRAINT tipo_mascota_ucreacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT tipo_mascota_fcreacion_nn NOT NULL,
@@ -56,14 +57,15 @@ INSERT ALL --Agregar Triggers
   INTO Tipo_Mascota (Especie) VALUES ('Roedor')
   SELECT * FROM dual;
   
-CREATE TABLE Raza_Mascota
+CREATE TABLE Raza_Mascota --CREADA
 (
-  Raza VARCHAR2(60) CONSTRAINT raza_mascota_pk PRIMARY KEY (Raza),
+  Raza VARCHAR2(60),
+  CONSTRAINT raza_mascota_pk PRIMARY KEY (Raza),
   Grupo VARCHAR2(15) CONSTRAINT grupo_raza_mascotas_nn NOT NULL,
   
   Usuario_creacion VARCHAR2(20) CONSTRAINT raza_mascota_ucreacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT raza_mascota_fcreacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR2(20)
+  Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE,
   CONSTRAINT grupo_mascota_fk FOREIGN KEY (Grupo) REFERENCES Tipo_Mascota(Especie)
 );
@@ -77,61 +79,61 @@ INTO Raza_Mascota (Raza,Grupo) VALUES('Basenji', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Basset Hound', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Beagle', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Bedlington Terrier', 'Perr1o')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Bich√≥n Fris√©', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Bichon Friso', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Bloodhound', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Border Collie', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Borzoi', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Boxer', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Bull Terrier', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Bulldog Ingl√©s', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Bulldog Ingles', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Cavalier King Charles Spaniel', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Chihuahe√±o', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('ChihuaheÒo', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Chow Chow', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Clumber Spaniel', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Cocker Spaniel', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Collie Barbudo', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Collie Pelo Largo', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Crestado Chino', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('D√°lmata', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('D·lmata', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Desconocido', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Doberman', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Fox Terrier', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Galgo Italiano', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Golden Retriever', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Gran Dan√©s', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Gran DanÈs', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Husky Siberiano', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Jack Russel Terrier', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Keeshond', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Kelpie Australiano', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Labrador', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Lobero Irland√©s', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Lobero IrlandÈs', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Malt√©s', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Pastor Alem√°n', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Pastor Alem·n', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Pastor Australiano', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Pekin√©s', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('PekinÈs', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Pomerania', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Poodle', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Poodle Toy(Taza de t√©)', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Poodle Toy(Taza de tÈ)', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Pug', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Rottweiler', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Samoyedo', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Setter Ingl√©s', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Setter InglÈs', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Shar Pei', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Terrier Escoc√©s', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Terrier EscocÈs', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Yorkshire Terrier', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Persa', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Bobtail Americano', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Ruso Azul', 'Gato')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Somal√≠', 'Gato')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Somala', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Siberiano', 'Gato')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Man√©s', 'Gato')
+INTO Raza_Mascota (Raza,Grupo) VALUES('ManÈs', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Cruce', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Desconocido', 'Gato')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Burm√©s', 'Gato')
+INTO Raza_Mascota (Raza,Grupo) VALUES('BurmÛ', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Ragdoll', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Maine Coon', 'Gato')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Siam√©s', 'Gato')
-INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
+INTO Raza_Mascota (Raza,Grupo) VALUES('SiamÈs', 'Gato')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Canario', 'Ave')
 INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
 INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
 INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
@@ -154,7 +156,7 @@ CREATE TABLE Usuario --CREADA
   Fecha_Modificacion DATE
 );
 
-CREATE TABLE Persona
+CREATE TABLE Persona --CREADA
 (
   id Number,
   CONSTRAINT persona_pk PRIMARY KEY (ID),
@@ -164,8 +166,10 @@ CREATE TABLE Persona
   telefono VARCHAR2(10) CONSTRAINT persona_telefono_nn NOT NULL,
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
   --fecha_nacimiento DATE CONTRAINT fecha_nacimiento_nn NOT NULL,
-  usuario NUMBER CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id);
-  genero VARCHAR2(20) CONSTRAINT persona_genero_bin CHECK(genero IN ('Masculino', 'Femenino'),
+  usuario NUMBER,
+  CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id),
+  genero VARCHAR2(20),
+  CONSTRAINT persona_genero_bin CHECK(genero IN ('Masculino', 'Femenino')),
   
   Usuario_creacion VARCHAR2(20) CONSTRAINT persona_ucreacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT persona_fcreacion_nn NOT NULL,
