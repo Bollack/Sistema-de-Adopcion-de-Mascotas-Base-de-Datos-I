@@ -1,62 +1,77 @@
 CREATE OR REPLACE TRIGGER BeforeInsertMascota
   BEFORE INSERT ON Administrador.Mascota FOR EACH ROW
+  BEGIN
     :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
-END BeforeInsertMascota;
+  END;
   
 CREATE OR REPLACE TRIGGER BeforeUpdateMascota
-  BEFARE UPDATE ON Administrador.Mascota FOR EACH ROW
+  BEFORE UPDATE ON Administrador.Mascota FOR EACH ROW
+  BEGIN
     :newFecha_Modificacion:= sysdate;
-END BeforeUpdateMascota;
+  END;
   
-CREATE OR REPLACE TRIGGER BeforeInsertTipoMascota
+CREATE OR REPLACE TRIGGER BeforeInsertTipoMascota --APLICADO
   BEFORE INSERT ON Administrador.Tipo_Mascota FOR EACH ROW
+  BEGIN
+    :new.Usuario_creacion:=user;
+    :new.Usuario_Modificacion:=user;
     :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
-END BeforeInsertTipoMascota;
+  END;
   
-CREATE OR REPLACE TRIGGER BeforeUpdateTipoMascota
+CREATE OR REPLACE TRIGGER BeforeUpdateTipoMascota --APLICADO
   BEFORE UPDATE ON Administrador.Tipo_Mascota FOR EACH ROW
+  BEGIN
     :new.Fecha_Modificacion:= sysdate;
-END BeforeUpdateTipoMascota;
+    :new.Usuario_Modificacion:=user;
+  END;
 
-CREATE OR REPLACE TRIGGER BeforeInsertRazaMascota
+CREATE OR REPLACE TRIGGER BeforeInsertRazaMascota --APLICADO
   BEFORE INSERT ON Administrador.Raza_Mascota FOR EACH ROW
+  BEGIN
     :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
-END BeforeInsertRazaMascota;
+    :new.Usuario_creacion:=user;
+    :new.Usuario_Modificacion:=user;
+  END; 
   
-CREATE OR REPLACE TRIGGER BeforeUpdateRazaMascota
+CREATE OR REPLACE TRIGGER BeforeUpdateRazaMascota --APLICADO
   BEFORE UPDATE ON Administrador.Raza_Mascota FOR EACH ROW
+  BEGIN
     :new.Fecha_Modificacion:= sysdate;
-END  BeforeUpdateRazaMascota;
+    :new.Usuario_Modificacion:=user;
+  END; 
 
 CREATE OR REPLACE TRIGGER BeforeInsertUsuario
-  BUFORE INSERT ON Administrador.Usuario FOR EACH ROW
+  BEFORE INSERT ON Administrador.Usuario FOR EACH ROW
+  BEGIN
     :new.Usuario_creacion:=user;
     :new.Fecha_creacion:=sysdate;
     :new.Usuario_Modificacion:=user;
     :new.Fecha_Modificacion:= sysdate;
-END BeforeInsertUsuario;
-  
+  END;
 CREATE OR REPLACE TRIGGER BeforeUpdateUsuario
   BEFORE UPDATE ON Administrador.Usuario FOR EACH ROW
+  BEGIN
     :new.Usuario_Modificacion:=user;
     :new.Fecha_Modificacion:= sysdate;
-END BeforeUpdateUsuario;
+  END;
 
 CREATE OR REPLACE TRIGGER BeforeInsertPersona
   BEFORE INSERT ON Administrador.Persona FOR EACH ROW
+  BEGIN
     :new.Usuario_creacion:=user;
     :new.Fecha_creacion:=sysdate;
     :new.Usuario_Modificacion:=user;
     :new.Fecha_Modificacion:= sysdate;
-END BeforeInsertPersona;
+  END;
 
 CREATE OR REPLACE TRIGGER BeforeUpdatePersona
   BEFORE UPDATE ON Administrador.Persona FOR EACH ROW
+  BEGIN
     :new.Usuario_Modificacion:=user;
     :new.Fecha_Modificacion:= sysdate;
-END BeforeUpdatePersona;
+  END;
 
   --http://www.forosdelweb.com/f100/como-hacer-trigger-auditoria-oracle-578049/    CARLOS CACHE ESO
