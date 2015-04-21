@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -17,13 +19,24 @@ import javax.swing.JOptionPane;
  * @author Daniel Troyo
  * 3/04/2015  6:21 p.m
  */
-public class Controller {
+public class Controller implements ActionListener{
     
     private Main_Visitante gui;
     private Model modelo;
 
+    /**
+     *
+     * @param vista
+     */
     public Controller(Main_Visitante vista) {
         this.gui = vista;
+        try {
+            this.modelo = new Model();
+        } catch (Exception ex) {
+            Error_connection_db errorVentana = new Error_connection_db();
+            errorVentana.show();
+            System.exit(0);
+        }
     }
     
     public void Start()

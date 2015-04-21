@@ -14,14 +14,17 @@ import java.awt.event.ActionListener;
  * @author Daniel Troyo
  * 11/04/2015  8:21 p.m Clase que controla las acciones y procesos realizados en la sesión de ADMIN
  */
-public class Controller_Admin {
+public class Controller_Admin implements ActionListener 
+{
  
+    private Model modelo;
+    private Main_Admin guiInicial;
     
-    
-    
-    
-    
-    public void actionPerformed(ActionEvent e) {
+    public Controller_Admin()
+    {
+        
+    }
+ public void actionPerformed(ActionEvent e) {
        String comando = e.getActionCommand();
 
        if (comando=="")

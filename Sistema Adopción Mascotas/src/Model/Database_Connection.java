@@ -120,7 +120,7 @@ public class Database_Connection {
 	fields = String con los nombres de los campos donde insertar Ej.: campo1,campo2campo_n
 	values = String con los datos de los campos a insertar Ej.: valor1, valor2, valor_n
 */
-    public ResultSet getTablaSinCondicion(String tabla, Object[] valoresAmostrar)
+    public ResultSet getTablaSinCondicion(String tabla, String[] valoresAmostrar) throws SQLException
     {
         
         String query = "SELECT ";
@@ -137,7 +137,26 @@ public class Database_Connection {
             }
         }
         */
-        PreparedStatement consulta = this.conn.
+        for (int j=0; j<valoresAmostrar.length; j++)
+        {
+            query+='?';
+            if (j!=valoresAmostrar.length-1)
+            {
+                query+=", ";
+            }
+        }
+        try{
+            PreparedStatement consulta = this.conn.prepareStatement(query);
+            for (int j=0; j<valoresAmostrar.length; j++)
+            {
+                consulta.setString(0, valoresAmostrar[j]);
+            }
+            consulta.execute();
+            return consulta.getResultSet();
+        }catch (SQLException e)
+        {
+            throw e;
+        }
     }
     
     public boolean insertToTable(String table, String[] fields, Object[] values) throws SQLException

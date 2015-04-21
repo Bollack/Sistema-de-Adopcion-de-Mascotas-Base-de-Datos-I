@@ -6,32 +6,43 @@
 package Controller;
 
 
-import GUI_View.Main_Visitante;
-import GUI_View.Registro_Usuario;
 import GUI_View.Log_In;
+import GUI_View.Main_User;
+import GUI_View.Main_Visitante;
 import GUI_View.Registro_Rescate_Mascota;
+import GUI_View.Registro_Usuario;
 import Model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.UnsupportedOperationException;
+import javax.swing.event.DocumentListener;
 import org.apache.commons.lang3.*;
 import org.apache.commons.mail.*;
 import org.apache.commons.validator.*;
-import java.lang.UnsupportedOperationException;
-import javax.swing.event.DocumentListener;
 
 
-/**
+/*
 @author Daniel Troyo
 02/04/2015  8:21 p.m Clase que controla las acciones y procesos realizados en la sesión de usuario 
  */
-public class Controller_User 
+public class Controller_User implements ActionListener
 {
     private String username; //Se utilizará para almacenarlo en los campos de auditoría 
+    private Model modelo;
+    private Main_User gui_Inicial;
     
-    
-    public Controller_User()
+    public Controller_User(Model modelo, String userLogeo)
     {
+        this.modelo = modelo;
+        this.username = userLogeo;
+        this.gui_Inicial = new Main_User();
         
+        this.gui_Inicial.
+        this.gui_Inicial
+        this.gui_Inicial
+        this.gui_Inicial                
+        this.gui_Inicial                
+        this.gui_Inicial
     }
     
     
@@ -89,7 +100,6 @@ public class Controller_User
         ventana_rescate.espacioMascotaComboBox.addActionListener((ActionListener) this);
         ventana_rescate.findImageButton.addActionListener((ActionListener) this);
         ventana_rescate.imageDirMascotaField.addActionListener((ActionListener) this);
-        ventana_rescate.lugarMascotaField.addActionListener((ActionListener) this);
         ventana_rescate.medicamentosMascotaField.getDocument().addDocumentListener((DocumentListener) (ActionListener) this);
         ventana_rescate.nameMascotaField.addActionListener((ActionListener) this);
         ventana_rescate.notasMascotaField.getDocument().addDocumentListener((DocumentListener) (ActionListener) this);
@@ -122,7 +132,7 @@ public class Controller_User
         ventana_rescate.tamanoMascotaComboBox.addItem("");
         ventana_rescate.tamanoMascotaComboBox.addItem("");
         
-        ventana_rescate.
+        ventana_rescate.show(true);
 
 
 

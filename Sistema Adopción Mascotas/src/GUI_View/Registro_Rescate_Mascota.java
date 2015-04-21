@@ -28,25 +28,24 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
     private void initComponents() {
 
         jFileChooser1 = new javax.swing.JFileChooser();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        labelTítulo = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         nameMascotaField = new javax.swing.JTextField();
         veterinarioMascotaField = new javax.swing.JTextField();
-        lugarMascotaField = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         imageDirMascotaField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         findImageButton = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         tipoMascotaComboBox = new javax.swing.JComboBox();
         razaMascotaComboBox = new javax.swing.JComboBox();
@@ -75,6 +74,9 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         energiaMascotaComboBox = new javax.swing.JComboBox();
+        hembraMascotaRadioButton = new javax.swing.JRadioButton();
+        machoMascotaRadioButton = new javax.swing.JRadioButton();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de mascota en espera de adopción");
@@ -91,8 +93,8 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel4.setText("*Color 1:");
 
-        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jLabel5.setText("Registre los datos de la mascota que desea poner en adopción.");
+        labelTítulo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        labelTítulo.setText("Registre los datos de la mascota que desea poner en adopción.");
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel6.setText("Color 2:");
@@ -109,14 +111,6 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         nameMascotaField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         veterinarioMascotaField.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-
-        lugarMascotaField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        lugarMascotaField.setText("Distrito, Cantón, Provincia.");
-        lugarMascotaField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lugarMascotaFieldActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel10.setText("Fotografía:");
@@ -169,9 +163,6 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jLabel13.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel13.setText("*Lugar actual de la mascota:");
 
         jLabel15.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel15.setText("Veterinario de contacto:");
@@ -303,6 +294,15 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
             }
         });
 
+        hembraMascotaRadioButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        hembraMascotaRadioButton.setText("Hembra");
+
+        machoMascotaRadioButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        machoMascotaRadioButton.setText("Macho");
+
+        jLabel16.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel16.setText("*Sexo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -310,17 +310,36 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lugarMascotaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(veterinarioMascotaField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel19)))
+                                    .addComponent(jLabel20))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabel22))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(registrarMascotaButton))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(atrasMascotaButton))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -358,51 +377,38 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
                                             .addComponent(tamanoMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(29, 29, 29)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTítulo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(veterinarioMascotaField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(entrenamientoMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(entrenamientoMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel16)
+                                        .addGap(36, 36, 36)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(hembraMascotaRadioButton)
+                                            .addComponent(machoMascotaRadioButton))))
                                 .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel21)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel19)))
-                                    .addComponent(jLabel20))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(atrasMascotaButton))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(48, 48, 48)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(registrarMascotaButton)
-                                            .addComponent(jLabel22))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(jScrollPane3))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(atrasMascotaButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelTítulo)
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -440,49 +446,44 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel14)
-                                    .addComponent(energiaMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(energiaMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel18)))
-                        .addContainerGap(261, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)
-                                .addComponent(registrarMascotaButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel22)
-                                .addGap(40, 40, 40)
-                                .addComponent(atrasMascotaButton)
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lugarMascotaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                    .addComponent(hembraMascotaRadioButton)
+                                    .addComponent(jLabel16))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(machoMascotaRadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(veterinarioMascotaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel15))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel17))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel20))
-                                .addGap(27, 27, 27))))))
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel18)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(registrarMascotaButton)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel22))))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -528,10 +529,6 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_energiaMascotaComboBoxActionPerformed
 
-    private void lugarMascotaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lugarMascotaFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lugarMascotaFieldActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -568,6 +565,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton atrasMascotaButton;
+    private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JComboBox color1MascotaComboBox;
     public javax.swing.JComboBox color2MascotaComboBox;
     public javax.swing.JComboBox energiaMascotaComboBox;
@@ -575,15 +573,16 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
     public javax.swing.JComboBox entrenamientoMascotaComboBox;
     public javax.swing.JComboBox espacioMascotaComboBox;
     public javax.swing.JButton findImageButton;
+    public javax.swing.JRadioButton hembraMascotaRadioButton;
     public javax.swing.JTextField imageDirMascotaField;
     private javax.swing.JFileChooser jFileChooser1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel11;
     public javax.swing.JLabel jLabel12;
-    public javax.swing.JLabel jLabel13;
     public javax.swing.JLabel jLabel14;
     public javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     public javax.swing.JLabel jLabel17;
     public javax.swing.JLabel jLabel18;
     public javax.swing.JLabel jLabel19;
@@ -593,7 +592,6 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel22;
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel8;
@@ -604,7 +602,8 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
     public javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JScrollPane jScrollPane5;
-    public javax.swing.JTextField lugarMascotaField;
+    public javax.swing.JLabel labelTítulo;
+    public javax.swing.JRadioButton machoMascotaRadioButton;
     public javax.swing.JTextArea medicamentosMascotaField;
     public javax.swing.JTextField nameMascotaField;
     public javax.swing.JTextArea notasMascotaField;
