@@ -33,23 +33,29 @@ END  BeforeUpdateRazaMascota;
 
 CREATE OR REPLACE TRIGGER BeforeInsertUsuario
   BUFORE INSERT ON Administrador.Usuario FOR EACH ROW
+    :new.Usuario_creacion:=user;
     :new.Fecha_creacion:=sysdate;
+    :new.Usuario_Modificacion:=user;
     :new.Fecha_modificacion:= sysdate;
 END BeforeInsertUsuario;
   
 CREATE OR REPLACE TRIGGER BeforeUpdateUsuario
   BEFORE UPDATE ON Administrador.Usuario FOR EACH ROW
+    :new.Usuario_Modificacion:=user;
     :new.Fecha_modificacion:= sysdate;
 END BeforeUpdateUsuario;
 
 CREATE OR REPLACE TRIGGER BeforeInsertPersona
   BEFORE INSERT ON Administrador.Persona FOR EACH ROW
+    :new.Usuario_creacion:=user;
     :new.Fecha_creacion:=sysdate;
+    :new.Usuario_Modificacion:=user;
     :new.Fecha_modificacion:= sysdate;
 END BeforeInsertPersona;
 
 CREATE OR REPLACE TRIGGER BeforeUpdatePersona
   BEFORE UPDATE ON Administrador.Persona FOR EACH ROW
+    :new.Usuario_Modificacion:=user;
     :new.Fecha_modificacion:= sysdate;
 END BeforeUpdatePersona;
 
