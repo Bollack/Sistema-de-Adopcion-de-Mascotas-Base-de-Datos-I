@@ -12,9 +12,9 @@ package GUI_View;
  */
 public class Error_connection_db extends javax.swing.JFrame {
 
-    /**
+    /*
      * Creates new form ver_Usuario
-     */
+     *
     public Error_connection_db() {
         initComponents();
     }

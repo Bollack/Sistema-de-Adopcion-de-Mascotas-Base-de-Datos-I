@@ -35,7 +35,7 @@ public class Controller implements ActionListener{
         } catch (Exception ex) {
             Error_connection_db errorVentana = new Error_connection_db();
             errorVentana.show();
-            System.exit(0);
+            System.out.println("Error conectando a la DB");
         }
     }
     

@@ -159,6 +159,8 @@ public class Database_Connection {
         }
     }
     
+    
+    
     public boolean insertToTable(String table, String[] fields, Object[] values) throws SQLException
     {
         boolean res=false;
@@ -166,7 +168,18 @@ public class Database_Connection {
         //String q=" INSERT INTO " + table + " ( " + fields + " ) VALUES ( " + values + " ) ";
         //se ejecuta la consulta
         try {
-            PreparedStatement pstm = conn.prepareStatement(q); //Evita SQL Injection
+            String query="INSERT INTO "+table +"(";
+            for (int j=0; j<fields.length;j++)
+            {
+                query+="?";
+            }
+            query+=")";
+            PreparedStatement pstm = conn.prepareStatement(query); //Evita SQL Injection
+            for (int j=0; j<fields.length;j++)
+            {
+                pstm.setString(j, fields[j]);
+            }
+       
             pstm.execute();
             pstm.close();
             res=true;
@@ -176,7 +189,22 @@ public class Database_Connection {
       return res;
     }
     
-    
+    private String whatClassIsIt(Object objeto)
+    {
+        if (objeto instanceof String)
+        {
+            return "String";
+        }else if (objeto instanceof int)
+        {
+            return "Float";
+        }else if (objeto instanceof String)
+        {
+            return "Date";
+        }else if (objeto instanceof String)
+        {
+            
+        }else if (objeto instanceof String)
+    }
 }
     
     
