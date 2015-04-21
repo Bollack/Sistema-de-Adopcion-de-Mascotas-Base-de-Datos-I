@@ -25,30 +25,29 @@ public class Database_Connection {
     2=user
     3=visitante
     */
-    public Database_Connection(int tipoConexion) throws SQLException    
+    public Database_Connection(int tipoConexion) throws SQLException, ClassNotFoundException  
     {
         try
         {
             Class.forName("oracle.jdbc.OracleDriver");
             switch(tipoConexion){
                 case 0:
-                    this.conn = DriverManager.getConnection(direccion,"system","Sistema12");
+                    this.conn = DriverManager.getConnection(direccion,"system","Lordaeron1");
                     break;
                 case 1:
-                    this.conn = DriverManager.getConnection(direccion,"Administrador", "admin12");
+                    this.conn = DriverManager.getConnection(direccion,"Administrador", "Admin12");
                     break;
                 case 2:
-                    this.conn = DriverManager.getConnection(direccion,"Usuario","usuario13");
+                    this.conn = DriverManager.getConnection(direccion,"Usuario","usuario14");
                     break;
                 case 3:
-                    this.conn = DriverManager.getConnection(direccion,"Visitante", "visitante14");
+                    this.conn = DriverManager.getConnection(direccion,"Visitante", "visitante13");
                     break;    
             }
             this.conn.setAutoCommit(true);
-            this.conn.
         }catch(Exception e)
         {
-            System.out.println(e.getMessage());
+            throw e;
         }         
     }
     
@@ -121,12 +120,31 @@ public class Database_Connection {
 	fields = String con los nombres de los campos donde insertar Ej.: campo1,campo2campo_n
 	values = String con los datos de los campos a insertar Ej.: valor1, valor2, valor_n
 */
-//___________________________________________________________________________________ Soy una barra separadora :)
-    public boolean insertToTable(String table, String fields, String values) throws SQLException
+    public ResultSet getTablaSinCondicion(String tabla, Object[] valoresAmostrar)
+    {
+        
+        String query = "SELECT ";
+        /*
+            Va extrayendo las columnas a mostrar del arreglo a un string, 
+            para que así pueda ser concatenado con el String query
+        
+        for (int j=0; j<valoresAmostrar.length; j++)
+        {
+            query+=valoresAmostrar[j];
+            if (j!=valoresAmostrar.length-1)
+            {
+                query+=", ";
+            }
+        }
+        */
+        PreparedStatement consulta = this.conn.
+    }
+    
+    public boolean insertToTable(String table, String[] fields, Object[] values) throws SQLException
     {
         boolean res=false;
         //Se arma la consulta
-        String q=" INSERT INTO " + table + " ( " + fields + " ) VALUES ( " + values + " ) ";
+        //String q=" INSERT INTO " + table + " ( " + fields + " ) VALUES ( " + values + " ) ";
         //se ejecuta la consulta
         try {
             PreparedStatement pstm = conn.prepareStatement(q); //Evita SQL Injection
@@ -138,6 +156,8 @@ public class Database_Connection {
       }
       return res;
     }
+    
+    
 }
     
     
