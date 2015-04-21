@@ -33,6 +33,7 @@ GRANT CREATE TABLE TO Administrador; --CREADA
 GRANT CREATE VIEW TO Administrador; --CREADA
 GRANT CREATE TRIGGER TO Administrador; --CREADA
 GRANT UNLIMITED TABLESPACE TO Administrador; --CREADA
+GRANT CREATE SEQUENCE TO Administrador; --APLICADO
 
     
 --VISITANTE--------------------------------------

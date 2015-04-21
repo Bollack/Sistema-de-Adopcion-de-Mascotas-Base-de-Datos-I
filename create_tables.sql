@@ -1,27 +1,37 @@
 --Scripts de creaci√≥n & alter de tablas
 --Orden de creacion de tablas: Persona, Usuario, Tipo, Raza, Mascota
-CREATE TABLE Mascota 
+
+/*
+
+
+
+
+*/
+
+CREATE TABLE Mascota --Aplicado
 (
   ID NUMBER,
   CONSTRAINT pk_mascotas PRIMARY KEY (ID),
   Tipo VARCHAR2(15) CONSTRAINT tipo_mascota_nn NOT NULL,
   Raza VARCHAR2(60) CONSTRAINT raza_mascota_nn NOT NULL,
-  Nombre VARCHAR2(20),
+  Nombre VARCHAR2(20) DEFAULT('Sin nombre'),
   Tamano VARCHAR2(10) CONSTRAINT tamano_mascota_nn NOT NULL,
   Color1  VARCHAR2(20) CONSTRAINT color1_mascota_nn NOT NULL,
   Color2  VARCHAR2(20),
-  Rescatista NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL,
-  Tel_contacto VARCHAR2(20) CONSTRAINT tel_rescatista_mascota_nn NOT NULL,
-  Correo_contacto VARCHAR2(30) CONSTRAINT correo_rescatista_mascota_nn NOT NULL,
-  Lugar VARCHAR2(20) CONSTRAINT lugar_mascota_nn NOT NULL,
-  Nivel_energia NUMBER CONSTRAINT nivel_energia_check CHECK(-1<Nivel_energia<11),
-  Espacio_requerido NUMBER CONSTRAINT espacio_requerido_check(-1<Espacio_requerido<6),
+  Contacto  NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL,
+  --Tel_contacto VARCHAR2(20) CONSTRAINT tel_rescatista_mascota_nn NOT NULL,
+  --Correo_contacto VARCHAR2(30) CONSTRAINT correo_rescatista_mascota_nn NOT NULL,
+  --Lugar VARCHAR2(20) CONSTRAINT lugar_mascota_nn NOT NULL, Se deduce de persona
+  Nivel_energia VARCHAR2(20),
+  Espacio_requerido VARCHAR2(20),
   Facilidad_entrenamiento VARCHAR2(20) CONSTRAINT facilidad_entrenamiento_nn NOT NULL,
   Enfermedades VARCHAR2(200),
   Veterinario VARCHAR2(200),
   Medicamentos VARCHAR2(200),
   Fotografia_antes BLOB CONSTRAINT foto_antes_mascota_nn NOT NULL,
-  Estado VARCHAR2(13) DEFAULT ('En abandono'),
+  Fotografia_despues BLOB,
+  Estado VARCHAR2(30) DEFAULT('En adopciÛn'),
+  CONSTRAINT mascota_estado_check CHECK(Estado IN ('En adopciÛn','Adoptada')),
   Notas VARCHAR2(200),
   Tratamientos VARCHAR2(200),
   
@@ -30,17 +40,17 @@ CREATE TABLE Mascota
   Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE,
   
-  CONSTRAINT tel_contacto_fk FOREIGN KEY (Tel_contacto) REFERENCES Persona(telefono),
-  CONSTRAINT correo_contacto_fk FOREIGN KEY (Correo_contacto) REFERENCES Persona(email),
+  --CONSTRAINT tel_contacto_fk FOREIGN KEY (Tel_contacto) REFERENCES Persona(telefono),
+  --CONSTRAINT correo_contacto_fk FOREIGN KEY (Correo_contacto) REFERENCES Persona(email),
   CONSTRAINT raza_fk FOREIGN KEY (Raza) REFERENCES Raza_Mascota(Raza),
   CONSTRAINT tipo_fk FOREIGN KEY (Tipo) REFERENCES Tipo_Mascota(Especie),
-  CONSTRAINT 
+  CONSTRAINT contacto_fk FOREIGN KEY(contacto) REFERENCES Persona(id)
 );
   
   
 CREATE TABLE Tipo_Mascota --Creado
 (
-  Especie VARCHAR2(15),
+  Especie VARCHAR2(45),
   CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie),
   
   Usuario_creacion VARCHAR2(20) CONSTRAINT tipo_mascota_ucreacion_nn NOT NULL,
@@ -48,12 +58,14 @@ CREATE TABLE Tipo_Mascota --Creado
   Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE
 );
+
+
   
-INSERT ALL --Agregar Triggers
+INSERT ALL --APLICADO
   INTO Tipo_Mascota (Especie) VALUES ('Perro')
   INTO Tipo_Mascota (Especie) VALUES ('Gato')
   INTO Tipo_Mascota (Especie) VALUES ('Ave')
-  INTO Tipo_Mascota (Especie) VALUES ('Reptil')
+  INTO Tipo_Mascota (Especie) VALUES ('Reptil, Anfibio o Ar·cnido')
   INTO Tipo_Mascota (Especie) VALUES ('Roedor')
   SELECT * FROM dual;
   
@@ -69,16 +81,23 @@ CREATE TABLE Raza_Mascota --CREADA
   Fecha_Modificacion DATE,
   CONSTRAINT grupo_mascota_fk FOREIGN KEY (Grupo) REFERENCES Tipo_Mascota(Especie)
 );
+
+ALTER TABLE Raza_Mascota --Aplicado
+MODIFY (Grupo VARCHAR2(40));
   
-INSERT ALL
+INSERT ALL --Aplicado
 INTO Raza_Mascota (Raza,Grupo) VALUES('Afgano', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Zaguate - Interminado', 'Perro')
+SELECT * FROM dual;
+INSERT ALL --Aplicado
+INTO Raza_Mascota (Raza,Grupo) VALUES('Zaguate - Indeterminado', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Akita', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('American Staaffordshire Terrier', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Basenji', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Basset Hound', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Beagle', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Bedlington Terrier', 'Perr1o')
+SELECT * from dual;
+INSERT ALL --Aplicado
+INTO Raza_Mascota (Raza,Grupo) VALUES('Bedlington Terrier', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Bichon Friso', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Bloodhound', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Border Collie', 'Perro')
@@ -107,7 +126,7 @@ INTO Raza_Mascota (Raza,Grupo) VALUES('Keeshond', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Kelpie Australiano', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Labrador', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Lobero IrlandÈs', 'Perro')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Malt√©s', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('MaltÈs', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Pastor Alem·n', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Pastor Australiano', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('PekinÈs', 'Perro')
@@ -121,22 +140,52 @@ INTO Raza_Mascota (Raza,Grupo) VALUES('Setter InglÈs', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Shar Pei', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Terrier EscocÈs', 'Perro')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Yorkshire Terrier', 'Perro')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Otro', 'Perro')
+SELECT * from dual;
+INSERT ALL --Aplicado
 INTO Raza_Mascota (Raza,Grupo) VALUES('Persa', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Bobtail Americano', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Ruso Azul', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Somala', 'Gato')
+SELECT * from dual;
+INSERT ALL --Aplicado
 INTO Raza_Mascota (Raza,Grupo) VALUES('Siberiano', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('ManÈs', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Cruce', 'Gato')
-INTO Raza_Mascota (Raza,Grupo) VALUES('Desconocido', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('BurmÛ', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Ragdoll', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('Maine Coon', 'Gato')
 INTO Raza_Mascota (Raza,Grupo) VALUES('SiamÈs', 'Gato')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Otro-Gato', 'Gato')
+SELECT * from dual;
+INSERT ALL --Aplicado
 INTO Raza_Mascota (Raza,Grupo) VALUES('Canario', 'Ave')
-INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
-INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
-INTO Raza_Mascota (Raza,Grupo) VALUES('', 'Ave')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Cacat˙a', 'Ave')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Loro', 'Ave')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Agaporni', 'Ave')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Ninfa - Cockatiel', 'Ave')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Yaco', 'Ave')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Guacamayo', 'Ave')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Otro-Ave', 'Ave')
+SELECT * from dual;
+INSERT ALL --Aplicado
+INTO Raza_Mascota (Raza,Grupo) VALUES('lagartijas', 'Reptil, Anfibio o Ar·cnido')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Serpientes', 'Reptil, Anfibio o Ar·cnido')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Anfibios', 'Reptil, Anfibio o Ar·cnido')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Tortugas', 'Reptil, Anfibio o Ar·cnido')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Tar·ntula', 'Reptil, Anfibio o Ar·cnido')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Cienpies', 'Reptil, Anfibio o Ar·cnido')
+INTO Raza_Mascota (Raza,Grupo) VALUES('EscorpiÛn', 'Reptil, Anfibio o Ar·cnido')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Cangrejo ErmitaÒo', 'Reptil, Anfibio o Ar·cnido')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Otro tipo', 'Reptil, Anfibio o Ar·cnido')
+SELECT * from dual;
+INSERT ALL  --Aplicado
+INTO Raza_Mascota (Raza,Grupo) VALUES('Conejo', 'Roedor')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Hamster', 'Roedor')
+INTO Raza_Mascota (Raza,Grupo) VALUES('RatÛn', 'Roedor')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Chinchilla', 'Roedor')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Rata', 'Roedor')
+INTO Raza_Mascota (Raza,Grupo) VALUES('Otro-Roedor', 'Roedor')
 SELECT * FROM dual;
   
 --------------------------------------------------------------------------------------------------------------
@@ -177,6 +226,16 @@ CREATE TABLE Persona --CREADA
   Fecha_Modificacion DATE
 );
 
+ALTER TABLE Persona --Aplicado
+  ADD CONSTRAINT persona_email_un UNIQUE(email);
+ALTER TABLE Persona --Aplicado
+  ADD CONSTRAINT persona_telefono_un UNIQUE(telefono);
+ALTER TABLE Persona --Aplicado
+  MODIFY (Lugar VARCHAR2(60));
+ALTER TABLE Persona --Aplicado
+  MODIFY (Lugar VARCHAR2(60) CONSTRAINT persona_lugar_nn NOT NULL);
+  
+  
 ----------------------------------------------------------------------------------------------------------------------------
 --Just in case
 
@@ -197,20 +256,39 @@ CREATE TABLE Persona --CREADA
   --Fecha_Modificacion DATE,
 
 
+CREATE TABLE Adopta_a
+(
+  persona NUMBER
+);
+
 CREATE TABLE Califica_a
+(
+);
 
 CREATE TABLE Agega_a_Lista_Negra
+(
+);
 
 CREATE TABLE Historial_Devoluciones
-  
+(
+);
+
 CREATE TABLE Tipo_Formulario
+(
+);
 
 CREATE TABLE Respuesta
+(
+);
 
 CREATE TABLE Pregunta
+(
+);
 
   
 CREATE TABLE Formulario
+(
+);
 
 
   
