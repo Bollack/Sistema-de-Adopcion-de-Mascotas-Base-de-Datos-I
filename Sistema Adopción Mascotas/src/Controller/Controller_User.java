@@ -72,18 +72,7 @@ public class Controller_User implements ActionListener
         
     }
     
-    public void log_In(){
-        //Crea el objeto de clase ventana de logeo
-        Log_In ventanalogeo = new Log_In();
-        //Establece los listeners y nombra los 
-        ventanalogeo.LogInButton.addActionListener((ActionListener) this);
-        ventanalogeo.LogInButton.setActionCommand("Log In-Ventana Logeo");
-        ventanalogeo.exitButton.addActionListener((ActionListener) this);
-        ventanalogeo.exitButton.setActionCommand("Atrás-Ventana Logeo");
-        ventanalogeo.logAsComboBox.addActionListener((ActionListener) this);
-        ventanalogeo.logAsComboBox.setActionCommand("Cambio de Vista-Ventana Logeo ");
-        ventanalogeo.show();      
-    }
+
     
     
     public void registrar_Mascota()
@@ -139,47 +128,7 @@ public class Controller_User implements ActionListener
     }    
     
     
-    private boolean validate_Email(String email)
-    {
-        EmailValidator validator=EmailValidator.getInstance(); //Verificación de mail mediante la utilización de la librería Validate de Apache Commons
-        if(validator.isValid(email)==false)
-        {
-            return false;
-        }
-        return true;
 
-    }
-    private boolean validate_Tel(String telefono)
-    {
-        if (telefono.matches("\\d{4}-\\d{2}-\\d{2}"))
-        {
-            return true;
-        }
-        return false;
-    }    
-    private boolean validate_Username(String username)
-    {
-        return false;
-    }
-    private boolean validate_Password(String pass)
-    {
-        return false;
-    }
-    private boolean validate_AllFieldsRegister(String correo, String username, String pass, String telefono, String nombre, String apellido) throws UnsupportedOperationException
-    {
-        if (this.validate_Tel(telefono)==false)
-        {
-            
-        }if (this.validate_Email(correo)==false){
-            
-        }if (this.validate_Username(username)==false | this.validate_Password(pass)==false)
-        {
-            throw new UnsupportedOperationException();
-        }
-        
-        return true;
-        
-    }
 }
 
 

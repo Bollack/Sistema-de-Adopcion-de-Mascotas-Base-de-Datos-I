@@ -2,11 +2,17 @@
 
 package Model;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import oracle.jdbc.driver.*;
+import java.sql.SQLException;
 
 /**
  *
@@ -167,46 +173,103 @@ public class Database_Connection {
         //Se arma la consulta
         //String q=" INSERT INTO " + table + " ( " + fields + " ) VALUES ( " + values + " ) ";
         //se ejecuta la consulta
-        try {
+        try 
+        {
             String query="INSERT INTO "+table +"(";
             for (int j=0; j<fields.length;j++)
             {
-                query+="?";
+                query+=fields[j].toString();
+                if (j!=fields.length-1)
+                {
+                    query+=", ";
+                }
             }
             query+=")";
-            PreparedStatement pstm = conn.prepareStatement(query); //Evita SQL Injection
-            for (int j=0; j<fields.length;j++)
+            query+= "VALUES (";
+            for (int j=0; j<values.length;j++)
             {
-                pstm.setString(j, fields[j]);
+                query+="?";
+                if (j!=values.length-1)
+                {
+                    query+=", ";
+                }
             }
-       
+            query+=");";
+            PreparedStatement pstm = conn.prepareStatement(query); //Evita SQL Injection
+            for (int j=0; j<values.length;j++)
+            {
+                switch(this.whatClassIsIt(values[j]))
+                {
+                    case "String":
+                        pstm.setString(j, (String) values[j]);
+                        break;
+                    case "BLOB":
+                        FileInputStream binaryStream= this.convertImageToBLOB((File) values[j]);
+                        pstm.setBinaryStream(j, binaryStream);
+                        break;
+                    case "Integer":
+                        pstm.setInt(j, (int) values[j]);
+                        break;
+                    case "DATE":
+                        pstm.setDate(j, null);
+                        break;
+                    default:
+                        throw new SQLException();
+                }
+                
+            }
             pstm.execute();
             pstm.close();
-            res=true;
+            return true;
          }catch(SQLException e){
              throw e;
-      }
-      return res;
+      } catch (FileNotFoundException ex) {
+            throw ex;
+        }
+      return true;
     }
     
     private String whatClassIsIt(Object objeto)
     {
         if (objeto instanceof String)
         {
+            if ((objeto.toString()).matches("\\d{2}/\\d{2}/\\d{2}"))
+            {
+                return "DATE";
+            }
             return "String";
-        }else if (objeto instanceof int)
+        }else if (objeto instanceof Integer)
         {
-            return "Float";
-        }else if (objeto instanceof String)
+            return "Integer";
+        }else if (objeto instanceof File)
         {
-            return "Date";
-        }else if (objeto instanceof String)
+            return "BLOB";
+        }
+        return "NOT FOUND";
+    }
+    
+    private FileInputStream convertImageToBLOB(File a) throws FileNotFoundException
+    {
+        try
         {
-            
-        }else if (objeto instanceof String)
+            FileInputStream   fis = new FileInputStream(a);
+            return fis;
+        }catch(FileNotFoundException e)
+        {
+            throw e;
+        }
+        /*
+        Para cargar la imagen en la DB se inserta el objeto devuelto por esta función de la siguiente manera:
+        PreparedStatement.setBinaryStream(3, fis, (int) image.length());
+        donde 3 es la posición como valor arbitrario en un script (Dígase, un '?') e image.lenght() es el largo de bits del archivo.
+        */
+    }
+    
+    private void convertBLOBtoImage()
+    {
+
     }
 }
-    
     
       
 

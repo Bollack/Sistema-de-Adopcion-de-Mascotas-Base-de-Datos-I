@@ -18,10 +18,11 @@ import java.sql.SQLException;
 public class Main {
     
         public static void main(String[] args) throws SQLException {
-        //se crean los objetos MODELO Y VISTA
-            Main_Visitante vista = new Main_Visitante();
-        //Para colocar un skin propio de java
-            Controller Engine = new Controller(vista);
+
+            Controller Engine = new Controller();
             Engine.Start(); //Inicia la aplicación*/
+            /*
+            HAPPENING
+            */
         }
 }
