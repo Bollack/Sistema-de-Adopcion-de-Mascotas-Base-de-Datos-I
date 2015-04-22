@@ -7,12 +7,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
+import static java.sql.JDBCType.BLOB;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import oracle.jdbc.driver.*;
-import java.sql.SQLException;
+import oracle.sql.BLOB;
+import javax.sql
 
 /**
  *
@@ -71,6 +75,16 @@ public class Database_Connection {
         } catch (SQLException ex) {
             throw ex;
         }
+    }
+    
+    public void callProcedure(String comando)
+    {
+        
+    }
+    
+    public void callFunction(String comando)
+    {
+        
     }
 //___________________________________________________________________________________ Soy una barra separadora :)
 /* METODO PARA REALIZAR UNA CONSULTA A LA BASE DE DATOS
@@ -265,9 +279,60 @@ public class Database_Connection {
         */
     }
     
-    private void convertBLOBtoImage()
+    private Image convertBLOBtoImage(BLOB extractedBLOB) throws SQLException
     {
+             Connection con = null;
+     PreparedStatement pstmt  = null;
+     ResultSet rs = null;
 
+     
+     Blob imageBlob = null;
+     String query = "select it.IMAGE_BLOB from IMAGE_TABLE it where it.IMAGE_ID = ?";
+
+     try{
+
+        con = DbConnectionUtils.getConnection();
+
+        pstmt = con.prepareStatement(query);
+        pstmt.setObject(1,imageId);
+
+        rs = pstmt.executeQuery();
+
+        if(rs.next()){
+
+             Object obj = rs.getObject(1);
+             
+             if(obj instanceof Blob)
+                 imageBlob = new javax.sql.SerialBlob((Blob)obj);
+             
+
+        } 
+
+     }catch(Exception exp){
+
+         exp.printStackTrace();
+
+     }finally{
+
+          if(rs != null){
+             try{rs.close();}catch(Exception exp){};
+          } 
+
+
+          if(pstmt != null){
+             try{pstmt.close();}catch(Exception exp){};
+          } 
+
+          if(con != null){
+             try{con.close();}catch(Exception exp){};
+          }
+        Blob blob =  FileDAO.getFactoryObject().getImageData("746ABBGGA23");
+        int length = (int)blob.length(); 
+        byte buffer[] = blob.getBytes(1,length);
+        ImageIcon imageIcon = new ImageIcon(buffer);
+}
+
+        
     }
 }
     
