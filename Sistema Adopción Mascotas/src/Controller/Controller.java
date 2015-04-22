@@ -78,7 +78,7 @@ public class Controller implements ActionListener{
        {
            gui.show(false);
            gui.disable();
-           this.log_In_Windows();
+           this.log_In_Window();
        }else if(comando=="Log In-Ventana Logeo")
        {
            
@@ -95,10 +95,10 @@ public class Controller implements ActionListener{
            gui.show(false);
            gui.disable();
            this.Registrase_Window();
-       }else if(comando=="")
+       }else if(comando=="Registrarse-Ventana Registro")
        {
            
-       }else if(comando=="")
+       }else if(comando=="Atrás-Ventana Registro")
        {
            
        }else if(comando=="")
@@ -115,10 +115,6 @@ public class Controller implements ActionListener{
         
     }
     
-    private boolean verifyPhone(String numero)
-    {
-        return true;
-    }
     
     private void log_In_Window()
     {
@@ -151,9 +147,16 @@ public class Controller implements ActionListener{
     
     private void Registrarse()
     {
-        Registro_Usuario 
+       
     }
     
+    private String[] get_data_Sign_up(Registro_Usuario ventana){
+        ventana.emailTextField.getText();
+    }
+    
+    private String[] get_data_Log_in(Log_In ventana){
+        
+    }
     
     private boolean validate_Email(String email)
     {
@@ -188,9 +191,12 @@ public class Controller implements ActionListener{
             
         }if (this.validate_Email(correo)==false){
             
-        }if (this.validate_Username(username)==false | this.validate_Password(pass)==false)
+        }if (this.validate_Username(username)==false)
         {
             throw new UnsupportedOperationException();
+        }if (this.validate_Password(pass)==false)
+        {
+            
         }
         
         return true;

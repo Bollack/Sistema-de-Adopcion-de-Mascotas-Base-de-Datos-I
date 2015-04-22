@@ -86,13 +86,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="567" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="exitButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel2" pref="170" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabel2" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -102,10 +103,25 @@
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -118,23 +134,35 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel4" min="-2" pref="117" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="jLabel4" min="-2" pref="117" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane2" min="-2" pref="156" max="-2" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <Component id="exitButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel2" min="-2" pref="156" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jLabel2" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="156" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
-              <Component id="exitButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -207,7 +235,7 @@
                           <Component id="RegisterButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -216,7 +244,7 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="RegisterButton" min="-2" max="-2" attributes="0"/>
@@ -226,7 +254,7 @@
                           <Component id="LogInButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -287,7 +315,26 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel5"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Rockwell" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Salva +cota es sistema que gestiona adopciones de mascotas abandonadas."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Rockwell" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Permite a sus usuarios registrar mascotas rescatadas, adoptar y obtener"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Rockwell" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="informaci&#xf3;n acerca de las mascotas en el sistema."/>
       </Properties>
     </Component>
   </SubComponents>

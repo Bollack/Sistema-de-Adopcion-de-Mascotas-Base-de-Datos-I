@@ -82,7 +82,7 @@ public class Model {
     }
     
     */
-    public boolean insertUser()
+    public boolean checkUserExists(String username)
     {
         try{
             
@@ -93,6 +93,9 @@ public class Model {
         }        
     }
     
+    public boolean checkPassword(String password, String username){
+        
+    }
     public boolean insertMascota(){
         try{
             
