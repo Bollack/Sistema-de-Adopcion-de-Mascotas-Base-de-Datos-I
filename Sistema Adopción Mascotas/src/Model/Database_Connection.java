@@ -16,7 +16,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import oracle.jdbc.driver.*;
 import oracle.sql.BLOB;
-import javax.sql
 
 /**
  *
@@ -57,6 +56,7 @@ public class Database_Connection {
             this.conn.setAutoCommit(true);
         }catch(Exception e)
         {
+            System.out.println(e.getMessage());
             throw e;
         }         
     }
