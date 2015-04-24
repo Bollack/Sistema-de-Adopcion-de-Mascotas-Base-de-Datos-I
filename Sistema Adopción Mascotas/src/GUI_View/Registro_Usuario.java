@@ -23,9 +23,6 @@ public class Registro_Usuario extends javax.swing.JFrame {
 
     public Registro_Usuario() {
         initComponents();
-        Timer timer = new Timer(4000, (ActionListener) this);
-        timer.setInitialDelay(5000);
-        timer.start(); 
 
     }
 

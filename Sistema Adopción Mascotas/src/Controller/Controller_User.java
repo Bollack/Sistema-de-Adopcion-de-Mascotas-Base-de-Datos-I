@@ -49,16 +49,16 @@ public class Controller_User implements ActionListener
     public void actionPerformed(ActionEvent e) {
        String comando = e.getActionCommand();
 
-       if (comando=="")
+       if (comando=="Cerrar Sesión-Ventana Usuario")
        {
 
-       }else if(comando==""){
+       }else if(comando=="Buscar Personas"){
            
-       }else if(comando==""){
+       }else if(comando=="Ver mis mascotas adoptadas"){
            
-       }else if(comando==""){
+       }else if(comando=="Ordenar por"){
            
-       }else if(comando==""){
+       }else if(comando=="Ver "){
            
        }else if(comando==""){
            

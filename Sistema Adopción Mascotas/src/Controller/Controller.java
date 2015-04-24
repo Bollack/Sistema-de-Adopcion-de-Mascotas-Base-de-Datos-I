@@ -42,7 +42,7 @@ public class Controller implements ActionListener{
         } catch (Exception ex) {
             Error_connection_db errorVentana = new Error_connection_db();
             errorVentana.show();
-            System.out.println("Error conectando a la DB");
+            System.out.println(ex.getMessage());
         }
     }
     
@@ -93,13 +93,15 @@ public class Controller implements ActionListener{
        }else if(comando=="Registrarse")
        {
            gui.show(false);
-           gui.disable();
            this.Registrase_Window();
        }else if(comando=="Registrarse-Ventana Registro")
        {
            
        }else if(comando=="Atrás-Ventana Registro")
        {
+           this.gui.dispose();
+           this.gui.show(false);
+           this.backToMenu();
            
        }else if(comando=="")
        {
@@ -107,8 +109,10 @@ public class Controller implements ActionListener{
        }else if(comando=="")
        {
            
-       }else if(comando=="")
+       }else if(comando=="Salir")
        {
+           this.gui.show(false);
+           System.exit(0);
            
        }
        
@@ -143,6 +147,8 @@ public class Controller implements ActionListener{
         this.gui.show();
         this.gui.enable();
         sign_up.setResizable(false);
+        sign_up.show();
+        sign_up.enable();
     }
     
     private void Registrarse()
@@ -150,7 +156,8 @@ public class Controller implements ActionListener{
        
     }
     
-    private String[] get_data_Sign_up(Registro_Usuario ventana){
+    private String[] get_data_Sign_up(Registro_Usuario ventana)
+    {
         String correo = ventana.direccionTextField.getText();
         String telefono = ventana.telefonoTextField.getText();
         String username = ventana.usernameTextField.getText();
@@ -161,7 +168,14 @@ public class Controller implements ActionListener{
         
     }
     
-    private String[] get_data_Log_in(Log_In ventana){
+    private String[] get_data_Log_in(Log_In ventana)
+    {
+        String username =ventana.userTextField.getText();
+        String pass = ventana.passwordTextField.getText();
+        if (this.validate_Username(username))
+        {
+            
+        }
         
     }
     
@@ -187,7 +201,7 @@ public class Controller implements ActionListener{
     {
         return false;
     }
-    private boolean validate_Password(String pass)
+    private boolean validate_Password(String pass, String username)
     {
         return false;
     }

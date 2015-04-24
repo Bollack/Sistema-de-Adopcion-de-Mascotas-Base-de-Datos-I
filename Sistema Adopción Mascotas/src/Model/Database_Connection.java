@@ -23,7 +23,7 @@ import oracle.sql.BLOB;
  */
 public class Database_Connection {
     
-    private String direccion =  "jdbc:oracle:thin:@192.168.0.102:1521:DBprueba";//"jdbc:oracle:thin:@186.176.166.148:1521:DBprueba";
+    private String direccion =  "jdbc:oracle:thin:@192.168.0.101:1521:DBprueba";//"jdbc:oracle:thin:@186.176.166.148:1521:DBprueba";
     private Connection conn;
     
     
