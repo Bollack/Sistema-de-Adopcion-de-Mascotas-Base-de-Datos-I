@@ -151,7 +151,14 @@ public class Controller implements ActionListener{
     }
     
     private String[] get_data_Sign_up(Registro_Usuario ventana){
-        ventana.emailTextField.getText();
+        String correo = ventana.direccionTextField.getText();
+        String telefono = ventana.telefonoTextField.getText();
+        String username = ventana.usernameTextField.getText();
+        String password = ventana.passwordField.getText();
+        String direccion = ventana.direccionTextField.getText();
+        
+        return null;
+        
     }
     
     private String[] get_data_Log_in(Log_In ventana){

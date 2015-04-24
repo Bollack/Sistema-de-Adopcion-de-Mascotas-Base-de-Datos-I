@@ -43,7 +43,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
         nameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        telefonoTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -56,12 +56,12 @@ public class Registro_Usuario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         registerButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
-        emailTextField = new javax.swing.JTextField();
+        direccionTextField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        emailTextField1 = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
 
         jLabel8.setText("jLabel8");
 
@@ -80,11 +80,11 @@ public class Registro_Usuario extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("*Apellido:");
 
-        jTextField3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jTextField3.setToolTipText("Formato: XXXX-XX-XX");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        telefonoTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        telefonoTextField.setToolTipText("Formato: XXXX-XX-XX");
+        telefonoTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                telefonoTextFieldActionPerformed(evt);
             }
         });
 
@@ -132,10 +132,10 @@ public class Registro_Usuario extends javax.swing.JFrame {
         backButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         backButton.setText("Atrás");
 
-        emailTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
+        direccionTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        direccionTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
+                direccionTextFieldActionPerformed(evt);
             }
         });
 
@@ -145,10 +145,10 @@ public class Registro_Usuario extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel11.setText("*Correo Electrónico:");
 
-        emailTextField1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        emailTextField1.addActionListener(new java.awt.event.ActionListener() {
+        emailTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextField1ActionPerformed(evt);
+                emailTextFieldActionPerformed(evt);
             }
         });
 
@@ -166,8 +166,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(93, 93, 93)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel10))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(backButton))))
@@ -179,7 +178,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                                     .addComponent(jLabel11))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(emailTextField1)
+                                    .addComponent(emailTextField)
                                     .addComponent(usernameTextField)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -193,7 +192,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                                                 .addComponent(maleRadioButton))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(22, 22, 22)
-                                                .addComponent(jTextField3))))
+                                                .addComponent(telefonoTextField))))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +207,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(emailTextField))
+                                .addComponent(direccionTextField))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
@@ -235,7 +234,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -245,11 +244,11 @@ public class Registro_Usuario extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(direccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -269,11 +268,11 @@ public class Registro_Usuario extends javax.swing.JFrame {
                         .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
-                                .addComponent(jLabel9)))
+                                .addComponent(jLabel9))
+                            .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -285,21 +284,21 @@ public class Registro_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void telefonoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_telefonoTextFieldActionPerformed
 
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
+    private void direccionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
+    }//GEN-LAST:event_direccionTextFieldActionPerformed
 
     private void femaleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_femaleRadioButtonActionPerformed
 
-    private void emailTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextField1ActionPerformed
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextField1ActionPerformed
+    }//GEN-LAST:event_emailTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,8 +337,8 @@ public class Registro_Usuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton backButton;
+    public javax.swing.JTextField direccionTextField;
     public javax.swing.JTextField emailTextField;
-    public javax.swing.JTextField emailTextField1;
     public javax.swing.JRadioButton femaleRadioButton;
     private javax.swing.ButtonGroup generoButtonGroup;
     private javax.swing.JLabel imagen;
@@ -355,11 +354,11 @@ public class Registro_Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public javax.swing.JTextField jTextField1;
-    public javax.swing.JTextField jTextField3;
     public javax.swing.JRadioButton maleRadioButton;
     public javax.swing.JTextField nameTextField;
     public javax.swing.JTextField passwordField;
     public javax.swing.JButton registerButton;
+    public javax.swing.JTextField telefonoTextField;
     public javax.swing.JLabel title;
     public javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
