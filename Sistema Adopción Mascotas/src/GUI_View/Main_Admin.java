@@ -34,13 +34,13 @@ public class Main_Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Usuarios recientemente registrados");
 
         jLabel2.setText("jLabel2");
 
         jLabel3.setText("Menú de Administración");
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setText("Adopciones realizadas reciente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,7 +53,7 @@ public class Main_Admin extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2))
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

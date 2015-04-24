@@ -9,6 +9,7 @@ import GUI_View.Main_Visitante;
 import Model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 /**
  *
  * @author Daniel Troyo
@@ -18,7 +19,7 @@ public class Controller_Admin implements ActionListener
 {
  
     private Model modelo;
-    private Main_Admin guiInicial;
+    private JFrame guiInicial;
     
     public Controller_Admin()
     {
@@ -27,11 +28,46 @@ public class Controller_Admin implements ActionListener
  public void actionPerformed(ActionEvent e) {
        String comando = e.getActionCommand();
 
-       if (comando=="")
+       if (comando=="Log In")
        {
            gui.show(false);
-           Controller_User controlUser = new Controller_User();
-           controlUser.log_In();
+           gui.disable();
+           this.log_In_Window();
+       }else if(comando=="Buscar Personas-Ventana Main")
+       {
+           
+       }else if(comando=="Cambio de Vista-Ventana Logeo")
+       {
+           
+       }else if(comando=="Atrás-Ventana Logeo")
+       {
+           this.gui.disable();
+           this.gui.show(false);
+           this.backToMenu();
+       }else if(comando=="Registrarse")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Registrarse-Ventana Registro")
+       {
+           
+       }else if(comando=="Atrás-Ventana Registro")
+       {
+           this.gui.dispose();
+           this.gui.show(false);
+           this.backToMenu();
+           
+       }else if(comando=="")
+       {
+           
+       }else if(comando=="")
+       {
+           
+       }else if(comando=="Salir")
+       {
+           this.gui.show(false);
+           System.exit(0);
+           
        }
         
     }

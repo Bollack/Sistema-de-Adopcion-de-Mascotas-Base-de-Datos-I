@@ -79,7 +79,15 @@ public class Database_Connection {
     
     public void callProcedure(String comando)
     {
-        
+        try
+        {
+            catch(comando)
+            {
+                case "Insertar Mascota":
+                    
+                    
+            }
+        }
     }
     
     public void callFunction(String comando)

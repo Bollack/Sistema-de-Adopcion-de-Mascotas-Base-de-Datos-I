@@ -172,7 +172,12 @@ public class Controller implements ActionListener{
     {
         String username =ventana.userTextField.getText();
         String pass = ventana.passwordTextField.getText();
-        if (this.validate_Username(username))
+        try
+        {
+            boolean usuarioValidez = this.validate_Username(username);
+            boolean passValidez = this.validate_Password_to_Log_in(username, pass);
+            
+        }catch (Exception e)
         {
             
         }
@@ -201,7 +206,17 @@ public class Controller implements ActionListener{
     {
         return false;
     }
-    private boolean validate_Password(String pass, String username)
+    private boolean validate_Username_to_Create(String username)
+    {
+        return false;
+    }
+    
+    private boolean validate_Password(String pass)
+    {
+        return false;
+    }
+    
+    private boolean validate_Password_to_Log_in(String pass, String username)
     {
         return false;
     }
