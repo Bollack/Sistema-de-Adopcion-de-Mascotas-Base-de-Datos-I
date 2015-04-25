@@ -156,15 +156,30 @@ public class Controller implements ActionListener{
        
     }
     
-    private String[] get_data_Sign_up(Registro_Usuario ventana)
+    private String[] get_data_Sign_up(Registro_Usuario ventana) throws NullPointerException
     {
         String correo = ventana.direccionTextField.getText();
         String telefono = ventana.telefonoTextField.getText();
         String username = ventana.usernameTextField.getText();
         String password = ventana.passwordField.getText();
         String direccion = ventana.direccionTextField.getText();
-        
-        return null;
+        String nombre = ventana.nameTextField.getText();
+        String apellido = ventana.apellidoUsuarioTextField.getText();
+        if (ventana.femaleRadioButton.isSelected())
+        {
+            String genero = ventana.femaleRadioButton.getText();
+            String[] dataUsuarioRegistro ={nombre, apellido, telefono, correo, direccion, username, password, genero};
+            return dataUsuarioRegistro;
+        }else if(ventana.maleRadioButton.isSelected())
+        {
+            String genero = ventana.maleRadioButton.getText();
+            String[] dataUsuarioRegistro ={nombre, apellido, telefono, correo, direccion, username, password, genero};
+            return dataUsuarioRegistro;
+        }else{
+            throw new NullPointerException();
+        }
+
+
         
     }
     
@@ -186,6 +201,10 @@ public class Controller implements ActionListener{
     
     private boolean validate_Email(String email)
     {
+        if (email=="" || email==null)
+        {
+            return false;
+        }
         EmailValidator validator=EmailValidator.getInstance(); //Verificación de mail mediante la utilización de la librería Validate de Apache Commons
         if(validator.isValid(email)==false)
         {

@@ -10,6 +10,7 @@
     <Component class="javax.swing.ButtonGroup" name="generoButtonGroup">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="generoButtonGroup.add(femaleRadioButton);&#xa;generoButtonGroup.add(maleRadioButton);"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
   </NonVisualComponents>
@@ -92,7 +93,7 @@
                                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="nameTextField" min="-2" pref="202" max="-2" attributes="0"/>
-                                              <Component id="jTextField1" min="-2" pref="202" max="-2" attributes="0"/>
+                                              <Component id="apellidoUsuarioTextField" min="-2" pref="202" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -134,7 +135,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="apellidoUsuarioTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -199,7 +200,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="apellidoUsuarioTextField">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Rockwell" size="14" style="1"/>

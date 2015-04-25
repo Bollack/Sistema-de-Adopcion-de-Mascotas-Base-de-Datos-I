@@ -6,7 +6,7 @@
 package GUI_View;
 
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
+
 
 
 
@@ -36,7 +36,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
 
         jLabel8 = new javax.swing.JLabel();
         generoButtonGroup = new javax.swing.ButtonGroup();
-        jTextField1 = new javax.swing.JTextField();
+        apellidoUsuarioTextField = new javax.swing.JTextField();
         nameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -67,7 +67,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        apellidoUsuarioTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         nameTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
@@ -198,7 +198,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                                             .addGap(23, 23, 23)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(apellidoUsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addComponent(jLabel4)))
                                 .addGap(74, 74, 74))
                             .addGroup(layout.createSequentialGroup()
@@ -227,7 +227,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(apellidoUsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -333,11 +333,12 @@ public class Registro_Usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField apellidoUsuarioTextField;
     public javax.swing.JButton backButton;
     public javax.swing.JTextField direccionTextField;
     public javax.swing.JTextField emailTextField;
     public javax.swing.JRadioButton femaleRadioButton;
-    private javax.swing.ButtonGroup generoButtonGroup;
+    public javax.swing.ButtonGroup generoButtonGroup;
     private javax.swing.JLabel imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -350,7 +351,6 @@ public class Registro_Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JTextField jTextField1;
     public javax.swing.JRadioButton maleRadioButton;
     public javax.swing.JTextField nameTextField;
     public javax.swing.JTextField passwordField;
