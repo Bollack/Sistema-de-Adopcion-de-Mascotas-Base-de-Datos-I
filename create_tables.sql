@@ -50,6 +50,9 @@ ADD (sexo VARCHAR2(20) CONSTRAINT mascota_sexo_nn NOT NULL);
 
 ALTER TABLE Mascota -- APLICADO
 ADD (CONSTRAINT mascota_sexo_check CHECK(Estado IN ('Macho','Hembra')));
+
+ALTER TABLE Mascota -- APLICADO
+ADD (situacion_abandono VARCHAR2(100));
   
 CREATE TABLE Tipo_Mascota --Creada
 (
