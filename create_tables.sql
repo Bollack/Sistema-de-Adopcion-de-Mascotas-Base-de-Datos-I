@@ -1,4 +1,4 @@
---Scripts de creación & alter de tablas
+--Scripts de creacion & alter de tablas
 --Orden de creacion de tablas: Persona, Usuario, Tipo, Raza, Mascota
 
 /*
@@ -19,9 +19,6 @@ CREATE TABLE Mascota --Aplicado
   Color1  VARCHAR2(20) CONSTRAINT color1_mascota_nn NOT NULL,
   Color2  VARCHAR2(20),
   Contacto  NUMBER CONSTRAINT rescatista_de_mascota_nn NOT NULL,
-  --Tel_contacto VARCHAR2(20) CONSTRAINT tel_rescatista_mascota_nn NOT NULL,
-  --Correo_contacto VARCHAR2(30) CONSTRAINT correo_rescatista_mascota_nn NOT NULL,
-  --Lugar VARCHAR2(20) CONSTRAINT lugar_mascota_nn NOT NULL, Se deduce de persona
   Nivel_energia VARCHAR2(20),
   Espacio_requerido VARCHAR2(20),
   Facilidad_entrenamiento VARCHAR2(20) CONSTRAINT facilidad_entrenamiento_nn NOT NULL,
@@ -40,8 +37,7 @@ CREATE TABLE Mascota --Aplicado
   Usuario_Modificacion VARCHAR2(20),
   Fecha_Modificacion DATE,
   
-  --CONSTRAINT tel_contacto_fk FOREIGN KEY (Tel_contacto) REFERENCES Persona(telefono),
-  --CONSTRAINT correo_contacto_fk FOREIGN KEY (Correo_contacto) REFERENCES Persona(email),
+
   CONSTRAINT raza_fk FOREIGN KEY (Raza) REFERENCES Raza_Mascota(Raza),
   CONSTRAINT tipo_fk FOREIGN KEY (Tipo) REFERENCES Tipo_Mascota(Especie),
   CONSTRAINT contacto_fk FOREIGN KEY(contacto) REFERENCES Persona(id)
@@ -203,9 +199,8 @@ SELECT * FROM dual;
 
 CREATE TABLE Usuario --CREADA
 (
-  id Number,
-  CONSTRAINT usuario_pk PRIMARY KEY(id),
   username VARCHAR2(30)CONSTRAINT usuario_username_nn NOT NULL,
+  CONSTRAINT usuario_pk PRIMARY KEY(username),
   CONSTRAINT usuario_username_un UNIQUE(username),
   Password VARCHAR2(20) CONSTRAINT usuario_password_nn NOT NULL,
   CONSTRAINT usuario_password_lenght CHECK(length(password)>7),
