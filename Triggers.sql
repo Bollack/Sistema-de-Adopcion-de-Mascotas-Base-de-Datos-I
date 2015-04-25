@@ -61,9 +61,6 @@ CREATE OR REPLACE TRIGGER BeforeInsertUsuario --APLICADO
     :new.Fecha_creacion:=sysdate;
     :new.Usuario_Modificacion:=user;
     :new.Fecha_Modificacion:= sysdate;
-    SELECT id_usuario.NEXTVAL
-    INTO   :new.ID
-    FROM   dual;
   END;
   
 CREATE OR REPLACE TRIGGER BeforeUpdateUsuario --APLICADO
@@ -75,7 +72,7 @@ CREATE OR REPLACE TRIGGER BeforeUpdateUsuario --APLICADO
 
 --Persona
 
-CREATE OR REPLACE TRIGGER BeforeInsertPersona --APLICADO
+CREATE OR REPLACE TRIGGER BeforeInsertPersona --APLICADO 
   BEFORE INSERT ON Administrador.Persona FOR EACH ROW
   BEGIN
     :new.Usuario_creacion:=user;
@@ -95,7 +92,7 @@ CREATE OR REPLACE TRIGGER BeforeUpdatePersona --APLICADO
   
 --Adopción  
   
-CREATE OR REPLACE TRIGGER BeforeInsertAdopcion --APLICADA
+CREATE OR REPLACE TRIGGER BeforeInsertAdopcion --APLICADO
   BEFORE INSERT ON Administrador.Adopcion FOR EACH ROW
   BEGIN
     :new.Fecha_creacion:=sysdate;
@@ -105,7 +102,7 @@ CREATE OR REPLACE TRIGGER BeforeInsertAdopcion --APLICADA
     FROM   dual;
   END;
 
-CREATE OR REPLACE TRIGGER BeforeUpdateAdopcion --APLICADA
+CREATE OR REPLACE TRIGGER BeforeUpdateAdopcion --APLICADO
   BEFORE UPDATE ON Administrador.Persona FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;

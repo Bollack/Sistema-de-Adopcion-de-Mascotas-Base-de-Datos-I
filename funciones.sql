@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION check_existing_username(pusername IN VARCHAR2)
+CREATE OR REPLACE FUNCTION check_existing_username(pusername IN VARCHAR2)--COMPILADO
 RETURN BOOLEAN AS
 
 CURSOR usernames  IS
@@ -9,19 +9,18 @@ vUsuario VARCHAR2(30);
 BEGIN
   OPEN usernames;
   FETCH usernames into vUsuario;
-  CLOSE usernames;
   
-	IF (usernames%NOTFOUND) THEN
+	IF (usernames%FOUND) THEN
 		CLOSE usernames;
-		RETURN 1;
+		RETURN TRUE;
 	ELSE 
 		CLOSE usernames;
-		RETURN 0;
+		RETURN FALSE;
   END IF;
 END;
 
 
-CREATE OR REPLACE FUNCTION check_password (pPassword IN VARCHAR2, pUsuario IN VARCHAR2)
+CREATE OR REPLACE FUNCTION check_password (pPassword IN VARCHAR2, pUsuario IN VARCHAR2)--COMPILADO
 RETURN BOOLEAN AS
 vPassword VARCHAR2(40);
 CURSOR pass IS
@@ -34,30 +33,32 @@ CURSOR pass IS
 BEGIN
 	OPEN pass;
 	FETCH pass into vPassword;
-	CLOSE pass;
   
-		IF(pass%FOUND=FALSE) THEN
-			{return 1;}
-      }
+		IF(pass%FOUND) THEN
+      CLOSE pass;
+			return TRUE;
 		ELSE
-			RETURN 0;
+      CLOSE pass;
+			RETURN FALSE;
 		END IF;
 END;
 
-CREATE OR REPLACE FUNCTION check_estado_mascota(pid IN NUMBER)
-RETURN BIT AS
-vEstado NUMBER;
-CURSOR estado IS
+CREATE OR REPLACE FUNCTION check_estado_mascota(pid IN NUMBER)--Compilado
+RETURN BOOLEAN AS
+vEstado VARCHAR2(30);
+CURSOR estado_Mascota IS
 	SELECT estado
 	FROM Mascota
 	WHERE id = pid;
 BEGIN
-	OPEN estado;
-	FETCH estado into vID;
-	CLOSE estado;
-	IF(vEstado='Adoptado') THEN
-		RETURN 1;
+	OPEN estado_Mascota;
+  FETCH estado_Mascota into vEstado;
+  
+	IF vEstado = 'Adoptado' THEN
+    CLOSE estado_Mascota;
+		RETURN TRUE;
 	ELSE
-		RETURN 0;
+    CLOSE estado_Mascota;
+		RETURN FALSE;
 	END IF;
 END;

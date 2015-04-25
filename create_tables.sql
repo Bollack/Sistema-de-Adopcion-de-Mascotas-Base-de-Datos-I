@@ -43,7 +43,7 @@ CREATE TABLE Mascota --Aplicado
   CONSTRAINT contacto_fk FOREIGN KEY(contacto) REFERENCES Persona(id)
 );
   
-CREATE PUBLIC SYNONYM Mascota FOR Administrador.Mascota; -- APLICADO
+CREATE PUBLIC SYNONYM Mascota FOR Administrador.Mascota; -- VERIFICAR!!
 
 ALTER TABLE Mascota -- APLICADO
 ADD (sexo VARCHAR2(20) CONSTRAINT mascota_sexo_nn NOT NULL);
@@ -51,7 +51,7 @@ ADD (sexo VARCHAR2(20) CONSTRAINT mascota_sexo_nn NOT NULL);
 ALTER TABLE Mascota -- APLICADO
 ADD (CONSTRAINT mascota_sexo_check CHECK(Estado IN ('Macho','Hembra')));
   
-CREATE TABLE Tipo_Mascota --Creado
+CREATE TABLE Tipo_Mascota --Creada
 (
   Especie VARCHAR2(45),
   CONSTRAINT tipo_mascota_pk PRIMARY KEY (Especie),
@@ -63,7 +63,7 @@ CREATE TABLE Tipo_Mascota --Creado
 );
 
 
-CREATE PUBLIC SYNONYM Tipo_Mascota FOR Administrador.Tipo_Mascota; -- APLICADO
+CREATE PUBLIC SYNONYM Tipo_Mascota FOR Administrador.Tipo_Mascota; -- Verificar!!
 
   
 INSERT ALL --APLICADO
@@ -90,7 +90,7 @@ CREATE TABLE Raza_Mascota --CREADA
 ALTER TABLE Raza_Mascota --Aplicado
 MODIFY (Grupo VARCHAR2(40));
   
-CREATE PUBLIC SYNONYM Raza_Mascota FOR Administrador.Raza_Mascota; -- APLICADO
+CREATE PUBLIC SYNONYM Raza_Mascota FOR Administrador.Raza_Mascota; -- VERIFICAR!!
 
 INSERT ALL --Aplicado
 INTO Raza_Mascota (Raza,Grupo) VALUES('Afgano', 'Perro')
@@ -199,9 +199,8 @@ SELECT * FROM dual;
 
 CREATE TABLE Usuario --CREADA
 (
-  username VARCHAR2(30)CONSTRAINT usuario_username_nn NOT NULL,
+  username VARCHAR2(30),
   CONSTRAINT usuario_pk PRIMARY KEY(username),
-  CONSTRAINT usuario_username_un UNIQUE(username),
   Password VARCHAR2(20) CONSTRAINT usuario_password_nn NOT NULL,
   CONSTRAINT usuario_password_lenght CHECK(length(password)>7),
   
@@ -211,8 +210,7 @@ CREATE TABLE Usuario --CREADA
   Fecha_Modificacion DATE
 );
 
-CREATE PUBLIC SYNONYM Usuario FOR Administrador.Usuario; -- APLICADO
-
+CREATE PUBLIC SYNONYM Usuario FOR Administrador.Usuario; -- Verificar!!
 
 CREATE TABLE Persona --CREADA
 (
@@ -223,9 +221,9 @@ CREATE TABLE Persona --CREADA
   provincia VARCHAR2(10) CONSTRAINT persona_provincia_nn NOT NULL,
   telefono VARCHAR2(10) CONSTRAINT persona_telefono_nn NOT NULL,
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
-  --fecha_nacimiento DATE CONTRAINT fecha_nacimiento_nn NOT NULL,
-  usuario NUMBER,
-  CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(id),
+  lugar VARCHAR2(100),
+  usuario VARCHAR2(30),
+  CONSTRAINT persona_username_fk FOREIGN KEY (usuario) REFERENCES Usuario(username),
   genero VARCHAR2(20),
   CONSTRAINT persona_genero_bin CHECK(genero IN ('Masculino', 'Femenino')),
   
@@ -240,11 +238,9 @@ ALTER TABLE Persona --Aplicado
 ALTER TABLE Persona --Aplicado
   ADD CONSTRAINT persona_telefono_un UNIQUE(telefono);
 ALTER TABLE Persona --Aplicado
-  MODIFY (Lugar VARCHAR2(60));
-ALTER TABLE Persona --Aplicado
-  MODIFY (Lugar VARCHAR2(60) CONSTRAINT persona_lugar_nn NOT NULL);
+  MODIFY (Lugar VARCHAR2(100) CONSTRAINT persona_lugar_nn NOT NULL);
   
-CREATE PUBLIC SYNONYM Persona FOR Administrador.Persona; -- APLICADO
+CREATE PUBLIC SYNONYM Persona FOR Administrador.Persona; -- Verificar!!
 
 ----------------------------------------------------------------------------------------------------------------------------
 --Just in case
@@ -277,7 +273,7 @@ CREATE TABLE Adopcion --APLICADO
   CONSTRAINT adopcion_mascota_fk FOREIGN KEY(mascota) REFERENCES Mascota(id) --FK a mascota adoptada
 );
 
-CREATE PUBLIC SYNONYM Adopcion FOR Administrador.Adopcion; -- APLICADO
+CREATE PUBLIC SYNONYM Adopcion FOR Administrador.Adopcion; -- VERIFICAR
 
 ALTER TABLE Adopcion --APLICADA
 ADD (Usuario_creacion VARCHAR(20) CONSTRAINT adopcion_usuario_creacion_nn NOT NULL);
