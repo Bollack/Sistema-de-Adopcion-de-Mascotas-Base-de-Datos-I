@@ -107,17 +107,17 @@ public class Model {
             */
         
     }
-    public boolean insertMascota(String username, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
+    public boolean insertMascota(String username, String password, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
                                 String espacio, String tamano, String training, String sexo, String energia, String veterinario,
                                 String medicamentos, String Tratamientos, String situacion, String notas, File fotografia_antes,
-                                String contacto)
+                                String contacto) throws SQLException, ClassNotFoundException
     {
         try //Trata de insertar la tupla en la tabla mascota, solicitándoselo a 
             //Database_Connection y esperando su respuesta
         {
             this.conexion = new Database_Connection(2); //Se conecta como admin, 
-            puesto que la tabla es de admin y manipulada por admin
-            String[] camposAllenar ={"username", "password"};
+                                                        //puesto que la tabla es de admin y manipulada por admin
+            String[] camposAllenar = {"username","password"};
             String[] valores ={username, password};
             this.conexion.insertToTable("Usuario", camposAllenar, valores); //inserta al usuario
             
@@ -131,28 +131,6 @@ public class Model {
             System.out.println(a.getMessage());
             throw a;
         }
-        try //Trata de insertar a la persona en la tabla de personas
-        {   
-            /*
-                Obtiene el id del usuario recientemente creado para asociar la persona
-                a crear con dicha tupla en la tabla usuarios. 
-            */
-            String usuarioTofind = "username="+username; 
-            Object[][] idUsuarioCreado = conexion.select("Usuario", "id", usuarioTofind);
-            int idUser = (int) idUsuarioCreado[0][0]; //Extrae del arreglo el id del usuario insertado 
-            String[] camposAllenar1 = {"nombre", "apellido", "provincia","telefono","email","usuario", "genero"};
-            Object[] valores1={nombre, apellido, provincia, telefono, correo,idUser,genero};
-            this.conexion.insertToTable("Persona", camposAllenar1, valores1);
-            //Finaliza la conexión
-            this.conexion.endConnection(); 
-            //Devuelve una señal indicando que la operación se realizó con éxito 
-            return true;
-        }catch (SQLException e)
-        {
-            //Devuelve la excepción para que así el controlador pueda mostrar su mensaje en 
-            //ventana de error y el administrador/usuario pueda verlo desde la misma app.
-            throw e;
-        }    
     }
     
     public boolean insertDevolucion(String motivo, int idMascota,String username){
@@ -169,25 +147,30 @@ public class Model {
         }        
     }
     
-    public JTable getModelFromResultSet(String comando)
+    public JTable getModelFromResultSet(String comando) throws SQLException
     {
         try
         {
             switch (comando)
             {   
-                    case "Mascota visitante":
-
-                        {
-                            this.conexion.setConnection(3);
-                            String[] datosAextraer = {"id","nombre","tipo","raza", "sexo","tamano"};
-                            ResultSet resset = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
-                            ListTableModel modelo = ListTableModel.createModelFromResultSet(resset);
-                            return new JTable(modelo);
-                        }
-
-                        break;
-
-
+                case "Mascota visitante":
+                    this.conexion.setConnection(3);
+                    String[] datosAextraer = {"id","nombre","tipo","raza", "sexo","tamano"};
+                    ResultSet resset = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
+                    ListTableModel modelo = ListTableModel.createModelFromResultSet(resset);
+                    JTable tabla = new JTable(modelo);
+                    this.conexion.endConnection();
+                    return tabla;
+                case "Personas administrador":
+                case "Mascotas administrador":
+                case "Adopciones administrador":                   
+                case "Devoluciones administrador":                    
+                case "Lista negra administrador":                    
             }
-        }catch(SQLException)
+        }catch(SQLException e)
+        {
+            throw e;
+        }
+        return null;
+    }
 }

@@ -28,7 +28,8 @@ import org.apache.commons.validator.*;
  * @author Daniel Troyo
  * 3/04/2015  6:21 p.m
  */
-public class Controller implements ActionListener{
+public class Controller implements ActionListener
+{
     
     private JFrame gui;
     private Model modelo;
@@ -60,19 +61,19 @@ public class Controller implements ActionListener{
         vista.LogInButton.addActionListener((ActionListener) this);
         vista.exitButton.setActionCommand("Salir");
         vista.LogInButton.setActionCommand("Log In");
-        
-        vista.tablaMascotas = this.modelo.getModelFromResultSet("Mascota visitante");
-        vista.tablaMascotas.getSelectionModel().addListSelectionListener((ListSelectionListener) this);
-        vista.tablaMascotas.getSelectionModel().
+        try
+        {
+            vista.tablaMascotas = this.modelo.getModelFromResultSet("Mascota visitante");
+            vista.tablaMascotas.getSelectionModel().addListSelectionListener((ListSelectionListener) this);
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
     
     private void backToMenu()
     {
-        Main_Visitante vista = new Main_Visitante();
-        this.gui = vista;
-        this.gui.show();
-        this.gui.setResizable(false);
-        this.gui.pack();
+        this.Start();
     }
     
     public void actionPerformed(ActionEvent e) {
@@ -203,7 +204,7 @@ public class Controller implements ActionListener{
         
     }
     
-    private String[] get_data_Log_in(Log_In ventana)
+    private String[] validate_data_Log_in(Log_In ventana)
     {
         String username =ventana.userTextField.getText();
         String pass = ventana.passwordTextField.getText();
@@ -217,8 +218,7 @@ public class Controller implements ActionListener{
             
         }
         
-    }
-    
+    }   
     private boolean validate_Email(String email)
     {
         if (email=="" || email==null)
@@ -277,8 +277,42 @@ public class Controller implements ActionListener{
     }
     private boolean validate_AllFieldsRegister(String[] datos) throws UnsupportedOperationException
     {
-        if (this.validate )
-        
+        if (datos[0]=="" || datos[0]==null) //Valida nombre
+        {
+            return false;
+        }
+        if (datos[1]=="" || datos[1]==null) //Valida apellido
+        {
+            return false;
+        }
+        if (!this.validate_Tel(datos[2])) //Valida telefono
+        {
+            return false;
+        }
+        if (!this.validate_Email(datos[3])) //Valida correo
+        {
+            return false;
+        }
+        if (datos[3]=="" || datos[3]==null) //Valida dirección
+        {
+            return false;
+        }
+        try
+        {
+            
+        }
+        if (datos[0]=="" || datos[0]==null) //Valida username
+        {
+            
+        }
+        if (datos[0]=="" || datos[0]==null) //Valida password
+        {
+            
+        }
+        if (datos[0]=="" || datos[0]==null) //Valida genero
+        {
+            
+        }
         return true;
         
     }

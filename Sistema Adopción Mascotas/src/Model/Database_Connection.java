@@ -197,16 +197,30 @@ public class Database_Connection {
                 query+=", ";
             }
         }
+        query+= " FROM "+tabla+";";
         try{
+            System.out.println(query);
             PreparedStatement consulta = this.conn.prepareStatement(query);
-            for (int j=0; j<valoresAmostrar.length; j++)
+            System.out.println("PS creado");
+            System.out.println(valoresAmostrar.length);
+            for (int j=1; j<=valoresAmostrar.length+1; j++)
             {
-                consulta.setString(0, valoresAmostrar[j]);
+                /*
+                    LOS ÍNDICES DE COLUMNA EN ORACLE COMIENZAN DESDE 1 Y NO DESDE 0. 
+                */
+                consulta.setString(j, valoresAmostrar[j-1]);
+                System.out.println("setString hecho");
+
             }
+            System.out.println(consulta.toString());
             consulta.execute();
+            System.out.println(consulta.getResultSet().findColumn(id));
             return consulta.getResultSet();
         }catch (SQLException e)
         {
+            System.out.println("Excepción desde Database_Connection: "+e.getSQLState());
+            System.out.println(e.getErrorCode());
+            System.out.println(e.getMessage());
             throw e;
         }
     }
@@ -247,17 +261,17 @@ public class Database_Connection {
                 switch(this.whatClassIsIt(values[j]))
                 {
                     case "String":
-                        pstm.setString(j, (String) values[j]);
+                        pstm.setString(j+1, (String) values[j]);
                         break;
                     case "BLOB":
                         FileInputStream binaryStream= this.convertImageToBLOB((File) values[j]);
-                        pstm.setBinaryStream(j, binaryStream);
+                        pstm.setBinaryStream(j+1, binaryStream);
                         break;
                     case "Integer":
-                        pstm.setInt(j, (int) values[j]);
+                        pstm.setInt(j+1, (int) values[j]);
                         break;
                     case "DATE":
-                        pstm.setDate(j, null);
+                        pstm.setDate(j+1, null);
                         break;
                     default:
                         throw new SQLException();
@@ -323,7 +337,7 @@ public class Database_Connection {
 
      try{
 
-        con = DbConnectionUtils.getConnection();
+        this.setConnection(1);
 
         pstmt = con.prepareStatement(query);
         pstmt.setObject(1,imageId);
