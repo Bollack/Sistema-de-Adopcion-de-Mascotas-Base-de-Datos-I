@@ -9,6 +9,7 @@ import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -104,7 +105,10 @@ public class Model {
              /*
                 Hace uso del procedimiento almacenado en la base de datos 
                 que realiza dicha función y el cual devuelve un boolean.
+                
             */
+            this.conexion.setConnection(2);
+            this.conexion.callFunction(username);
         
     }
     public boolean insertMascota(String username, String password, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
@@ -120,7 +124,7 @@ public class Model {
             String[] camposAllenar = {"username","password"};
             String[] valores ={username, password};
             this.conexion.insertToTable("Usuario", camposAllenar, valores); //inserta al usuario
-            
+            this.conexion
         }catch (SQLException e)
         {
             System.out.println(e.getMessage());
@@ -131,6 +135,7 @@ public class Model {
             System.out.println(a.getMessage());
             throw a;
         }
+        return true;
     }
     
     public boolean insertDevolucion(String motivo, int idMascota,String username){
@@ -156,8 +161,7 @@ public class Model {
                 case "Mascota visitante":
                     this.conexion.setConnection(3);
                     String[] datosAextraer = {"id","nombre","tipo","raza", "sexo","tamano"};
-                    ResultSet resset = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
-                    ListTableModel modelo = ListTableModel.createModelFromResultSet(resset);
+                    DefaultTableModel modelo = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
                     JTable tabla = new JTable(modelo);
                     this.conexion.endConnection();
                     return tabla;

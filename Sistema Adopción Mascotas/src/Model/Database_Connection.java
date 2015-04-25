@@ -10,10 +10,12 @@ import java.sql.*;
 import static java.sql.JDBCType.BLOB;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 import oracle.jdbc.driver.*;
 import oracle.sql.BLOB;
 
@@ -79,6 +81,7 @@ public class Database_Connection {
                     this.conn = DriverManager.getConnection(direccion,"Visitante", "visitante13");
                     break; 
             }
+            this.conn.setAutoCommit(true);
         }catch (SQLException e)
             {
                 throw e;
@@ -101,21 +104,105 @@ public class Database_Connection {
         }
     }
     
-    public ResultSet callProcedure(String comando)
+    public boolean callProcedure(String comando) throws SQLException
     {
         try
         {
-            catch(comando)
+            switch(comando)
             {
                 case "Insertar Mascota":
+                    String llamado = "{call nombre(?)}";
+                    /*
+                    Genera una conexión con el atributo conexion y prepara
+                    la llamada con el string definido anteriormente, el cual
+                    establece el query a consultar y definiendo parámetros
+                    "?", donde el primero será el resultado de la función 
+                    */
+                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                    break;
+                    
                     
                     
             }
+            return true;
+        }catch(SQLException e)
+        {
+            throw e;
         }
     }
     
-    public void callFunction(String comando)
+
+    
+    public Object callFunction(String comando, Object[] parametros) throws SQLException, NullPointerException 
     {
+        try
+        {
+            /*
+            Se define valores que se usarán en todos los casos posibles, 
+            por lo tanto, se definen fuera del switch.
+            */
+            String llamado;
+            CallableStatement stmt;
+            
+            
+            switch (comando)
+            {  
+                case "Check if password is correct":
+                    llamado ="{? = call check_password(?,?) }";
+                    /*
+                    Genera una conexión con el atributo conexion y prepara
+                    la llamada con el string definido anteriormente, el cual
+                    establece el query a consultar y definiendo parámetros
+                    "?", donde el primero será el resultado de la función 
+                    */
+                    stmt = this.conn.prepareCall(llamado);
+                    String username =(String) parametros[0];
+                    String password =(String) parametros[1];
+                    /*
+                    Al recibir la función call Function un array de String, el cual
+                    mantiene los parámetros a llamar en la función, dichos parámetros
+                    se insertan en el String llamado, reemplazando a los parámetros
+                    predeterminados "?" y evitando así SQL Injection. 
+                    Dicho método se utiliza en otras partes del proyecto, para así
+                    tratar de evitar mayores posibilidades de SQL Injection.
+                    */
+                    stmt.setString(2, llamado);
+                    stmt.setString(3, llamado);
+                    /*
+                    Registra el parámetro extraído, el cual es el primer parámetro
+                    predeterminado en el string llamado y se asegura que sea un
+                    booleano.
+                    */
+                    stmt.registerOutParameter(1, java.sql.Types.BOOLEAN);
+                    
+                    stmt.execute();
+                    //Devuelve dicho parámetro.
+                    return stmt.getBoolean(1);
+                case "Check if username exists":
+                    llamado = "{? = call check_existing_username(?)}";
+                    /*
+                    Procedimiento similar al case pasado. 
+                    */
+                    stmt = this.conn.prepareCall(llamado);
+                     
+                    String user = (String) parametros[0];
+                    stmt.setString(2, user);
+                    
+                    stmt.registerOutParameter(1, java.sql.Types.BOOLEAN);
+                    
+                    stmt.execute();
+                    
+                    return stmt.getBoolean(1);
+                case "":
+                    
+                default :
+                    throw new NullPointerException();
+                    
+            }
+        }catch (SQLException e)
+        {
+            throw e;
+        }
         
     }
 //___________________________________________________________________________________ Soy una barra separadora :)
@@ -172,7 +259,7 @@ public class Database_Connection {
 	fields = String con los nombres de los campos donde insertar Ej.: campo1,campo2campo_n
 	values = String con los datos de los campos a insertar Ej.: valor1, valor2, valor_n
 */
-    public ResultSet getTablaSinCondicion(String tabla, String[] valoresAmostrar) throws SQLException
+    public DefaultTableModel getTablaSinCondicion(String tabla, String[] valoresAmostrar) throws SQLException
     {
         
         String query = "SELECT ";
@@ -180,14 +267,6 @@ public class Database_Connection {
             Va extrayendo las columnas a mostrar del arreglo a un string, 
             para que así pueda ser concatenado con el String query
         
-        for (int j=0; j<valoresAmostrar.length; j++)
-        {
-            query+=valoresAmostrar[j];
-            if (j!=valoresAmostrar.length-1)
-            {
-                query+=", ";
-            }
-        }
         */
         for (int j=0; j<valoresAmostrar.length; j++)
         {
@@ -198,6 +277,16 @@ public class Database_Connection {
             }
         }
         query+= " FROM "+tabla+";";
+    
+        Vector <Object> filas;
+        
+        /*
+        columnNombes será la fila de headers que guadará el nombre
+        de las columnas extraídas en las consultas. Se usará para
+        crear el modelo de tabla a devolver.
+        */
+        Vector<Object> columnNombres;
+        
         try{
             System.out.println(query);
             PreparedStatement consulta = this.conn.prepareStatement(query);
@@ -212,10 +301,61 @@ public class Database_Connection {
                 System.out.println("setString hecho");
 
             }
-            System.out.println(consulta.toString());
-            consulta.execute();
-            System.out.println(consulta.getResultSet().findColumn(id));
-            return consulta.getResultSet();
+            ResultSet rs = consulta.executeQuery(query);
+            ResultSetMetaData rdata = rs.getMetaData();
+            
+            
+            columnNombres = new Vector<Object>();
+            
+            System.out.println("Número de columnas a añadir: "+valoresAmostrar.length);
+            for (int j=1; j<=valoresAmostrar.length; j++)
+            {
+                /*
+                    Se añade al vector creado para almacenar los nombres de las columnas
+                    los nombres de las columnas y este vector se usará para generar el 
+                    modelo que devuelve la presente función, junto con los múltiples 
+                    vectores de las filas
+                */
+                columnNombres.addElement(rdata.getColumnName(j));
+                System.out.println("Añadida a vector columna: "+rdata.getColumnName(j));
+
+            }
+            
+            //Esta será una matriz que almacenará las filas
+            
+            filas = new Vector<Object>();
+            
+            while (rs.next())
+            {
+                /*
+                Se van creando vectores que almacenerán las tuplas
+                junto con sus valores solicitados siempre y cuando
+                rs envíe señal positiva de que tiene otra tupla
+                más a mostrar, para eso sirve el método rs.next()
+                */
+                
+                Vector <Object> filaDeTabla = new Vector<Object>(valoresAmostrar.length);
+                
+                for (int j=1; j<=valoresAmostrar.length;j++)
+                {
+                    //Se añaden los valores metadata de cada 
+                    //rs.next() al vector de cafa fila
+                    
+                    filaDeTabla.addElement(rs.getObject(j));
+                }
+                
+                /*
+                Se añade la fila creada a un vector de filas,
+                el cual servirá para añadirlo luego a la creación del
+                modelo como matriz de filas.
+                */
+                
+                filas.addElement(filaDeTabla);
+               
+            }
+            rs.close();
+            consulta.close();  
+            //System.out.println(consulta.getResultSet().findColumn("id"));
         }catch (SQLException e)
         {
             System.out.println("Excepción desde Database_Connection: "+e.getSQLState());
@@ -223,11 +363,30 @@ public class Database_Connection {
             System.out.println(e.getMessage());
             throw e;
         }
+        DefaultTableModel model = new DefaultTableModel(filas, columnNombres)
+        {
+            @Override
+            public Class getColumnClass(int column)
+            {
+                for (int fila = 0; fila < getRowCount(); fila++)
+                {
+                    Object o = getValueAt(fila, column);
+
+                    if (o != null)
+                    {
+                        return o.getClass();
+                    }
+                }
+
+                return Object.class;
+            }
+        };
+        return model;
     }
     
     
     
-    public boolean insertToTable(String table, String[] fields, Object[] values) throws SQLException
+    public boolean insertToTable(String table, String[] fields, Object[] values) throws SQLException, FileNotFoundException
     {
         boolean res=false;
         //Se arma la consulta
@@ -285,8 +444,7 @@ public class Database_Connection {
              throw e;
       } catch (FileNotFoundException ex) {
             throw ex;
-        }
-      return true;
+      }
     }
     
     private String whatClassIsIt(Object objeto)
@@ -328,7 +486,7 @@ public class Database_Connection {
     private Image convertBLOBtoImage(BLOB extractedBLOB) throws SQLException
     {
              Connection con = null;
-     PreparedStatement pstmt  = null;
+        PreparedStatement pstmt  = null;
      ResultSet rs = null;
 
      
@@ -342,43 +500,17 @@ public class Database_Connection {
         pstmt = con.prepareStatement(query);
         pstmt.setObject(1,imageId);
 
-        rs = pstmt.executeQuery();
 
-        if(rs.next()){
-
-             Object obj = rs.getObject(1);
-             
-             if(obj instanceof Blob)
-                 imageBlob = new javax.sql.SerialBlob((Blob)obj);
-             
-
-        } 
 
      }catch(Exception exp){
 
          exp.printStackTrace();
 
-     }finally{
+     }finally
 
-          if(rs != null){
-             try{rs.close();}catch(Exception exp){};
-          } 
-
-
-          if(pstmt != null){
-             try{pstmt.close();}catch(Exception exp){};
-          } 
-
-          if(con != null){
-             try{con.close();}catch(Exception exp){};
-          }
-        Blob blob =  FileDAO.getFactoryObject().getImageData("746ABBGGA23");
-        int length = (int)blob.length(); 
-        byte buffer[] = blob.getBytes(1,length);
-        ImageIcon imageIcon = new ImageIcon(buffer);
-}
-
+         
         
+     }
     }
 }
     

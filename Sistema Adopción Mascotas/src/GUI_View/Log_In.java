@@ -14,6 +14,8 @@ public class Log_In extends javax.swing.JFrame {
     /**
      * Creates new form Log_In
      */
+    public int asAdmin;
+    
     public Log_In() {
         initComponents();
     }
@@ -27,6 +29,7 @@ public class Log_In extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         userTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JPasswordField();
@@ -38,6 +41,17 @@ public class Log_In extends javax.swing.JFrame {
         exitButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,10 +144,6 @@ public class Log_In extends javax.swing.JFrame {
         );
 
         logAsComboBox.removeAllItems();
-        logAsComboBox.addItem("Usuario");
-        logAsComboBox.addItem("Visitante");
-        logAsComboBox.addItem("Administrador");
-        LogInButton.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel3.setText("Ingreso al Sistema");
@@ -204,6 +214,7 @@ public class Log_In extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton LogInButton;
     public javax.swing.JButton exitButton;
+    private javax.swing.JDialog jDialog1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

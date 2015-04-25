@@ -15,9 +15,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableModel;
 import org.apache.commons.lang3.*;
 import org.apache.commons.mail.*;
 import org.apache.commons.validator.*;
@@ -64,7 +66,9 @@ public class Controller implements ActionListener
         try
         {
             vista.tablaMascotas = this.modelo.getModelFromResultSet("Mascota visitante");
-            vista.tablaMascotas.getSelectionModel().addListSelectionListener((ListSelectionListener) this);
+            //vista.tablaMascotas.setModel((TableModel) this.modelo.getModelFromResultSet("Mascota visitante"));
+            vista.jScrollPane2.removeAll();
+            vista.jScrollPane2.add(vista.tablaMascotas);
         }catch(Exception e)
         {
             System.out.println(e.getMessage());
@@ -86,9 +90,24 @@ public class Controller implements ActionListener
            this.log_In_Window();
        }else if(comando=="Log In-Ventana Logeo")
        {
+           this.Log_In((Log_In) this.gui);
            
        }else if(comando=="Cambio de Vista-Ventana Logeo")
        {
+           Log_In ventana = (Log_In) this.gui;
+           if ((String)ventana.logAsComboBox.getSelectedItem()=="Administrador")
+           {
+               ventana.userTextField.setText("");
+               ventana.userTextField.setEnabled(false);
+               ventana.passwordTextField.setText("");
+               ventana.asAdmin = 1;
+           }
+           if ((String)ventana.logAsComboBox.getSelectedItem()=="Usuario")
+           {
+               ventana.userTextField.setEnabled(true);
+               ventana.passwordTextField.setText("");
+               ventana.asAdmin = 0;
+           }
            
        }else if(comando=="Atrás-Ventana Logeo")
        {
@@ -126,7 +145,7 @@ public class Controller implements ActionListener
     {
         Main_Visitante ventana =(Main_Visitante) this.gui;
         int id =(int) ventana.tablaMascotas.getValueAt(ventana.tablaMascotas.getSelectedRow(),0);
-        
+        ventana.
     }
        
         
@@ -141,10 +160,18 @@ public class Controller implements ActionListener
         //Establece los listeners y nombra los 
         ventanalogeo.LogInButton.addActionListener((ActionListener) this);
         ventanalogeo.LogInButton.setActionCommand("Log In-Ventana Logeo");
+        ventanalogeo.LogInButton.enable();
+        
         ventanalogeo.exitButton.addActionListener((ActionListener) this);
         ventanalogeo.exitButton.setActionCommand("Atrás-Ventana Logeo");
-        ventanalogeo.logAsComboBox.addActionListener((ActionListener) this);
-        ventanalogeo.logAsComboBox.setActionCommand("Cambio de Vista-Ventana Logeo ");
+        
+        
+        ventanalogeo.logAsComboBox.addItem("Usuario");
+        ventanalogeo.logAsComboBox.addItem("Administrador");
+        ventanalogeo.logAsComboBox.addActionListener ((ActionListener) this);
+        ventanalogeo.logAsComboBox.setActionCommand("Cambio de Vista-Ventana Logeo");
+        
+        ventanalogeo.asAdmin = 0;
         ventanalogeo.show();  
         ventanalogeo.setResizable(false);
     }
@@ -162,6 +189,25 @@ public class Controller implements ActionListener
         sign_up.setResizable(false);
         sign_up.show();
         sign_up.enable();
+    }
+    
+    private void Log_In(Log_In ventana)
+    {
+        try
+        {
+            switch (ventana.asAdmin)
+            {
+                case 1:
+                    if (ventana.passwordTextField.getText().equals(modelo))
+                    break;
+                case 0:
+                    break;
+            }
+            
+        }catch(Exception e)
+        {
+            
+        }
     }
     
     private void Registrarse()
@@ -203,7 +249,11 @@ public class Controller implements ActionListener
 
         
     }
-    
+    /*
+    Función que extrae los parámetros insertados en la ventana de Log In
+    y valida que estén correctos, permitiéndole al usuario ingresar a su cuenta y abre
+    las ventanas correspondientes así como todo el proceso lógico necesario. 
+    */
     private String[] validate_data_Log_in(Log_In ventana)
     {
         String username =ventana.userTextField.getText();
@@ -212,6 +262,9 @@ public class Controller implements ActionListener
         {
             boolean usuarioValidez = this.validate_Username(username);
             boolean passValidez = this.validate_Password_to_Log_in(username, pass);
+            if (!usuarioValidez){
+                
+            }
             
         }catch (Exception e)
         {
@@ -273,7 +326,15 @@ public class Controller implements ActionListener
     
     private boolean validate_Password_to_Log_in(String pass, String username)
     {
-        return false;
+        if (!this.modelo.checkUserExists(username))
+        {
+            return false;
+        }
+        if (!this.modelo.checkPassword(pass, username))
+        {
+            return false;
+        }
+        return true;
     }
     private boolean validate_AllFieldsRegister(String[] datos) throws UnsupportedOperationException
     {
