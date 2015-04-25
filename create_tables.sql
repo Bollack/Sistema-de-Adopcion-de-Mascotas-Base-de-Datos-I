@@ -43,7 +43,7 @@ CREATE TABLE Mascota --Aplicado
   CONSTRAINT contacto_fk FOREIGN KEY(contacto) REFERENCES Persona(id)
 );
   
-CREATE PUBLIC SYNONYM Mascota FOR Administrador.Mascota; -- VERIFICAR!!
+CREATE OR REPLACE PUBLIC SYNONYM Mascota FOR Administrador.Mascota; -- VERIFICAR!!
 
 ALTER TABLE Mascota -- APLICADO
 ADD (sexo VARCHAR2(20) CONSTRAINT mascota_sexo_nn NOT NULL);
@@ -66,7 +66,7 @@ CREATE TABLE Tipo_Mascota --Creada
 );
 
 
-CREATE PUBLIC SYNONYM Tipo_Mascota FOR Administrador.Tipo_Mascota; -- Verificar!!
+CREATE OR REPLACE PUBLIC SYNONYM Tipo_Mascota FOR Administrador.Tipo_Mascota; -- Verificar!!
 
   
 INSERT ALL --APLICADO
@@ -93,7 +93,7 @@ CREATE TABLE Raza_Mascota --CREADA
 ALTER TABLE Raza_Mascota --Aplicado
 MODIFY (Grupo VARCHAR2(40));
   
-CREATE PUBLIC SYNONYM Raza_Mascota FOR Administrador.Raza_Mascota; -- VERIFICAR!!
+CREATE OR REPLACE PUBLIC SYNONYM Raza_Mascota FOR Administrador.Raza_Mascota; -- VERIFICAR!!
 
 INSERT ALL --Aplicado
 INTO Raza_Mascota (Raza,Grupo) VALUES('Afgano', 'Perro')
@@ -213,7 +213,7 @@ CREATE TABLE Usuario --CREADA
   Fecha_Modificacion DATE
 );
 
-CREATE PUBLIC SYNONYM Usuario FOR Administrador.Usuario; -- Verificar!!
+CREATE OR REPLACE PUBLIC SYNONYM Usuario FOR Administrador.Usuario; -- Verificar!!
 
 CREATE TABLE Persona --CREADA
 (
@@ -243,7 +243,7 @@ ALTER TABLE Persona --Aplicado
 ALTER TABLE Persona --Aplicado
   MODIFY (Lugar VARCHAR2(100) CONSTRAINT persona_lugar_nn NOT NULL);
   
-CREATE PUBLIC SYNONYM Persona FOR Administrador.Persona; -- Verificar!!
+CREATE OR REPLACE PUBLIC SYNONYM Persona FOR Administrador.Persona; -- Verificar!!
 
 ----------------------------------------------------------------------------------------------------------------------------
 --Just in case
@@ -276,7 +276,7 @@ CREATE TABLE Adopcion --APLICADO
   CONSTRAINT adopcion_mascota_fk FOREIGN KEY(mascota) REFERENCES Mascota(id) --FK a mascota adoptada
 );
 
-CREATE PUBLIC SYNONYM Adopcion FOR Administrador.Adopcion; -- VERIFICAR
+CREATE OR REPLACE PUBLIC SYNONYM Adopcion FOR Administrador.Adopcion; -- VERIFICAR
 
 ALTER TABLE Adopcion --APLICADA
 ADD (Usuario_creacion VARCHAR(20) CONSTRAINT adopcion_usuario_creacion_nn NOT NULL);

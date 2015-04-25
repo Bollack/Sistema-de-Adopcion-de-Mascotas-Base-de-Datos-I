@@ -62,3 +62,58 @@ BEGIN
 		RETURN FALSE;
 	END IF;
 END;
+
+
+--Compilado
+CREATE OR REPLACE FUNCTION get_id_from_username(pUsername IN VARCHAR2)
+RETURN NUMBER AS
+vId NUMBER:=NULL;
+BEGIN
+  SELECT id
+  INTO vId
+  FROM persona
+  WHERE usuario = 
+    (SELECT username
+    FROM usuario
+    WHERE username = pUsername);
+  RETURN vId;
+  EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    RETURN vId;
+  WHEN OTHERS THEN
+    RETURN NULL;
+END;
+
+--Compilado
+CREATE OR REPLACE FUNCTION get_foto_antes(pId IN NUMBER)
+RETURN BLOB AS
+vFoto BLOB:=NULL;
+BEGIN
+  SELECT Fotografia_antes
+  INTO vFoto
+  FROM mascota
+  WHERE id = pID;
+  RETURN vFoto;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    RETURN vFoto;
+  WHEN OTHERS THEN
+    RETURN NULL;
+END;
+
+--Compilado
+CREATE OR REPLACE FUNCTION get_foto_despues(pId IN NUMBER)
+RETURN BLOB AS
+vFoto BLOB:=NULL;
+BEGIN
+  SELECT Fotografia_despues
+  INTO vFoto
+  FROM mascota
+  WHERE id = pID;
+  RETURN vFoto;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    RETURN vFoto;
+  WHEN OTHERS THEN
+    RETURN NULL;
+END;
