@@ -47,6 +47,13 @@ CREATE TABLE Mascota --Aplicado
   CONSTRAINT contacto_fk FOREIGN KEY(contacto) REFERENCES Persona(id)
 );
   
+CREATE PUBLIC SYNONYM Mascota FOR Administrador.Mascota; -- APLICADO
+
+ALTER TABLE Mascota -- APLICADO
+ADD (sexo VARCHAR2(20) CONSTRAINT mascota_sexo_nn NOT NULL);
+
+ALTER TABLE Mascota -- APLICADO
+ADD (CONSTRAINT mascota_sexo_check CHECK(Estado IN ('Macho','Hembra')));
   
 CREATE TABLE Tipo_Mascota --Creado
 (
@@ -59,6 +66,8 @@ CREATE TABLE Tipo_Mascota --Creado
   Fecha_Modificacion DATE
 );
 
+
+CREATE PUBLIC SYNONYM Tipo_Mascota FOR Administrador.Tipo_Mascota; -- APLICADO
 
   
 INSERT ALL --APLICADO
@@ -85,6 +94,8 @@ CREATE TABLE Raza_Mascota --CREADA
 ALTER TABLE Raza_Mascota --Aplicado
 MODIFY (Grupo VARCHAR2(40));
   
+CREATE PUBLIC SYNONYM Raza_Mascota FOR Administrador.Raza_Mascota; -- APLICADO
+
 INSERT ALL --Aplicado
 INTO Raza_Mascota (Raza,Grupo) VALUES('Afgano', 'Perro')
 SELECT * FROM dual;
@@ -205,6 +216,9 @@ CREATE TABLE Usuario --CREADA
   Fecha_Modificacion DATE
 );
 
+CREATE PUBLIC SYNONYM Usuario FOR Administrador.Usuario; -- APLICADO
+
+
 CREATE TABLE Persona --CREADA
 (
   id Number,
@@ -235,7 +249,8 @@ ALTER TABLE Persona --Aplicado
 ALTER TABLE Persona --Aplicado
   MODIFY (Lugar VARCHAR2(60) CONSTRAINT persona_lugar_nn NOT NULL);
   
-  
+CREATE PUBLIC SYNONYM Persona FOR Administrador.Persona; -- APLICADO
+
 ----------------------------------------------------------------------------------------------------------------------------
 --Just in case
 
@@ -255,11 +270,35 @@ ALTER TABLE Persona --Aplicado
   --Usuario_Modificacion VARCHAR(20)
   --Fecha_Modificacion DATE,
 
+--Adopciones--
 
-CREATE TABLE Adopta_a
+CREATE TABLE Adopcion --APLICADO
 (
-  persona NUMBER
+  id NUMBER,
+  CONSTRAINT adopcion_id_pk PRIMARY KEY(id),
+  persona NUMBER   CONSTRAINT adopcion_persona_nn NOT NULL,
+  CONSTRAINT adopcion_persona_fk FOREIGN KEY(persona) REFERENCES Persona(id), --Foreign key de la persona adoptante
+  mascota NUMBER CONSTRAINT adopcion_mascota_nn NOT NULL,
+  CONSTRAINT adopcion_mascota_fk FOREIGN KEY(mascota) REFERENCES Mascota(id) --FK a mascota adoptada
 );
+
+CREATE PUBLIC SYNONYM Adopcion FOR Administrador.Adopcion; -- APLICADO
+
+ALTER TABLE Adopcion --APLICADA
+ADD (Usuario_creacion VARCHAR(20) CONSTRAINT adopcion_usuario_creacion_nn NOT NULL);
+
+ALTER TABLE Adopcion --APLICADA
+ADD(Fecha_creacion DATE CONSTRAINT adopcion_fecha_creacion_nn NOT NULL);
+
+
+ALTER TABLE Adopcion --APLICADA
+ADD (Usuario_Modificacion VARCHAR(20));
+
+ALTER TABLE Adopcion --APLICADA
+ADD(Fecha_Modificacion DATE);
+
+--Calificaciones y lista negra---------
+
 
 CREATE TABLE Califica_a
 (
@@ -269,7 +308,9 @@ CREATE TABLE Agega_a_Lista_Negra
 (
 );
 
-CREATE TABLE Historial_Devoluciones
+--Devoluciones 
+
+CREATE TABLE Devoluciones
 (
 );
 
