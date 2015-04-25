@@ -61,6 +61,30 @@ public class Database_Connection {
         }         
     }
     
+    public void setConnection(int tipoConexion)throws SQLException
+    {
+        try 
+        {
+            switch(tipoConexion){
+                case 0:
+                    this.conn = DriverManager.getConnection(direccion,"system","Lordaeron1");
+                    break;
+                case 1:
+                    this.conn = DriverManager.getConnection(direccion,"Administrador", "Admin12");
+                    break;
+                case 2:
+                    this.conn = DriverManager.getConnection(direccion,"Usuario","usuario14");
+                        break;
+                case 3:
+                    this.conn = DriverManager.getConnection(direccion,"Visitante", "visitante13");
+                    break; 
+            }
+        }catch (SQLException e)
+            {
+                throw e;
+            }
+    }
+    
     
     
     public Connection getConnection()
@@ -77,7 +101,7 @@ public class Database_Connection {
         }
     }
     
-    public void callProcedure(String comando)
+    public ResultSet callProcedure(String comando)
     {
         try
         {

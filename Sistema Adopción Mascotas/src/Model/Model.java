@@ -8,6 +8,7 @@ package Model;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTable;
 
 /**
  *
@@ -167,4 +168,26 @@ public class Model {
             return false;
         }        
     }
+    
+    public JTable getModelFromResultSet(String comando)
+    {
+        try
+        {
+            switch (comando)
+            {   
+                    case "Mascota visitante":
+
+                        {
+                            this.conexion.setConnection(3);
+                            String[] datosAextraer = {"id","nombre","tipo","raza", "sexo","tamano"};
+                            ResultSet resset = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
+                            ListTableModel modelo = ListTableModel.createModelFromResultSet(resset);
+                            return new JTable(modelo);
+                        }
+
+                        break;
+
+
+            }
+        }catch(SQLException)
 }

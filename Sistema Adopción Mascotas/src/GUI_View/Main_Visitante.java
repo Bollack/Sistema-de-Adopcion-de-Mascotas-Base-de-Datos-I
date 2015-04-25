@@ -285,6 +285,6 @@ public class Main_Visitante extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaMascotas;
+    public javax.swing.JTable tablaMascotas;
     // End of variables declaration//GEN-END:variables
 }

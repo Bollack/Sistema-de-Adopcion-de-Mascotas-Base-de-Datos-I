@@ -9,14 +9,15 @@ import Model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import org.apache.commons.lang3.*;
 import org.apache.commons.mail.*;
 import org.apache.commons.validator.*;
@@ -59,7 +60,10 @@ public class Controller implements ActionListener{
         vista.LogInButton.addActionListener((ActionListener) this);
         vista.exitButton.setActionCommand("Salir");
         vista.LogInButton.setActionCommand("Log In");
-        //gui.tablaMascotas
+        
+        vista.tablaMascotas = this.modelo.getModelFromResultSet("Mascota visitante");
+        vista.tablaMascotas.getSelectionModel().addListSelectionListener((ListSelectionListener) this);
+        vista.tablaMascotas.getSelectionModel().
     }
     
     private void backToMenu()
@@ -115,9 +119,17 @@ public class Controller implements ActionListener{
            System.exit(0);
            
        }
-       
+    }
+    
+    private void valueChanged(ListSelectionEvent event)
+    {
+        Main_Visitante ventana =(Main_Visitante) this.gui;
+        int id =(int) ventana.tablaMascotas.getValueAt(ventana.tablaMascotas.getSelectedRow(),0);
         
     }
+       
+        
+    
     
     
     private void log_In_Window()
@@ -153,6 +165,14 @@ public class Controller implements ActionListener{
     
     private void Registrarse()
     {
+       String[] datos = this.get_data_Sign_up((Registro_Usuario) this.gui);
+       try
+       {
+           
+       }catch (Exception e)
+       {
+           
+       }
        
     }
     
@@ -215,44 +235,49 @@ public class Controller implements ActionListener{
     }
     private boolean validate_Tel(String telefono)
     {
+        if (telefono=="" || telefono==null)
+        {
+            return false;
+        }
         if (telefono.matches("\\d{4}-\\d{2}-\\d{2}"))
         {
             return true;
         }
         return false;
     }    
-    private boolean validate_Username(String username)
+    private boolean validate_Username(String username) throws InputMismatchException
     {
-        return false;
+
     }
     private boolean validate_Username_to_Create(String username)
     {
-        return false;
+        if (username=="" || username==null)
+        {
+            return false;
+        }
+        if (this.modelo.checkUserExists(username))
+        {
+            throw new InputMismatchException();
+        }
+        return true;
     }
     
     private boolean validate_Password(String pass)
     {
-        return false;
+        if (pass=="" || pass==null)
+        {
+            return false;
+        }
+        return true;
     }
     
     private boolean validate_Password_to_Log_in(String pass, String username)
     {
         return false;
     }
-    private boolean validate_AllFieldsRegister(String correo, String username, String pass, String telefono, String nombre, String apellido) throws UnsupportedOperationException
+    private boolean validate_AllFieldsRegister(String[] datos) throws UnsupportedOperationException
     {
-        if (this.validate_Tel(telefono)==false)
-        {
-            
-        }if (this.validate_Email(correo)==false){
-            
-        }if (this.validate_Username(username)==false)
-        {
-            throw new UnsupportedOperationException();
-        }if (this.validate_Password(pass)==false)
-        {
-            
-        }
+        if (this.validate )
         
         return true;
         

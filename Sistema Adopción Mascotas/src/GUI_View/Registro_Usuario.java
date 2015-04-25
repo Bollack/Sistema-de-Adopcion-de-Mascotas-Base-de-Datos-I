@@ -36,6 +36,11 @@ public class Registro_Usuario extends javax.swing.JFrame {
 
         jLabel8 = new javax.swing.JLabel();
         generoButtonGroup = new javax.swing.ButtonGroup();
+        jDialog1 = new javax.swing.JDialog();
+        tituloMessageBoxRegistro_Usuario = new javax.swing.JLabel();
+        aceptar_messageBox_Registro_Usuario = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         apellidoUsuarioTextField = new javax.swing.JTextField();
         nameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -64,6 +69,59 @@ public class Registro_Usuario extends javax.swing.JFrame {
 
         generoButtonGroup.add(femaleRadioButton);
         generoButtonGroup.add(maleRadioButton);
+
+        tituloMessageBoxRegistro_Usuario.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        tituloMessageBoxRegistro_Usuario.setForeground(new java.awt.Color(255, 0, 51));
+        tituloMessageBoxRegistro_Usuario.setText("Datos insertados no válidos");
+
+        aceptar_messageBox_Registro_Usuario.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        aceptar_messageBox_Registro_Usuario.setText("Aceptar");
+        aceptar_messageBox_Registro_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptar_messageBox_Registro_UsuarioActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel13.setText("Inserte los datos solicitados y en el formato correcto.");
+
+        jLabel14.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jLabel14.setText("Inserte correo válido y teléfono en el formato solicitado.");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(tituloMessageBoxRegistro_Usuario))
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel13))
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel14)))
+                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(aceptar_messageBox_Registro_Usuario)
+                .addGap(152, 152, 152))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloMessageBoxRegistro_Usuario)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(aceptar_messageBox_Registro_Usuario)
+                .addGap(18, 18, 18))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -297,6 +355,11 @@ public class Registro_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailTextFieldActionPerformed
 
+    private void aceptar_messageBox_Registro_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_messageBox_Registro_UsuarioActionPerformed
+        // TODO add your handling code here:
+        this.show(false);
+    }//GEN-LAST:event_aceptar_messageBox_Registro_UsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -333,6 +396,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton aceptar_messageBox_Registro_Usuario;
     public javax.swing.JTextField apellidoUsuarioTextField;
     public javax.swing.JButton backButton;
     public javax.swing.JTextField direccionTextField;
@@ -340,9 +404,12 @@ public class Registro_Usuario extends javax.swing.JFrame {
     public javax.swing.JRadioButton femaleRadioButton;
     public javax.swing.ButtonGroup generoButtonGroup;
     private javax.swing.JLabel imagen;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    public javax.swing.JLabel jLabel13;
+    public javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -357,6 +424,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
     public javax.swing.JButton registerButton;
     public javax.swing.JTextField telefonoTextField;
     public javax.swing.JLabel title;
+    public javax.swing.JLabel tituloMessageBoxRegistro_Usuario;
     public javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }
