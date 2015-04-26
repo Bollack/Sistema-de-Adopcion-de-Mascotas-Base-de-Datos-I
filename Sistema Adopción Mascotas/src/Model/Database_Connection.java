@@ -3,9 +3,12 @@
 package Model;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import static java.sql.JDBCType.BLOB;
 import java.sql.SQLException;
@@ -18,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import oracle.jdbc.driver.*;
 import oracle.sql.BLOB;
+
 
 /**
  *
@@ -56,7 +60,7 @@ public class Database_Connection {
                     break;    
             }
             this.conn.setAutoCommit(true);
-        }catch(Exception e)
+        }catch(SQLException e)
         {
             System.out.println(e.getMessage());
             throw e;
@@ -120,7 +124,13 @@ public class Database_Connection {
                     */
                     CallableStatement storedPro = this.conn.prepareCall(llamado);
                     break;
+                case "Registrar Mascota":
                     
+                case "Generar Adopcion":
+                    
+                case "Generar Formulario":
+                    
+                case "Devolver Mascota":                   
                     
                     
             }
@@ -193,6 +203,13 @@ public class Database_Connection {
                     stmt.execute();
                     
                     return stmt.getBoolean(1);
+                case "Get ID from Username - Persona":
+                    
+                case "Get name from ID - Persona":
+                    
+                case "Get Foto actual from ID - Mascota":
+                    
+                case "Get Foto antes from ID - Mascota":
                 case "":
                     
                 default :
@@ -287,21 +304,23 @@ public class Database_Connection {
         */
         Vector<Object> columnNombres;
         
-        try{
+        try
+        {
             System.out.println(query);
             PreparedStatement consulta = this.conn.prepareStatement(query);
             System.out.println("PS creado");
-            System.out.println(valoresAmostrar.length);
-            for (int j=1; j<=valoresAmostrar.length+1; j++)
+            for (int j=0; j<=valoresAmostrar.length; j++)
             {
                 /*
                     LOS ÍNDICES DE COLUMNA EN ORACLE COMIENZAN DESDE 1 Y NO DESDE 0. 
                 */
-                consulta.setString(j, valoresAmostrar[j-1]);
-                System.out.println("setString hecho");
-
+                consulta.setString(j+1, valoresAmostrar[j]);
+                System.out.println("setString hecho "+valoresAmostrar[j]);
+                System.out.println(consulta.toString());
             }
-            ResultSet rs = consulta.executeQuery(query);
+            System.out.println("Ejecutando...");
+            ResultSet rs = consulta.executeQuery();
+            System.out.println("Ejecutado. Rs extraído");
             ResultSetMetaData rdata = rs.getMetaData();
             
             
@@ -483,34 +502,21 @@ public class Database_Connection {
         */
     }
     
-    private Image convertBLOBtoImage(BLOB extractedBLOB) throws SQLException
+    /*Función que devuelve una imagen en un buffer para su futura muestra en pantalla. Una vez se llama la función 
+    que extrae el archivo BLOB, se genera un bufferedImage mediante este método y es pasado al modelo para que lo devuelva
+    como un ImagenIcon utilizable por el controlador en la GUI. */
+    
+    private BufferedImage convertBLOBtoImage(BLOB extractedBLOB) throws SQLException, IOException
     {
-             Connection con = null;
-        PreparedStatement pstmt  = null;
-     ResultSet rs = null;
-
-     
-     Blob imageBlob = null;
-     String query = "select it.IMAGE_BLOB from IMAGE_TABLE it where it.IMAGE_ID = ?";
-
-     try{
-
-        this.setConnection(1);
-
-        pstmt = con.prepareStatement(query);
-        pstmt.setObject(1,imageId);
-
-
-
-     }catch(Exception exp){
-
-         exp.printStackTrace();
-
-     }finally
-
-         
-        
-     }
+        try
+        {
+            byte[] imgData = extractedBLOB.getBytes(1,(int)extractedBLOB.length());
+            BufferedImage image = ImageIO.read(new ByteArrayInputStream(imgData));
+            return image;
+        }catch(SQLException | IOException e)
+        {
+            throw e;
+        }
     }
 }
     

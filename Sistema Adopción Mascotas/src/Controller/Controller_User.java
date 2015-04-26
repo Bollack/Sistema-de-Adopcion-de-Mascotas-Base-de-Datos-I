@@ -6,6 +6,7 @@
 package Controller;
 
 
+import GUI_View.Error_connection_db;
 import GUI_View.Log_In;
 import GUI_View.Main_User;
 import GUI_View.Main_Visitante;
@@ -15,6 +16,8 @@ import Model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.UnsupportedOperationException;
+import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.event.DocumentListener;
 import org.apache.commons.lang3.*;
 import org.apache.commons.mail.*;
@@ -29,7 +32,7 @@ public class Controller_User implements ActionListener
 {
     private String username; //Se utilizará para almacenarlo en los campos de auditoría 
     private Model modelo;
-    private Main_User gui_Inicial;
+    private JFrame gui_Inicial;
     
     public Controller_User(Model modelo, String userLogeo)
     {
@@ -127,6 +130,12 @@ public class Controller_User implements ActionListener
 
     }    
     
+        private void errorConn(SQLException e)
+    {
+        Error_connection_db error = new Error_connection_db(e);
+        error.show();
+        error.setResizable(false);
+    }
     
 
 }

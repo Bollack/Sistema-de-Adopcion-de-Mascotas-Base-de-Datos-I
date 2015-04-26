@@ -6,6 +6,7 @@
 package Model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JTable;
@@ -21,12 +22,12 @@ public class Model {
     private Database_Connection conexion;
     
     
-    public Model() throws Exception { //Prueba la conexión a la DB ingresando como visitante.
+    public Model() throws SQLException, ClassNotFoundException { //Prueba la conexión a la DB ingresando como visitante.
         try
         {
            this.conexion= new Database_Connection(3); 
            this.conexion.endConnection();
-        }catch (Exception e){
+        }catch (SQLException e){
              throw e;
         }
     }
@@ -38,7 +39,7 @@ public class Model {
         obligatorios y validaciones superficiales similares.
     */
     public boolean InsertarUsuario(String nombre, String apellido, String provincia, String genero, String telefono,
-                                    String correo, String username, String password) throws SQLException, ClassNotFoundException
+                                    String correo, String username, String password) throws SQLException, ClassNotFoundException, FileNotFoundException
     {
         try //Trata de insertar al usuario 
         {
@@ -86,30 +87,43 @@ public class Model {
     }
     
     */
-    public boolean checkUserExists(String username)
-            /*
-                Hace uso del procedimiento almacenado en la base de datos 
-                que realiza dicha función y el cual devuelve un boolean.
-            */
+    public boolean checkUserExists(String username) throws SQLException
     {
-        try{
-            
-            return true;
-        }catch (Exception e)
+        /*
+                Hace uso de la función en la base de datos 
+                que realiza dicha función y el cual devuelve un boolean.
+        */
+        try
         {
-            return false;
-        }        
-    }
+                this.conexion.setConnection(2);
+                Object[] parametros = {username};
+                boolean existencia = (boolean) this.conexion.callFunction("Check if username exists",parametros);
+                this.conexion.endConnection();
+                return existencia;
+        }catch (SQLException e)
+        {
+            throw e;
+        }
+    }      
+ 
     
-    public boolean checkPassword(String password, String username){
+    public boolean checkPassword(String password, String username) throws SQLException{
              /*
-                Hace uso del procedimiento almacenado en la base de datos 
+                Hace uso de la función  en la base de datos 
                 que realiza dicha función y el cual devuelve un boolean.
                 
             */
-            this.conexion.setConnection(2);
-            this.conexion.callFunction(username);
-        
+        try
+        {
+                this.conexion.setConnection(2);
+                Object[] parametros = {username, password};
+                boolean validez = (boolean) this.conexion.callFunction("Check if password is correct",parametros);
+                this.conexion.endConnection();
+                return validez;
+        }catch (SQLException e)
+        {
+            throw e;
+        }
     }
     public boolean insertMascota(String username, String password, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
                                 String espacio, String tamano, String training, String sexo, String energia, String veterinario,
@@ -119,12 +133,10 @@ public class Model {
         try //Trata de insertar la tupla en la tabla mascota, solicitándoselo a 
             //Database_Connection y esperando su respuesta
         {
-            this.conexion = new Database_Connection(2); //Se conecta como admin, 
-                                                        //puesto que la tabla es de admin y manipulada por admin
+            this.conexion = new Database_Connection(3); //Se conecta como usuario, 
             String[] camposAllenar = {"username","password"};
             String[] valores ={username, password};
-            this.conexion.insertToTable("Usuario", camposAllenar, valores); //inserta al usuario
-            this.conexion
+            this.conexion.callProcedure("Insertar Mascota");
         }catch (SQLException e)
         {
             System.out.println(e.getMessage());

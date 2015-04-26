@@ -5,10 +5,13 @@
  */
 package Controller;
 
+import GUI_View.Error_connection_db;
+import GUI_View.Main_Admin;
 import GUI_View.Main_Visitante;
 import Model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 /**
  *
@@ -21,37 +24,52 @@ public class Controller_Admin implements ActionListener
     private Model modelo;
     private JFrame guiInicial;
     
-    public Controller_Admin()
+    public Controller_Admin(Model modelo)
     {
+        this.modelo = modelo;
+        initiate();
+    }
+    
+    private void initiate()
+    {
+        this.guiInicial = new Main_Admin();
+        guiInicial.show();
+        guiInicial.setResizable(false);
+        //guiInicial.setIconImage(new ImageIcon());
         
     }
- public void actionPerformed(ActionEvent e) {
+    
+    
+    private void backToMainWindow()
+    {
+        this.initiate();
+    }
+    
+    public void actionPerformed(ActionEvent e) {
        String comando = e.getActionCommand();
 
-       if (comando=="Log In")
+       if (comando=="")
        {
-           gui.show(false);
-           gui.disable();
-           this.log_In_Window();
-       }else if(comando=="Buscar Personas-Ventana Main")
+
+       }else if(comando=="Tab Usuario")
        {
            
-       }else if(comando=="Cambio de Vista-Ventana Logeo")
+       }else if(comando=="Tab Mascotas")
        {
            
-       }else if(comando=="Atrás-Ventana Logeo")
+       }else if(comando=="Tab Adopciones")
        {
            this.gui.disable();
            this.gui.show(false);
            this.backToMenu();
-       }else if(comando=="Registrarse")
+       }else if(comando=="Tab Formulario")
        {
            gui.show(false);
            this.Registrase_Window();
        }else if(comando=="Registrarse-Ventana Registro")
        {
            
-       }else if(comando=="Atrás-Ventana Registro")
+       }else if(comando=="Cerrar Sesión")
        {
            this.gui.dispose();
            this.gui.show(false);
@@ -71,4 +89,29 @@ public class Controller_Admin implements ActionListener
        }
         
     }
-}
+
+
+    private void verPersona()
+    {
+
+    }
+    
+    private void verMascota()
+    {
+        
+    }
+    
+    private void errorConn(SQLException e)
+    {
+        Error_connection_db error = new Error_connection_db(e);
+        error.show();
+        error.setResizable(false);
+    }
+
+
+ 
+ 
+ 
+ 
+ 
+ }

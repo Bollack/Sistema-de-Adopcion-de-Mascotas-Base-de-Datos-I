@@ -34,13 +34,12 @@ public class Registro_Usuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel8 = new javax.swing.JLabel();
         generoButtonGroup = new javax.swing.ButtonGroup();
-        jDialog1 = new javax.swing.JDialog();
-        tituloMessageBoxRegistro_Usuario = new javax.swing.JLabel();
-        aceptar_messageBox_Registro_Usuario = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        wrongDataMessageBox = new javax.swing.JDialog();
+        tituloWrongDataMessageBox = new javax.swing.JLabel();
+        label1MessageBox = new javax.swing.JLabel();
+        aceptarWrongDataMessageBox = new javax.swing.JButton();
+        label2MessageBox = new javax.swing.JLabel();
         apellidoUsuarioTextField = new javax.swing.JTextField();
         nameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -65,65 +64,58 @@ public class Registro_Usuario extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         emailTextField = new javax.swing.JTextField();
 
-        jLabel8.setText("jLabel8");
-
         generoButtonGroup.add(femaleRadioButton);
         generoButtonGroup.add(maleRadioButton);
 
-        tituloMessageBoxRegistro_Usuario.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        tituloMessageBoxRegistro_Usuario.setForeground(new java.awt.Color(255, 0, 51));
-        tituloMessageBoxRegistro_Usuario.setText("Datos insertados no válidos");
+        wrongDataMessageBox.setTitle("Datos incorrectos");
 
-        aceptar_messageBox_Registro_Usuario.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        aceptar_messageBox_Registro_Usuario.setText("Aceptar");
-        aceptar_messageBox_Registro_Usuario.addActionListener(new java.awt.event.ActionListener() {
+        tituloWrongDataMessageBox.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        tituloWrongDataMessageBox.setForeground(new java.awt.Color(204, 0, 0));
+        tituloWrongDataMessageBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloWrongDataMessageBox.setText("Datos ingresados incorrectos");
+
+        label1MessageBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label1MessageBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label1MessageBox.setText("Nombre de Usuario o contraseña incorrecta.");
+
+        aceptarWrongDataMessageBox.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        aceptarWrongDataMessageBox.setText("Aceptar");
+        aceptarWrongDataMessageBox.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        aceptarWrongDataMessageBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aceptar_messageBox_Registro_UsuarioActionPerformed(evt);
+                aceptarWrongDataMessageBoxActionPerformed(evt);
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jLabel13.setText("Inserte los datos solicitados y en el formato correcto.");
+        label2MessageBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label2MessageBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label2MessageBox.setText("Por favor, ingrese los datos correctos.");
 
-        jLabel14.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jLabel14.setText("Inserte correo válido y teléfono en el formato solicitado.");
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(tituloMessageBoxRegistro_Usuario))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel13))
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel14)))
-                .addContainerGap(33, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(aceptar_messageBox_Registro_Usuario)
-                .addGap(152, 152, 152))
+        javax.swing.GroupLayout wrongDataMessageBoxLayout = new javax.swing.GroupLayout(wrongDataMessageBox.getContentPane());
+        wrongDataMessageBox.getContentPane().setLayout(wrongDataMessageBoxLayout);
+        wrongDataMessageBoxLayout.setHorizontalGroup(
+            wrongDataMessageBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tituloWrongDataMessageBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label1MessageBox, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+            .addComponent(label2MessageBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(aceptarWrongDataMessageBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        wrongDataMessageBoxLayout.setVerticalGroup(
+            wrongDataMessageBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(wrongDataMessageBoxLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tituloMessageBoxRegistro_Usuario)
-                .addGap(13, 13, 13)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(aceptar_messageBox_Registro_Usuario)
-                .addGap(18, 18, 18))
+                .addComponent(tituloWrongDataMessageBox)
+                .addGap(12, 12, 12)
+                .addComponent(label1MessageBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label2MessageBox)
+                .addGap(18, 18, 18)
+                .addComponent(aceptarWrongDataMessageBox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro de Usuarios");
 
         apellidoUsuarioTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
@@ -194,6 +186,8 @@ public class Registro_Usuario extends javax.swing.JFrame {
             }
         });
 
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/registro_usuario.jpg"))); // NOI18N
+
         title.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
         title.setText("Ingrese sus datos personales y los datos de su cuenta a crear. ");
 
@@ -213,19 +207,23 @@ public class Registro_Usuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(126, 126, 126)
-                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(jLabel10))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(backButton))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(126, 126, 126)
+                                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(93, 93, 93)
+                                        .addComponent(jLabel10))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(backButton))))
+                            .addComponent(title))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,17 +265,16 @@ public class Registro_Usuario extends javax.swing.JFrame {
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
                                 .addComponent(passwordField)))
-                        .addGap(18, 18, 18)
-                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(title, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(20, 20, 20))
+                        .addGap(28, 28, 28)
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(title)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -304,7 +301,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(direccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(usernameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -313,7 +310,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -355,10 +352,10 @@ public class Registro_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailTextFieldActionPerformed
 
-    private void aceptar_messageBox_Registro_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_messageBox_Registro_UsuarioActionPerformed
+    private void aceptarWrongDataMessageBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarWrongDataMessageBoxActionPerformed
         // TODO add your handling code here:
-        this.show(false);
-    }//GEN-LAST:event_aceptar_messageBox_Registro_UsuarioActionPerformed
+        wrongDataMessageBox.show(false);
+    }//GEN-LAST:event_aceptarWrongDataMessageBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,7 +393,7 @@ public class Registro_Usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton aceptar_messageBox_Registro_Usuario;
+    public javax.swing.JButton aceptarWrongDataMessageBox;
     public javax.swing.JTextField apellidoUsuarioTextField;
     public javax.swing.JButton backButton;
     public javax.swing.JTextField direccionTextField;
@@ -404,27 +401,26 @@ public class Registro_Usuario extends javax.swing.JFrame {
     public javax.swing.JRadioButton femaleRadioButton;
     public javax.swing.ButtonGroup generoButtonGroup;
     private javax.swing.JLabel imagen;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    public javax.swing.JLabel jLabel13;
-    public javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel label1MessageBox;
+    public javax.swing.JLabel label2MessageBox;
     public javax.swing.JRadioButton maleRadioButton;
     public javax.swing.JTextField nameTextField;
     public javax.swing.JTextField passwordField;
     public javax.swing.JButton registerButton;
     public javax.swing.JTextField telefonoTextField;
     public javax.swing.JLabel title;
-    public javax.swing.JLabel tituloMessageBoxRegistro_Usuario;
+    public javax.swing.JLabel tituloWrongDataMessageBox;
     public javax.swing.JTextField usernameTextField;
+    public javax.swing.JDialog wrongDataMessageBox;
     // End of variables declaration//GEN-END:variables
 }

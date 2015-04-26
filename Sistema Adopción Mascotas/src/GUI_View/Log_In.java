@@ -29,7 +29,11 @@ public class Log_In extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
+        wrongDataMessageBox = new javax.swing.JDialog();
+        tituloWrongDataMessageBox = new javax.swing.JLabel();
+        label1MessageBox = new javax.swing.JLabel();
+        aceptarWrongDataMessageBox = new javax.swing.JButton();
+        label2MessageBox = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         userTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JPasswordField();
@@ -42,15 +46,56 @@ public class Log_In extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        wrongDataMessageBox.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        wrongDataMessageBox.setTitle("Datos incorrectos");
+        wrongDataMessageBox.setAlwaysOnTop(true);
+        wrongDataMessageBox.setResizable(false);
+
+        tituloWrongDataMessageBox.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        tituloWrongDataMessageBox.setForeground(new java.awt.Color(204, 0, 0));
+        tituloWrongDataMessageBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloWrongDataMessageBox.setText("Datos ingresados incorrectos");
+
+        label1MessageBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label1MessageBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label1MessageBox.setText("Nombre de Usuario o contraseña incorrecta.");
+
+        aceptarWrongDataMessageBox.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        aceptarWrongDataMessageBox.setText("Aceptar");
+        aceptarWrongDataMessageBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarWrongDataMessageBoxActionPerformed(evt);
+            }
+        });
+
+        label2MessageBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label2MessageBox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label2MessageBox.setText("Por favor, ingrese los datos correctos.");
+
+        javax.swing.GroupLayout wrongDataMessageBoxLayout = new javax.swing.GroupLayout(wrongDataMessageBox.getContentPane());
+        wrongDataMessageBox.getContentPane().setLayout(wrongDataMessageBoxLayout);
+        wrongDataMessageBoxLayout.setHorizontalGroup(
+            wrongDataMessageBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tituloWrongDataMessageBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label1MessageBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label2MessageBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(wrongDataMessageBoxLayout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(aceptarWrongDataMessageBox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        wrongDataMessageBoxLayout.setVerticalGroup(
+            wrongDataMessageBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(wrongDataMessageBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloWrongDataMessageBox)
+                .addGap(12, 12, 12)
+                .addComponent(label1MessageBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label2MessageBox)
+                .addGap(23, 23, 23)
+                .addComponent(aceptarWrongDataMessageBox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,11 +124,11 @@ public class Log_In extends javax.swing.JFrame {
         logAsComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         logAsComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        LogInButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        LogInButton.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         LogInButton.setText("Ingresar");
 
         exitButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        exitButton.setText("Salir");
+        exitButton.setText("Atrás");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/huella_icon.png"))); // NOI18N
 
@@ -105,8 +150,9 @@ public class Log_In extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
                                 .addComponent(LogInButton)
-                                .addGap(72, 72, 72)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(exitButton))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,6 +171,7 @@ public class Log_In extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -132,20 +179,18 @@ public class Log_In extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(logAsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LogInButton)
-                            .addComponent(exitButton)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(logAsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LogInButton)
+                    .addComponent(exitButton))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         logAsComboBox.removeAllItems();
 
-        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 26)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Ingreso al Sistema");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,17 +199,16 @@ public class Log_In extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -175,6 +219,11 @@ public class Log_In extends javax.swing.JFrame {
     private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userTextFieldActionPerformed
+
+    private void aceptarWrongDataMessageBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarWrongDataMessageBoxActionPerformed
+        // TODO add your handling code here:
+        wrongDataMessageBox.show(false);
+    }//GEN-LAST:event_aceptarWrongDataMessageBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,16 +262,20 @@ public class Log_In extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton LogInButton;
+    public javax.swing.JButton aceptarWrongDataMessageBox;
     public javax.swing.JButton exitButton;
-    private javax.swing.JDialog jDialog1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public javax.swing.JPanel jPanel1;
+    public javax.swing.JLabel label1MessageBox;
+    public javax.swing.JLabel label2MessageBox;
     public javax.swing.JComboBox logAsComboBox;
     public javax.swing.JTextField passwordTextField;
+    public javax.swing.JLabel tituloWrongDataMessageBox;
     public javax.swing.JTextField userTextField;
+    public javax.swing.JDialog wrongDataMessageBox;
     // End of variables declaration//GEN-END:variables
 }
