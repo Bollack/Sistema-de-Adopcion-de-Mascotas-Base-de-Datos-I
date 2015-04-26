@@ -285,6 +285,7 @@ public class Database_Connection {
             para que así pueda ser concatenado con el String query
         
         */
+        /*
         for (int j=0; j<valoresAmostrar.length; j++)
         {
             query+='?';
@@ -293,7 +294,8 @@ public class Database_Connection {
                 query+=", ";
             }
         }
-        query+= " FROM "+tabla+";";
+        */
+        query+= "* FROM "+tabla;
     
         Vector <Object> filas;
         
@@ -307,19 +309,25 @@ public class Database_Connection {
         try
         {
             System.out.println(query);
-            PreparedStatement consulta = this.conn.prepareStatement(query);
+            Statement consulta = this.conn.createStatement();
             System.out.println("PS creado");
+            /*
             for (int j=0; j<=valoresAmostrar.length; j++)
             {
                 /*
                     LOS ÍNDICES DE COLUMNA EN ORACLE COMIENZAN DESDE 1 Y NO DESDE 0. 
-                */
+                
                 consulta.setString(j+1, valoresAmostrar[j]);
                 System.out.println("setString hecho "+valoresAmostrar[j]);
                 System.out.println(consulta.toString());
             }
+            */
             System.out.println("Ejecutando...");
-            ResultSet rs = consulta.executeQuery();
+            ResultSet rs;
+            System.out.println("RS CREADO...");
+            consulta.executeQuery(query);
+            System.out.println("Ejecutando...");
+            rs = consulta.getResultSet();
             System.out.println("Ejecutado. Rs extraído");
             ResultSetMetaData rdata = rs.getMetaData();
             
@@ -382,6 +390,7 @@ public class Database_Connection {
             System.out.println(e.getMessage());
             throw e;
         }
+        System.out.println("Creando modelo de tabla...");
         DefaultTableModel model = new DefaultTableModel(filas, columnNombres)
         {
             @Override

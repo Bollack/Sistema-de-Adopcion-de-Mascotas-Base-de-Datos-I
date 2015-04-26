@@ -164,7 +164,7 @@ public class Model {
         }        
     }
     
-    public JTable getModelFromResultSet(String comando) throws SQLException
+    public DefaultTableModel getModelFromResultSet(String comando) throws SQLException
     {
         try
         {
@@ -174,9 +174,11 @@ public class Model {
                     this.conexion.setConnection(3);
                     String[] datosAextraer = {"id","nombre","tipo","raza", "sexo","tamano"};
                     DefaultTableModel modelo = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
-                    JTable tabla = new JTable(modelo);
+                    System.out.println(modelo.getColumnName(0));
+                    //JTable tabla = new JTable(modelo);
+                    // System.out.println(tabla.getColumnName(0));
                     this.conexion.endConnection();
-                    return tabla;
+                    return modelo;
                 case "Personas administrador":
                 case "Mascotas administrador":
                 case "Adopciones administrador":                   

@@ -8,11 +8,13 @@ import GUI_View.Log_In;
 import GUI_View.Registro_Usuario;
 import Model.Model;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import javax.swing.JFrame;
@@ -29,6 +31,7 @@ import org.apache.commons.validator.*;
 import java.lang.ClassNotFoundException;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 
 /**
  *
@@ -80,24 +83,29 @@ public class Controller implements ActionListener
 	constraint.gridx=0;
         constraint.gridy=0;
 	constraint.weightx=0.5;
-                
+            */    
         vista.Foto.setLayout(new GridBagLayout());
-        */
-        vista.Foto.setMaximumSize(new Dimension(225,156));
+        
+        //vista.Foto.setMaximumSize(new Dimension(225,156));
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/GUI_View/Images/logo.jpg"));
-        /*
-        Image img = icon.getImage() ;  
-        Image newimg = img.getScaledInstance( 225, 156,  java.awt.Image.SCALE_SMOOTH ) ;  
-        icon = new ImageIcon( newimg );
-        */   
-        vista.Foto.add(new JLabel(new ImageIcon(this.getClass().getResource("/GUI_View/Images/logo.jpg"))));
-        vista.Foto.
+        Image img = icon.getImage();
+        BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        Graphics g = bi.createGraphics();
+        g.drawImage(img, 0, 0, 197, 143, null, null); //218,156
+        icon = new ImageIcon(bi);
+        //vista.Foto.resize(218, 156);
+        vista.Foto.setText("");
+        vista.Foto.setIcon(icon);
+        //vista.Foto.resize(218, 156);
+
+        
         try
         {
-            vista.tablaMascotas = this.modelo.getModelFromResultSet("Mascota visitante");
+            vista.tablaMascotas.setModel(this.modelo.getModelFromResultSet("Mascota visitante")); 
+            System.out.println(vista.tablaMascotas.getColumnName(0));
             //vista.tablaMascotas.setModel((TableModel) this.modelo.getModelFromResultSet("Mascota visitante"));
-            vista.jScrollPane2.removeAll();
-            vista.jScrollPane2.add(vista.tablaMascotas);
+            //vista.jScrollPane2.removeAll();
+            //vista.jScrollPane2.add(vista.tablaMascotas);
         }catch(Exception e)
         {
             System.out.println(e.getMessage());
