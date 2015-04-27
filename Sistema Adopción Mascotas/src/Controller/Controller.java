@@ -184,7 +184,7 @@ public class Controller implements ActionListener
     {
         Main_Visitante ventana =(Main_Visitante) this.gui;
         int id =(int) ventana.tablaMascotas.getValueAt(ventana.tablaMascotas.getSelectedRow(),0);
-        //ventana.
+        Image
     }
        
         
@@ -225,7 +225,6 @@ public class Controller implements ActionListener
         sign_up.registerButton.addActionListener((ActionListener) this);
         sign_up.registerButton.setActionCommand("Registrarse-Ventana Registro");
         
-                
         this.gui.show();
         this.gui.enable();
         sign_up.setResizable(false);
@@ -257,11 +256,12 @@ public class Controller implements ActionListener
         }
     }
     
-    private void Registrarse()
+    private void Registrarse(String[] datos)
     {
-       String[] datos = this.get_data_Sign_up((Registro_Usuario) this.gui);
+       
        try
        {
+           this.modelo.
            
        }catch (Exception e)
        {
@@ -307,6 +307,8 @@ public class Controller implements ActionListener
         
         String username =ventana.userTextField.getText();
         String pass = ventana.passwordTextField.getText();
+        System.out.println(ventana.passwordTextField.getText());
+        System.out.println(ventana.asAdmin);
         try
         {
             switch (ventana.asAdmin)
@@ -318,41 +320,38 @@ public class Controller implements ActionListener
                     if (!usuarioValidez){
                         ventana.wrongDataMessageBox.show();
                         ventana.wrongDataMessageBox.setResizable(false);
-                        ventana.pack();
-                        ventana.toFront();
+
                         
                         ventana.tituloWrongDataMessageBox.setForeground(new java.awt.Color(204, 0, 0)); //Rojo
 
                         ventana.tituloWrongDataMessageBox.setText("Usuario no Existente");
                         ventana.label1MessageBox.setText("El usuario insertado no existe.");
                         ventana.label2MessageBox.setText("Por favor, inserte un nombre de usuario válido.");
+                        ventana.wrongDataMessageBox.pack();
+                        ventana.wrongDataMessageBox.toFront();
                         break;
                     }
                     if (!passValidez)
                     {
                         ventana.wrongDataMessageBox.show();
                         ventana.wrongDataMessageBox.setResizable(false);
-                        ventana.pack();
-                        ventana.toFront();
+
                         
                         ventana.tituloWrongDataMessageBox.setForeground(new java.awt.Color(204, 0, 0)); //Rojo
                         ventana.tituloWrongDataMessageBox.setText("Datos ingesados erróneos");
                         ventana.label1MessageBox.setText("La contraseña ingresada no es correcta.");
                         ventana.label2MessageBox.setText("Por favor, ingrese una contraseña válida.");
+                        ventana.wrongDataMessageBox.pack();
+                        ventana.wrongDataMessageBox.toFront();
                         break;
                     }
                     if (usuarioValidez & passValidez)
                     {
-                        ventana.wrongDataMessageBox.show();
-                        
-                        ventana.pack();
+                        System.out.println(pass);
+                        ventana.correctDataMessageBox.show();
+                        ventana.correctDataMessageBox.setResizable(false);
+                        //ventana.pack();
                         ventana.toFront();
-                        
-                        ventana.tituloWrongDataMessageBox.setForeground(new java.awt.Color(0, 204, 0)); //Verde
-                        
-                        ventana.tituloWrongDataMessageBox.setText("Datos insertados correctos.");
-                        ventana.label1MessageBox.setText("Log In exitoso.");
-                        ventana.label2MessageBox.setText("Presione Aceptar para ingresar al sistema"); 
                         
                         //Comienza el proceso lógico de Log_In
                         
@@ -362,35 +361,28 @@ public class Controller implements ActionListener
                     }
                     break;
                 case 1: //Validación como Admin
-                    if (pass!="Admin12")
+                    if (this.modelo.testAdmin(pass))
+                    {
+                        System.out.println(pass);
+                        ventana.correctDataMessageBox.show();
+                        ventana.correctDataMessageBox.setResizable(false);
+                        //Comienza el proceso lógico de Log_In
+                        
+                        Log_In_Admin();
+                    }else
                     {
                         System.out.println(pass);
                         ventana.wrongDataMessageBox.show();
                         ventana.wrongDataMessageBox.setResizable(false);
-                        ventana.pack();
-                        ventana.toFront();
-                        
-                        ventana.tituloWrongDataMessageBox.setForeground(new java.awt.Color(204, 0, 0)); //Rojo
-                        
+
+                
                         ventana.tituloWrongDataMessageBox.setText("Datos ingesados erróneos");
                         ventana.label1MessageBox.setText("La contraseña ingresada no es correcta.");
-                        ventana.label2MessageBox.setText("Por favor, ingrese una contraseña válida.");
-                    }else
-                    {
-                        ventana.wrongDataMessageBox.show();
-                        ventana.wrongDataMessageBox.setResizable(false);
-                        ventana.pack();
-                        ventana.toFront();
-                        
-                        ventana.tituloWrongDataMessageBox.setForeground(new java.awt.Color(0, 204, 0)); //Verde
-                        
-                        ventana.tituloWrongDataMessageBox.setText("Datos insertados correctos.");
-                        ventana.label1MessageBox.setText("Log In exitoso.");
-                        ventana.label2MessageBox.setText("Presione Aceptar para ingresar al sistema"); 
-                        
-                        //Comienza el proceso lógico de Log_In
-                        
-                        Log_In_Admin();
+                        ventana.label2MessageBox.setText("Por favor, ingrese una contraseña válida.");        
+                        ventana.tituloWrongDataMessageBox.setForeground(new java.awt.Color(204, 0, 0)); //Rojo
+                        ventana.wrongDataMessageBox.pack();
+                        ventana.wrongDataMessageBox.toFront();
+
                     }
                     break;
             }

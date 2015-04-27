@@ -5,10 +5,12 @@
  */
 package Model;
 
+import Controller.InputValueNotAcceptableException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -64,11 +66,8 @@ public class Model {
                 Obtiene el id del usuario recientemente creado para asociar la persona
                 a crear con dicha tupla en la tabla usuarios. 
             */
-            String usuarioTofind = "username="+username; 
-            Object[][] idUsuarioCreado = conexion.select("Usuario", "id", usuarioTofind);
-            int idUser = (int) idUsuarioCreado[0][0]; //Extrae del arreglo el id del usuario insertado 
             String[] camposAllenar1 = {"nombre", "apellido", "provincia","telefono","email","usuario", "genero"};
-            Object[] valores1={nombre, apellido, provincia, telefono, correo,idUser,genero};
+            Object[] valores1={nombre, apellido, provincia, telefono, correo,username,genero};
             this.conexion.insertToTable("Persona", camposAllenar1, valores1);
             //Finaliza la conexión
             this.conexion.endConnection(); 
@@ -82,11 +81,13 @@ public class Model {
         }      
     }
     
-    /*public ResultSet enviarConsulta(){
+
+    public void insertUsuario_Persona(String nombre, String apellido, String provincia, String genero, String telefono,
+                                    String correo, String username, String password) throws SQLException, ClassNotFoundException, FileNotFoundException
+    {
         
     }
     
-    */
     public boolean checkUserExists(String username) throws SQLException
     {
         /*
@@ -106,7 +107,6 @@ public class Model {
         }
     }      
  
-    
     public boolean checkPassword(String password, String username) throws SQLException{
              /*
                 Hace uso de la función  en la base de datos 
@@ -125,6 +125,7 @@ public class Model {
             throw e;
         }
     }
+    
     public boolean insertMascota(String username, String password, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
                                 String espacio, String tamano, String training, String sexo, String energia, String veterinario,
                                 String medicamentos, String Tratamientos, String situacion, String notas, File fotografia_antes,
@@ -172,7 +173,7 @@ public class Model {
             {   
                 case "Mascota visitante":
                     this.conexion.setConnection(3);
-                    String[] datosAextraer = {"id","nombre","tipo","raza", "sexo","tamano"};
+                    String[] datosAextraer = {"id","tipo","raza", "sexo","tamano","lugar", "severidad, telefono"};
                     DefaultTableModel modelo = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
                     System.out.println(modelo.getColumnName(0));
                     //JTable tabla = new JTable(modelo);
@@ -190,5 +191,46 @@ public class Model {
             throw e;
         }
         return null;
+    }
+    
+    public ImageIcon getImageFromTable(String orden)  throws InputValueNotAcceptableException
+    {
+        switch (orden)
+        {
+            case "Extraer imagen mascota actual":
+                
+            case "Extraer imagen adoptante-mascota":
+                
+            case "Extraer imagen mascota amtes":
+        }
+    }
+    
+    /*
+    Método que devuelve un arreglo de imágenes de una adopción
+    y las cuales serán msotradas cuando el usuario desee ver fotos que sube
+    el adoptante sobre una adopción con una mascota. 
+    */
+    
+    
+    public ImageIcon[] getImagesfromAdopcion(id Adopcion)
+    {
+        return 
+        
+    }
+    
+    /*
+    Función que prueba si la contraseña insertada es la correcta para poder
+    conectarse a Admin
+    */
+    public boolean testAdmin(String password)
+    {
+        try
+        {
+            this.conexion.tryConnectionAsAdmin(password);
+            return true;
+        }catch(SQLException e)
+        {
+            return false;
+        }
     }
 }

@@ -34,6 +34,12 @@ public class Log_In extends javax.swing.JFrame {
         label1MessageBox = new javax.swing.JLabel();
         aceptarWrongDataMessageBox = new javax.swing.JButton();
         label2MessageBox = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        correctDataMessageBox = new javax.swing.JDialog();
+        tituloWrongDataMessageBox1 = new javax.swing.JLabel();
+        label1MessageBox1 = new javax.swing.JLabel();
+        label2MessageBox1 = new javax.swing.JLabel();
+        aceptarCorrectDataMessageBox = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         userTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JPasswordField();
@@ -43,7 +49,6 @@ public class Log_In extends javax.swing.JFrame {
         logAsComboBox = new javax.swing.JComboBox();
         LogInButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         wrongDataMessageBox.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -98,6 +103,55 @@ public class Log_In extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        correctDataMessageBox.setTitle("Log In exitoso");
+
+        tituloWrongDataMessageBox1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        tituloWrongDataMessageBox1.setForeground(new java.awt.Color(0, 204, 0));
+        tituloWrongDataMessageBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloWrongDataMessageBox1.setText("Ingreso al sistema exitoso");
+
+        label1MessageBox1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label1MessageBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label1MessageBox1.setText("Los datos ingresados son correctos.");
+
+        label2MessageBox1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        label2MessageBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label2MessageBox1.setText("Por favor, espere mientras se accede al sistema.");
+
+        aceptarCorrectDataMessageBox.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        aceptarCorrectDataMessageBox.setText("Aceptar");
+        aceptarCorrectDataMessageBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarCorrectDataMessageBoxActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout correctDataMessageBoxLayout = new javax.swing.GroupLayout(correctDataMessageBox.getContentPane());
+        correctDataMessageBox.getContentPane().setLayout(correctDataMessageBoxLayout);
+        correctDataMessageBoxLayout.setHorizontalGroup(
+            correctDataMessageBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tituloWrongDataMessageBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label1MessageBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(label2MessageBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(correctDataMessageBoxLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(aceptarCorrectDataMessageBox)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        correctDataMessageBoxLayout.setVerticalGroup(
+            correctDataMessageBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(correctDataMessageBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloWrongDataMessageBox1)
+                .addGap(12, 12, 12)
+                .addComponent(label1MessageBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label2MessageBox1)
+                .addGap(18, 18, 18)
+                .addComponent(aceptarCorrectDataMessageBox)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -130,37 +184,37 @@ public class Log_In extends javax.swing.JFrame {
         exitButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         exitButton.setText("Atrás");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/huella_icon.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(LogInButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(exitButton))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(logAsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(jLabel5)))))
-                .addGap(42, 42, 42))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel4))
+                                        .addGap(36, 36, 36)
+                                        .addComponent(logAsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(LogInButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,21 +224,18 @@ public class Log_In extends javax.swing.JFrame {
                     .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(logAsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LogInButton)
-                    .addComponent(exitButton))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(logAsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(LogInButton)
+                .addGap(18, 18, 18)
+                .addComponent(exitButton)
+                .addGap(17, 17, 17))
         );
 
         logAsComboBox.removeAllItems();
@@ -197,11 +248,11 @@ public class Log_In extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,8 +260,8 @@ public class Log_In extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -224,6 +275,11 @@ public class Log_In extends javax.swing.JFrame {
         // TODO add your handling code here:
         wrongDataMessageBox.show(false);
     }//GEN-LAST:event_aceptarWrongDataMessageBoxActionPerformed
+
+    private void aceptarCorrectDataMessageBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarCorrectDataMessageBoxActionPerformed
+        // TODO add your handling code here:
+        correctDataMessageBox.show(false);
+    }//GEN-LAST:event_aceptarCorrectDataMessageBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,19 +318,24 @@ public class Log_In extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton LogInButton;
+    public javax.swing.JButton aceptarCorrectDataMessageBox;
     public javax.swing.JButton aceptarWrongDataMessageBox;
+    private javax.swing.ButtonGroup buttonGroup1;
+    public javax.swing.JDialog correctDataMessageBox;
     public javax.swing.JButton exitButton;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JLabel label1MessageBox;
+    public javax.swing.JLabel label1MessageBox1;
     public javax.swing.JLabel label2MessageBox;
+    public javax.swing.JLabel label2MessageBox1;
     public javax.swing.JComboBox logAsComboBox;
     public javax.swing.JTextField passwordTextField;
     public javax.swing.JLabel tituloWrongDataMessageBox;
+    public javax.swing.JLabel tituloWrongDataMessageBox1;
     public javax.swing.JTextField userTextField;
     public javax.swing.JDialog wrongDataMessageBox;
     // End of variables declaration//GEN-END:variables

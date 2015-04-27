@@ -67,10 +67,37 @@ public class Database_Connection {
         }         
     }
     
-    public void setConnection(int tipoConexion)throws SQLException
+    
+    /*
+    Método que se encarga de probar la conexión a la DB ingresando como
+    admin e insertando la password ingresada como parámetro. Esto
+    con el fin de probar en el programa la validez de la contraseña ingresada por el
+    usuario cuando quiere ingresar como Administrador. Tira excepción si la contraseña no
+    es correcta.
+    */
+    public void tryConnectionAsAdmin(String password) throws SQLException
+    {
+        try
+        {
+            this.conn = DriverManager.getConnection(direccion,"Administrador", password);
+            this.endConnection();
+        }catch(SQLException e)
+        {
+            throw e;
+        }
+    }
+    
+    /*
+    Método que se encarga de establecer una conexión de algún tipo en base al parámetro ingresado, 
+    siendo este un entero que indica el tipo de conexión (Como cuál usuario) a establecer.
+    No se cierra la conexión. 
+    */
+    
+    public void setConnection(int tipoConexion)throws SQLException, ClassNotFoundException
     {
         try 
         {
+               Class.forName("oracle.jdbc.OracleDriver");
             switch(tipoConexion){
                 case 0:
                     this.conn = DriverManager.getConnection(direccion,"system","Lordaeron1");
@@ -92,13 +119,12 @@ public class Database_Connection {
             }
     }
     
-    
-    
+    //No es necesaria descripción.   
     public Connection getConnection()
     {
         return this.conn;
     }
-    
+    //No es necesaria descripción.   
     public void endConnection() throws SQLException
     {
         try {
@@ -108,14 +134,46 @@ public class Database_Connection {
         }
     }
     
-    public boolean callProcedure(String comando) throws SQLException
+    /*
+        Método que 
+    */
+    public boolean callProcedure(String comando,Object[] parametros) throws SQLException
     {
         try
         {
             switch(comando)
             {
+                case "Insertar usuario-persona":
+                    String llamado = "{CALL INSERT_USER(?,?)";
+                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                    storedPro.setString(1, (String) parametros[0]);
+                    storedPro.setString(2, (String) parametros[1]);
+                    try{
+                        storedPro.execute();
+                        llamado = "{CALL INSERT_USER(?,?,?,?,?,?,?,?)";
+                        storedPro = this.conn.prepareCall(llamado);
+                        storedPro.setString(1, (String) parametros[0]);
+                        storedPro.setString(2, (String) parametros[1]);
+                        storedPro.setString(3, (String) parametros[2]);
+                        storedPro.setString(4, (String) parametros[3]);
+                        storedPro.setString(5, (String) parametros[4]);
+                        storedPro.setString(6, (String) parametros[5]);
+                        storedPro.setString(7, (String) parametros[6]);
+                        storedPro.setString(8, (String) parametros[7]);
+                        storedPro.executeQuery();
+                        return true;
+                    }catch(SQLException e){
+                        throw e;
+                    }
+
+                        llamado = "{CALL INSERT_USER(?,?,?,?,?,?,?,?)";
+                    storedPro = this.conn.prepareCall(llamado);
+                case "Modificar usuario-persona":
+                    String llamado = "Ñ"
+                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                    
                 case "Insertar Mascota":
-                    String llamado = "{call nombre(?)}";
+                    String llamado = "{call INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     /*
                     Genera una conexión con el atributo conexion y prepara
                     la llamada con el string definido anteriormente, el cual
@@ -125,13 +183,13 @@ public class Database_Connection {
                     CallableStatement storedPro = this.conn.prepareCall(llamado);
                     break;
                 case "Registrar Mascota":
-                    
+                    CallableStatement storedPro = this.conn.prepareCall(llamado);
                 case "Generar Adopcion":
-                    
+                    CallableStatement storedPro = this.conn.prepareCall(llamado);
                 case "Generar Formulario":
-                    
+                    CallableStatement storedPro = this.conn.prepareCall(llamado);
                 case "Devolver Mascota":                   
-                    
+                    CallableStatement storedPro = this.conn.prepareCall(llamado);
                     
             }
             return true;
@@ -309,7 +367,7 @@ public class Database_Connection {
         try
         {
             System.out.println(query);
-            Statement consulta = this.conn.createStatement();
+            PreparedStatement consulta = this.conn.prepareStatement(query);
             System.out.println("PS creado");
             /*
             for (int j=0; j<=valoresAmostrar.length; j++)
@@ -499,6 +557,7 @@ public class Database_Connection {
         try
         {
             FileInputStream   fis = new FileInputStream(a);
+            a.le
             return fis;
         }catch(FileNotFoundException e)
         {
@@ -507,7 +566,8 @@ public class Database_Connection {
         /*
         Para cargar la imagen en la DB se inserta el objeto devuelto por esta función de la siguiente manera:
         PreparedStatement.setBinaryStream(3, fis, (int) image.length());
-        donde 3 es la posición como valor arbitrario en un script (Dígase, un '?') e image.lenght() es el largo de bits del archivo.
+        
+        donde 3 es la posición como valor arbitrario en un script (Dígase, un '?') e image.length() es el largo de bits del archivo.
         */
     }
     
