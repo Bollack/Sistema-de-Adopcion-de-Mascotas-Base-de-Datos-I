@@ -184,7 +184,7 @@ public class Controller implements ActionListener
     {
         Main_Visitante ventana =(Main_Visitante) this.gui;
         int id =(int) ventana.tablaMascotas.getValueAt(ventana.tablaMascotas.getSelectedRow(),0);
-        Image
+        ImageIcon imagen= this.modelo.getImageFromTable(null)
     }
        
         
