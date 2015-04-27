@@ -27,27 +27,35 @@ BEGIN
 END;
 
 --Compilado
-CREATE OR REPLACE PROCEDURE insert_mascota(pTipo IN VARCHAR2, pRaza IN VARCHAR2,
-pTamano IN VARCHAR2, pColor1 IN VARCHAR2,pContacto IN NUMBER,
-pFacilidad_entrenamiento IN VARCHAR2, pFotografia_antes IN BLOB, pEstado IN VARCHAR2,
-pSexo in VARCHAR2) AS
+CREATE OR REPLACE PROCEDURE insert_mascota(pUsuario in VARCHAR, pNombre IN VARCHAR2, pTipo IN VARCHAR2,
+pRaza IN VARCHAR2, pColor1 IN VARCHAR2, pColor2 IN VARCHAR2, pEspacioRequerido IN VARCHAR2,
+pTamano IN VARCHAR2, pFacilidadEntrenamiento IN VARCHAR2, pNivelEnergia IN VARCHAR2,
+pSexo IN VARCHAR2, pVeterinario IN VARCHAR2, pMedicamentos IN VARCHAR2, pEnfermedades IN VARCHAR2,
+pNotas IN VARCHAR2, pTratamientos IN VARCHAR2, pSituacion IN VARCHAR2,
+pSeveridad IN VARCHAR2, pFotoAntes IN BLOB, pFotoDespues IN BLOB, pContacto IN NUMBER) AS
 BEGIN
-  INSERT INTO mascota (Tipo, Raza, Tamano, Color1, Contacto, Facilidad_entrenamiento,
-  Fotografia_antes, Estado, sexo)
-  VALUES (pTipo, pRaza, pTamano, pColor1, pContacto, pFacilidad_entrenamiento, 
-  pFotografia_antes, pEstado, pSexo);
+  INSERT INTO mascota (tipo, raza, nombre, tamano, color1, color2, contacto, nivel_energia,
+  espacio_requerido, enfermedades, veterinario, medicamentos, fotografia_antes, fotografia_despues,
+  notas, tratamientos)
+  VALUES (pTipo, pRaza, pNombre, pTamano, pColor1, pColor2, pContacto, pNivelEnergia,
+  pEspacioRequerido, pEnfermedades, pVeterinario, pMedicamentos, pFotoAntes, pFotoDespues,
+  pNotas, pTratamientos);
 END;
 
 --Compilado
-CREATE OR REPLACE PROCEDURE update_mascota(pId IN NUMBER, pTipo IN VARCHAR2, pRaza IN VARCHAR2,
-pTamano IN VARCHAR2, pColor1 IN VARCHAR2,pContacto IN NUMBER,
-pFacilidad_entrenamiento IN VARCHAR2, pFotografia_antes IN BLOB, pEstado IN VARCHAR2,
-pSexo in VARCHAR2) AS
+CREATE OR REPLACE PROCEDURE update_mascota(pId IN NUMBER, pUsuario in VARCHAR, pNombre IN VARCHAR2, pTipo IN VARCHAR2,
+pRaza IN VARCHAR2, pColor1 IN VARCHAR2, pColor2 IN VARCHAR2, pEspacioRequerido IN VARCHAR2,
+pTamano IN VARCHAR2, pFacilidadEntrenamiento IN VARCHAR2, pNivelEnergia IN VARCHAR2,
+pSexo IN VARCHAR2, pVeterinario IN VARCHAR2, pMedicamentos IN VARCHAR2, pEnfermedades IN VARCHAR2,
+pNotas IN VARCHAR2, pTratamientos IN VARCHAR2, pSituacion IN VARCHAR2,
+pSeveridad IN VARCHAR2, pFotoAntes IN BLOB, pFotoDespues IN BLOB, pContacto IN NUMBER) AS
 BEGIN
   UPDATE mascota
-  SET tipo = pTipo, raza = pRaza, tamano = pTamano, color1 = pColor1,
-  contacto = pContacto, facilidad_entrenamiento = pFacilidad_entrenamiento,
-  fotografia_antes = pFotografia_antes, estado = pEstado, sexo = pSexo
+  SET tipo = pTipo, raza = pRaza, nombre = pNombre, tamano = pTamano, color1 = pColor1,
+  color2 = pColor2, contacto = pContacto, nivel_energia = pNivelEnergia, espacio_requerido = pEspacioRequerido,
+  facilidad_entrenamiento = pFacilidadEntrenamiento, enfermedades = pEnfermedades,
+  veterinario = pVeterinario, medicamentos = pMedicamentos, fotografia_antes = pFotoAntes,
+  fotografia_despues = pFotoDespues, notas = pNotas, tratamientos = pTratamientos
   WHERE id = pId;
 END;
 
@@ -108,6 +116,14 @@ BEGIN
 END;
 
 --Compilado
+CREATE OR REPLACE PROCEDURE update_foto_antes_mascota(pId IN NUMBER, pFoto_antes IN BLOB) AS
+BEGIN
+  UPDATE mascota
+  SET fotografia_antes = pFoto_antes
+  WHERE id = pId;
+END;
+
+--Compilado
 CREATE OR REPLACE PROCEDURE update_foto_despues_mascota(pId IN NUMBER, pFoto_despues IN BLOB) AS
 BEGIN
   UPDATE mascota
@@ -128,5 +144,13 @@ CREATE OR REPLACE PROCEDURE update_tratamientos_mascota(pId IN NUMBER, pTratamie
 BEGIN
   UPDATE mascota
   SET tratamientos = pTratamientos
+  WHERE id = pId;
+END;
+
+
+CREATE OR REPLACE PROCEDURE update_contacto_mascota(pId IN NUMBER, pContacto IN NUMBER) AS
+BEGIN
+  UPDATE mascota
+  SET contacto = pContacto
   WHERE id = pId;
 END;
