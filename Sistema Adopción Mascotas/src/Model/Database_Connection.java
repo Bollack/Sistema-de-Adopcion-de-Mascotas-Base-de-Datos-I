@@ -144,14 +144,18 @@ public class Database_Connection {
             switch(comando)
             {
                 case "Insertar usuario-persona":
+                    System.out.println("Comenzando proceso de base de datos. Insertar usuario-persona");
                     String llamado = "{CALL INSERT_USER(?,?)";
                     CallableStatement storedPro = this.conn.prepareCall(llamado);
+                    System.out.println("storedPro creado");
                     storedPro.setString(1, (String) parametros[0]);
                     storedPro.setString(2, (String) parametros[1]);
                     try{
                         storedPro.execute();
+                        System.out.println("storedPro ejecutado - Usuario creado");
                         llamado = "{CALL INSERT_USER(?,?,?,?,?,?,?,?)";
                         storedPro = this.conn.prepareCall(llamado);
+                        System.out.println("storedPro creado");
                         storedPro.setString(1, (String) parametros[0]);
                         storedPro.setString(2, (String) parametros[1]);
                         storedPro.setString(3, (String) parametros[2]);
@@ -161,15 +165,13 @@ public class Database_Connection {
                         storedPro.setString(7, (String) parametros[6]);
                         storedPro.setString(8, (String) parametros[7]);
                         storedPro.executeQuery();
+                        System.out.println("Persona y usuario insertados");
                         return true;
                     }catch(SQLException e){
                         throw e;
                     }
-
-                        llamado = "{CALL INSERT_USER(?,?,?,?,?,?,?,?)";
-                    storedPro = this.conn.prepareCall(llamado);
                 case "Modificar usuario-persona":
-                    String llamado = "Ñ"
+                    String llamado = "Ñ";
                     CallableStatement storedPro = this.conn.prepareCall(llamado);
                     
                 case "Insertar Mascota":
@@ -241,26 +243,27 @@ public class Database_Connection {
                     predeterminado en el string llamado y se asegura que sea un
                     booleano.
                     */
-                    stmt.registerOutParameter(1, java.sql.Types.BOOLEAN);
+                    stmt.registerOutParameter(1, java.sql.Types.NUMERIC);
                     
                     stmt.execute();
                     //Devuelve dicho parámetro.
-                    return stmt.getBoolean(1);
+                    return stmt.getInt(1);
                 case "Check if username exists":
                     llamado = "{? = call check_existing_username(?)}";
                     /*
                     Procedimiento similar al case pasado. 
                     */
                     stmt = this.conn.prepareCall(llamado);
-                     
+                     System.out.println("stmt creado");
                     String user = (String) parametros[0];
+                    System.out.println("Usuario a verificar existencia: "+user);
                     stmt.setString(2, user);
-                    
-                    stmt.registerOutParameter(1, java.sql.Types.BOOLEAN);
-                    
+                    System.out.println("stmt.setString(2,user) hecho");
+                    stmt.registerOutParameter(1, java.sql.Types.NUMERIC);
+                    System.out.println("stmt.registerOutParameter(1, java.sql.Types.numeric); hecho");
                     stmt.execute();
-                    
-                    return stmt.getBoolean(1);
+                    System.out.println("Ejecutado");
+                    return stmt.getInt(1);
                 case "Get ID from Username - Persona":
                     
                 case "Get name from ID - Persona":
@@ -270,15 +273,16 @@ public class Database_Connection {
                 case "Get Foto antes from ID - Mascota":
                 case "":
                     
-                default :
-                    throw new NullPointerException();
                     
             }
         }catch (SQLException e)
         {
+            System.out.println(e.getMessage());
+            System.out.println(e.getErrorCode());
+            System.out.println(e.getSQLState());
             throw e;
         }
-        
+        throw new NullPointerException();
     }
 //___________________________________________________________________________________ Soy una barra separadora :)
 /* METODO PARA REALIZAR UNA CONSULTA A LA BASE DE DATOS

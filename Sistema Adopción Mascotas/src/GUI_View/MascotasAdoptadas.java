@@ -27,6 +27,14 @@ public class MascotasAdoptadas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        titleAdopciones = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaAdopciones = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        backgroundImage = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -36,6 +44,49 @@ public class MascotasAdoptadas extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        titleAdopciones.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
+        titleAdopciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleAdopciones.setText("Adopciones realizadas");
+        getContentPane().add(titleAdopciones);
+        titleAdopciones.setBounds(0, 4, 720, 30);
+
+        tablaAdopciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaAdopciones);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 160, 452, 260);
+
+        jButton1.setText("jButton1");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(530, 290, 73, 23);
+
+        jButton2.setText("jButton2");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(470, 190, 73, 23);
+
+        jButton3.setText("Ver Persona");
+        getContentPane().add(jButton3);
+        jButton3.setBounds(570, 130, 91, 23);
+
+        jButton4.setText("jButton4");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(570, 200, 73, 23);
+
+        backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/adopcion.jpg"))); // NOI18N
+        getContentPane().add(backgroundImage);
+        backgroundImage.setBounds(0, 0, 720, 488);
 
         jMenu1.setText("Archivo");
 
@@ -67,17 +118,6 @@ public class MascotasAdoptadas extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 925, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 455, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -123,11 +163,19 @@ public class MascotasAdoptadas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ExitMenuItem;
+    private javax.swing.JLabel backgroundImage;
+    public javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton3;
+    public javax.swing.JButton jButton4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     public javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable tablaAdopciones;
+    public javax.swing.JLabel titleAdopciones;
     // End of variables declaration//GEN-END:variables
 }

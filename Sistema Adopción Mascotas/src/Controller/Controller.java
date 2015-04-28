@@ -15,6 +15,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import javax.swing.JFrame;
@@ -29,6 +30,8 @@ import org.apache.commons.lang3.*;
 import org.apache.commons.mail.*;
 import org.apache.commons.validator.*;
 import java.lang.ClassNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -68,6 +71,7 @@ public class Controller implements ActionListener
         this.gui.show();
         this.gui.setResizable(false);
         this.gui.pack();
+        
         vista.exitButton.addActionListener((ActionListener) this);
         vista.RegisterButton.addActionListener((ActionListener) this);
         vista.RegisterButton.setActionCommand("Registrarse");
@@ -76,26 +80,14 @@ public class Controller implements ActionListener
         vista.LogInButton.setActionCommand("Log In");
         /*
 
-        
-        GridBagConstraints constraint = new GridBagConstraints();
-        constraint.fill = GridBagConstraints.HORIZONTAL;
-        constraint.gridwidth=1;
-	constraint.gridx=0;
-        constraint.gridy=0;
-	constraint.weightx=0.5;
             */    
         vista.Foto.setLayout(new GridBagLayout());
         
         //vista.Foto.setMaximumSize(new Dimension(225,156));
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/GUI_View/Images/logo.jpg"));
-        Image img = icon.getImage();
-        BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-        Graphics g = bi.createGraphics();
-        g.drawImage(img, 0, 0, 197, 143, null, null); //218,156
-        icon = new ImageIcon(bi);
-        //vista.Foto.resize(218, 156);
+         //218,156//g.drawImage(img, x, y, 197, 143, null, null); //218,156
         vista.Foto.setText("");
-        vista.Foto.setIcon(icon);
+        vista.Foto.setIcon(this.displayImageInLabel(icon, 197, 143, 0, 0));
         //vista.Foto.resize(218, 156);
 
         
@@ -127,7 +119,11 @@ public class Controller implements ActionListener
            this.log_In_Window();
        }else if(comando=="Log In-Ventana Logeo")
        {
-           this.validate_data_Log_in((Log_In) this.gui);
+           try {
+               this.validate_data_Log_in((Log_In) this.gui);
+           } catch (ClassNotFoundException ex) {
+               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+           }
            
        }else if(comando=="Cambio de Vista-Ventana Logeo")
        {
@@ -157,8 +153,7 @@ public class Controller implements ActionListener
            this.Registrase_Window();
        }else if(comando=="Registrarse-Ventana Registro")
        {
-           String[] datos = this.get_data_Sign_up((Registro_Usuario) this.gui);
-           
+           this.Registrarse();
            
        }else if(comando=="Atrás-Ventana Registro")
        {
@@ -180,13 +175,24 @@ public class Controller implements ActionListener
        }
     }
     
-    private void valueChanged(ListSelectionEvent event)
+    private void valueChanged(ListSelectionEvent event) throws InputValueNotAcceptableException
     {
         Main_Visitante ventana =(Main_Visitante) this.gui;
         int id =(int) ventana.tablaMascotas.getValueAt(ventana.tablaMascotas.getSelectedRow(),0);
-        ImageIcon imagen= this.modelo.getImageFromTable(null)
+        ImageIcon imagen= this.modelo.getImageFromTable(null);
     }
        
+   
+    private ImageIcon displayImageInLabel(ImageIcon icon, int width, int height, int x, int y)
+    {
+        
+        Image img = icon.getImage();
+        BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        Graphics g = bi.createGraphics();
+        g.drawImage(img, x, y, width, y, null, null);
+        icon = new ImageIcon(bi);
+        return icon;
+    }
         
     
     
@@ -241,6 +247,7 @@ public class Controller implements ActionListener
         }catch(Exception e)
         {
             this.errorConn(e);
+            this.Start();
         }
     }
     
@@ -256,23 +263,56 @@ public class Controller implements ActionListener
         }
     }
     
-    private void Registrarse(String[] datos)
+    
+    /*
+    Función que es ejecutada cuando el usuario inserta los valores para registrarse y la cual se encarga de llamar otras funciones
+    que extraen los datos, los validan y lanzan excepción si no son válidos. Dicha función se encarga de mostrar las ventanas de error
+    en caso de que estos errores se den y se encarga de transmitirle los datos al modelo para su inserción en la db si los datos
+    son válidos.
+    */
+    private void Registrarse()
     {
-       
        try
        {
-           this.modelo.
+           String[] data_Sign_up = this.get_data_Sign_up((Registro_Usuario) this.gui);
+           this.validate_AllFieldsRegister(data_Sign_up);
+           System.out.println("Todos los campos validados");
+           //De aquí en adelante se toma que todos los valores ingresados por el usuario son válidos nombre, apellido, telefono, correo, direccion, username, password, genero
+           this.modelo.insertUsuario_Persona(data_Sign_up[0],data_Sign_up[1],data_Sign_up[2],data_Sign_up[3],data_Sign_up[4],data_Sign_up[5],data_Sign_up[6],data_Sign_up[7]);
            
-       }catch (Exception e)
+       }catch (UnsupportedOperationException e)
        {
+           System.out.println("Excepcion UnsupportedOperationException en Registrarse()");
            
+       }catch (NullPointerException e)
+       {
+           System.out.println(e.getMessage());
+           System.out.println("Excepcion NullPointerException en Registrarse()");
+       }catch (InputValueNotAcceptableException e)
+       {
+           System.out.println("Excepcion InputValueNotAcceptableException en Registrarse()");
+       }catch (SQLException e){
+           System.out.println("Excepcion SQLException en Registrarse()");
+           this.errorConn(e);
+       }catch (ClassNotFoundException e){
+           System.out.println("Excepcion ClassNotFoundException en Registrarse()");
+           this.errorConn(e);
+       }catch(FileNotFoundException e)
+       {
+           System.out.println("Excepcion FileNotFoundException en Registrarse()");
+           this.errorConn(e);
        }
        
     }
     
+    
+    /*
+    Devuelve como un arreglo de Strings los datos insertados por el usuario en la ventana de registro de usuario. 
+    
+    */
     private String[] get_data_Sign_up(Registro_Usuario ventana) throws NullPointerException
     {
-        String correo = ventana.direccionTextField.getText();
+        String correo = ventana.emailTextField.getText();
         String telefono = ventana.telefonoTextField.getText();
         String username = ventana.usernameTextField.getText();
         String password = ventana.passwordField.getText();
@@ -282,12 +322,12 @@ public class Controller implements ActionListener
         if (ventana.femaleRadioButton.isSelected())
         {
             String genero = ventana.femaleRadioButton.getText();
-            String[] dataUsuarioRegistro ={nombre, apellido, telefono, correo, direccion, username, password, genero};
+            String[] dataUsuarioRegistro ={username, password, nombre, apellido, telefono, correo, direccion, genero};
             return dataUsuarioRegistro;
         }else if(ventana.maleRadioButton.isSelected())
         {
             String genero = ventana.maleRadioButton.getText();
-            String[] dataUsuarioRegistro ={nombre, apellido, telefono, correo, direccion, username, password, genero};
+            String[] dataUsuarioRegistro ={username, password, nombre, apellido, telefono, correo, direccion, genero};
             return dataUsuarioRegistro;
         }else{
             throw new NullPointerException();
@@ -301,7 +341,7 @@ public class Controller implements ActionListener
     y valida que estén correctos, permitiéndole al usuario ingresar a su cuenta y abre
     las ventanas correspondientes así como todo el proceso lógico necesario. 
     */
-    private void validate_data_Log_in(Log_In ventana)
+    private void validate_data_Log_in(Log_In ventana) throws ClassNotFoundException
     {
         
         
@@ -318,7 +358,6 @@ public class Controller implements ActionListener
                     boolean passValidez = this.validate_Password_to_Log_in(username, pass);
                     
                     if (!usuarioValidez){
-                        ventana.wrongDataMessageBox.show();
                         ventana.wrongDataMessageBox.setResizable(false);
 
                         
@@ -328,12 +367,14 @@ public class Controller implements ActionListener
                         ventana.label1MessageBox.setText("El usuario insertado no existe.");
                         ventana.label2MessageBox.setText("Por favor, inserte un nombre de usuario válido.");
                         ventana.wrongDataMessageBox.pack();
+                        
+                        ventana.wrongDataMessageBox.show();
                         ventana.wrongDataMessageBox.toFront();
+                        
                         break;
                     }
                     if (!passValidez)
                     {
-                        ventana.wrongDataMessageBox.show();
                         ventana.wrongDataMessageBox.setResizable(false);
 
                         
@@ -342,16 +383,32 @@ public class Controller implements ActionListener
                         ventana.label1MessageBox.setText("La contraseña ingresada no es correcta.");
                         ventana.label2MessageBox.setText("Por favor, ingrese una contraseña válida.");
                         ventana.wrongDataMessageBox.pack();
+                        ventana.wrongDataMessageBox.show();                        
                         ventana.wrongDataMessageBox.toFront();
                         break;
                     }
                     if (usuarioValidez & passValidez)
                     {
                         System.out.println(pass);
-                        ventana.correctDataMessageBox.show();
                         ventana.correctDataMessageBox.setResizable(false);
-                        //ventana.pack();
-                        ventana.toFront();
+                        ventana.correctDataMessageBox.pack();
+                        ventana.correctDataMessageBox.toFront();
+                        ventana.correctDataMessageBox.show();
+                        /*
+                        En esta sección del código genera un evento para cuando el usuario presione aceptar en el botón del
+                        JDialog, el cual es escuchado por el listener y ejecuta el segmento de código especificado abajo. 
+                        */
+                            ventana.aceptarCorrectDataMessageBox.addActionListener(new ActionListener() {
+
+                            public void actionPerformed(ActionEvent e)
+                            {
+                            //Perform function when button is pressed
+                            ventana.correctDataMessageBox.show(false);
+                            ventana.dispose();
+                            ventana.show(false);
+                            }
+                            }); 
+                        
                         
                         //Comienza el proceso lógico de Log_In
                         
@@ -364,15 +421,19 @@ public class Controller implements ActionListener
                     if (this.modelo.testAdmin(pass))
                     {
                         System.out.println(pass);
-                        ventana.correctDataMessageBox.show();
                         ventana.correctDataMessageBox.setResizable(false);
                         //Comienza el proceso lógico de Log_In
+                        ventana.validate();
+                        ventana.aceptarCorrectDataMessageBox.show(true);
+                        
+                        {
+                            
+                        }
                         
                         Log_In_Admin();
                     }else
                     {
                         System.out.println(pass);
-                        ventana.wrongDataMessageBox.show();
                         ventana.wrongDataMessageBox.setResizable(false);
 
                 
@@ -380,6 +441,8 @@ public class Controller implements ActionListener
                         ventana.label1MessageBox.setText("La contraseña ingresada no es correcta.");
                         ventana.label2MessageBox.setText("Por favor, ingrese una contraseña válida.");        
                         ventana.tituloWrongDataMessageBox.setForeground(new java.awt.Color(204, 0, 0)); //Rojo
+                        
+                        ventana.wrongDataMessageBox.show();
                         ventana.wrongDataMessageBox.pack();
                         ventana.wrongDataMessageBox.toFront();
 
@@ -388,7 +451,7 @@ public class Controller implements ActionListener
             }
 
             
-        }catch (Exception e)
+        }catch (InputMismatchException | SQLException e)
         {
             this.errorConn(e);
         }
@@ -438,7 +501,7 @@ public class Controller implements ActionListener
         }
         return validez;
     }
-    private boolean validate_Username_to_Create(String username) throws SQLException
+    private boolean validate_Username_to_Create(String username) throws SQLException, ClassNotFoundException
     {
         if (username=="" || username==null)
         {
@@ -464,7 +527,7 @@ public class Controller implements ActionListener
         return true;
     }
     
-    private boolean validate_Password_to_Log_in(String pass, String username) throws SQLException
+    private boolean validate_Password_to_Log_in(String pass, String username) throws SQLException, ClassNotFoundException
     {
         if (!this.modelo.checkUserExists(username))
         {
@@ -476,47 +539,68 @@ public class Controller implements ActionListener
         }
         return true;
     }
-    private void validate_AllFieldsRegister(String[] datos) throws UnsupportedOperationException, Exception
+    private void validate_AllFieldsRegister(String[] datos) throws UnsupportedOperationException, InputValueNotAcceptableException, UnsupportedOperationException, SQLException, ClassNotFoundException
     {
-        if (datos[0]=="" || datos[0]==null) //Valida nombre
+        if (datos[2]=="" || datos[2]==null) //Valida nombre     
         {
             throw new NullPointerException();
         }
-        if (datos[1]=="" || datos[1]==null) //Valida apellido
+        if (datos[4]=="" || datos[3]==null) //Valida apellido
         {
             throw new NullPointerException();
         }
-        if (!this.validate_Tel(datos[2])) //Valida telefono
+        if (!this.validate_Tel(datos[4])) //Valida telefono
         {
-            throw new InputValueNotAcceptableException(datos[2]);
+            System.out.println(datos[4]);
+            System.out.println("Excepcion InputValueNotAcceptable en validación de teléfono en validate_AllFieldsRegister");
+            throw new InputValueNotAcceptableException(datos[4]);
         }
-        if (!this.validate_Email(datos[3])) //Valida correo
+        if (!this.validate_Email(datos[5])) //Valida correo
         {
-            throw new InputValueNotAcceptableException(datos[3]);
+            System.out.println("Excepcion InputValueNotAcceptable en validación de correo en validate_AllFieldsRegister");
+            throw new InputValueNotAcceptableException(datos[5]);
         }
-        if (datos[3]=="" || datos[3]==null) //Valida dirección
+        if (datos[6]=="" || datos[6]==null) //Valida dirección
         {
             throw new NullPointerException();
         }
-        if (datos[4]=="" || datos[4]==null || !this.validate_Username_to_Create(datos[4])) //Valida username
+        if (datos[0]=="" || datos[0]==null || !this.validate_Username_to_Create(datos[0])) //Valida username
         {
             throw new UnsupportedOperationException();
         }
-        if (this.validate_Password(datos[5])) //Valida password
+        if (this.validate_Password(datos[1])) //Valida password
         {
             throw new NullPointerException();
         }
-        if (datos[6]=="" || datos[6]==null) //Valida genero
+        if (datos[7]=="" || datos[7]==null) //Valida genero
         {
             throw new NullPointerException();
         }        
     }
     
+    
+    /*
+    Método que devuelve una ventana predeterminada mostrando un error de conexión a la DB y mostrando datos
+    del error.
+    */
     private void errorConn(Exception e)
     {
-        Error_connection_db error = new Error_connection_db((SQLException) e);
-        error.show();
-        error.setResizable(false);
+        if (e instanceof SQLException)
+        {
+            Error_connection_db error = new Error_connection_db((SQLException) e); 
+            error.show();
+            error.setSize(new Dimension(524,225));
+            error.validate();
+            //error.pack();
+            error.setMinimumSize(new Dimension(524,225));
+        }else{
+            Error_connection_db error = new Error_connection_db(e);
+            error.show();
+            error.setSize(new Dimension(524,225));
+            error.validate();
+            error.setMinimumSize(new Dimension(524,225));
+            //error.pack();
+        }
     }
     
     

@@ -257,6 +257,17 @@ public class Main_Visitante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    /* IGNORAR CÓDIGO 
+    private void tablaMascotasActionPerformed(java.awt.event.ActionEvent evt) {
+        if tablaMascotas.
+        int index = tablaMascotas.getSelectedRow();
+        this.objeto.addClienttoWaitingList(this.objeto.getCliente(this.indiceClientes.get(index)));
+        ListClients.dispose();
+        Administracion a = new Administracion(this.objeto);
+        a.show();
+    }
+    
+    */
     /**
      * @param args the command line arguments
      */

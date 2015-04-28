@@ -35,7 +35,6 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         labelTítulo = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        veterinarioMascotaField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -80,6 +79,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         machoMascotaRadioButton = new javax.swing.JRadioButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        energiaMascotaComboBox1 = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -109,8 +109,6 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel6.setText("Color 2:");
 
-        veterinarioMascotaField1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel7.setText("*Espacio requerido:");
 
@@ -130,6 +128,11 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         imageDirMascotaField.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         imageDirMascotaField.setText("Ubicación del archivo...");
         imageDirMascotaField.setEnabled(false);
+        imageDirMascotaField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageDirMascotaFieldActionPerformed(evt);
+            }
+        });
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Preview Foto(260,178)");
@@ -325,13 +328,26 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel23.setText("Severidad:");
 
+        energiaMascotaComboBox1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        energiaMascotaComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        energiaMascotaComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                energiaMascotaComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jMenuBar1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+
         jMenu1.setText("Archivo");
+        jMenu1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItem2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jMenuItem2.setText("Cerrar Sesión");
         jMenu1.add(jMenuItem2);
 
         ExitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        ExitMenuItem.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         ExitMenuItem.setText("Salir");
         ExitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,12 +359,15 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu4.setText("Ayuda");
+        jMenu4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
+        jMenuItem5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jMenuItem5.setText("Manual de Usuario");
         jMenu4.add(jMenuItem5);
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
+        jMenuItem6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jMenuItem6.setText("Acerca de Salva +cota");
         jMenu4.add(jMenuItem6);
 
@@ -392,14 +411,12 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(machoMascotaRadioButton))
                                             .addComponent(jLabel15)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                     .addComponent(jLabel23)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(veterinarioMascotaField1))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                    .addGap(168, 168, 168)
-                                                    .addComponent(veterinarioMascotaField, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(energiaMascotaComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(veterinarioMascotaField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel20)
                                             .addComponent(jLabel19)
@@ -510,12 +527,10 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
                             .addComponent(veterinarioMascotaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(veterinarioMascotaField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                                .addGap(2, 2, 2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(energiaMascotaComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -591,6 +606,14 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ExitMenuItemActionPerformed
 
+    private void energiaMascotaComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_energiaMascotaComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_energiaMascotaComboBox1ActionPerformed
+
+    private void imageDirMascotaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageDirMascotaFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_imageDirMascotaFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -632,6 +655,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
     public javax.swing.JComboBox color1MascotaComboBox;
     public javax.swing.JComboBox color2MascotaComboBox;
     public javax.swing.JComboBox energiaMascotaComboBox;
+    public javax.swing.JComboBox energiaMascotaComboBox1;
     public javax.swing.JTextArea enfermedadesMascotaField;
     public javax.swing.JComboBox entrenamientoMascotaComboBox;
     public javax.swing.JComboBox espacioMascotaComboBox;
@@ -685,6 +709,5 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
     public javax.swing.JComboBox tipoMascotaComboBox;
     public javax.swing.JTextArea tratamientoMascotaField;
     public javax.swing.JTextField veterinarioMascotaField;
-    public javax.swing.JTextField veterinarioMascotaField1;
     // End of variables declaration//GEN-END:variables
 }

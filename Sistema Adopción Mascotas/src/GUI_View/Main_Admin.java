@@ -31,11 +31,6 @@ public class Main_Admin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         SalirButton = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        MascotasRescatadas_AdminPanel = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
         AdopcionesDevoluciones_AdminPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -46,23 +41,30 @@ public class Main_Admin extends javax.swing.JFrame {
         Formularios_AdminPanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        previousQuestionButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         nextQuestionButton = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        previousQuestionButton = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        preguntaPreviewFormulario = new javax.swing.JLabel();
+        numeroPreguntaPreviewFormulario = new javax.swing.JLabel();
+        crearFormularioButton = new javax.swing.JButton();
+        panelVisualizacionRespuestas = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        estadoPreguntaPanel = new javax.swing.JLabel();
+        borrarFormularioButton = new javax.swing.JButton();
+        addPreguntaButton = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        borrarPreguntaButton = new javax.swing.JButton();
         UsuarioPersona_AdminPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -73,6 +75,11 @@ public class Main_Admin extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        MascotasRescatadas_AdminPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -100,49 +107,7 @@ public class Main_Admin extends javax.swing.JFrame {
         });
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-
-        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel5.setText("Mascotas registradas recientemente");
-
-        jScrollPane5.setViewportView(jTable5);
-
-        jButton4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jButton4.setText("Ver Datos Mascota");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout MascotasRescatadas_AdminPanelLayout = new javax.swing.GroupLayout(MascotasRescatadas_AdminPanel);
-        MascotasRescatadas_AdminPanel.setLayout(MascotasRescatadas_AdminPanelLayout);
-        MascotasRescatadas_AdminPanelLayout.setHorizontalGroup(
-            MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
-                .addGroup(MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel5))
-                        .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
-                            .addGap(438, 438, 438)
-                            .addComponent(jButton4))))
-                .addContainerGap())
-        );
-        MascotasRescatadas_AdminPanelLayout.setVerticalGroup(
-            MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel5)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(jButton4)
-                .addContainerGap(252, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Mascotas rescatadas", MascotasRescatadas_AdminPanel);
+        jTabbedPane1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel2.setText("Adopciones realizadas recientemente");
@@ -180,7 +145,7 @@ public class Main_Admin extends javax.swing.JFrame {
                 .addGroup(AdopcionesDevoluciones_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addContainerGap(379, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Adopciones y devoluciones realizadas", AdopcionesDevoluciones_AdminPanel);
@@ -193,41 +158,19 @@ public class Main_Admin extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("jLabel9");
 
-        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("jLabel10");
-
         jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
 
-        jLabel11.setText("PREVIEW FORMULARIO");
+        jLabel11.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("VISTA PREVIA DEL FORMULARIO");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(811, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(279, Short.MAX_VALUE))
-        );
-
-        jButton7.setText("Crear Formulario");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        nextQuestionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/next_arrow.png"))); // NOI18N
+        nextQuestionButton.setContentAreaFilled(false);
+        nextQuestionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                nextQuestionButtonActionPerformed(evt);
             }
         });
-
-        jButton8.setText("Añadir Pregunta");
-
-        jButton9.setText("jButton9");
 
         previousQuestionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/back_arrow.png"))); // NOI18N
         previousQuestionButton.setBorderPainted(false);
@@ -238,152 +181,265 @@ public class Main_Admin extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jPanel2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jRadioButton1.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        jRadioButton1.setText("RESPUESTA 1");
+        jRadioButton1.setToolTipText("");
 
-        jLabel12.setText("jLabel12");
+        jRadioButton2.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        jRadioButton2.setText("RESPUESTA 2");
+        jRadioButton2.setToolTipText("");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel13.setText("jLabel13");
+        jRadioButton3.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        jRadioButton3.setText("RESPUESTA 3");
+        jRadioButton3.setToolTipText("");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
-        jLabel14.setText("jLabel14");
+        jRadioButton4.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        jRadioButton4.setText("RESPUESTA 4");
+        jRadioButton4.setToolTipText("");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
 
-        jLabel15.setText("jLabel15");
+        jRadioButton5.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
+        jRadioButton5.setText("RESPUESTA 5");
+        jRadioButton5.setToolTipText("");
 
-        jLabel16.setText("jLabel16");
+        preguntaPreviewFormulario.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        preguntaPreviewFormulario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        preguntaPreviewFormulario.setText("Pregunta");
+        preguntaPreviewFormulario.setToolTipText("");
 
-        jLabel17.setText("jLabel17");
+        numeroPreguntaPreviewFormulario.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        numeroPreguntaPreviewFormulario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        numeroPreguntaPreviewFormulario.setText("jLabel10");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(previousQuestionButton)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(numeroPreguntaPreviewFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                            .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jRadioButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(preguntaPreviewFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(nextQuestionButton))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(numeroPreguntaPreviewFormulario)
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nextQuestionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(previousQuestionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(preguntaPreviewFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(jRadioButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton5)
+                        .addGap(36, 36, 36))))
+        );
+
+        crearFormularioButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        crearFormularioButton.setText("Crear Formulario");
+        crearFormularioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearFormularioButtonActionPerformed(evt);
+            }
+        });
+
+        panelVisualizacionRespuestas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        panelVisualizacionRespuestas.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+
+        jTextField1.setText("jTextField1");
+
+        jTextField2.setText("jTextField2");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setText("jTextField1");
+
+        jTextField4.setText("jTextField1");
+
+        jTextField5.setText("jTextField1");
+
+        jTextField6.setText("jTextField1");
+
+        estadoPreguntaPanel.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        estadoPreguntaPanel.setText("jLabel12");
+
+        javax.swing.GroupLayout panelVisualizacionRespuestasLayout = new javax.swing.GroupLayout(panelVisualizacionRespuestas);
+        panelVisualizacionRespuestas.setLayout(panelVisualizacionRespuestasLayout);
+        panelVisualizacionRespuestasLayout.setHorizontalGroup(
+            panelVisualizacionRespuestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVisualizacionRespuestasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(panelVisualizacionRespuestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField2)
+                    .addGroup(panelVisualizacionRespuestasLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(panelVisualizacionRespuestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 215, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVisualizacionRespuestasLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(estadoPreguntaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel17)
-                .addGap(0, 22, Short.MAX_VALUE))
+        panelVisualizacionRespuestasLayout.setVerticalGroup(
+            panelVisualizacionRespuestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVisualizacionRespuestasLayout.createSequentialGroup()
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(estadoPreguntaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        nextQuestionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/next_arrow.png"))); // NOI18N
-        nextQuestionButton.setContentAreaFilled(false);
-        nextQuestionButton.addActionListener(new java.awt.event.ActionListener() {
+        borrarFormularioButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        borrarFormularioButton.setText("Borrar Formulario");
+        borrarFormularioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextQuestionButtonActionPerformed(evt);
+                borrarFormularioButtonActionPerformed(evt);
             }
         });
 
-        jButton12.setText("Borrar Pregunta");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        addPreguntaButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        addPreguntaButton.setText("Añadir Pregunta");
+        addPreguntaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                addPreguntaButtonActionPerformed(evt);
             }
         });
 
-        jButton1.setText("jButton1");
+        jButton13.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jButton13.setText("Modificar Pregunta");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        borrarPreguntaButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        borrarPreguntaButton.setText("Borrar Pregunta");
+        borrarPreguntaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarPreguntaButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Formularios_AdminPanelLayout = new javax.swing.GroupLayout(Formularios_AdminPanel);
         Formularios_AdminPanel.setLayout(Formularios_AdminPanelLayout);
         Formularios_AdminPanelLayout.setHorizontalGroup(
             Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(crearFormularioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formularios_AdminPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)
+                        .addComponent(borrarFormularioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formularios_AdminPanelLayout.createSequentialGroup()
+                        .addGap(0, 615, Short.MAX_VALUE)
                         .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel9)))
-                                .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Formularios_AdminPanelLayout.createSequentialGroup()
-                                        .addGap(240, 240, 240)
-                                        .addComponent(jButton7))
-                                    .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                        .addGap(91, 91, 91)
-                                        .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButton9)
-                                            .addComponent(jButton8)
-                                            .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(151, 151, 151))))))
-                            .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(previousQuestionButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nextQuestionButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addPreguntaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrarPreguntaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelVisualizacionRespuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
+            .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         Formularios_AdminPanelLayout.setVerticalGroup(
             Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelVisualizacionRespuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
                         .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
+                                .addComponent(crearFormularioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(borrarFormularioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addPreguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton9))
-                        .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel9)
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(previousQuestionButton))
-                            .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton12)
-                                .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(nextQuestionButton))
-                                    .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                        .addGap(48, 48, 48)
-                                        .addComponent(jButton1))))))
-                    .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                        .addGroup(Formularios_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Formularios_AdminPanelLayout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jButton7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton8)))
-                        .addGap(0, 20, Short.MAX_VALUE)))
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(borrarPreguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel9.setText("<html>En esta sección se puede generar, modificar o borrar el formulario de adopción el cual llenarán los usuarios que desean adoptar una mascota. Puede añadir preguntas, junto con sus respetivas preguntas y añadir qué tipo de valor o variable es el deseable a averiguar. También puede navegar a través de las preguntas y ver cuál remover o modificar. Para más dudas, consulte el manual de usuario.</html>");
 
         jTabbedPane1.addTab("Formulario de preguntas", Formularios_AdminPanel);
 
@@ -469,7 +525,7 @@ public class Main_Admin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 81, Short.MAX_VALUE)))
+                        .addGap(0, 79, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(72, 72, 72)
@@ -477,9 +533,55 @@ public class Main_Admin extends javax.swing.JFrame {
                 .addGap(71, 71, 71))
         );
 
-        jLabel7.setText("<html>Seleccione una fila de la tabla SUPERIOR y seleccione alguna de las dos opciones la izquierda para ver el perfil del o las adopciones y rescates que haya realizado.</html");
+        jLabel7.setText("<html><body>Seleccione una fila de la tabla SUPERIOR y seleccione alguna de las dos opciones la izquierda para ver el perfil del o las adopciones y rescates que haya realizado.</body></html>");
 
         jTabbedPane1.addTab("Usuarios", UsuarioPersona_AdminPanel);
+
+        MascotasRescatadas_AdminPanel.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel5.setText("Mascotas registradas recientemente");
+
+        jScrollPane5.setViewportView(jTable5);
+
+        jButton4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jButton4.setText("Ver Datos Mascota");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MascotasRescatadas_AdminPanelLayout = new javax.swing.GroupLayout(MascotasRescatadas_AdminPanel);
+        MascotasRescatadas_AdminPanel.setLayout(MascotasRescatadas_AdminPanelLayout);
+        MascotasRescatadas_AdminPanelLayout.setHorizontalGroup(
+            MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
+                .addGroup(MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel5)
+                            .addGap(338, 338, 338)))
+                    .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
+                        .addGap(480, 480, 480)
+                        .addComponent(jButton4)))
+                .addContainerGap())
+        );
+        MascotasRescatadas_AdminPanelLayout.setVerticalGroup(
+            MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel5)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(jButton4)
+                .addContainerGap(264, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Mascotas rescatadas", MascotasRescatadas_AdminPanel);
 
         jMenu1.setText("Archivo");
 
@@ -534,7 +636,7 @@ public class Main_Admin extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SalirButton)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -556,29 +658,57 @@ public class Main_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void SalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SalirButtonActionPerformed
 
-    private void nextQuestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextQuestionButtonActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nextQuestionButtonActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void borrarPreguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarPreguntaButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_borrarPreguntaButtonActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void addPreguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPreguntaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addPreguntaButtonActionPerformed
+
+    private void borrarFormularioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarFormularioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_borrarFormularioButtonActionPerformed
+
+    private void crearFormularioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFormularioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearFormularioButtonActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void previousQuestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousQuestionButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_previousQuestionButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void nextQuestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextQuestionButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_nextQuestionButtonActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -622,26 +752,20 @@ public class Main_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel MascotasRescatadas_AdminPanel;
     private javax.swing.JButton SalirButton;
     private javax.swing.JPanel UsuarioPersona_AdminPanel;
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton addPreguntaButton;
+    public javax.swing.JButton borrarFormularioButton;
+    public javax.swing.JButton borrarPreguntaButton;
+    public javax.swing.JButton crearFormularioButton;
+    public javax.swing.JLabel estadoPreguntaPanel;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton12;
+    public javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -657,7 +781,11 @@ public class Main_Admin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    public javax.swing.JRadioButton jRadioButton1;
+    public javax.swing.JRadioButton jRadioButton2;
+    public javax.swing.JRadioButton jRadioButton3;
+    public javax.swing.JRadioButton jRadioButton4;
+    public javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -666,8 +794,17 @@ public class Main_Admin extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JButton nextQuestionButton;
-    private javax.swing.JButton previousQuestionButton;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField5;
+    public javax.swing.JTextField jTextField6;
+    public javax.swing.JButton nextQuestionButton;
+    public javax.swing.JLabel numeroPreguntaPreviewFormulario;
+    private javax.swing.JPanel panelVisualizacionRespuestas;
+    public javax.swing.JLabel preguntaPreviewFormulario;
+    public javax.swing.JButton previousQuestionButton;
     private javax.swing.JTable tablaUsuariosAdmin;
     // End of variables declaration//GEN-END:variables
 }

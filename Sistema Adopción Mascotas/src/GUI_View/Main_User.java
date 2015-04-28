@@ -44,13 +44,6 @@ public class Main_User extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        ExitMenuItem = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal");
@@ -197,37 +190,6 @@ public class Main_User extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/adopte_no_compre.png"))); // NOI18N
         jLabel5.setToolTipText("No compre mascotas, adopte y dele un techo a un animal indefenso. Él se lo agradecerá.");
 
-        jMenu1.setText("Archivo");
-
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        jMenuItem2.setText("Cerrar Sesión");
-        jMenu1.add(jMenuItem2);
-
-        ExitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
-        ExitMenuItem.setText("Salir");
-        ExitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitMenuItemActionPerformed(evt);
-            }
-        });
-        jMenu1.add(ExitMenuItem);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu4.setText("Ayuda");
-
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
-        jMenuItem5.setText("Manual de Usuario");
-        jMenu4.add(jMenuItem5);
-
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
-        jMenuItem6.setText("Acerca de Salva +cota");
-        jMenu4.add(jMenuItem6);
-
-        jMenuBar1.add(jMenu4);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -278,10 +240,6 @@ public class Main_User extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void ExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ExitMenuItemActionPerformed
-
     private void logOutUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutUsuarioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_logOutUsuarioButtonActionPerformed
@@ -322,7 +280,6 @@ public class Main_User extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JMenuItem ExitMenuItem;
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
@@ -336,12 +293,6 @@ public class Main_User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu1;
-    public javax.swing.JMenu jMenu4;
-    public javax.swing.JMenuBar jMenuBar1;
-    public javax.swing.JMenuItem jMenuItem2;
-    public javax.swing.JMenuItem jMenuItem5;
-    public javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -51,7 +51,7 @@ public class Controller_Admin implements ActionListener
        if (comando=="")
        {
 
-       }else if(comando=="Tab Usuario")
+       }else if(comando=="Ver Persona-Tab Usuario")
        {
            
        }else if(comando=="Tab Mascotas")
@@ -71,9 +71,12 @@ public class Controller_Admin implements ActionListener
            
        }else if(comando=="Cerrar Sesión")
        {
-           this.gui.dispose();
-           this.gui.show(false);
-           this.backToMenu();
+           this.guiInicial.dispose();
+           this.guiInicial.show(false);
+           //Se inicializa la instancia de clase Controller y se llama al método que establece
+           // su ventana, así como la lógica respectiva. Vuelve al menú principal (Visitante).
+           Controller engine = new Controller();
+           engine.Start();
            
        }else if(comando=="")
        {
@@ -81,13 +84,7 @@ public class Controller_Admin implements ActionListener
        }else if(comando=="")
        {
            
-       }else if(comando=="Salir")
-       {
-           this.gui.show(false);
-           System.exit(0);
-           
-       }
-        
+       }  
     }
 
 

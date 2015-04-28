@@ -26,6 +26,13 @@ public class Error_connection_db extends javax.swing.JFrame {
         this.codigoErrorLabel.setText(codigo);
         this.moreInfoErrorLabel.setText(e.getSQLState());
     }
+    
+    public Error_connection_db(Exception e) {
+        initComponents();
+        this.mensajeErrorLabel.setText(e.getMessage());
+        this.codigoErrorLabel.setText(e.getLocalizedMessage());
+        this.moreInfoErrorLabel.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +43,6 @@ public class Error_connection_db extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -45,102 +51,73 @@ public class Error_connection_db extends javax.swing.JFrame {
         mensajeErrorLabel = new javax.swing.JLabel();
         codigoErrorLabel = new javax.swing.JLabel();
         moreInfoErrorLabel = new javax.swing.JLabel();
+        backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Error de conexión");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/error_connection.jpg"))); // NOI18N
+        getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Error de conexión");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 11, 524, 29);
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("¡Oh no! Ha ocurrido un error tratando de conectar la base de datos. ");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(2, 51, 520, 18);
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("recibir asistencia");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(30, 108, 462, 18);
 
         aceptarButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         aceptarButton.setText("Aceptar");
+        aceptarButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        aceptarButton.setContentAreaFilled(false);
         aceptarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(aceptarButton);
+        aceptarButton.setBounds(210, 180, 101, 31);
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Vuelve a intentar o contacta al desarrollador de la aplicación para ");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 80, 520, 18);
 
         mensajeErrorLabel.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         mensajeErrorLabel.setForeground(new java.awt.Color(204, 0, 0));
         mensajeErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mensajeErrorLabel.setText("a");
+        getContentPane().add(mensajeErrorLabel);
+        mensajeErrorLabel.setBounds(30, 130, 462, 14);
 
         codigoErrorLabel.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         codigoErrorLabel.setForeground(new java.awt.Color(204, 0, 0));
         codigoErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         codigoErrorLabel.setText("a");
+        getContentPane().add(codigoErrorLabel);
+        codigoErrorLabel.setBounds(30, 140, 462, 14);
 
         moreInfoErrorLabel.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         moreInfoErrorLabel.setForeground(new java.awt.Color(204, 0, 0));
         moreInfoErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         moreInfoErrorLabel.setText("a");
+        getContentPane().add(moreInfoErrorLabel);
+        moreInfoErrorLabel.setBounds(30, 150, 462, 14);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(aceptarButton)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(codigoErrorLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mensajeErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(moreInfoErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mensajeErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(codigoErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(moreInfoErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(aceptarButton)))
-                .addContainerGap())
-        );
+        backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/perro-abandonado2.jpg"))); // NOI18N
+        getContentPane().add(backgroundImage);
+        backgroundImage.setBounds(-6, -1, 530, 225);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,8 +131,8 @@ public class Error_connection_db extends javax.swing.JFrame {
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton aceptarButton;
+    private javax.swing.JLabel backgroundImage;
     public javax.swing.JLabel codigoErrorLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

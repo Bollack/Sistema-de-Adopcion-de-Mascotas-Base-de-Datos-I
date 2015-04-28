@@ -82,13 +82,27 @@ public class Model {
     }
     
 
-    public void insertUsuario_Persona(String nombre, String apellido, String provincia, String genero, String telefono,
+    public void insertUsuario_Persona(String nombre, String apellido, String lugar, String genero, String telefono,
                                     String correo, String username, String password) throws SQLException, ClassNotFoundException, FileNotFoundException
     {
-        
+        /*
+        Se añaden todos los atributos insertados. Esto no importa ya que todos los valores son obligatorios y
+        no sucederá lo que pasará en mascota, que igual se enviará el atributo pero como valor null.
+        */
+        Object[] datos ={username, password, nombre, apellido, telefono, correo, lugar, genero};
+        try
+        {
+            //Se establece conexión como Admin
+            this.conexion.setConnection(1);
+            //Se llama a la función que ejecuta funciones de la DB y devuelve si se logró o no. 
+            boolean resultado = this.conexion.callProcedure("Insertar usuario-persona", datos);
+        }catch(SQLException e)
+        {
+            throw e;
+        }
     }
     
-    public boolean checkUserExists(String username) throws SQLException
+    public boolean checkUserExists(String username) throws SQLException, ClassNotFoundException
     {
         /*
                 Hace uso de la función en la base de datos 
@@ -96,18 +110,26 @@ public class Model {
         */
         try
         {
-                this.conexion.setConnection(2);
+                this.conexion.setConnection(1);
+                System.out.println(username);
                 Object[] parametros = {username};
-                boolean existencia = (boolean) this.conexion.callFunction("Check if username exists",parametros);
+                int existencia =  (int) this.conexion.callFunction("Check if username exists",parametros);
                 this.conexion.endConnection();
-                return existencia;
+                if (existencia==1)
+                {
+                    return true;
+                }else
+                {
+                    return false;
+                }
         }catch (SQLException e)
         {
+            System.out.println("Ocurrió una excepción en checkUserExists de Modelo. Lanzando Exception...");
             throw e;
         }
     }      
  
-    public boolean checkPassword(String password, String username) throws SQLException{
+    public boolean checkPassword(String password, String username) throws SQLException, ClassNotFoundException{
              /*
                 Hace uso de la función  en la base de datos 
                 que realiza dicha función y el cual devuelve un boolean.
@@ -115,11 +137,17 @@ public class Model {
             */
         try
         {
-                this.conexion.setConnection(2);
+                this.conexion.setConnection(1);
                 Object[] parametros = {username, password};
-                boolean validez = (boolean) this.conexion.callFunction("Check if password is correct",parametros);
+                int validez = (int) this.conexion.callFunction("Check if password is correct",parametros);
                 this.conexion.endConnection();
-                return validez;
+                if (validez==1)
+                {
+                    return true;
+                }else
+                {
+                    return false;
+                }
         }catch (SQLException e)
         {
             throw e;
@@ -131,13 +159,14 @@ public class Model {
                                 String medicamentos, String Tratamientos, String situacion, String notas, File fotografia_antes,
                                 String contacto) throws SQLException, ClassNotFoundException
     {
+        Object[] datos=null;
         try //Trata de insertar la tupla en la tabla mascota, solicitándoselo a 
             //Database_Connection y esperando su respuesta
         {
             this.conexion = new Database_Connection(3); //Se conecta como usuario, 
             String[] camposAllenar = {"username","password"};
             String[] valores ={username, password};
-            this.conexion.callProcedure("Insertar Mascota");
+            this.conexion.callProcedure("Insertar Mascota",datos);
         }catch (SQLException e)
         {
             System.out.println(e.getMessage());
@@ -165,7 +194,7 @@ public class Model {
         }        
     }
     
-    public DefaultTableModel getModelFromResultSet(String comando) throws SQLException
+    public DefaultTableModel getModelFromResultSet(String comando) throws SQLException, ClassNotFoundException
     {
         try
         {
@@ -199,10 +228,11 @@ public class Model {
         {
             case "Extraer imagen mascota actual":
                 
-            case "Extraer imagen adoptante-mascota":
                 
             case "Extraer imagen mascota amtes":
         }
+        ImageIcon image=null;
+        return image;
     }
     
     /*
@@ -212,9 +242,15 @@ public class Model {
     */
     
     
-    public ImageIcon[] getImagesfromAdopcion(id Adopcion)
+    public ImageIcon[] getImagesfromAdopcion(int idAdopcion)
     {
-        return 
+        ImageIcon[] arreglo = null;
+        /*
+        Obtener un arreglo de ImageIcon de DatabaseConnection e irlos agregando en el
+        arreglo a a retornar. Dichas imágenes serán consultadas de la tabla Foto mediante
+        una consulta condicional WHERE idAdopcion=tabla,idAdopcion;
+        */
+        return arreglo;
         
     }
     
