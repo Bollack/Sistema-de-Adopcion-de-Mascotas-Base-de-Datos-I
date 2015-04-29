@@ -1,6 +1,6 @@
-CREATE OR REPLACE FUNCTION check_existing_username(pusername IN VARCHAR2)--COMPILADO
-RETURN BOOLEAN AS
-
+create or replace FUNCTION check_existing_username(pusername IN VARCHAR2)--COMPILADO
+RETURN NUMBER AS
+RESULTADO NUMBER;
 CURSOR usernames  IS
 	SELECT username
 	FROM usuario
@@ -12,16 +12,22 @@ BEGIN
   
 	IF (usernames%FOUND) THEN
 		CLOSE usernames;
-		RETURN TRUE;
+    RESULTADO:=1;
+		RETURN RESULTADO;
 	ELSE 
 		CLOSE usernames;
-		RETURN FALSE;
+    RESULTADO:=0;
+		RETURN RESULTADO;
   END IF;
+  EXCEPTION
+    WHEN OTHERS THEN
+    RETURN NULL;
 END;
 
 
-CREATE OR REPLACE FUNCTION check_password (pPassword IN VARCHAR2, pUsuario IN VARCHAR2)--COMPILADO
-RETURN BOOLEAN AS
+create or replace FUNCTION check_password (pPassword IN VARCHAR2, pUsuario IN VARCHAR2)--COMPILADO
+RETURN NUMBER AS
+RESULTADO NUMBER;
 vPassword VARCHAR2(40);
 CURSOR pass IS
 	SELECT password
@@ -34,17 +40,23 @@ BEGIN
 	OPEN pass;
 	FETCH pass into vPassword;
   
-		IF(pass%FOUND) THEN
+  IF(pass%FOUND) THEN
       CLOSE pass;
-			return TRUE;
+      RESULTADO:=1;
+      RETURN RESULTADO;
 		ELSE
       CLOSE pass;
-			RETURN FALSE;
-		END IF;
+      RESULTADO:=1;
+      RETURN RESULTADO;
+  END IF;
+  EXCEPTION
+      WHEN OTHERS THEN
+      RETURN NULL;
 END;
 
-CREATE OR REPLACE FUNCTION check_estado_mascota(pid IN NUMBER)--Compilado
-RETURN BOOLEAN AS
+create or replace FUNCTION check_estado_mascota(pid IN NUMBER)--Compilado
+RETURN NUMBER AS
+Resultado NUMBER;
 vEstado VARCHAR2(30);
 CURSOR estado_Mascota IS
 	SELECT estado
@@ -56,11 +68,16 @@ BEGIN
   
 	IF vEstado = 'Adoptado' THEN
     CLOSE estado_Mascota;
-		RETURN TRUE;
+    Resultado:=1;
+		RETURN Resultado;
 	ELSE
     CLOSE estado_Mascota;
-		RETURN FALSE;
+    Resultado:=0;
+		RETURN Resultado;
 	END IF;
+  EXCEPTION
+    WHEN OTHERS THEN
+    RETURN NULL;
 END;
 
 
@@ -117,3 +134,19 @@ EXCEPTION
   WHEN OTHERS THEN
     RETURN NULL;
 END;
+
+--Compilado
+CREATE OR REPLACE FUNCTION get_nombreCompleto_from_id(pID IN NUMBER) 
+RETURN VARCHAR2 AS
+vNombre VARCHAR2(100):=NULL;
+BEGIN 
+  SELECT wm_concat (nombre || ' ' || apellido)
+  INTO vNombre
+  FROM PERSONA
+  WHERE id=pID;
+  EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+  RETURN NULL;
+  WHEN OTHERS THEN 
+    RETURN NULL;
+END get_nombreCompleto_from_id;
