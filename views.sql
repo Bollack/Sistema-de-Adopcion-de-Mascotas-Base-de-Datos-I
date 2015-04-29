@@ -15,8 +15,8 @@ Lugar, Genero, Username, Fecha_creacion) AS
 SELECT id, nombre, apellido, provincia, telefono, email, lugar, genero, usuario, fecha_creacion
 FROM Persona;
 
+--Compilado
+CREATE VIEW calificaciones AS
+SELECT  get_nombreCompleto_from_id(id_calificador) AS calificador,  calificacion, get_nombreCompleto_from_id(id_calificado) AS calificado, Fecha_creacion AS Fecha
+FROM Califica_a;
 
-CREATE VIEW calificaciones(persona_que_califica, calificacion, fecha_calificacion) AS
-SELECT Persona.nombre, Califica_a.calificacion, Califica_a.Fecha_creacion
-FROM Persona, Califica_a
-WHERE Califica_a.id_calificador = persona.id;
