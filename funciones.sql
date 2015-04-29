@@ -1,4 +1,5 @@
-create or replace FUNCTION check_existing_username(pusername IN VARCHAR2)--COMPILADO
+--Compilado y testeado
+create or replace FUNCTION check_existing_username(pusername IN VARCHAR2)
 RETURN NUMBER AS
 RESULTADO NUMBER;
 CURSOR usernames  IS
@@ -24,8 +25,8 @@ BEGIN
     RETURN NULL;
 END;
 
-
-create or replace FUNCTION check_password (pPassword IN VARCHAR2, pUsuario IN VARCHAR2)--COMPILADO
+--Compilado y testeado
+create or replace FUNCTION check_password (pPassword IN VARCHAR2, pUsuario IN VARCHAR2)
 RETURN NUMBER AS
 RESULTADO NUMBER;
 vPassword VARCHAR2(40);
@@ -54,7 +55,7 @@ BEGIN
       RETURN NULL;
 END;
 
-create or replace FUNCTION check_estado_mascota(pid IN NUMBER)--Compilado
+create or replace FUNCTION check_estado_mascota(pid IN NUMBER)
 RETURN NUMBER AS
 Resultado NUMBER;
 vEstado VARCHAR2(30);
@@ -81,7 +82,7 @@ BEGIN
 END;
 
 
---Compilado
+--Compilado y testeado
 CREATE OR REPLACE FUNCTION get_id_from_username(pUsername IN VARCHAR2)
 RETURN NUMBER AS
 vId NUMBER:=NULL;
@@ -135,7 +136,7 @@ EXCEPTION
     RETURN NULL;
 END;
 
---Compilado
+--Compilado y testeado
 CREATE OR REPLACE FUNCTION get_nombreCompleto_from_id(pID IN NUMBER) 
 RETURN VARCHAR2 AS
 vNombre VARCHAR2(100):=NULL;
