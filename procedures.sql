@@ -26,6 +26,30 @@ BEGIN
   WHERE id = pId;
 END;
 
+CREATE OR REPLACE PROCEDURE Insert_User_Persona(pUsername IN VARCHAR2, pPassword IN VARCHAR2,pNombre IN VARCHAR2, --COMPILADO
+                                                pApellido IN VARCHAR2, pTelefono IN VARCHAR2,
+                                                pEmail IN VARCHAR2, pDireccion IN VARCHAR2, pGenero IN VARCHAR2)
+AS
+BEGIN
+/*
+Es una transacción, ya que todo se tiene que ejecutar a la vez.
+*/
+  BEGIN
+    INSERT_USER(pUsername, pPassword);
+    EXCEPTION
+    WHEN OTHERS THEN
+    ROLLBACK;
+  END;
+  BEGIN
+    INSERT_PERSONA(pNombre, pApellido, pTelefono, pEmail, pDireccion, pUsername, pGenero);
+    EXCEPTION
+    WHEN OTHERS THEN
+    ROLLBACK;
+  END;
+  COMMIT;
+END;
+
+
 --Compilado
 CREATE OR REPLACE PROCEDURE insert_mascota(pUsuario in VARCHAR, pNombre IN VARCHAR2, pTipo IN VARCHAR2,
 pRaza IN VARCHAR2, pColor1 IN VARCHAR2, pColor2 IN VARCHAR2, pEspacioRequerido IN VARCHAR2,
