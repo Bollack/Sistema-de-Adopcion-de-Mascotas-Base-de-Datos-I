@@ -44,7 +44,7 @@ public class Main_Visitante extends javax.swing.JFrame {
         tablaMascotas = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        cerrarSesionMenuItem = new javax.swing.JMenuItem();
         ExitMenuItem = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -122,9 +122,9 @@ public class Main_Visitante extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel7.setText("información acerca de las mascotas en el sistema.");
 
+        Foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Foto.setText("foto");
         Foto.setToolTipText("");
-        Foto.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Foto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         Foto.setMaximumSize(new java.awt.Dimension(218, 156));
         Foto.setMinimumSize(new java.awt.Dimension(218, 156));
@@ -154,13 +154,18 @@ public class Main_Visitante extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaMascotas);
         tablaMascotas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        jMenu1.setText("Archivo");
+        jMenuBar1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        jMenuItem2.setText("Cerrar Sesión");
-        jMenu1.add(jMenuItem2);
+        jMenu1.setText("Archivo");
+        jMenu1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+
+        cerrarSesionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        cerrarSesionMenuItem.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        cerrarSesionMenuItem.setText("Cerrar Sesión");
+        jMenu1.add(cerrarSesionMenuItem);
 
         ExitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        ExitMenuItem.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         ExitMenuItem.setText("Salir");
         ExitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,12 +177,15 @@ public class Main_Visitante extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu4.setText("Ayuda");
+        jMenu4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
+        jMenuItem5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jMenuItem5.setText("Manual de Usuario");
         jMenu4.add(jMenuItem5);
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
+        jMenuItem6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jMenuItem6.setText("Acerca de Salva +cota");
         jMenu4.add(jMenuItem6);
 
@@ -244,11 +252,6 @@ public class Main_Visitante extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitMenuItemActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_ExitMenuItemActionPerformed
-
     private void LogInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LogInButtonActionPerformed
@@ -256,6 +259,10 @@ public class Main_Visitante extends javax.swing.JFrame {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void ExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExitMenuItemActionPerformed
 
     /* IGNORAR CÓDIGO 
     private void tablaMascotasActionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,6 +315,7 @@ public class Main_Visitante extends javax.swing.JFrame {
     public javax.swing.JLabel Foto;
     public javax.swing.JButton LogInButton;
     public javax.swing.JButton RegisterButton;
+    private javax.swing.JMenuItem cerrarSesionMenuItem;
     public javax.swing.JButton exitButton;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel3;
@@ -318,7 +326,6 @@ public class Main_Visitante extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     public javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;

@@ -82,20 +82,23 @@ public class Model {
     }
     
 
-    public void insertUsuario_Persona(String nombre, String apellido, String lugar, String genero, String telefono,
-                                    String correo, String username, String password) throws SQLException, ClassNotFoundException, FileNotFoundException
+    public void insertUsuario_Persona(String username, String password, String nombre, String apellido, String telefono,
+                                    String correo, String direccion, String genero) throws SQLException, ClassNotFoundException, FileNotFoundException
     {
         /*
         Se añaden todos los atributos insertados. Esto no importa ya que todos los valores son obligatorios y
         no sucederá lo que pasará en mascota, que igual se enviará el atributo pero como valor null.
         */
-        Object[] datos ={username, password, nombre, apellido, telefono, correo, lugar, genero};
+        Object[] datos ={username, password, nombre, apellido, telefono, correo, direccion, genero};
         try
         {
             //Se establece conexión como Admin
             this.conexion.setConnection(1);
+            System.out.println("Establecida la conexión. Comenzando insertado...");
             //Se llama a la función que ejecuta funciones de la DB y devuelve si se logró o no. 
             boolean resultado = this.conexion.callProcedure("Insertar usuario-persona", datos);
+            System.out.println("Insertado exitoso");
+            this.conexion.endConnection();
         }catch(SQLException e)
         {
             throw e;
@@ -111,9 +114,11 @@ public class Model {
         try
         {
                 this.conexion.setConnection(1);
-                System.out.println(username);
+                System.out.println("Dentro de modelo, checkeando que :"+username+" exista...");
                 Object[] parametros = {username};
                 int existencia =  (int) this.conexion.callFunction("Check if username exists",parametros);
+                System.out.println("Se obtiene resultado int existencia de la función Check if username exits dentro de Model");
+                System.out.println("Existencia:"+existencia);
                 this.conexion.endConnection();
                 if (existencia==1)
                 {
@@ -139,7 +144,9 @@ public class Model {
         {
                 this.conexion.setConnection(1);
                 Object[] parametros = {username, password};
+                System.out.println("Dentro de modelo, checkeando que :"+username+" tenga como password a "+password+"...");
                 int validez = (int) this.conexion.callFunction("Check if password is correct",parametros);
+                System.out.println("Validez: "+validez);
                 this.conexion.endConnection();
                 if (validez==1)
                 {

@@ -27,6 +27,10 @@ public class VerDataMascota extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        solicitudyaEnviada = new javax.swing.JOptionPane();
+        solicitudEnviadaExito = new javax.swing.JOptionPane();
+        realizarFormulario = new javax.swing.JOptionPane();
+        jOptionPane3 = new javax.swing.JOptionPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -86,6 +90,8 @@ public class VerDataMascota extends javax.swing.JFrame {
         nombreContacto10 = new javax.swing.JLabel();
         nombreContacto11 = new javax.swing.JLabel();
         nombreContacto12 = new javax.swing.JLabel();
+        estadoAnnouncementLabel = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -380,6 +386,14 @@ public class VerDataMascota extends javax.swing.JFrame {
         nombreContacto12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombreContacto12.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
+        estadoAnnouncementLabel.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        estadoAnnouncementLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        estadoAnnouncementLabel.setText("Estado de la Mascota");
+
+        jLabel26.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("jLabel26");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -461,19 +475,23 @@ public class VerDataMascota extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel22)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(enviarSolicitudAdopcionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 4, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backButton)))
+                        .addComponent(backButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel19)
+                                .addComponent(jLabel22)
+                                .addComponent(jScrollPane5)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                                .addComponent(enviarSolicitudAdopcionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                                .addComponent(estadoAnnouncementLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(titleVentana, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -491,9 +509,13 @@ public class VerDataMascota extends javax.swing.JFrame {
                         .addComponent(jLabel22)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(estadoAnnouncementLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(enviarSolicitudAdopcionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
+                        .addGap(63, 63, 63)
                         .addComponent(backButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -620,9 +642,10 @@ public class VerDataMascota extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     public javax.swing.JLabel correoContacto;
     public javax.swing.JButton enviarSolicitudAdopcionButton;
+    private javax.swing.JLabel estadoAnnouncementLabel;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
+    public javax.swing.JLabel jLabel11;
     public javax.swing.JLabel jLabel12;
     public javax.swing.JLabel jLabel13;
     public javax.swing.JLabel jLabel14;
@@ -638,6 +661,7 @@ public class VerDataMascota extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel23;
     public javax.swing.JLabel jLabel24;
     public javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     public javax.swing.JLabel jLabel27;
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel31;
@@ -647,6 +671,7 @@ public class VerDataMascota extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
+    private javax.swing.JOptionPane jOptionPane3;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -674,6 +699,9 @@ public class VerDataMascota extends javax.swing.JFrame {
     public javax.swing.JLabel nombreContacto7;
     public javax.swing.JLabel nombreContacto8;
     public javax.swing.JLabel nombreContacto9;
+    private javax.swing.JOptionPane realizarFormulario;
+    private javax.swing.JOptionPane solicitudEnviadaExito;
+    private javax.swing.JOptionPane solicitudyaEnviada;
     public javax.swing.JLabel telefonoContacto;
     private javax.swing.JLabel titleVentana;
     // End of variables declaration//GEN-END:variables

@@ -558,12 +558,13 @@ public class Main_Admin extends javax.swing.JFrame {
             MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
                 .addGroup(MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel5)
-                            .addGap(338, 338, 338)))
+                    .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(338, 338, 338))))
                     .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
                         .addGap(480, 480, 480)
                         .addComponent(jButton4)))
@@ -583,13 +584,18 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Mascotas rescatadas", MascotasRescatadas_AdminPanel);
 
+        jMenuBar1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+
         jMenu1.setText("Archivo");
+        jMenu1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItem2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jMenuItem2.setText("Cerrar Sesión");
         jMenu1.add(jMenuItem2);
 
         ExitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        ExitMenuItem.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         ExitMenuItem.setText("Salir");
         ExitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -601,12 +607,15 @@ public class Main_Admin extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu4.setText("Ayuda");
+        jMenu4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
+        jMenuItem5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jMenuItem5.setText("Manual de Usuario");
         jMenu4.add(jMenuItem5);
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, 0));
+        jMenuItem6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jMenuItem6.setText("Acerca de Salva +cota");
         jMenu4.add(jMenuItem6);
 
@@ -649,10 +658,6 @@ public class Main_Admin extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void ExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ExitMenuItemActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -709,6 +714,10 @@ public class Main_Admin extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void ExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExitMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

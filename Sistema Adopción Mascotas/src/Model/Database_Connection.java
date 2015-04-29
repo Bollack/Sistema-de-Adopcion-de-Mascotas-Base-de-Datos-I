@@ -141,21 +141,19 @@ public class Database_Connection {
     {
         try
         {
+            String llamado ="";
+            CallableStatement storedPro;
             switch(comando)
             {
                 case "Insertar usuario-persona":
-                    System.out.println("Comenzando proceso de base de datos. Insertar usuario-persona");
-                    String llamado = "{CALL INSERT_USER(?,?)";
-                    CallableStatement storedPro = this.conn.prepareCall(llamado);
-                    System.out.println("storedPro creado");
-                    storedPro.setString(1, (String) parametros[0]);
-                    storedPro.setString(2, (String) parametros[1]);
-                    try{
-                        storedPro.execute();
-                        System.out.println("storedPro ejecutado - Usuario creado");
-                        llamado = "{CALL INSERT_USER(?,?,?,?,?,?,?,?)";
+
+                   try{
+                        System.out.println("Comenzando proceso de base de datos. Insertar usuario-persona");
+                        llamado = "{CALL INSERT_USER_PERSONA(?,?,?,?,?,?,?,?,?)";
                         storedPro = this.conn.prepareCall(llamado);
                         System.out.println("storedPro creado");
+                        storedPro.setString(1, (String) parametros[0]);
+                        storedPro.setString(2, (String) parametros[1]);
                         storedPro.setString(1, (String) parametros[0]);
                         storedPro.setString(2, (String) parametros[1]);
                         storedPro.setString(3, (String) parametros[2]);
@@ -171,27 +169,27 @@ public class Database_Connection {
                         throw e;
                     }
                 case "Modificar usuario-persona":
-                    String llamado = "Ñ";
-                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                    llamado = "Ñ";
+                    storedPro = this.conn.prepareCall(llamado);
                     
                 case "Insertar Mascota":
-                    String llamado = "{call INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    llamado = "{call INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     /*
                     Genera una conexión con el atributo conexion y prepara
                     la llamada con el string definido anteriormente, el cual
                     establece el query a consultar y definiendo parámetros
                     "?", donde el primero será el resultado de la función 
                     */
-                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                     storedPro = this.conn.prepareCall(llamado);
                     break;
                 case "Registrar Mascota":
-                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                     storedPro = this.conn.prepareCall(llamado);
                 case "Generar Adopcion":
-                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                     storedPro = this.conn.prepareCall(llamado);
                 case "Generar Formulario":
-                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                     storedPro = this.conn.prepareCall(llamado);
                 case "Devolver Mascota":                   
-                    CallableStatement storedPro = this.conn.prepareCall(llamado);
+                     storedPro = this.conn.prepareCall(llamado);
                     
             }
             return true;
@@ -561,7 +559,6 @@ public class Database_Connection {
         try
         {
             FileInputStream   fis = new FileInputStream(a);
-            a.le
             return fis;
         }catch(FileNotFoundException e)
         {

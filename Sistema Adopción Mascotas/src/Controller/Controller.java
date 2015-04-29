@@ -244,9 +244,16 @@ public class Controller implements ActionListener
         {
             Controller_User accesoUser = new Controller_User(this.modelo, username);
             this.gui.show(false);
+            this.gui.dispose();
+            accesoUser.Start();
         }catch(Exception e)
         {
+            /*
             this.errorConn(e);
+            this.Start();    
+            */
+            JOptionPane.showMessageDialog(this.gui, "Error accesando a su cuenta de usuario. Vuelva a intentar","Error de aplicación",
+                                             JOptionPane.ERROR_MESSAGE);
             this.Start();
         }
     }
@@ -275,6 +282,7 @@ public class Controller implements ActionListener
        try
        {
            String[] data_Sign_up = this.get_data_Sign_up((Registro_Usuario) this.gui);
+           System.out.println("Validando datos insertados por el usuario...");
            this.validate_AllFieldsRegister(data_Sign_up);
            System.out.println("Todos los campos validados");
            //De aquí en adelante se toma que todos los valores ingresados por el usuario son válidos nombre, apellido, telefono, correo, direccion, username, password, genero
@@ -511,11 +519,12 @@ public class Controller implements ActionListener
             if (this.modelo.checkUserExists(username))
             {
                 return false;
+            }else{
+                return true;
             }
         } catch (SQLException ex) {
             throw ex;
         }
-        return true;
     }
     
     private boolean validate_Password(String pass)
@@ -568,7 +577,7 @@ public class Controller implements ActionListener
         {
             throw new UnsupportedOperationException();
         }
-        if (this.validate_Password(datos[1])) //Valida password
+        if (!this.validate_Password(datos[1])) //Valida password
         {
             throw new NullPointerException();
         }

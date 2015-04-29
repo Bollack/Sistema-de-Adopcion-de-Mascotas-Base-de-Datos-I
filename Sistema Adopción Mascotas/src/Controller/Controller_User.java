@@ -38,17 +38,33 @@ public class Controller_User implements ActionListener
 {
     private String username; //Se utilizará para almacenarlo en los campos de auditoría 
     private Model modelo;
-    private JFrame gui_Inicial;
+    private JFrame gui;
     
     public Controller_User(Model modelo, String userLogeo)
     {
         this.modelo = modelo;
         this.username = userLogeo;
-        this.gui_Inicial = new Main_User();
-        
+        this.gui = new Main_User();
+        this.Start();
         
     }
     
+    public void Start()
+    {
+        this.gui = new Main_User();
+        Main_User ventana = (Main_User) this.gui;
+        /*
+        Se agregan los listeners y nombres de comandos a las acciones posibles dentro de la ventana principal
+        de usuario. 
+        */
+        ventana.
+        
+        
+        
+        
+        ventana.show();
+        ventana.setResizable(true);
+    }
     
     public void actionPerformed(ActionEvent e) {
        String comando = e.getActionCommand();
@@ -89,6 +105,9 @@ public class Controller_User implements ActionListener
             fileOpen.addChoosableFileFilter(filter);
             }
             int ret = fileOpen.showDialog(null, "Open file");
+            String direccion = fileOpen.getSelectedFile().getAbsolutePath();
+            Registro_Rescate_Mascota ventana = (Registro_Rescate_Mascota)this.gui;
+            ventana.imageDirMascotaField.setText(direccion);
 
        }else if(comando=="Atras-Registrar Mascota"){
            
@@ -218,7 +237,7 @@ public class Controller_User implements ActionListener
         // esquina inferior derecha.
         private void Log_Out()
         {
-            this.gui_Inicial.dispose();
+            this.gui.dispose();
         }
 }
 
