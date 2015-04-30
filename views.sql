@@ -17,6 +17,7 @@ FROM Persona;
 
 --Compilado
 CREATE VIEW calificaciones AS
-SELECT  get_nombreCompleto_from_id(id_calificador) AS calificador,  calificacion, get_nombreCompleto_from_id(id_calificado) AS calificado, Fecha_creacion AS Fecha
+SELECT  get_nombreCompleto_from_id(id_calificador) AS calificador,
+calificacion, get_nombreCompleto_from_id(id_calificado) AS calificado, Fecha_creacion AS Fecha
 FROM Califica_a;
 

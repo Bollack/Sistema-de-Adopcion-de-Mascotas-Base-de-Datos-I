@@ -122,3 +122,109 @@ CREATE OR REPLACE TRIGGER BeforeUpdateFotoAdopcion
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
   END;
+  
+--Califica_a
+CREATE OR REPLACE TRIGGER BeforeInsertCalificaA
+  BEFORE INSERT ON Administrador.Califica_a FOR EACH ROW
+  BEGIN
+	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_Modificacion:= sysdate;
+    SELECT id_califica_a.NEXTVAL
+    INTO   :new.id_calificacion
+    FROM   dual;
+  END;
+  
+CREATE OR REPLACE TRIGGER BeforeUpdateCalificaA
+  BEFORE UPDATE ON Administrador.Califica_a FOR EACH ROW
+  BEGIN
+    :new.Fecha_Modificacion:= sysdate;
+  END;
+  
+--Agrega a lista negra
+CREATE OR REPLACE TRIGGER BeforeInsertListaNegra
+  BEFORE INSERT ON Administrador.Agrega_a_Lista_Negra FOR EACH ROW
+  BEGIN
+	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_Modificacion:= sysdate;
+    SELECT id_anade_a_lista_negra.NEXTVAL
+    INTO   :new.id_agregado_lista_negra
+    FROM   dual;
+  END;
+  
+CREATE OR REPLACE TRIGGER BeforeUpdateListaNegra
+  BEFORE UPDATE ON Administrador.Agrega_a_Lista_Negra FOR EACH ROW
+  BEGIN
+	:new.Fecha_Modificacion:= sysdate;
+  END;
+  
+--Devoluciones
+CREATE OR REPLACE TRIGGER BeforeInsertDevoluciones
+  BEFORE INSERT ON Administrador.Devoluciones FOR EACH ROW
+  BEGIN
+	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_Modificacion:= sysdate;
+    SELECT id_devolucion.NEXTVAL
+    INTO   :new.id_devolucion
+    FROM   dual;
+  END;
+
+CREATE OR REPLACE TRIGGER BeforeUpdateDevoluciones
+  BEFORE UPDATE ON Administrador.Devoluciones FOR EACH ROW
+  BEGIN
+	:new.Fecha_Modificacion:= sysdate;
+  END;
+
+--Respuesta
+CREATE OR REPLACE TRIGGER  BeforeInsertRespuesta
+  BEFORE INSERT ON Administrador.Respuesta FOR EACH ROW
+  BEGIN
+	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_Modificacion:= sysdate;
+    SELECT id_respuesta.NEXTVAL
+    INTO   :new.id_respuesta
+    FROM   dual
+  END;
+  
+CREATE OR REPLACE TRIGGER BeforeUpdateRespuesta
+  BEFORE UPDATE ON Administrador.Respuesta FOR EACH ROW
+  BEGIN
+	:new.Fecha_Modificacion:= sysdate;
+  END;
+
+--Pregunta
+CREATE OR REPLACE TRIGGER BeforeInsertPregunta
+  BEFORE INSERT ON Administrador.Pregunta FOR EACH ROW
+  BEGIN
+	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_Modificacion:= sysdate;
+    SELECT id_pregunta.NEXTVAL
+    INTO   :new.id_pregunta
+    FROM   dual
+  END;
+  
+CREATE OR REPLACE TRIGGER BeforeUpdatePregunta
+  BEFORE UPDATE ON Administrador.Pregunta FOR EACH ROW
+  BEGIN
+	:new.Fecha_Modificacion:= sysdate;
+  END;
+  
+  
+--Formulario
+CREATE OR REPLACE TRIGGER BeforeInsertFormulario
+  BEFORE INSERT ON Administrador.Formulario FOR EACH ROW
+  BEGIN
+	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_Modificacion:= sysdate;
+    SELECT id_formulario.NEXTVAL
+    INTO   :new.id_formulario
+    FROM   dual
+  END;
+  
+CREATE OR REPLACE TRIGGER BeforeUpdateFormulario
+  BEFORE UPDATE ON Administrador.Formulario FOR EACH ROW
+  BEGIN
+	:new.Fecha_Modificacion:= sysdate;
+  END;
+  
+  
+

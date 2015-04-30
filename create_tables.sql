@@ -1,13 +1,6 @@
 --Scripts de creacion & alter de tablas
 --Orden de creacion de tablas: Persona, Usuario, Tipo, Raza, Mascota
 
-/*
-
-
-
-
-*/
-
 CREATE TABLE Mascota --Aplicado
 (
   ID NUMBER,
@@ -43,7 +36,7 @@ CREATE TABLE Mascota --Aplicado
   CONSTRAINT contacto_fk FOREIGN KEY(contacto) REFERENCES Persona(id)
 );
   
-CREATE OR REPLACE PUBLIC SYNONYM Mascota FOR Administrador.Mascota; -- VERIFICAR!!
+CREATE OR REPLACE PUBLIC SYNONYM Mascota FOR Administrador.Mascota; -- CREADO
 
 ALTER TABLE Mascota -- APLICADO
 ADD (sexo VARCHAR2(20) CONSTRAINT mascota_sexo_nn NOT NULL);
@@ -69,7 +62,7 @@ CREATE TABLE Tipo_Mascota --Creada
 );
 
 
-CREATE OR REPLACE PUBLIC SYNONYM Tipo_Mascota FOR Administrador.Tipo_Mascota; -- Verificar!!
+CREATE OR REPLACE PUBLIC SYNONYM Tipo_Mascota FOR Administrador.Tipo_Mascota; -- CREADO
 
   
 INSERT ALL --APLICADO
@@ -96,7 +89,7 @@ CREATE TABLE Raza_Mascota --CREADA
 ALTER TABLE Raza_Mascota --Aplicado
 MODIFY (Grupo VARCHAR2(40));
   
-CREATE OR REPLACE PUBLIC SYNONYM Raza_Mascota FOR Administrador.Raza_Mascota; -- VERIFICAR!!
+CREATE OR REPLACE PUBLIC SYNONYM Raza_Mascota FOR Administrador.Raza_Mascota; -- CREADO
 
 INSERT ALL --Aplicado
 INTO Raza_Mascota (Raza,Grupo) VALUES('Afgano', 'Perro')
@@ -216,7 +209,7 @@ CREATE TABLE Usuario --CREADA
   Fecha_Modificacion DATE
 );
 
-CREATE OR REPLACE PUBLIC SYNONYM Usuario FOR Administrador.Usuario; -- Verificar!!
+CREATE OR REPLACE PUBLIC SYNONYM Usuario FOR Administrador.Usuario; -- CREADO
 
 CREATE TABLE Persona --CREADA
 (
@@ -224,7 +217,6 @@ CREATE TABLE Persona --CREADA
   CONSTRAINT persona_pk PRIMARY KEY (ID),
   nombre VARCHAR2(20) CONSTRAINT persona_nombre_nn NOT NULL,
   apellido VARCHAR2(20) CONSTRAINT persona_apellido_nn NOT NULL,
-  provincia VARCHAR2(10) CONSTRAINT persona_provincia_nn NOT NULL,
   telefono VARCHAR2(10) CONSTRAINT persona_telefono_nn NOT NULL,
   email VARCHAR2(40) CONSTRAINT persona_email_nn NOT NULL,
   lugar VARCHAR2(100),
@@ -245,13 +237,153 @@ ALTER TABLE Persona --Aplicado
   ADD CONSTRAINT persona_telefono_un UNIQUE(telefono);
 ALTER TABLE Persona --Aplicado
   MODIFY (Lugar VARCHAR2(100) CONSTRAINT persona_lugar_nn NOT NULL);
+
   
-CREATE OR REPLACE PUBLIC SYNONYM Persona FOR Administrador.Persona; -- Verificar!!
+CREATE OR REPLACE PUBLIC SYNONYM Persona FOR Administrador.Persona; -- CREADO
 
-----------------------------------------------------------------------------------------------------------------------------
---Just in case
 
---CREATE TABLE Rescatista
+--Adopciones--
+--Cambios, hacer drop y recrear tabla!!!!
+CREATE TABLE Adopcion( --APLICADO
+  id_adopcion NUMBER,
+  CONSTRAINT adopcion_id_pk PRIMARY KEY(id_adopcion),
+  persona NUMBER CONSTRAINT adopcion_persona_nn NOT NULL,
+  CONSTRAINT adopcion_persona_fk FOREIGN KEY(persona) REFERENCES Persona(id), --Foreign key de la persona adoptante
+  mascota NUMBER CONSTRAINT adopcion_mascota_nn NOT NULL,
+  CONSTRAINT adopcion_mascota_fk FOREIGN KEY(mascota) REFERENCES Mascota(id), --FK a mascota adoptada
+  rescatista NUMBER CONSTRAINT adopcion_rescatista_nn NOT NULL,
+  CONSTRAINT adopcion_rescatista_fk FOREIGN KEY(rescatista) REFERENCES Persona(id), --Foreign key del que dio en adopcion
+  fecha DATE DEFAULT (SYSDATE);
+  
+  Usuario_creacion VARCHAR(20) CONSTRAINT adopcion_usuario_creacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT adopcion_fecha_creacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR(20),
+  Fecha_Modificacion DATE
+);
+CREATE OR REPLACE PUBLIC SYNONYM Adopcion FOR Administrador.Adopcion; -- CREADO
+
+---Tabla fotos de adopcion
+----Cambios, hacer drop y recrear tabla!!!!
+CREATE TABLE Foto_adopcion(--CREADA
+  id_foto_adopcion NUMBER,
+  CONSTRAINT foto_adopcion_pk PRIMARY KEY(id_foto_adopcion),
+  id_adopcion NUMBER CONSTRAINT id_adopcion_nn NOT NULL,
+  CONSTRAINT id_adopcion_fk FOREIGN KEY(id_adopcion) REFERENCES Adopcion(id_adopcion),
+  foto BLOB CONSTRAINT foto_nn NOT NULL,
+  descripcion VARCHAR2(150),
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT foto_adopcion_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT foto_adopcion_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
+);
+CREATE OR REPLACE PUBLIC SYNONYM Foto_Adopcion FOR Administrador.Foto_adopcion;--CREADO
+
+--Calificaciones y lista negra
+--Cambios, hacer drop y recrear tabla!!!!
+CREATE TABLE Califica_a(
+  id_calificacion NUMBER,
+  CONSTRAINT calificacion_pk PRIMARY KEY(id_calificacion),
+  id_calificador NUMBER,
+  CONSTRAINT id_calificador_fk FOREIGN KEY(id_calificador) REFERENCES Persona(id),
+  id_calificado NUMBER,
+  CONSTRAINT id_calificado_fk FOREIGN KEY(id_calificado) REFERENCES Persona(id),
+  calificacion NUMBER CONSTRAINT calificacion_nn NOT NULL,
+  notas VARCHAR2(200),
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT califica_a_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT califica_a_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
+);
+CREATE OR REPLACE PUBLIC SYNONYM Califica_a FOR Administrador.Califica_a;
+
+CREATE TABLE Agrega_a_Lista_Negra(
+  id_agregado_lista_negra NUMBER
+  CONSTRAINT id_lista_negra_pk PRIMARY KEY(id_agregado_lista_negra),
+  id_agregado NUMBER,
+  CONSTRAINT id_agregado_fk FOREIGN KEY(id_agregado) REFERENCES Persona(id),
+  id_reportante NUMBER,
+  CONSTRAINT id_reportante_fk FOREIGN KEY(id_reportante) REFERENCES Persona(id),
+
+  Usuario_creacion VARCHAR2(20) CONSTRAINT califica_a_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT califica_a_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
+);
+CREATE OR REPLACE PUBLIC SYNONYM Agrega_a_lista_negra FOR Administrador.Agrega_a_lista_negra;
+
+--Devoluciones 
+CREATE TABLE Devoluciones(
+  id_devolucion NUMBER,
+  CONSTRAINT id_devolucion_pk PRIMARY KEY(id_devolucion),
+  fecha DATE DEFAULT (SYSDATE);
+  motivo VARCHAR2(200) CONSTRAINT motivo_nn NOT NULL,
+  id_dueno_anterior NUMBER,
+  CONSTRAINT id_dueno_anterior_fk FOREIGN KEY(id_dueno_anterior) REFERENCES Persona(id),
+  id_mascota_devuelta NUMBER,
+  CONSTRAINT id_mascota_devuelta_fk FOREIGN KEY(id_mascota_devuelta) REFERENCES Mascota(id),
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT califica_a_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT califica_a_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
+);
+
+/*
+CREATE TABLE Tipo_Formulario(
+
+  Usuario_creacion VARCHAR2(20) CONSTRAINT califica_a_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT califica_a_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
+);*/
+
+CREATE TABLE Respuesta(
+  id_respuesta NUMBER,
+  CONSTRAINT id_respuesta_pk PRIMARY KEY(id_respuesta),
+  respuesta VARCHAR2(100) CONSTRAINT respuesta_nn NOT NULL,
+  posible_valor_a_variable VARCHAR2(100),
+  pregunta VARCHAR2(100),
+  CONSTRAINT pregunta_fk FOREIGN KEY(pregunta) REFERENCES Pregunta(id_pregunta),
+  usuario NUMBER,
+  CONSTRAINT usuario_pregunta_fk FOREIGN KEY(usuario) REFERENCES Persona(id),
+
+  Usuario_creacion VARCHAR2(20) CONSTRAINT califica_a_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT califica_a_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
+);
+
+CREATE TABLE Pregunta(
+  id_pregunta NUMBER,
+  CONSTRAINT id_pregunta_pk PRIMARY KEY(id_pregunta),
+  enunciado VARCHAR2(200) CONSTRAINT enunciado_nn NOT NULL,
+  variable_a_hallar VARCHAR2(100),
+  numero_respuestas NUMBER,
+  numero_respuesta NUMBER,
+  
+  Usuario_creacion VARCHAR2(20) CONSTRAINT califica_a_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT califica_a_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
+);
+
+  
+CREATE TABLE Formulario(
+  id_formulario NUMBER,
+  CONSTRAINT id_formulario_pk PRIMARY KEY(id_formulario),
+  id_usuario NUMBER,
+  CONSTRAINT id_usuario_fk FOREIGN KEY(id_usuario) REFERENCES Persona(id),
+
+  Usuario_creacion VARCHAR2(20) CONSTRAINT califica_a_ucreacion_nn NOT NULL,
+  Fecha_creacion DATE CONSTRAINT califica_a_fcreacion_nn NOT NULL,
+  Usuario_Modificacion VARCHAR2(20),
+  Fecha_Modificacion DATE
+);
+
+
+ --CREATE TABLE Rescatista
   --idN
   --persona Number,
   --CONSTRAINT rescatista_persona_pk PRIMARY KEY 
@@ -267,91 +399,4 @@ CREATE OR REPLACE PUBLIC SYNONYM Persona FOR Administrador.Persona; -- Verificar
   --Usuario_Modificacion VARCHAR(20)
   --Fecha_Modificacion DATE,
 
---Adopciones--
-
-CREATE TABLE Adopcion --APLICADO
-(
-  id NUMBER,
-  CONSTRAINT adopcion_id_pk PRIMARY KEY(id),
-  persona NUMBER   CONSTRAINT adopcion_persona_nn NOT NULL,
-  CONSTRAINT adopcion_persona_fk FOREIGN KEY(persona) REFERENCES Persona(id), --Foreign key de la persona adoptante
-  mascota NUMBER CONSTRAINT adopcion_mascota_nn NOT NULL,
-  CONSTRAINT adopcion_mascota_fk FOREIGN KEY(mascota) REFERENCES Mascota(id), --FK a mascota adoptada
-  rescatista NUMBER CONSTRAINT adopcion_rescatista_nn NOT NULL,
-  CONSTRAINT adopcion_rescatista_fk FOREIGN KEY(rescatista) REFERENCES Persona(id), --Foreign key del que dio en adopcion
-  
-  Usuario_creacion VARCHAR(20) CONSTRAINT adopcion_usuario_creacion_nn NOT NULL,
-  Fecha_creacion DATE CONSTRAINT adopcion_fecha_creacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR(20),
-  Fecha_Modificacion DATE
-);
-
-CREATE OR REPLACE PUBLIC SYNONYM Adopcion FOR Administrador.Adopcion; -- CREADO
-
-
----Tabla fotos de adopcion
-CREATE TABLE Foto_adopcion(--CREADA
-  id_foto_adopcion NUMBER,
-  CONSTRAINT foto_adopcion_pk PRIMARY KEY(id_foto_adopcion),
-  id_adopcion NUMBER CONSTRAINT id_adopcion_nn NOT NULL,
-  CONSTRAINT id_adopcion_fk FOREIGN KEY(id_adopcion) REFERENCES Adopcion(id),
-  foto BLOB CONSTRAINT foto_nn NOT NULL,
-  
-  Usuario_creacion VARCHAR2(20) CONSTRAINT foto_adopcion_ucreacion_nn NOT NULL,
-  Fecha_creacion DATE CONSTRAINT foto_adopcion_fcreacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR2(20),
-  Fecha_Modificacion DATE
-);
-CREATE OR REPLACE PUBLIC SYNONYM Foto_Adopcion FOR Administrador.Foto_adopcion;--CREADO
-
---Calificaciones y lista negra---------
-
-
-CREATE TABLE Califica_a
-(
-  id_calificacion NUMBER,
-  CONSTRAINT calificacion_pk PRIMARY KEY(id_calificacion),
-  id_calificador NUMBER CONSTRAINT id_calificador_nn NOT NULL,
-  CONSTRAINT id_calificador_fk FOREIGN KEY(id_calificador) REFERENCES Persona(id),
-  id_calificado NUMBER CONSTRAINT id_calificado_nn NOT NULL,
-  CONSTRAINT id_calificado_fk FOREIGN KEY(id_calificado) REFERENCES Persona(id),
-  calificacion NUMBER CONSTRAINT calificacion_nn NOT NULL,
-  notas VARCHAR2(200),
-  
-  Usuario_creacion VARCHAR2(20) CONSTRAINT califica_a_ucreacion_nn NOT NULL,
-  Fecha_creacion DATE CONSTRAINT califica_a_fcreacion_nn NOT NULL,
-  Usuario_Modificacion VARCHAR2(20),
-  Fecha_Modificacion DATE
-);
-CREATE OR REPLACE PUBLIC SYNONYM Califica_a FOR Administrador.Califica_a;
-
-CREATE TABLE Agega_a_Lista_Negra
-(
-);
-
---Devoluciones 
-
-CREATE TABLE Devoluciones
-(
-);
-
-CREATE TABLE Tipo_Formulario
-(
-);
-
-CREATE TABLE Respuesta
-(
-);
-
-CREATE TABLE Pregunta
-(
-);
-
-  
-CREATE TABLE Formulario
-(
-);
-
-
-  
   
