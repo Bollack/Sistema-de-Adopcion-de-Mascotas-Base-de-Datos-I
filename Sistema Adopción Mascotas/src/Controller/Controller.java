@@ -120,10 +120,11 @@ public class Controller implements ActionListener
        }else if(comando=="Log In-Ventana Logeo")
        {
            try {
-               this.validate_data_Log_in((Log_In) this.gui);
+               this.validate_data_Log_in((Log_In)this.gui);
            } catch (ClassNotFoundException ex) {
-               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+               this.gui.add(new Pane)
            }
+
            
        }else if(comando=="Cambio de Vista-Ventana Logeo")
        {
@@ -611,6 +612,5 @@ public class Controller implements ActionListener
             //error.pack();
         }
     }
-    
-    
-}
+
+
