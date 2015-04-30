@@ -35,6 +35,7 @@ public class Formulario extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -50,7 +51,7 @@ public class Formulario extends javax.swing.JFrame {
         jRadioButton4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jRadioButton4.setOpaque(false);
         getContentPane().add(jRadioButton4);
-        jRadioButton4.setBounds(10, 270, 310, 23);
+        jRadioButton4.setBounds(10, 260, 310, 23);
 
         encabezadoFormulario.setFont(new java.awt.Font("Rockwell", 1, 17)); // NOI18N
         encabezadoFormulario.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,7 +93,7 @@ public class Formulario extends javax.swing.JFrame {
         jRadioButton2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jRadioButton2.setOpaque(false);
         getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(10, 210, 310, 23);
+        jRadioButton2.setBounds(10, 200, 310, 23);
 
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
@@ -101,7 +102,17 @@ public class Formulario extends javax.swing.JFrame {
         jRadioButton3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jRadioButton3.setOpaque(false);
         getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(10, 240, 310, 23);
+        jRadioButton3.setBounds(10, 220, 310, 23);
+
+        buttonGroup1.add(jRadioButton5);
+        jRadioButton5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jRadioButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton5.setText("jRadioButton4");
+        jRadioButton5.setBorder(null);
+        jRadioButton5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jRadioButton5.setOpaque(false);
+        getContentPane().add(jRadioButton5);
+        jRadioButton5.setBounds(10, 240, 310, 23);
 
         jButton1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton1.setText("Siguiente");
@@ -175,5 +186,6 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
     // End of variables declaration//GEN-END:variables
 }

@@ -525,10 +525,10 @@ public class Main_Admin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 79, Short.MAX_VALUE)))
+                        .addGap(0, 56, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addGap(72, 72, 72)
+                .addGap(93, 93, 93)
                 .addComponent(jButton6)
                 .addGap(71, 71, 71))
         );

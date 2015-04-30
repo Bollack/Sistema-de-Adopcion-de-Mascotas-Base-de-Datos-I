@@ -30,9 +30,10 @@ public class MascotasAdoptadas extends javax.swing.JFrame {
         titleAdopciones = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaAdopciones = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         backgroundImage = new javax.swing.JLabel();
 
@@ -59,27 +60,29 @@ public class MascotasAdoptadas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaAdopciones);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 160, 452, 260);
+        jScrollPane1.setBounds(50, 50, 452, 260);
 
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(530, 290, 73, 23);
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel1.setOpaque(false);
 
-        jButton2.setText("jButton2");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(470, 190, 73, 23);
+        jButton2.setText("Ver Mascota");
+        jPanel1.add(jButton2);
 
         jButton3.setText("Ver Persona");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(570, 130, 91, 23);
+        jPanel1.add(jButton3);
+
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1);
 
         jButton4.setText("jButton4");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(570, 200, 73, 23);
+        jPanel1.add(jButton4);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(520, 170, 190, 130);
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/adopcion.jpg"))); // NOI18N
         getContentPane().add(backgroundImage);
-        backgroundImage.setBounds(0, 0, 720, 488);
+        backgroundImage.setBounds(0, 0, 720, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,6 +128,7 @@ public class MascotasAdoptadas extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
     public javax.swing.JButton jButton4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tablaAdopciones;
     public javax.swing.JLabel titleAdopciones;
