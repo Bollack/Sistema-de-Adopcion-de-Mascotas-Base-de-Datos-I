@@ -22,7 +22,7 @@ public class Controller_Admin implements ActionListener
 {
  
     private Model modelo;
-    private JFrame guiInicial;
+    private JFrame gui;
     
     public Controller_Admin(Model modelo)
     {
@@ -32,9 +32,9 @@ public class Controller_Admin implements ActionListener
     
     private void initiate()
     {
-        this.guiInicial = new Main_Admin();
-        guiInicial.show();
-        guiInicial.setResizable(false);
+        this.gui = new Main_Admin();
+        gui.show();
+        gui.setResizable(false);
         //guiInicial.setIconImage(new ImageIcon());
         
     }
@@ -61,8 +61,40 @@ public class Controller_Admin implements ActionListener
        {
            this.gui.disable();
            this.gui.show(false);
-           this.backToMenu();
-       }else if(comando=="Tab Formulario")
+           this.backToMainWindow();
+       }else if(comando=="Crear Formulario-Tab Formulario")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Borrar Formulario-Tab Formulario")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Añadir Pregunta-Tab Formulario")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Modificar Pregunta-Tab Formulario")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Añadir respuesta-Tab Formulario")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Asignar Variable a Averiguar-Tab Formulario")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Borrar Pregunta-Tab Formulario")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Pregunta Anterior-Tab Formulario")
+       {
+           gui.show(false);
+           this.Registrase_Window();
+       }else if(comando=="Siguiente Pregunta-Tab Formulario")
        {
            gui.show(false);
            this.Registrase_Window();
@@ -71,8 +103,8 @@ public class Controller_Admin implements ActionListener
            
        }else if(comando=="Cerrar Sesión")
        {
-           this.guiInicial.dispose();
-           this.guiInicial.show(false);
+           this.gui.dispose();
+           this.gui.show(false);
            //Se inicializa la instancia de clase Controller y se llama al método que establece
            // su ventana, así como la lógica respectiva. Vuelve al menú principal (Visitante).
            Controller engine = new Controller();
