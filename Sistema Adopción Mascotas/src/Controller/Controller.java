@@ -122,10 +122,10 @@ public class Controller implements ActionListener
            try {
                this.validate_data_Log_in((Log_In)this.gui);
            } catch (ClassNotFoundException ex) {
-               this.gui.add(new Pane)
+               Log_In ventana = (Log_In) this.gui;
+               ventana.datos_no_validos_OptionPane.createDialog(ventana, "Datos no válidos. Por favor, introduzca un nombre de usuario y contraseña válidos.");
            }
-
-           
+  
        }else if(comando=="Cambio de Vista-Ventana Logeo")
        {
            Log_In ventana = (Log_In) this.gui;

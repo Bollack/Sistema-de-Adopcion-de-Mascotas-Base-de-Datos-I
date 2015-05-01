@@ -51,6 +51,7 @@ public class Main_Visitante extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Salva +Cota");
 
         exitButton.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
         exitButton.setText("Salir");

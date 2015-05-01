@@ -40,6 +40,8 @@ public class Log_In extends javax.swing.JFrame {
         label1MessageBox1 = new javax.swing.JLabel();
         label2MessageBox1 = new javax.swing.JLabel();
         aceptarCorrectDataMessageBox = new javax.swing.JButton();
+        jFileChooser1 = new javax.swing.JFileChooser();
+        datos_no_validos_OptionPane = new javax.swing.JOptionPane();
         jPanel1 = new javax.swing.JPanel();
         userTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JPasswordField();
@@ -337,7 +339,9 @@ public class Log_In extends javax.swing.JFrame {
     public javax.swing.JButton aceptarWrongDataMessageBox;
     private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JDialog correctDataMessageBox;
+    public javax.swing.JOptionPane datos_no_validos_OptionPane;
     public javax.swing.JButton exitButton;
+    private javax.swing.JFileChooser jFileChooser1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
