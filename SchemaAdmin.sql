@@ -1,5 +1,5 @@
 CREATE TABLESPACE SALVA_MASCOTA_DATA --CREADA
-    DATAFILE 'D:\app\Daniel\oradata\dbprueba\SALVA_MASCOTA_DATA01.dbf'
+    DATAFILE 'C:\app\Carlos\oradata\Progra1\SALVA_MASCOTA_DATA01.dbf'
     SIZE 10M
     REUSE
     AUTOEXTEND ON
@@ -9,7 +9,7 @@ CREATE TABLESPACE SALVA_MASCOTA_DATA --CREADA
  -- PE: INDEX
  --
  CREATE TABLESPACE SALVA_MASCOTA_IND --CREADA
-    DATAFILE 'D:\app\Daniel\oradata\dbprueba\SALVA_MASCOTA_IND01.dbf'
+    DATAFILE 'C:\app\Carlos\oradata\Progra1\SALVA_MASCOTA_IND01.dbf'
     SIZE 10M
     REUSE
     AUTOEXTEND ON
@@ -19,45 +19,45 @@ CREATE TABLESPACE SALVA_MASCOTA_DATA --CREADA
 --Cambiar los passwords por varas que den sentido
 --Me parece que estan todos los grants necesarios, agregue o aviseme si faltan algunos
 --ADMIN--------------------------------------------
-CREATE USER Administrador --CREADA
+CREATE USER Administrador --CREADO
     IDENTIFIED BY Admin12
     DEFAULT TABLESPACE salva_mascota_data
     QUOTA 10M ON salva_mascota_data
     TEMPORARY TABLESPACE temp
     QUOTA 5M ON system;
     
-GRANT CONNECT TO Administrador --CREADA
-GRANT CREATE PUBLIC SYNONYM TO Administrador; --CREADA
-GRANT CREATE SESSION TO Administrador; --CREADA
-GRANT CREATE TABLE TO Administrador; --CREADA
-GRANT CREATE VIEW TO Administrador; --CREADA
-GRANT CREATE TRIGGER TO Administrador; --CREADA
-GRANT UNLIMITED TABLESPACE TO Administrador; --CREADA
+GRANT CONNECT TO Administrador;--APLICADO
+GRANT CREATE PUBLIC SYNONYM TO Administrador; --APLICADO
+GRANT CREATE SESSION TO Administrador; --APLICADO
+GRANT CREATE TABLE TO Administrador; --APLICADO
+GRANT CREATE VIEW TO Administrador; --APLICADO
+GRANT CREATE TRIGGER TO Administrador; --APLICADO
+GRANT UNLIMITED TABLESPACE TO Administrador; --APLICADO
 GRANT CREATE SEQUENCE TO Administrador; --APLICADO
-GRANT CREATE ANY JOB TO Administrador; --Aplicado
+GRANT CREATE ANY JOB TO Administrador; --APLICADO
 
     
 --VISITANTE--------------------------------------
-CREATE USER Visitante --CREADA
+CREATE USER Visitante --CREADO
     IDENTIFIED BY visitante13
     DEFAULT TABLESPACE salva_mascota_data
     QUOTA 10M ON salva_mascota_data
     TEMPORARY TABLESPACE temp
     QUOTA 5M ON system;
     
-GRANT CONNECT TO Visitante; --CREADA
-GRANT CREATE SESSION TO Visitante --CREADA
+GRANT CONNECT TO Visitante; --CREADO
+GRANT CREATE SESSION TO Visitante; --CREADO
 GRANT SELECT TO Visitante; --ERROR
     
 --USUARIO---------------------------------------
-CREATE USER Usuario --CREADA
+CREATE USER Usuario --CREADO
     IDENTIFIED BY usuario14
     DEFAULT TABLESPACE salva_mascota_data
     QUOTA 10M ON salva_mascota_data
     TEMPORARY TABLESPACE temp
     QUOTA 5M ON system;
     
-GRANT CONNECT TO usuario; --CREADA
-GRANT CREATE PUBLIC SYNONYM TO usuario; --CREADA
-GRANT CREATE SESSION TO usuario --CREADA 
-GRANT UNLIMITED TABLESPACE TO usuario; --CREADA
+GRANT CONNECT TO usuario; --CREADO
+GRANT CREATE PUBLIC SYNONYM TO usuario; --CREADO
+GRANT CREATE SESSION TO usuario; --CREADO 
+GRANT UNLIMITED TABLESPACE TO usuario; --CREADO

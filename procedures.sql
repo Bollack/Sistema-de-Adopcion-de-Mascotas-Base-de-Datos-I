@@ -178,3 +178,69 @@ BEGIN
   SET contacto = pContacto
   WHERE id = pId;
 END;
+
+--Compilado
+CREATE OR REPLACE PROCEDURE devolver_mascota(pId IN NUMBER)AS
+vRescatista NUMBER;
+vDueno NUMBER;
+vMascota NUMBER;
+CURSOR rescatista_id IS SELECT rescatista FROM adopcion WHERE id_adopcion = pId;
+CURSOR dueno_id IS SELECT persona FROM adopcion WHERE id_adopcion = pId;
+CURSOR mascota_id IS SELECT mascota FROM adopcion WHERE id_adopcion = pId;
+BEGIN
+  OPEN rescatista_id;
+  FETCH rescatista_id INTO vRescatista;
+  CLOSE rescatista_id;
+  
+  OPEN mascota_id;
+  FETCH mascota_id INTO vMascota;
+  CLOSE mascota_id;
+  
+  OPEN dueno_id;
+  FETCH dueno_id INTO vDueno;
+  CLOSE dueno_id;
+  
+  UPDATE mascota
+  SET contacto = vRescatista, estado = 'En adopción'
+  WHERE id = vMascota;
+  
+  DELETE FROM adopcion
+  WHERE id_adopcion = pId;
+  
+  INSERT INTO Bitacora_mascotas (id_mascota, id_persona, tipo, fecha)
+  VALUES (vMascota, vDueno, 'Devolucion', SYSDATE);
+END;
+
+--Compilado
+CREATE OR REPLACE PROCEDURE calificar_adoptante(pId_adoptante IN NUMBER, pId_rescatista IN NUMBER,
+pCalificacion IN NUMBER, pNotas IN VARCHAR2)AS
+CURSOR relacion IS SELECT id_adopcion FROM adopcion WHERE persona = pId_adoptante AND rescatista = pID_rescatista;
+BEGIN
+  OPEN relacion;
+  IF (relacion%FOUND) THEN
+    CLOSE relacion;
+    INSERT INTO califica_a (id_calificador, id_calificado, calificacion, notas)
+    VALUES (pId_rescatista, pId_adoptante, pCalificacion, pNotas);
+  END IF;
+END;
+
+--*Compilado
+CREATE OR REPLACE PROCEDURE agregar_Lista_Negra(pId_adoptante IN NUMBER, pId_rescatista IN NUMBER) AS
+CURSOR relacion IS SELECT id_adopcion FROM adopcion WHERE persona = pId_adoptante AND rescatista = pID_rescatista;
+BEGIN
+  OPEN relacion;
+  IF (relacion%FOUND) THEN
+    CLOSE relacion;
+    INSERT INTO agrega_a_lista_negra (id_agregado,id_reportante) VALUES (pId_adoptante, pId_rescatista);
+  END IF;
+END;
+
+
+
+
+
+
+
+
+
+

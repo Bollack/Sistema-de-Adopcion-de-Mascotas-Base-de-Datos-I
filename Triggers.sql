@@ -1,6 +1,5 @@
 --Mascota
-
-CREATE OR REPLACE TRIGGER BeforeInsertMascota --APLICADO
+CREATE OR REPLACE TRIGGER BeforeInsertMascota         --APLICADO
   BEFORE INSERT ON Administrador.Mascota FOR EACH ROW
   BEGIN
     :new.Fecha_creacion:=sysdate;
@@ -10,15 +9,14 @@ CREATE OR REPLACE TRIGGER BeforeInsertMascota --APLICADO
     FROM   dual;
   END;
   
-CREATE OR REPLACE TRIGGER BeforeUpdateMascota --APLICADO
+CREATE OR REPLACE TRIGGER BeforeUpdateMascota         --APLICADO
   BEFORE UPDATE ON Administrador.Mascota FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
   END;
   
 --Tipo Mascota
-
-CREATE OR REPLACE TRIGGER BeforeInsertTipoMascota --APLICADO
+CREATE OR REPLACE TRIGGER BeforeInsertTipoMascota     --APLICADO
   BEFORE INSERT ON Administrador.Tipo_Mascota FOR EACH ROW
   BEGIN
     :new.Usuario_creacion:=user;
@@ -27,7 +25,7 @@ CREATE OR REPLACE TRIGGER BeforeInsertTipoMascota --APLICADO
     :new.Fecha_Modificacion:= sysdate;
   END;
   
-CREATE OR REPLACE TRIGGER BeforeUpdateTipoMascota --APLICADO
+CREATE OR REPLACE TRIGGER BeforeUpdateTipoMascota     --APLICADO
   BEFORE UPDATE ON Administrador.Tipo_Mascota FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
@@ -35,8 +33,7 @@ CREATE OR REPLACE TRIGGER BeforeUpdateTipoMascota --APLICADO
   END;
 
 --Raza Mascota
-
-CREATE OR REPLACE TRIGGER BeforeInsertRazaMascota --APLICADO
+CREATE OR REPLACE TRIGGER BeforeInsertRazaMascota     --APLICADO
   BEFORE INSERT ON Administrador.Raza_Mascota FOR EACH ROW
   BEGIN
     :new.Fecha_creacion:=sysdate;
@@ -45,7 +42,7 @@ CREATE OR REPLACE TRIGGER BeforeInsertRazaMascota --APLICADO
     :new.Usuario_Modificacion:=user;
   END; 
   
-CREATE OR REPLACE TRIGGER BeforeUpdateRazaMascota --APLICADO
+CREATE OR REPLACE TRIGGER BeforeUpdateRazaMascota     --APLICADO
   BEFORE UPDATE ON Administrador.Raza_Mascota FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
@@ -54,7 +51,7 @@ CREATE OR REPLACE TRIGGER BeforeUpdateRazaMascota --APLICADO
 
 --Usuario & Persona
 --Usuario
-CREATE OR REPLACE TRIGGER BeforeInsertUsuario --APLICADO
+CREATE OR REPLACE TRIGGER BeforeInsertUsuario         --APLICADO
   BEFORE INSERT ON Administrador.Usuario FOR EACH ROW
   BEGIN
     :new.Usuario_creacion:=user;
@@ -63,15 +60,14 @@ CREATE OR REPLACE TRIGGER BeforeInsertUsuario --APLICADO
     :new.Fecha_Modificacion:= sysdate;
   END;
   
-CREATE OR REPLACE TRIGGER BeforeUpdateUsuario --APLICADO
+CREATE OR REPLACE TRIGGER BeforeUpdateUsuario         --APLICADO
   BEFORE UPDATE ON Administrador.Usuario FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
   END;
 
 --Persona
-
-CREATE OR REPLACE TRIGGER BeforeInsertPersona --APLICADO 
+CREATE OR REPLACE TRIGGER BeforeInsertPersona         --APLICADO
   BEFORE INSERT ON Administrador.Persona FOR EACH ROW
   BEGIN
     :new.Usuario_creacion:=user;
@@ -83,15 +79,14 @@ CREATE OR REPLACE TRIGGER BeforeInsertPersona --APLICADO
     FROM   dual;
   END;
 
-CREATE OR REPLACE TRIGGER BeforeUpdatePersona --APLICADO
+CREATE OR REPLACE TRIGGER BeforeUpdatePersona         --APLICADO
   BEFORE UPDATE ON Administrador.Persona FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
   END;
   
 --Adopción  
-  
-CREATE OR REPLACE TRIGGER BeforeInsertAdopcion --APLICADO
+CREATE OR REPLACE TRIGGER BeforeInsertAdopcion        --APLICADO
   BEFORE INSERT ON Administrador.Adopcion FOR EACH ROW
   BEGIN
     :new.Fecha_creacion:=sysdate;
@@ -101,13 +96,14 @@ CREATE OR REPLACE TRIGGER BeforeInsertAdopcion --APLICADO
     FROM   dual;
   END;
 
-CREATE OR REPLACE TRIGGER BeforeUpdateAdopcion --APLICADO
+CREATE OR REPLACE TRIGGER BeforeUpdateAdopcion        --APLICADO
   BEFORE UPDATE ON Administrador.Persona FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
   END;
 
-CREATE OR REPLACE TRIGGER BeforeInsertFotoAdopcion
+--FOTOS ADOPCION
+CREATE OR REPLACE TRIGGER BeforeInsertFotoAdopcion    --APLICADO
   BEFORE INSERT ON Administrador.Foto_adopcion FOR EACH ROW
   BEGIN
     :new.Fecha_creacion:=sysdate;
@@ -117,14 +113,14 @@ CREATE OR REPLACE TRIGGER BeforeInsertFotoAdopcion
     FROM   dual;
   END;
 
-CREATE OR REPLACE TRIGGER BeforeUpdateFotoAdopcion
+CREATE OR REPLACE TRIGGER BeforeUpdateFotoAdopcion    --APLICADO
   BEFORE UPDATE ON Administrador.Foto_adopcion FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
   END;
   
 --Califica_a
-CREATE OR REPLACE TRIGGER BeforeInsertCalificaA
+CREATE OR REPLACE TRIGGER BeforeInsertCalificaA       --APLICADO
   BEFORE INSERT ON Administrador.Califica_a FOR EACH ROW
   BEGIN
 	:new.Fecha_creacion:=sysdate;
@@ -134,14 +130,14 @@ CREATE OR REPLACE TRIGGER BeforeInsertCalificaA
     FROM   dual;
   END;
   
-CREATE OR REPLACE TRIGGER BeforeUpdateCalificaA
+CREATE OR REPLACE TRIGGER BeforeUpdateCalificaA       --APLICADO
   BEFORE UPDATE ON Administrador.Califica_a FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
   END;
   
 --Agrega a lista negra
-CREATE OR REPLACE TRIGGER BeforeInsertListaNegra
+CREATE OR REPLACE TRIGGER BeforeInsertListaNegra      --APLICADO
   BEFORE INSERT ON Administrador.Agrega_a_Lista_Negra FOR EACH ROW
   BEGIN
 	:new.Fecha_creacion:=sysdate;
@@ -151,80 +147,95 @@ CREATE OR REPLACE TRIGGER BeforeInsertListaNegra
     FROM   dual;
   END;
   
-CREATE OR REPLACE TRIGGER BeforeUpdateListaNegra
+CREATE OR REPLACE TRIGGER BeforeUpdateListaNegra      --APLICADO
   BEFORE UPDATE ON Administrador.Agrega_a_Lista_Negra FOR EACH ROW
   BEGIN
 	:new.Fecha_Modificacion:= sysdate;
   END;
   
 --Devoluciones
-CREATE OR REPLACE TRIGGER BeforeInsertDevoluciones
+CREATE OR REPLACE TRIGGER BeforeInsertDevoluciones    --APLICADO
   BEFORE INSERT ON Administrador.Devoluciones FOR EACH ROW
   BEGIN
-	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
     SELECT id_devolucion.NEXTVAL
     INTO   :new.id_devolucion
     FROM   dual;
   END;
 
-CREATE OR REPLACE TRIGGER BeforeUpdateDevoluciones
+CREATE OR REPLACE TRIGGER BeforeUpdateDevoluciones    --APLICADO
   BEFORE UPDATE ON Administrador.Devoluciones FOR EACH ROW
   BEGIN
 	:new.Fecha_Modificacion:= sysdate;
   END;
 
 --Respuesta
-CREATE OR REPLACE TRIGGER  BeforeInsertRespuesta
+CREATE OR REPLACE TRIGGER BeforeInsertRespuesta       --APLICADO
   BEFORE INSERT ON Administrador.Respuesta FOR EACH ROW
   BEGIN
-	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
     SELECT id_respuesta.NEXTVAL
     INTO   :new.id_respuesta
-    FROM   dual
+    FROM   dual;
   END;
-  
-CREATE OR REPLACE TRIGGER BeforeUpdateRespuesta
+
+CREATE OR REPLACE TRIGGER BeforeUpdateRespuesta       --APLICADO
   BEFORE UPDATE ON Administrador.Respuesta FOR EACH ROW
   BEGIN
-	:new.Fecha_Modificacion:= sysdate;
+    :new.Fecha_Modificacion:= sysdate;
   END;
 
 --Pregunta
-CREATE OR REPLACE TRIGGER BeforeInsertPregunta
+CREATE OR REPLACE TRIGGER BeforeInsertPregunta        --APLICADO
   BEFORE INSERT ON Administrador.Pregunta FOR EACH ROW
   BEGIN
-	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
     SELECT id_pregunta.NEXTVAL
     INTO   :new.id_pregunta
-    FROM   dual
+    FROM   dual;
   END;
   
-CREATE OR REPLACE TRIGGER BeforeUpdatePregunta
+CREATE OR REPLACE TRIGGER BeforeUpdatePregunta        --APLICADO
   BEFORE UPDATE ON Administrador.Pregunta FOR EACH ROW
   BEGIN
-	:new.Fecha_Modificacion:= sysdate;
+    :new.Fecha_Modificacion:= sysdate;
   END;
   
-  
 --Formulario
-CREATE OR REPLACE TRIGGER BeforeInsertFormulario
+CREATE OR REPLACE TRIGGER BeforeInsertFormulario      --APLICADO
   BEFORE INSERT ON Administrador.Formulario FOR EACH ROW
   BEGIN
-	:new.Fecha_creacion:=sysdate;
+    :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
     SELECT id_formulario.NEXTVAL
     INTO   :new.id_formulario
-    FROM   dual
+    FROM   dual;
   END;
   
-CREATE OR REPLACE TRIGGER BeforeUpdateFormulario
+CREATE OR REPLACE TRIGGER BeforeUpdateFormulario      --APLICADO
   BEFORE UPDATE ON Administrador.Formulario FOR EACH ROW
   BEGIN
-	:new.Fecha_Modificacion:= sysdate;
+    :new.Fecha_Modificacion:= sysdate;
   END;
   
-  
+--Bitacora
+CREATE OR REPLACE TRIGGER BeforeInsertBitacora        --APLICADO
+  BEFORE INSERT ON Administrador.Bitacora_mascotas FOR EACH ROW
+  BEGIN
+    :new.Fecha_creacion:=sysdate;
+    :new.Fecha_Modificacion:= sysdate;
+    SELECT id_bitacora.NEXTVAL
+    INTO   :new.id_bitacora
+    FROM   dual;
+  END;
+
+CREATE OR REPLACE TRIGGER BeforeUpdateBitacora        --APLICADO
+  BEFORE UPDATE ON Administrador.Bitacora_mascotas FOR EACH ROW
+  BEGIN
+    :new.Fecha_Modificacion:= sysdate;
+  END;
+
 
