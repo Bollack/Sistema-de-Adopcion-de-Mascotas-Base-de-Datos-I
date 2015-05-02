@@ -155,7 +155,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;&lt;html&gt;En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones m&#xe1;s avanzadas.&quot;&#xa;+ &quot;&lt;/html&gt;&quot;" type="code"/>
+          <Connection code="&quot;&lt;html&gt;En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones m&#xe1;s avanzadas.&lt;/html&gt;&quot;" type="code"/>
         </Property>
       </Properties>
       <AuxValues>

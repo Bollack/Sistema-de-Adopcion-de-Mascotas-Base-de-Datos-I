@@ -79,7 +79,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         machoMascotaRadioButton = new javax.swing.JRadioButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        energiaMascotaComboBox1 = new javax.swing.JComboBox();
+        severidadMascotaComboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro de mascota en espera de adopción");
@@ -101,6 +101,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel6.setText("Color 2:");
+        jLabel6.setToolTipText("En caso de que la mascota tenga algún otro color de piel o pelaje adicional al principal.");
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel7.setText("*Espacio requerido:");
@@ -215,6 +216,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
 
         color2MascotaComboBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         color2MascotaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        color2MascotaComboBox.setToolTipText("En caso de que la mascota tenga algún otro color de piel o pelaje adicional al principal.");
         color2MascotaComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 color2MascotaComboBoxActionPerformed(evt);
@@ -320,12 +322,14 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel23.setText("Severidad:");
+        jLabel23.setToolTipText("Grado de severidad en el cual la mascota fue encontrada");
 
-        energiaMascotaComboBox1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        energiaMascotaComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        energiaMascotaComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        severidadMascotaComboBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        severidadMascotaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        severidadMascotaComboBox.setToolTipText("Grado de severidad en el cual la mascota fue encontrada");
+        severidadMascotaComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                energiaMascotaComboBox1ActionPerformed(evt);
+                severidadMascotaComboBoxActionPerformed(evt);
             }
         });
 
@@ -369,7 +373,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                     .addComponent(jLabel23)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(energiaMascotaComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(severidadMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addComponent(veterinarioMascotaField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel20)
@@ -484,7 +488,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(energiaMascotaComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(severidadMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -556,9 +560,9 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_energiaMascotaComboBoxActionPerformed
 
-    private void energiaMascotaComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_energiaMascotaComboBox1ActionPerformed
+    private void severidadMascotaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_severidadMascotaComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_energiaMascotaComboBox1ActionPerformed
+    }//GEN-LAST:event_severidadMascotaComboBoxActionPerformed
 
     private void imageDirMascotaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageDirMascotaFieldActionPerformed
         // TODO add your handling code here:
@@ -604,7 +608,6 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
     public javax.swing.JComboBox color1MascotaComboBox;
     public javax.swing.JComboBox color2MascotaComboBox;
     public javax.swing.JComboBox energiaMascotaComboBox;
-    public javax.swing.JComboBox energiaMascotaComboBox1;
     public javax.swing.JTextArea enfermedadesMascotaField;
     public javax.swing.JComboBox entrenamientoMascotaComboBox;
     public javax.swing.JComboBox espacioMascotaComboBox;
@@ -647,6 +650,7 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
     public javax.swing.JTextArea notasMascotaField;
     public javax.swing.JComboBox razaMascotaComboBox;
     public javax.swing.JButton registrarMascotaButton;
+    public javax.swing.JComboBox severidadMascotaComboBox;
     public javax.swing.JTextArea situacionMascotaField;
     public javax.swing.JComboBox tamanoMascotaComboBox;
     public javax.swing.JComboBox tipoMascotaComboBox;

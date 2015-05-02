@@ -8,25 +8,26 @@
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/Model/Database_Connection.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/Controller/Controller_User.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/Controller/Controller.java</file>
-            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/MascotasAdoptadas.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Buscar_Mascota.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Main_User.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Images/huella_icon_app.png</file>
-            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/Controller/InputValueNotAcceptableException.java</file>
-            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Main_Admin.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/Model/Model.java</file>
-            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Registro_Usuario.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/Controller/Main.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/verPerfil.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/VerDataMascota.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Main_Visitante.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/User_Mascotas_Adoptadas.java</file>
-            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Log_In.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/ResizableImage.java</file>
-            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Formulario.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Error_connection_db.java</file>
-            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/ModificarCuenta.java</file>
             <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Registro_Rescate_Mascota.java</file>
+            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/Controller/Controller_Admin.java</file>
+            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/MisMascotasAdoptada.java</file>
+            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/Controller/InputValueNotAcceptableException.java</file>
+            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Main_Admin.java</file>
+            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Registro_Usuario.java</file>
+            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Log_In.java</file>
+            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/Formulario.java</file>
+            <file>file:/C:/Users/Daniel/Git/Sistema-de-Adopcion-de-Mascotas-Base-de-Datos-I/Sistema%20Adopción%20Mascotas/src/GUI_View/ModificarCuenta.java</file>
         </group>
     </open-files>
 </project-private>

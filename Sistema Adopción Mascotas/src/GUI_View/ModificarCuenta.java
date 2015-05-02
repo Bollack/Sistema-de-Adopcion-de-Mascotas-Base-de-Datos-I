@@ -42,7 +42,7 @@ public class ModificarCuenta extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
-        passwordTextField = new javax.swing.JTextField();
+        passwordTextField = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         apellidoUsuarioTextField = new javax.swing.JTextField();
         userTextField = new javax.swing.JPasswordField();

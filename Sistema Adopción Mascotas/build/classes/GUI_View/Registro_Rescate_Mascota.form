@@ -70,7 +70,7 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="energiaMascotaComboBox1" min="-2" pref="224" max="-2" attributes="0"/>
+                                                  <Component id="severidadMascotaComboBox" min="-2" pref="224" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="veterinarioMascotaField" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                                           </Group>
@@ -223,7 +223,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel23" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="energiaMascotaComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="severidadMascotaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
@@ -321,6 +321,7 @@
           <Font name="Rockwell" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Color 2:"/>
+        <Property name="toolTipText" type="java.lang.String" value="En caso de que la mascota tenga alg&#xfa;n otro color de piel o pelaje adicional al principal."/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -613,6 +614,7 @@
             <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="En caso de que la mascota tenga alg&#xfa;n otro color de piel o pelaje adicional al principal."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="color2MascotaComboBoxActionPerformed"/>
@@ -939,12 +941,13 @@
           <Font name="Rockwell" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Severidad:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Grado de severidad en el cual la mascota fue encontrada"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="energiaMascotaComboBox1">
+    <Component class="javax.swing.JComboBox" name="severidadMascotaComboBox">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Rockwell" size="12" style="1"/>
@@ -957,9 +960,10 @@
             <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Grado de severidad en el cual la mascota fue encontrada"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="energiaMascotaComboBox1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="severidadMascotaComboBoxActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

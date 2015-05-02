@@ -69,8 +69,7 @@ public class User_Mascotas_Adoptadas extends javax.swing.JFrame {
 
         enunciadoLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         enunciadoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        enunciadoLabel.setText("<html>En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones más avanzadas."
-            + "</html>");
+        enunciadoLabel.setText("<html>En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones más avanzadas.</html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

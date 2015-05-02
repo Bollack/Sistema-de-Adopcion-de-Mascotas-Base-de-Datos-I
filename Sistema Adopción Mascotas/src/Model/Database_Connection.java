@@ -149,7 +149,7 @@ public class Database_Connection {
 
                    try{
                         System.out.println("Comenzando proceso de base de datos. Insertar usuario-persona");
-                        llamado = "{CALL INSERT_USER_PERSONA(?,?,?,?,?,?,?,?,?)";
+                        llamado = "{CALL INSERT_USER_PERSONA(?,?,?,?,?,?,?,?,?)}";
                         storedPro = this.conn.prepareCall(llamado);
                         System.out.println("storedPro creado");
                         storedPro.setString(1, (String) parametros[0]);
@@ -169,7 +169,7 @@ public class Database_Connection {
                         throw e;
                     }
                 case "Modificar usuario-persona":
-                    llamado = "Ñ";
+                    llamado = "{CALL MODIFICAR_USER_PERSONA(usernameQueModifica, }";
                     storedPro = this.conn.prepareCall(llamado);
                     
                 case "Insertar Mascota":
@@ -180,17 +180,20 @@ public class Database_Connection {
                     establece el query a consultar y definiendo parámetros
                     "?", donde el primero será el resultado de la función 
                     */
-                     storedPro = this.conn.prepareCall(llamado);
+                    storedPro = this.conn.prepareCall(llamado);
                     break;
                 case "Registrar Mascota":
-                     storedPro = this.conn.prepareCall(llamado);
+                    storedPro = this.conn.prepareCall(llamado);
                 case "Generar Adopcion":
-                     storedPro = this.conn.prepareCall(llamado);
+                    storedPro = this.conn.prepareCall(llamado);
                 case "Generar Formulario":
-                     storedPro = this.conn.prepareCall(llamado);
+                    storedPro = this.conn.prepareCall(llamado);
                 case "Devolver Mascota":                   
-                     storedPro = this.conn.prepareCall(llamado);
-                    
+                    storedPro = this.conn.prepareCall(llamado);
+                case "":
+                    llamado ="{}";
+                    storedPro = this.conn.prepareCall(llamado);
+                case "s":
             }
             return true;
         }catch(SQLException e)
@@ -234,8 +237,8 @@ public class Database_Connection {
                     Dicho método se utiliza en otras partes del proyecto, para así
                     tratar de evitar mayores posibilidades de SQL Injection.
                     */
-                    stmt.setString(2, llamado);
-                    stmt.setString(3, llamado);
+                    stmt.setString(2, username);
+                    stmt.setString(3, password);
                     /*
                     Registra el parámetro extraído, el cual es el primer parámetro
                     predeterminado en el string llamado y se asegura que sea un
@@ -269,8 +272,18 @@ public class Database_Connection {
                 case "Get Foto actual from ID - Mascota":
                     
                 case "Get Foto antes from ID - Mascota":
-                case "":
+                case "get Datos Cuenta":
+                    llamado ="{? = CALL get_datos_usuario(?,?)}";
+                    stmt = this.conn.prepareCall(llamado);
                     
+                    stmt.setString(2, (String) parametros[0]); //username
+                    stmt.setString(3, (String) parametros[1]); //valor a extraer, sea nombre, genero, lugar, etc.
+                    
+                    stmt.registerOutParameter(1, java.sql.Types.VARCHAR);
+                    
+                    stmt.execute();
+                    
+                    return stmt.getString(1);
                     
             }
         }catch (SQLException e)

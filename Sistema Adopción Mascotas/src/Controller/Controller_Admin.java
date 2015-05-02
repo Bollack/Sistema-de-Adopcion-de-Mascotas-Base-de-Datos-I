@@ -35,6 +35,55 @@ public class Controller_Admin implements ActionListener
         this.gui = new Main_Admin();
         gui.show();
         gui.setResizable(false);
+        Main_Admin ventana = (Main_Admin) this.gui;
+        /*
+            Se añaden los listeners a cada uno de los botones y elementos/componentes con los que interactua
+            usuario. Así estos pueden tener secuencias de órdenes al ser activados/presionados/alterados.
+            Se comienza por los más generarles y luego por los más específicos.
+        */
+        
+        
+        ventana.SalirButton.addActionListener((ActionListener) this);
+        ventana.SalirButton.setActionCommand("Cerrar Sesión");
+        
+        //Se comienza a agregar los listener de los elementos en la pestaña de formulario
+        
+        ventana.crearFormularioButton.addActionListener((ActionListener) this);
+        ventana;
+        
+        ventana.addPreguntaButton.addActionListener((ActionListener) this);
+        ventana;
+        
+        ventana.borrarFormularioButton.addActionListener((ActionListener) this);
+        ventana;
+        
+        ventana.borrarPreguntaButton.addActionListener((ActionListener) this);
+        ventana;
+        
+        ventana.
+        ventana;
+        ventana;
+        
+        ventana;
+        ventana;
+        
+        ventana;
+        ventana;
+        
+        ventana;
+        ventana;
+        
+        ventana;
+        ventana;
+        
+        ventana;
+        ventana;
+        
+        ventana;
+        ventana;
+        
+        
+  
         //guiInicial.setIconImage(new ImageIcon());
         
     }

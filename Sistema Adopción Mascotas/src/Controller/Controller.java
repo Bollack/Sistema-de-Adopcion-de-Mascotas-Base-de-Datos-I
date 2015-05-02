@@ -70,7 +70,8 @@ public class Controller implements ActionListener
         this.gui = vista;
         this.gui.show();
         this.gui.setResizable(false);
-        this.gui.pack();
+        //this.gui.pack();
+        
         
         vista.exitButton.addActionListener((ActionListener) this);
         vista.RegisterButton.addActionListener((ActionListener) this);
@@ -411,17 +412,19 @@ public class Controller implements ActionListener
 
                             public void actionPerformed(ActionEvent e)
                             {
-                            //Perform function when button is pressed
-                            ventana.correctDataMessageBox.show(false);
-                            ventana.dispose();
-                            ventana.show(false);
+                            //Se ejecuta la acción al ser presionado el botón de Aceptar
+                            //Comienza el proceso lógico de Log_In
+                            //ventana.correctDataMessageBox.show(false);
+                            Log_In_User(ventana.userTextField.getText());
+                            //ventana.dispose();
+                            //ventana.show(false);
                             }
                             }); 
                         
                         
-                        //Comienza el proceso lógico de Log_In
+
                         
-                        Log_In_User(ventana.userTextField.getText());
+                        
                       
                         
                     }
@@ -537,13 +540,13 @@ public class Controller implements ActionListener
         return true;
     }
     
-    private boolean validate_Password_to_Log_in(String pass, String username) throws SQLException, ClassNotFoundException
+    private boolean validate_Password_to_Log_in( String username,String pass) throws SQLException, ClassNotFoundException
     {
         if (!this.modelo.checkUserExists(username))
         {
             return false;
         }
-        if (!this.modelo.checkPassword(pass, username))
+        if (!this.modelo.checkPassword(username,pass))
         {
             return false;
         }
@@ -600,6 +603,7 @@ public class Controller implements ActionListener
             Error_connection_db error = new Error_connection_db((SQLException) e); 
             error.show();
             error.setSize(new Dimension(524,225));
+            error.setPreferredSize(new Dimension(524,225));
             error.validate();
             //error.pack();
             error.setMinimumSize(new Dimension(524,225));
@@ -607,10 +611,12 @@ public class Controller implements ActionListener
             Error_connection_db error = new Error_connection_db(e);
             error.show();
             error.setSize(new Dimension(524,225));
+            error.setPreferredSize(new Dimension(524,225));
             error.validate();
             error.setMinimumSize(new Dimension(524,225));
             //error.pack();
         }
     }
+}
 
 

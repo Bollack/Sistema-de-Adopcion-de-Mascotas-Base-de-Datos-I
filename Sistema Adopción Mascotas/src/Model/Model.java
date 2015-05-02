@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -134,7 +136,7 @@ public class Model {
         }
     }      
  
-    public boolean checkPassword(String password, String username) throws SQLException, ClassNotFoundException{
+    public boolean checkPassword(String username,String password) throws SQLException, ClassNotFoundException{
              /*
                 Hace uso de la función  en la base de datos 
                 que realiza dicha función y el cual devuelve un boolean.
@@ -159,6 +161,59 @@ public class Model {
         {
             throw e;
         }
+    }
+    
+    
+    
+    /*
+    Función que devuelve un array que contiene  [username, password, nombre, apellido, telefono, correo, direccion, geoero] de un
+    usuario insertado por parametro.
+    */
+    
+    public String[] getDatosFromUsername(String username) throws SQLException, NullPointerException
+    {
+        String[] datos = null;
+        String[] parametros = {username};
+        try {
+            parametros[1]="password";
+            datos[0]=username;
+            String[] respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
+            datos[1]=respuesta[0];
+            
+            parametros[1]="nombre";
+            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
+            datos[2]=respuesta[0];
+            
+            parametros[1]="apellido";
+            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
+            datos[2]=respuesta[0];
+            
+            parametros[1]="telefono";
+            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
+            datos[3]=respuesta[0];
+            
+            parametros[1]="correo";
+            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
+            datos[4]=respuesta[0];
+            
+            parametros[1]="lugar";
+            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
+            datos[5]=respuesta[0];
+            
+            parametros[1]="genero";
+            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
+            datos[6]=respuesta[0];
+            
+            parametros[1]="nombre completo";
+            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
+            datos[7]=respuesta[0];
+            
+        } catch (SQLException ex) {
+            throw ex;
+        } catch (NullPointerException ex) {
+            throw ex;
+        }
+        return datos;
     }
     
     public boolean insertMascota(String username, String password, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
