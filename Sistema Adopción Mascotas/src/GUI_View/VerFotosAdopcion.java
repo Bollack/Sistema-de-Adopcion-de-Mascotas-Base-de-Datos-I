@@ -39,9 +39,11 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         verAdoptanteButton = new javax.swing.JButton();
         verMascotaButton = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        razaMascotaLabel = new javax.swing.JLabel();
+        tipoMascotaLabel = new javax.swing.JLabel();
+        nombreAdoptante = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        fechaAdopcionLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,9 +64,13 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton1.setText("Anterior");
+        jButton1.setBorderPainted(false);
+        jButton1.setOpaque(false);
 
         jButton2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton2.setText("Siguiente");
+        jButton2.setBorderPainted(false);
+        jButton2.setOpaque(false);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Datos de la adopción", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
         jPanel3.setDoubleBuffered(false);
@@ -77,69 +83,90 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
         jLabel6.setText("Tipo Mascota:");
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
-        jLabel7.setText("Fecha de Adopción");
+        jLabel7.setText("Raza de mascota:");
 
         verAdoptanteButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         verAdoptanteButton.setText("Ver Adoptante");
+        verAdoptanteButton.setBorderPainted(false);
+        verAdoptanteButton.setOpaque(false);
 
         verMascotaButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         verMascotaButton.setText("Ver Datos de la Mascota");
+        verMascotaButton.setBorderPainted(false);
+        verMascotaButton.setOpaque(false);
 
-        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("jLabel8");
+        razaMascotaLabel.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
+        razaMascotaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        razaMascotaLabel.setText("razaMascotaLabel");
+
+        tipoMascotaLabel.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
+        tipoMascotaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tipoMascotaLabel.setText("jLabel9");
+
+        nombreAdoptante.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
+        nombreAdoptante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreAdoptante.setText("jLabel10");
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("jLabel9");
+        jLabel9.setText("Fecha de Adopción");
 
-        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("jLabel10");
+        fechaAdopcionLabel.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
+        fechaAdopcionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fechaAdopcionLabel.setText("fechaAdopcionLabel");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(71, 71, 71)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(verMascotaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(verAdoptanteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(razaMascotaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(71, 71, 71)
+                                .addComponent(nombreAdoptante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(43, 43, 43)
+                                .addComponent(tipoMascotaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(fechaAdopcionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombreAdoptante)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tipoMascotaLabel)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(razaMascotaLabel)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaAdopcionLabel)
                     .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(verAdoptanteButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(verMascotaButton)
@@ -161,7 +188,7 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
                         .addComponent(jButton2))
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
@@ -225,8 +252,10 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton5.setText("Atrás");
+        jButton5.setBorderPainted(false);
+        jButton5.setOpaque(false);
         getContentPane().add(jButton5);
-        jButton5.setBounds(743, 650, 110, 31);
+        jButton5.setBounds(750, 640, 110, 31);
 
         backgroungImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/FOTO_ADOPCION.jpg"))); // NOI18N
         getContentPane().add(backgroungImage);
@@ -272,22 +301,24 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroungImage;
+    public javax.swing.JLabel fechaAdopcionLabel;
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
     public javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    public javax.swing.JLabel jLabel8;
-    public javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    public javax.swing.JLabel nombreAdoptante;
+    public javax.swing.JLabel razaMascotaLabel;
+    public javax.swing.JLabel tipoMascotaLabel;
     public javax.swing.JButton verAdoptanteButton;
     public javax.swing.JButton verMascotaButton;
     // End of variables declaration//GEN-END:variables

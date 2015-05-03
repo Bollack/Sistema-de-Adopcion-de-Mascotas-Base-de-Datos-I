@@ -171,8 +171,14 @@ public class Controller implements ActionListener
            
        }else if(comando=="Salir")
        {
-           this.gui.show(false);
-           System.exit(0);
+
+        int warning =  JOptionPane.YES_NO_OPTION;
+        int answer = JOptionPane.showConfirmDialog (null, "¿Está seguro de que desea salir del programa?","Advertencia",warning);
+        if (answer == JOptionPane.YES_OPTION)
+        {
+            System.exit(0);
+        }
+    
            
        }
     }

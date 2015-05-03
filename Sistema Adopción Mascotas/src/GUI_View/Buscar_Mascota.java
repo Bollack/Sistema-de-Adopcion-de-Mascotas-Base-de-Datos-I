@@ -37,33 +37,32 @@ public class Buscar_Mascota extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         verMascotaButton = new javax.swing.JButton();
         datosaVisualizar = new javax.swing.JPanel();
-        nombreSeeCheckBox = new javax.swing.JCheckBox();
-        lugarSeeCheckBox = new javax.swing.JCheckBox();
-        estadoVerCheckBox = new javax.swing.JCheckBox();
-        RazaVerCheckBox = new javax.swing.JCheckBox();
+        nombreCheckBox = new javax.swing.JCheckBox();
+        lugarCheckBox = new javax.swing.JCheckBox();
+        estadoCheckBox = new javax.swing.JCheckBox();
+        RazaCheckBox = new javax.swing.JCheckBox();
         tipoVerCheckBox = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
         jCheckBox7 = new javax.swing.JCheckBox();
         jCheckBox8 = new javax.swing.JCheckBox();
         jCheckBox9 = new javax.swing.JCheckBox();
         jCheckBox10 = new javax.swing.JCheckBox();
-        jLabel8 = new javax.swing.JLabel();
-        jCheckBox11 = new javax.swing.JCheckBox();
-        jCheckBox12 = new javax.swing.JCheckBox();
+        nombreContactoCheckBox = new javax.swing.JCheckBox();
+        correoContactoCheckBox = new javax.swing.JCheckBox();
         espacioVerCheckBox = new javax.swing.JCheckBox();
         veterinarioVerCheckBox = new javax.swing.JCheckBox();
         lugarVerCheckBox = new javax.swing.JCheckBox();
+        verColumnasButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        jComboBox10 = new javax.swing.JComboBox();
-        jComboBox11 = new javax.swing.JComboBox();
-        jComboBox12 = new javax.swing.JComboBox();
-        jComboBox13 = new javax.swing.JComboBox();
-        jComboBox14 = new javax.swing.JComboBox();
-        jComboBox15 = new javax.swing.JComboBox();
+        tamanoComboBox = new javax.swing.JComboBox();
+        energiaComboBox = new javax.swing.JComboBox();
+        tipoMascotaComboBox = new javax.swing.JComboBox();
+        buscarButton = new javax.swing.JButton();
+        severidadComboBox = new javax.swing.JComboBox();
+        espacioComboBox = new javax.swing.JComboBox();
+        razaComboBox = new javax.swing.JComboBox();
+        colorComboBox = new javax.swing.JComboBox();
+        entrenamientoComboBox = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -72,7 +71,6 @@ public class Buscar_Mascota extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         orderByComboBox = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
 
@@ -97,8 +95,9 @@ public class Buscar_Mascota extends javax.swing.JFrame {
         jLabel1.setText("Buscador de mascotas");
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel2.setText("<html><body>Estas son todas las mascotas registradas en el sistema, se muestran tanto adoptadas como en espera de adopción. Seleccione una y presione \"Ver Mascota para ver los datos de la mascota o presione \"¿Qué mascota elegir?\" para realizar un cuestionara que lo ayudará a elegir una mascota adecuada. El panel de buscar por permite elegir un filtro de búsqueda de mascotas.</body></html>");
+        jLabel2.setText("<html><body>Estas son todas las mascotas registradas en el sistema, se muestran tanto adoptadas como en espera de adopción. Seleccione una y presione \"Ver Datos de Mascota\" para ver los datos de la mascota o presione \"¿Qué mascota elegir?\" para realizar un cuestionara que lo ayudará a elegir una mascota adecuada. El panel de buscar por permite elegir un filtro de búsqueda de mascotas.</body></html>");
 
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         formularioButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -153,43 +152,49 @@ public class Buscar_Mascota extends javax.swing.JFrame {
             }
         });
 
-        datosaVisualizar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        datosaVisualizar.setBackground(new java.awt.Color(102, 153, 255));
+        datosaVisualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Seleccione los campos que desea  visualizar en la tabla.", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
         datosaVisualizar.setName("vgfgfg"); // NOI18N
 
-        nombreSeeCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        nombreSeeCheckBox.setText("Nombre");
-        nombreSeeCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        nombreCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        nombreCheckBox.setText("Nombre");
+        nombreCheckBox.setOpaque(false);
+        nombreCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreSeeCheckBoxActionPerformed(evt);
+                nombreCheckBoxActionPerformed(evt);
             }
         });
 
-        lugarSeeCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        lugarSeeCheckBox.setText("Lugar");
-        lugarSeeCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        lugarCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        lugarCheckBox.setText("Lugar");
+        lugarCheckBox.setOpaque(false);
+        lugarCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lugarSeeCheckBoxActionPerformed(evt);
+                lugarCheckBoxActionPerformed(evt);
             }
         });
 
-        estadoVerCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        estadoVerCheckBox.setText("Estado");
-        estadoVerCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        estadoCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        estadoCheckBox.setText("Estado");
+        estadoCheckBox.setOpaque(false);
+        estadoCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                estadoVerCheckBoxActionPerformed(evt);
+                estadoCheckBoxActionPerformed(evt);
             }
         });
 
-        RazaVerCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        RazaVerCheckBox.setText("Raza");
-        RazaVerCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        RazaCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        RazaCheckBox.setText("Raza");
+        RazaCheckBox.setOpaque(false);
+        RazaCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RazaVerCheckBoxActionPerformed(evt);
+                RazaCheckBoxActionPerformed(evt);
             }
         });
 
         tipoVerCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         tipoVerCheckBox.setText("Tipo");
+        tipoVerCheckBox.setOpaque(false);
         tipoVerCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoVerCheckBoxActionPerformed(evt);
@@ -198,6 +203,7 @@ public class Buscar_Mascota extends javax.swing.JFrame {
 
         jCheckBox6.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jCheckBox6.setText("Nivel de energía");
+        jCheckBox6.setOpaque(false);
         jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox6ActionPerformed(evt);
@@ -206,6 +212,7 @@ public class Buscar_Mascota extends javax.swing.JFrame {
 
         jCheckBox7.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jCheckBox7.setText("Color");
+        jCheckBox7.setOpaque(false);
         jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox7ActionPerformed(evt);
@@ -214,6 +221,7 @@ public class Buscar_Mascota extends javax.swing.JFrame {
 
         jCheckBox8.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jCheckBox8.setText("Facilidad de entrenamiento");
+        jCheckBox8.setOpaque(false);
         jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox8ActionPerformed(evt);
@@ -222,6 +230,7 @@ public class Buscar_Mascota extends javax.swing.JFrame {
 
         jCheckBox9.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jCheckBox9.setText("Severidad");
+        jCheckBox9.setOpaque(false);
         jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox9ActionPerformed(evt);
@@ -230,34 +239,34 @@ public class Buscar_Mascota extends javax.swing.JFrame {
 
         jCheckBox10.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jCheckBox10.setText("Teléfono contacto");
+        jCheckBox10.setOpaque(false);
         jCheckBox10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox10ActionPerformed(evt);
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Seleccione los campos que desea  visualizar en la tabla.");
-
-        jCheckBox11.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jCheckBox11.setText("Nombre Contacto");
-        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
+        nombreContactoCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        nombreContactoCheckBox.setText("Nombre Contacto");
+        nombreContactoCheckBox.setOpaque(false);
+        nombreContactoCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox11ActionPerformed(evt);
+                nombreContactoCheckBoxActionPerformed(evt);
             }
         });
 
-        jCheckBox12.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jCheckBox12.setText("Correo contacto");
-        jCheckBox12.addActionListener(new java.awt.event.ActionListener() {
+        correoContactoCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        correoContactoCheckBox.setText("Correo contacto");
+        correoContactoCheckBox.setOpaque(false);
+        correoContactoCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox12ActionPerformed(evt);
+                correoContactoCheckBoxActionPerformed(evt);
             }
         });
 
         espacioVerCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         espacioVerCheckBox.setText("Espacio requerido");
+        espacioVerCheckBox.setOpaque(false);
         espacioVerCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 espacioVerCheckBoxActionPerformed(evt);
@@ -266,6 +275,7 @@ public class Buscar_Mascota extends javax.swing.JFrame {
 
         veterinarioVerCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         veterinarioVerCheckBox.setText("Veterinario de contacto");
+        veterinarioVerCheckBox.setOpaque(false);
         veterinarioVerCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 veterinarioVerCheckBoxActionPerformed(evt);
@@ -274,24 +284,30 @@ public class Buscar_Mascota extends javax.swing.JFrame {
 
         lugarVerCheckBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         lugarVerCheckBox.setText("Lugar");
+        lugarVerCheckBox.setOpaque(false);
         lugarVerCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lugarVerCheckBoxActionPerformed(evt);
             }
         });
 
+        verColumnasButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        verColumnasButton.setText("Ver columnas seleccionadas");
+        verColumnasButton.setBorderPainted(false);
+        verColumnasButton.setOpaque(false);
+
         javax.swing.GroupLayout datosaVisualizarLayout = new javax.swing.GroupLayout(datosaVisualizar);
         datosaVisualizar.setLayout(datosaVisualizarLayout);
         datosaVisualizarLayout.setHorizontalGroup(
             datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datosaVisualizarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tipoVerCheckBox)
-                    .addComponent(RazaVerCheckBox)
-                    .addComponent(estadoVerCheckBox)
-                    .addComponent(lugarSeeCheckBox)
-                    .addComponent(nombreSeeCheckBox))
+                    .addComponent(RazaCheckBox)
+                    .addComponent(estadoCheckBox)
+                    .addComponent(lugarCheckBox)
+                    .addComponent(nombreCheckBox))
                 .addGap(39, 39, 39)
                 .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jCheckBox9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -300,85 +316,89 @@ public class Buscar_Mascota extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, datosaVisualizarLayout.createSequentialGroup()
                         .addComponent(jCheckBox6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(33, 33, 33))
-                    .addComponent(jCheckBox10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jCheckBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(veterinarioVerCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(espacioVerCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lugarVerCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(correoContactoCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nombreContactoCheckBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lugarVerCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosaVisualizarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(verColumnasButton)
+                .addContainerGap())
         );
         datosaVisualizarLayout.setVerticalGroup(
             datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, datosaVisualizarLayout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+            .addGroup(datosaVisualizarLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(datosaVisualizarLayout.createSequentialGroup()
                         .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombreSeeCheckBox)
+                            .addComponent(nombreCheckBox)
                             .addComponent(jCheckBox6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lugarSeeCheckBox)
+                            .addComponent(lugarCheckBox)
                             .addComponent(jCheckBox7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(estadoVerCheckBox)
+                            .addComponent(estadoCheckBox)
                             .addComponent(jCheckBox8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RazaVerCheckBox)
+                            .addComponent(RazaCheckBox)
                             .addComponent(jCheckBox9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(datosaVisualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBox10)
                             .addComponent(tipoVerCheckBox)))
                     .addGroup(datosaVisualizarLayout.createSequentialGroup()
-                        .addComponent(jCheckBox11)
+                        .addComponent(nombreContactoCheckBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox12)
+                        .addComponent(correoContactoCheckBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(espacioVerCheckBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(veterinarioVerCheckBox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lugarVerCheckBox))))
+                        .addComponent(lugarVerCheckBox)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(verColumnasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Buscar por ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tamanoComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tamanoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        energiaComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        energiaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipoMascotaComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tipoMascotaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton1.setText("Buscar");
+        buscarButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        buscarButton.setText("Buscar");
+        buscarButton.setOpaque(false);
 
-        jComboBox10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        severidadComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        severidadComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox11.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        espacioComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        espacioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox12.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        razaComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        razaComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox13.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        colorComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        colorComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox14.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox15.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        entrenamientoComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        entrenamientoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -412,10 +432,6 @@ public class Buscar_Mascota extends javax.swing.JFrame {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Color principal:");
 
-        jLabel18.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("jLabel10");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -428,9 +444,9 @@ public class Buscar_Mascota extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipoMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(energiaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tamanoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
@@ -438,66 +454,63 @@ public class Buscar_Mascota extends javax.swing.JFrame {
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22)
+                    .addComponent(severidadComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(espacioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(razaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(entrenamientoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(colorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buscarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel17))
-                    .addComponent(jLabel13)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel15)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tamanoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(energiaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel14))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tipoMascotaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel15)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(razaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(espacioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(severidadComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(entrenamientoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(colorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         orderByComboBox.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -510,64 +523,56 @@ public class Buscar_Mascota extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(datosaVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(datosaVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(verMascotaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(orderByComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(verMascotaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(91, 91, 91))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(orderByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(796, 796, 796)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(verMascotaButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(orderByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(datosaVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(backButton)
-                .addGap(7, 7, 7))
+                .addContainerGap())
         );
 
         pack();
@@ -585,21 +590,21 @@ public class Buscar_Mascota extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void nombreSeeCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreSeeCheckBoxActionPerformed
+    private void nombreCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreSeeCheckBoxActionPerformed
+    }//GEN-LAST:event_nombreCheckBoxActionPerformed
 
-    private void lugarSeeCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lugarSeeCheckBoxActionPerformed
+    private void lugarCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lugarCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lugarSeeCheckBoxActionPerformed
+    }//GEN-LAST:event_lugarCheckBoxActionPerformed
 
-    private void estadoVerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoVerCheckBoxActionPerformed
+    private void estadoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_estadoVerCheckBoxActionPerformed
+    }//GEN-LAST:event_estadoCheckBoxActionPerformed
 
-    private void RazaVerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RazaVerCheckBoxActionPerformed
+    private void RazaCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RazaCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RazaVerCheckBoxActionPerformed
+    }//GEN-LAST:event_RazaCheckBoxActionPerformed
 
     private void tipoVerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoVerCheckBoxActionPerformed
         // TODO add your handling code here:
@@ -625,13 +630,13 @@ public class Buscar_Mascota extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox10ActionPerformed
 
-    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
+    private void nombreContactoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreContactoCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox11ActionPerformed
+    }//GEN-LAST:event_nombreContactoCheckBoxActionPerformed
 
-    private void jCheckBox12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox12ActionPerformed
+    private void correoContactoCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoContactoCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox12ActionPerformed
+    }//GEN-LAST:event_correoContactoCheckBoxActionPerformed
 
     private void espacioVerCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espacioVerCheckBoxActionPerformed
         // TODO add your handling code here:
@@ -681,52 +686,50 @@ public class Buscar_Mascota extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JCheckBox RazaVerCheckBox;
+    public javax.swing.JCheckBox RazaCheckBox;
     private javax.swing.JButton backButton;
+    public javax.swing.JButton buscarButton;
+    public javax.swing.JComboBox colorComboBox;
+    public javax.swing.JCheckBox correoContactoCheckBox;
     private javax.swing.JPanel datosaVisualizar;
+    public javax.swing.JComboBox energiaComboBox;
+    public javax.swing.JComboBox entrenamientoComboBox;
+    public javax.swing.JComboBox espacioComboBox;
     public javax.swing.JCheckBox espacioVerCheckBox;
-    public javax.swing.JCheckBox estadoVerCheckBox;
+    public javax.swing.JCheckBox estadoCheckBox;
     public javax.swing.JButton formularioButton;
-    private javax.swing.JButton jButton1;
     public javax.swing.JCheckBox jCheckBox10;
-    public javax.swing.JCheckBox jCheckBox11;
-    public javax.swing.JCheckBox jCheckBox12;
     public javax.swing.JCheckBox jCheckBox6;
     public javax.swing.JCheckBox jCheckBox7;
     public javax.swing.JCheckBox jCheckBox8;
     public javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox10;
-    private javax.swing.JComboBox jComboBox11;
-    private javax.swing.JComboBox jComboBox12;
-    private javax.swing.JComboBox jComboBox13;
-    private javax.swing.JComboBox jComboBox14;
-    private javax.swing.JComboBox jComboBox15;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
+    public javax.swing.JLabel jLabel10;
+    public javax.swing.JLabel jLabel11;
+    public javax.swing.JLabel jLabel12;
+    public javax.swing.JLabel jLabel13;
+    public javax.swing.JLabel jLabel14;
+    public javax.swing.JLabel jLabel15;
+    public javax.swing.JLabel jLabel16;
+    public javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JCheckBox lugarSeeCheckBox;
+    public javax.swing.JCheckBox lugarCheckBox;
     public javax.swing.JCheckBox lugarVerCheckBox;
-    public javax.swing.JCheckBox nombreSeeCheckBox;
+    public javax.swing.JCheckBox nombreCheckBox;
+    public javax.swing.JCheckBox nombreContactoCheckBox;
     public javax.swing.JComboBox orderByComboBox;
+    public javax.swing.JComboBox razaComboBox;
+    public javax.swing.JComboBox severidadComboBox;
     public javax.swing.JTable tablaMascotasVisualizar;
+    public javax.swing.JComboBox tamanoComboBox;
+    public javax.swing.JComboBox tipoMascotaComboBox;
     public javax.swing.JCheckBox tipoVerCheckBox;
+    public javax.swing.JButton verColumnasButton;
     public javax.swing.JButton verMascotaButton;
     public javax.swing.JCheckBox veterinarioVerCheckBox;
     // End of variables declaration//GEN-END:variables

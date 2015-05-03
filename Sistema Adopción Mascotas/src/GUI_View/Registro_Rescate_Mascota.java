@@ -116,6 +116,9 @@ public class Registro_Rescate_Mascota extends javax.swing.JFrame {
 
         veterinarioMascotaField.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
 
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
         jLabel10.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel10.setText("Fotografía:");
 

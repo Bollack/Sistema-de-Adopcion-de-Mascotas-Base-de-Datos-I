@@ -42,48 +42,6 @@ public class Model {
         como correo válido y número de teléfono en formato correcto. Además que si se llenaron los campos
         obligatorios y validaciones superficiales similares.
     */
-    public boolean InsertarUsuario(String nombre, String apellido, String provincia, String genero, String telefono,
-                                    String correo, String username, String password) throws SQLException, ClassNotFoundException, FileNotFoundException
-    {
-        try //Trata de insertar al usuario 
-        {
-            this.conexion = new Database_Connection(1); //Se conecta como admin, puesto que la tabla es de admin y manipulada por admin
-            String[] camposAllenar ={"username", "password"};
-            String[] valores ={username, password};
-            this.conexion.insertToTable("Usuario", camposAllenar, valores); //inserta al usuario
-            
-        }catch (SQLException e)
-        {
-            System.out.println(e.getMessage());
-            throw e;
-            
-        }catch (ClassNotFoundException a)
-        {
-            System.out.println(a.getMessage());
-            throw a;
-        }
-        try //Trata de insertar a la persona en la tabla de personas
-        {   
-            /*
-                Obtiene el id del usuario recientemente creado para asociar la persona
-                a crear con dicha tupla en la tabla usuarios. 
-            */
-            String[] camposAllenar1 = {"nombre", "apellido", "provincia","telefono","email","usuario", "genero"};
-            Object[] valores1={nombre, apellido, provincia, telefono, correo,username,genero};
-            this.conexion.insertToTable("Persona", camposAllenar1, valores1);
-            //Finaliza la conexión
-            this.conexion.endConnection(); 
-            //Devuelve una señal indicando que la operación se realizó con éxito 
-            return true;
-        }catch (SQLException e)
-        {
-            //Devuelve la excepción para que así el controlador pueda mostrar su mensaje en 
-            //ventana de error y el administrador/usuario pueda verlo desde la misma app.
-            throw e;
-        }      
-    }
-    
-
     public void insertUsuario_Persona(String username, String password, String nombre, String apellido, String telefono,
                                     String correo, String direccion, String genero) throws SQLException, ClassNotFoundException, FileNotFoundException
     {
@@ -227,19 +185,96 @@ public class Model {
         return datos;
     }
     
-    public boolean insertMascota(String username, String password, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
-                                String espacio, String tamano, String training, String sexo, String energia, String veterinario,
-                                String medicamentos, String Tratamientos, String situacion, String notas, File fotografia_antes,
-                                String contacto) throws SQLException, ClassNotFoundException
+    public Object[] getDatosFromMascota(int id) throws SQLException
     {
-        Object[] datos=null;
+        this.conexion.setConnection(1);
+        Object[] datos = new Object[23];
+        Object[] parametros = new Object[2];
+        parametros[0] = id;//"'"+username+"'";
+        try {
+            parametros[1]="'password'";
+            datos[0]=username;
+            String respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[1]=respuesta;
+            
+            parametros[1]="'nombre'";
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[2]=respuesta;
+            
+            parametros[1]="apellido";
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[3]=respuesta;
+            
+            parametros[1]="telefono";
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[4]=respuesta;
+            
+            parametros[1]="correo";
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[5]=respuesta;
+            
+            parametros[1]="lugar";
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[6]=respuesta;
+            
+            parametros[1]="genero";
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[7]=respuesta;
+            
+            
+        } catch (SQLException ex) {
+            throw ex;
+        } catch (NullPointerException ex) {
+            System.out.println();
+            throw ex;
+        }
+        this.conexion.endConnection();
+        return datos;
+    }
+    
+    
+    public boolean insertMascota(String username, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
+                                String espacio, String tamano, String training, String energia,String sexo, String veterinario,
+                                String medicamentos, String enfermedades,String notas,String Tratamientos, String situacion, String severidad, File foto_antes,
+                                File foto_despues,String contacto) throws SQLException, ClassNotFoundException, FileNotFoundException
+    {
+        Object[] datos = new Object[21];
         try //Trata de insertar la tupla en la tabla mascota, solicitándoselo a 
             //Database_Connection y esperando su respuesta
         {
-            this.conexion = new Database_Connection(3); //Se conecta como usuario, 
-            String[] camposAllenar = {"username","password"};
-            String[] valores ={username, password};
+            this.conexion = new Database_Connection(1); //Se conecta como usuario, 
+            datos[0] = username;
+            datos[1] = nombre;
+            datos[2] = tipoMascota;
+            datos[3] = Raza;
+            datos[4] = Color1;
+            datos[5] = Color2;
+            datos[6] = espacio;
+            datos[7] = tamano;
+            datos[8] = training;
+            datos[9] = energia;
+            datos[10] = sexo;
+            datos[11] = veterinario;
+            datos[12] = medicamentos;
+            datos[13] = enfermedades;
+            datos[14] = notas;
+            datos[15] = Tratamientos;
+            datos[16] = situacion;
+            datos[17] = severidad;
+            datos[18] = foto_antes;
+            datos[19] = foto_despues;
+            datos[20] = contacto;
+
             this.conexion.callProcedure("Insertar Mascota",datos);
+            
+            this.conexion.endConnection();
         }catch (SQLException e)
         {
             System.out.println(e.getMessage());
@@ -250,6 +285,7 @@ public class Model {
             System.out.println(a.getMessage());
             throw a;
         }
+        this.conexion.endConnection();
         return true;
     }
     
@@ -308,7 +344,7 @@ public class Model {
         return image;
     }
     
-    public void ModifyUser(String[] datos) throws SQLException, ClassNotFoundException
+    public void ModifyUser(String[] datos) throws SQLException, ClassNotFoundException, FileNotFoundException
     {
         this.conexion.setConnection(2);
         boolean resultado = this.conexion.callProcedure("Modificar usuario-persona", datos);
@@ -319,6 +355,53 @@ public class Model {
         this.conexion.endConnection();
     }
     
+    public void ModifyMascota(String username, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
+                                String espacio, String tamano, String training, String energia,String sexo, String veterinario,
+                                String medicamentos, String enfermedades,String notas,String Tratamientos, String situacion, String severidad, File foto_antes,
+                                File foto_despues,String contacto) throws SQLException, ClassNotFoundException, FileNotFoundException
+    {
+               Object[] datos = new Object[21];
+        try //Trata de insertar la tupla en la tabla mascota, solicitándoselo a 
+            //Database_Connection y esperando su respuesta
+        {
+            this.conexion = new Database_Connection(1); //Se conecta como usuario, 
+            datos[0] = username;
+            datos[1] = nombre;
+            datos[2] = tipoMascota;
+            datos[3] = Raza;
+            datos[4] = Color1;
+            datos[5] = Color2;
+            datos[6] = espacio;
+            datos[7] = tamano;
+            datos[8] = training;
+            datos[9] = energia;
+            datos[10] = sexo;
+            datos[11] = veterinario;
+            datos[12] = medicamentos;
+            datos[13] = enfermedades;
+            datos[14] = notas;
+            datos[15] = Tratamientos;
+            datos[16] = situacion;
+            datos[17] = severidad;
+            datos[18] = foto_antes;
+            datos[19] = foto_despues;
+            datos[20] = contacto;
+
+            this.conexion.callProcedure("Modificar Mascota",datos);
+            
+            this.conexion.endConnection();
+        }catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+            throw e;
+            
+        }catch (ClassNotFoundException a)
+        {
+            System.out.println(a.getMessage());
+            throw a;
+        }
+        this.conexion.endConnection();
+    }
     
     /*
         Método que devuelve un arreglo con los tipos de mascotas disponibles en el sistema.
@@ -371,6 +454,7 @@ public class Model {
         return razas;
     }
     
+
     
     /*
     Método que devuelve un arreglo de imágenes de una adopción

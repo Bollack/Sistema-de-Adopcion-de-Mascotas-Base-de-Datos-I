@@ -59,7 +59,7 @@ public class Main_Visitante extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jPanel1.setForeground(new java.awt.Color(0, 102, 255));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -118,6 +118,7 @@ public class Main_Visitante extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("<html><body>Salva +Cota es un sistema de administración y control de mascotas abandonadas y la adopción de las mismas. Permite a los usuarios registrar mascotas rescatadas y ponerlas en adopción, permitiendo que así otros usuarios puedan ver a la mascota y así adoptarla.</body></html>");
 
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Mascotas en adopción", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
 
         Foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -324,7 +325,7 @@ public class Main_Visitante extends javax.swing.JFrame {
     public javax.swing.JButton RegisterButton;
     private javax.swing.JMenuItem cerrarSesionMenuItem;
     public javax.swing.JButton exitButton;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;

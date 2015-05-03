@@ -41,6 +41,7 @@ public class BuscarPersonas extends javax.swing.JFrame {
         rescatistasRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Búsqueda de personas");
         setBackground(new java.awt.Color(102, 153, 255));
 
         tituloBuscarPersona.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
@@ -118,7 +119,7 @@ public class BuscarPersonas extends javax.swing.JFrame {
                                     .addComponent(rescatistasRadioButton1))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
-            .addComponent(verPersonaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(verPersonaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +189,7 @@ public class BuscarPersonas extends javax.swing.JFrame {
     public javax.swing.JRadioButton adoptantesRadioButton;
     public javax.swing.JRadioButton adoptantesRadioButton1;
     public javax.swing.JButton backButton;
-    private javax.swing.ButtonGroup buttonGroup1;
+    public javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JRadioButton rescatistasRadioButton;

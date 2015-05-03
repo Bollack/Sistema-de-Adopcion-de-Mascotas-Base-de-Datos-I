@@ -6,9 +6,11 @@
 package Controller;
 
 
+import GUI_View.BuscarPersonas;
 import GUI_View.Error_connection_db;
 import GUI_View.Main_User;
 import GUI_View.ModificarCuenta;
+import GUI_View.ModifyMascota;
 import GUI_View.Registro_Rescate_Mascota;
 import Model.Model;
 import java.awt.Dimension;
@@ -98,18 +100,18 @@ public class Controller_User implements ActionListener
     }
     
     
-        private void log_Out()
+    private void log_Out()
+    {
+        int warning =  JOptionPane.YES_NO_OPTION;
+        int answer = JOptionPane.showConfirmDialog (null, "¿Está seguro de que desea salir del programa y volver al menú de visitante?","Advertencia",warning);
+        if (answer == JOptionPane.YES_OPTION)
         {
-            int warning =  JOptionPane.YES_NO_OPTION;
-            int answer = JOptionPane.showConfirmDialog (null, "¿Está seguro de que desea salir del programa y volver al menú de visitante?","Advertencia",warning);
-            if (answer == JOptionPane.YES_OPTION)
-            {
-                this.gui.dispose();
-                this.gui.show(false);
-                Controller engine = new Controller();
-                engine.Start();
-            }
+            this.gui.dispose();
+            this.gui.show(false);
+            Controller engine = new Controller();
+            engine.Start();
         }
+    }
     
     private void backtoAccountScreen()
     {
@@ -191,7 +193,17 @@ public class Controller_User implements ActionListener
     
     private void buscarPersonas_Window()
     {
-        
+        this.gui.show(false);
+        this.gui.dispose();
+        BuscarPersonas ventana = new BuscarPersonas();
+        this.gui = ventana;
+        /*
+        Se añaden los radio buttons a un buttonGroup para que sólo uno pueda ser seleccionado.
+        */
+        ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+        ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+        ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+        ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
     }
     
     private void buscarMascotas_Window()
@@ -278,6 +290,8 @@ public class Controller_User implements ActionListener
         al ocurrir el evento de cambiar de item seleccionado, esto llama a la lista de razas del 
         grupo de animales seleccionado y a la añade al combobox de raza.
         */
+        
+        ventana_rescate.razaMascotaComboBox.removeAllItems();
         
         ventana_rescate.tipoMascotaComboBox.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e) 
@@ -381,6 +395,184 @@ public class Controller_User implements ActionListener
         ventana_rescate.setResizable(false);
     }  
     
+    private void modificar_Mascota_Window() throws SQLException, ClassNotFoundException
+    {
+        this.gui.dispose();
+        this.gui.show(false);
+        //Se istancia el objeto de la clase ventana
+        ModifyMascota ventana = new ModifyMascota();
+        
+        this.gui = ventana;
+        //Se inicializan los listener de los elementos de las ventanas
+        /*
+        Se establece el listener del botón atrás, el cual lleva al método que devuelve al usuario al menú
+        principal de usuario
+        */
+        ventana.atrasMascotaButton.addActionListener((ActionListener) this);
+        ventana.atrasMascotaButton.setActionCommand("Atras - Modificar Mascota");
+        
+        ventana.color1MascotaComboBox.addActionListener((ActionListener) this);
+        ventana.color2MascotaComboBox.addActionListener((ActionListener) this);
+        ventana.energiaMascotaComboBox.addActionListener((ActionListener) this);
+        ventana.entrenamientoMascotaComboBox.addActionListener((ActionListener) this);
+        ventana.espacioMascotaComboBox.addActionListener((ActionListener) this);
+        ventana.espacioMascotaComboBox.addActionListener((ActionListener) this);
+        /*
+        Aquí se establece el listener para cuando el usuario presiona el botón de 
+        Examinar y establecer así el atributo FOTO_ANTES de mascota. 
+        */
+        ventana.findImageButton.addActionListener((ActionListener) this);
+        ventana.findImageButton.setActionCommand("FileChooser-FotoAntesMascota - Modificar Mascota");
+        
+        ventana.findImageButton1.addActionListener((ActionListener) this);
+        ventana.findImageButton1.setActionCommand("FileChooser-FotoDespuesMascota - Modificar Mascota");
+        
+        ventana.modificarMascotaButton.addActionListener((ActionListener)this);
+        ventana.modificarMascotaButton.setActionCommand("Modificar Mascota - Modificar Mascota");
+                
+        ventana.imageDirMascotaField.addActionListener((ActionListener) this);
+        
+        
+        ventana.nameMascotaField.addActionListener((ActionListener) this);
+        
+        
+        ventana.razaMascotaComboBox.addActionListener((ActionListener) this);
+        ventana.registrarMascotaButton.addActionListener((ActionListener) this);
+        
+        
+        ventana.tamanoMascotaComboBox.addActionListener((ActionListener) this);
+        ventana.tipoMascotaComboBox.addActionListener((ActionListener) this);
+        
+        
+        ventana.veterinarioMascotaField.addActionListener((ActionListener) this);
+        
+        //Se comienza a alterar los componentes con restricciones en reemplazo de tablas catálogo
+        
+        ventana.sexoMascotaButtonGroup.add(ventana.hembraMascotaRadioButton); //Se añaden los radiobuttons a un ButtonGroup, impidiendoq que ambos sean seleccionados a la vez.
+        ventana.sexoMascotaButtonGroup.add(ventana.machoMascotaRadioButton);
+        
+        /*
+        En el siguiente bloque de se asigna los tipos de mascota como items al combo box
+        de tipo mascota.
+        */
+        String[] grupos = this.modelo.getTiposMascota();
+        ventana.tipoMascotaComboBox.removeAllItems();
+        for (int i=0; i<grupos.length;i++)
+        {
+            ventana.tipoMascotaComboBox.addItem(grupos[i]);
+        }
+        
+        /*
+        En el siguiente bloque de código se añade un listener al combobox anterior que se activa
+        al ocurrir el evento de cambiar de item seleccionado, esto llama a la lista de razas del 
+        grupo de animales seleccionado y a la añade al combobox de raza.
+        */
+        
+        ventana.razaMascotaComboBox.removeAllItems();
+        
+        ventana.tipoMascotaComboBox.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    try 
+                    {
+                        String grupo = (String) ventana.tipoMascotaComboBox.getSelectedItem();
+                        Model a = new Model();
+                        ventana.razaMascotaComboBox.removeAllItems();
+                        String[] razas = a.getRazasFromTipoMascota((String) ventana.tipoMascotaComboBox.getSelectedItem());
+                        for (int i=0; i<razas.length;i++)
+                        {
+                            ventana.razaMascotaComboBox.addItem(razas[i]);
+                        }
+                    } catch (SQLException ex) 
+                    {
+                    } catch (ClassNotFoundException ex) 
+                    {
+                    }
+                }
+            
+        });
+        
+        v
+        
+        
+        ventana.energiaMascotaComboBox.removeAllItems();
+        ventana.energiaMascotaComboBox.addItem("Atlético");
+        ventana.energiaMascotaComboBox.addItem("Activo");
+        ventana.energiaMascotaComboBox.addItem("Regular");
+        ventana.energiaMascotaComboBox.addItem("Pasivo");
+        ventana.energiaMascotaComboBox.addItem("Perezoso");
+        
+        ventana.espacioMascotaComboBox.removeAllItems();
+        ventana.espacioMascotaComboBox.addItem("Amplio");
+        ventana.espacioMascotaComboBox.addItem("Mediano");
+        ventana.espacioMascotaComboBox.addItem("Mínimo");
+        
+        
+        
+        ventana.entrenamientoMascotaComboBox.removeAllItems();
+        ventana.entrenamientoMascotaComboBox.addItem("Obediente");
+        ventana.entrenamientoMascotaComboBox.addItem("Tranquilo");
+        ventana.entrenamientoMascotaComboBox.addItem("Disperso");
+        ventana.entrenamientoMascotaComboBox.addItem("Hiperactivo");
+        
+        ventana.tamanoMascotaComboBox.removeAllItems();
+        ventana.tamanoMascotaComboBox.addItem("Grande");
+        ventana.tamanoMascotaComboBox.addItem("Mediano");
+        ventana.tamanoMascotaComboBox.addItem("Pequeño");
+        
+        ventana.color1MascotaComboBox.removeAllItems();
+        ventana.color1MascotaComboBox.addItem("Negro");
+        ventana.color1MascotaComboBox.addItem("Blanco");
+        ventana.color1MascotaComboBox.addItem("Café");
+        ventana.color1MascotaComboBox.addItem("Gris");
+        ventana.color1MascotaComboBox.addItem("Beige");
+        ventana.color1MascotaComboBox.addItem("Morado");
+        ventana.color1MascotaComboBox.addItem("Rojo");
+        ventana.color1MascotaComboBox.addItem("Verde");
+        ventana.color1MascotaComboBox.addItem("Azul");
+        ventana.color1MascotaComboBox.addItem("Amarillo");
+        ventana.color1MascotaComboBox.addItem("Naranja");
+        ventana.color1MascotaComboBox.addItem("Dorado");
+        ventana.color1MascotaComboBox.addItem("Púrpura");
+        ventana.color1MascotaComboBox.addItem("Rosado");
+        ventana.color1MascotaComboBox.addItem("Lila");
+        ventana.color1MascotaComboBox.addItem("Celeste");
+        ventana.color1MascotaComboBox.addItem("Crema");
+        ventana.color1MascotaComboBox.addItem("Vino");
+        ventana.color1MascotaComboBox.addItem("Otro");
+        
+        
+        ventana.color2MascotaComboBox.removeAllItems();
+        ventana.color2MascotaComboBox.addItem("Negro");
+        ventana.color2MascotaComboBox.addItem("Blanco");
+        ventana.color2MascotaComboBox.addItem("Café");
+        ventana.color2MascotaComboBox.addItem("Gris");
+        ventana.color2MascotaComboBox.addItem("Beige");
+        ventana.color2MascotaComboBox.addItem("Morado");
+        ventana.color2MascotaComboBox.addItem("Rojo");
+        ventana.color2MascotaComboBox.addItem("Verde");
+        ventana.color2MascotaComboBox.addItem("Azul");
+        ventana.color2MascotaComboBox.addItem("Amarillo");
+        ventana.color2MascotaComboBox.addItem("Naranja");
+        ventana.color2MascotaComboBox.addItem("Dorado");
+        ventana.color2MascotaComboBox.addItem("Púrpura");
+        ventana.color2MascotaComboBox.addItem("Rosado");
+        ventana.color2MascotaComboBox.addItem("Lila");
+        ventana.color2MascotaComboBox.addItem("Celeste");
+        ventana.color2MascotaComboBox.addItem("Crema");
+        ventana.color2MascotaComboBox.addItem("Vino");
+        ventana.color2MascotaComboBox.addItem("Otro");
+       
+        ventana.severidadMascotaComboBox.removeAllItems();
+        ventana.severidadMascotaComboBox.addItem("Crítico");
+        ventana.severidadMascotaComboBox.addItem("Mal estado");
+        ventana.severidadMascotaComboBox.addItem("Buen estado");
+        
+        ventana.show(true);
+        ventana.pack();
+        ventana.setResizable(false);
+    }
+    
     
     public void actionPerformed(ActionEvent e) {
        String comando = e.getActionCommand();
@@ -459,7 +651,7 @@ public class Controller_User implements ActionListener
                 System.out.println("Dirección de imagen: "+direccion.getAbsolutePath());
                 ventana.imageDirMascotaField.setText(direccion.getAbsolutePath());
                    ImageIcon icon = new ImageIcon(direccion.getAbsolutePath());
-                   ImageIcon imagen = this.displayImageInLabel(icon, 260, 178,ventana.foto.getX(),ventana.foto.getY());
+                   ImageIcon imagen = this.displayImageInLabel(icon, 260, 178,ventana.foto.getX()+30,ventana.foto.getY());
                    ventana.foto.setText("");
                    ventana.foto.setIcon(imagen);
                    ventana.foto.resize(260, 178);
@@ -527,7 +719,7 @@ public class Controller_User implements ActionListener
         
     }
     
-    private void cambiarDatosCuenta(ModificarCuenta ventana)
+    private void cambiarDatosCuenta(ModificarCuenta ventana) 
     {
         /*
         Utilizada en la ventana de ModificarCuenta y se encarga de guardar y actualizar en la 
@@ -610,6 +802,8 @@ public class Controller_User implements ActionListener
         }catch (ClassNotFoundException e){
             System.out.println("Excepcion ClassNotFoundException en Registrarse()");
             this.errorConn(e);
+        } catch (FileNotFoundException ex) {
+            this.errorConn(ex);
         }
     }
     
@@ -706,15 +900,117 @@ public class Controller_User implements ActionListener
     
     
   
-    private void registrar_Mascota(Registro_Rescate_Mascota ventana)
+    private void registrar_Mascota(Registro_Rescate_Mascota ventana) 
     {
         try
         {
             this.validate_AllFieldsRegistroMascota(ventana);
             
+            /*
+            Se extraen los valores insertados por el usuario y se insertan
+            en variable para hacer su reconocimiento y manejo más fácil.
+            */
+            String nombre = ventana.nameMascotaField.getText();
+            String tipo = (String) ventana.tipoMascotaComboBox.getSelectedItem();
+            String raza = (String) ventana.razaMascotaComboBox.getSelectedItem();
+            String color1 = (String) ventana.color1MascotaComboBox.getSelectedItem();
+            String color2 = (String) ventana.color2MascotaComboBox.getSelectedItem();
+            String espacio = (String) ventana.espacioMascotaComboBox.getSelectedItem();
+            String tamano = (String) ventana.tamanoMascotaComboBox.getSelectedItem();
+            String training = (String) ventana.entrenamientoMascotaComboBox.getSelectedItem();
+            String energia = (String) ventana.energiaMascotaComboBox.getSelectedItem();
+            String sexo=null;
+            if (ventana.machoMascotaRadioButton.isSelected())
+            {
+                sexo= ventana.machoMascotaRadioButton.getText();
+            }else if (ventana.hembraMascotaRadioButton.isSelected()){
+                sexo = ventana.hembraMascotaRadioButton.getText();
+            }else
+            {
+                throw new NullPointerException();
+            }
+            String veterinario;
+            if (ventana.veterinarioMascotaField.getText()!="")
+            {
+                veterinario = ventana.veterinarioMascotaField.getText();
+            }else
+            {
+                veterinario = null;
+            }
+            String medicamentos;
+            if (ventana.medicamentosMascotaField.getText()!="")
+            {
+                medicamentos = ventana.medicamentosMascotaField.getText();
+            }else
+            {
+                medicamentos = null;
+            }
+            String enfermedades;
+            if (ventana.enfermedadesMascotaField.getText()!="")
+            {
+                enfermedades = ventana.enfermedadesMascotaField.getText();
+            }else
+            {
+                enfermedades = null;
+            }
+            String notas;
+            if (ventana.notasMascotaField.getText()!="")
+            {
+                notas = ventana.notasMascotaField.getText();
+                
+            }else
+            {
+                notas = null;
+            }
+            String tratamientos;
+            if (ventana.tratamientoMascotaField.getText()!="")
+            {
+                tratamientos = ventana.tratamientoMascotaField.getText();
+            }else
+            {
+                tratamientos = null;
+            }
+            String situacion;
+            if (ventana.situacionMascotaField.getText()!="")
+            {
+                situacion = ventana.situacionMascotaField.getText();
+            }else
+            {
+                situacion = null;
+            }
+            String severidad =(String) ventana.severidadMascotaComboBox.getSelectedItem();
+            File foto_antes;
+            if (ventana.imageDirMascotaField.getText()!="")
+            {
+                foto_antes = new File(ventana.imageDirMascotaField.getText());
+            }else
+            {
+                foto_antes=null;
+            }
+            File foto_despues=null;
+            String contacto = this.username;
+            
+            
+            this.modelo.insertMascota(this.username,nombre,tipo, raza, color1, color2, espacio, tamano, training, 
+                                      energia, sexo, veterinario, medicamentos, enfermedades, notas, tratamientos,
+                                      situacion, severidad, foto_antes, foto_despues, contacto);
+            //Se informa al usuario de la operación exitosa.
+            int a = JOptionPane.OK_OPTION;
+            JOptionPane.showConfirmDialog(ventana, "El registro de la mascota ha sido exitosa. Puede modificar los datos insertados en la ventana Mis Mascotas Rescatadas.", "Operación exitosa", a);
+            this.backtoAccountScreen(); //Se vuelve al menú de usuario    
         }catch(NullPointerException e)
         {
-            
+            System.out.println("Excepcion NullPointerException en RegistrarMascota()");
+            int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "Por favor, inserte valores válidos y llene los valores indicados como obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            this.errorConn(ex);
+        } catch (ClassNotFoundException ex) {
+            this.errorConn(ex);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Excepcion NullPointerException en RegistrarMascota()");
+            int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "Error insertando la imagen seleccioanda a la base de datos. Vuelva a intentar y si el error persiste, contacte al desarollador para recibir soporte.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -726,11 +1022,6 @@ public class Controller_User implements ActionListener
         {
             throw new NullPointerException();
         }
-        String tipo_mascota = (String) ventana.tipoMascotaComboBox.getSelectedItem();
-        String raza = (String) ventana.razaMascotaComboBox.getSelectedItem();
-        String tamano = (String) ventana.tamanoMascotaComboBox.getSelectedItem();
-        String serveridad = (String) ventana.severidadMascotaComboBox.getSelectedItem();
-        
         String sexo;
         if  (ventana.machoMascotaRadioButton.isSelected())
         {

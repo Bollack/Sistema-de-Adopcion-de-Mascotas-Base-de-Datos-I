@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Daniel Troyo
@@ -32,6 +33,19 @@ public class Controller_Admin implements ActionListener
     {
         this.modelo = modelo;
         initiate();
+    }
+    
+    private void log_Out()
+    {
+        int warning =  JOptionPane.YES_NO_OPTION;
+        int answer = JOptionPane.showConfirmDialog (null, "¿Está seguro de que desea salir del modo de administrador y volver al menú de visitante?","Advertencia",warning);
+        if (answer == JOptionPane.YES_OPTION)
+        {
+            this.gui.dispose();
+            this.gui.show(false);
+            Controller engine = new Controller();
+            engine.Start();
+        }
     }
     
     private void initiate()
@@ -61,11 +75,11 @@ public class Controller_Admin implements ActionListener
         ventana.borrarPreguntaButton.addActionListener((ActionListener) this);
         ventana.borrarPreguntaButton.setActionCommand("Borrar Pregunta - Formulario");
         
+        ventana.EditarPreguntaButton.addActionListener((ActionListener) this);
+        ventana.EditarPreguntaButton.setActionCommand("Editar Pregunta - Formulario");
+              
         ventana.
         ventana;
-              
-        ventana;
-        ventana;
         
         ventana;
         ventana;
@@ -82,8 +96,18 @@ public class Controller_Admin implements ActionListener
         ventana;
         ventana;
         
-        
+        //Se comienza con los listeners de la pestaña de mascotas
   
+        
+        
+        
+        //Se comienza con los listeners de la pestaña de adopciones y devoluciones
+        
+        
+        //Se comienza con los listeners de la pestaña de usuarios
+        
+        
+        
         //guiInicial.setIconImage(new ImageIcon());
         
     }
@@ -100,30 +124,11 @@ public class Controller_Admin implements ActionListener
        if (comando=="")
        {
 
-       }else if(comando=="Ver Persona-Tab Usuario")
+       }else if(comando=="Borrar Pregunta - Formulario")
        {
-           
-       }else if(comando=="Tab Mascotas")
+       }else if(comando=="Añadir Pregunta - Formulario")
        {
-           
-       }else if(comando=="Tab Adopciones")
-       {
-           this.gui.disable();
-           this.gui.show(false);
-           this.backToMainWindow();
-       }else if(comando=="Crear Formulario-Tab Formulario")
-       {
-           gui.show(false);
-           this.Registrase_Window();
-       }else if(comando=="Borrar Formulario-Tab Formulario")
-       {
-           gui.show(false);
-           this.Registrase_Window();
-       }else if(comando=="Añadir Pregunta-Tab Formulario")
-       {
-           gui.show(false);
-           this.Registrase_Window();
-       }else if(comando=="Modificar Pregunta-Tab Formulario")
+       }else if(comando=="Editar Pregunta - Formulario")
        {
            gui.show(false);
            this.Registrase_Window();
@@ -152,12 +157,7 @@ public class Controller_Admin implements ActionListener
            
        }else if(comando=="Cerrar Sesión")
        {
-           this.gui.dispose();
-           this.gui.show(false);
-           //Se inicializa la instancia de clase Controller y se llama al método que establece
-           // su ventana, así como la lógica respectiva. Vuelve al menú principal (Visitante).
-           Controller engine = new Controller();
-           engine.Start();
+           this.log_Out();
            
        }else if(comando=="")
        {

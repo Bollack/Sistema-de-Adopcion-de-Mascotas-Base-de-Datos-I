@@ -73,24 +73,28 @@ public class MisMascotasAdoptada extends javax.swing.JFrame {
         verMascotaButton.setText("Ver Mascota");
         verMascotaButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         verMascotaButton.setContentAreaFilled(false);
+        verMascotaButton.setEnabled(false);
         jPanel1.add(verMascotaButton);
 
         fotosMascotaButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         fotosMascotaButton.setText("Subir fotos de la mascota");
         fotosMascotaButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fotosMascotaButton.setContentAreaFilled(false);
+        fotosMascotaButton.setEnabled(false);
         jPanel1.add(fotosMascotaButton);
 
         verRescatistaButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         verRescatistaButton.setText("¿Quién rescató a la mascota?");
         verRescatistaButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         verRescatistaButton.setContentAreaFilled(false);
+        verRescatistaButton.setEnabled(false);
         jPanel1.add(verRescatistaButton);
 
         devolverMascotaButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         devolverMascotaButton.setText("Devolver Mascota");
         devolverMascotaButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         devolverMascotaButton.setContentAreaFilled(false);
+        devolverMascotaButton.setEnabled(false);
         devolverMascotaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 devolverMascotaButtonActionPerformed(evt);

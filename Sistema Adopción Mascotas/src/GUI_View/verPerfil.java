@@ -5,6 +5,9 @@
  */
 package GUI_View;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 /**
  *
  * @author Daniel
@@ -27,6 +30,13 @@ public class verPerfil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        calificacionWindow = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        calificacionSpinner = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
+        atrasCalificaionButton = new javax.swing.JButton();
+        calificarPersonaButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -53,17 +63,104 @@ public class verPerfil extends javax.swing.JFrame {
         tablaAdopcionesDevoluciones = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableRescates = new javax.swing.JTable();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
 
+        calificacionWindow.setTitle("Calificación usuario");
+        calificacionWindow.setBackground(new java.awt.Color(102, 153, 255));
+
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Calificación de usuario");
+
+        calificacionSpinner.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        calificacionSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel3.setText("estrellas de 5");
+
+        atrasCalificaionButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        atrasCalificaionButton.setText("Atrás");
+        atrasCalificaionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasCalificaionButtonActionPerformed(evt);
+            }
+        });
+
+        calificarPersonaButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        calificarPersonaButton.setText("Calificar");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/1_estrella.png"))); // NOI18N
+
+        javax.swing.GroupLayout calificacionWindowLayout = new javax.swing.GroupLayout(calificacionWindow.getContentPane());
+        calificacionWindow.getContentPane().setLayout(calificacionWindowLayout);
+        calificacionWindowLayout.setHorizontalGroup(
+            calificacionWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(calificacionWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(calificacionWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(atrasCalificaionButton)
+                    .addGroup(calificacionWindowLayout.createSequentialGroup()
+                        .addComponent(calificarPersonaButton)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(calificacionSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        calificacionWindowLayout.setVerticalGroup(
+            calificacionWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(calificacionWindowLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(calificacionWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(calificacionWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(calificacionSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addComponent(jLabel4)
+                    .addComponent(calificarPersonaButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(atrasCalificaionButton)
+                .addContainerGap())
+        );
+
+        calificacionSpinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                if ((int)calificacionSpinner.getValue()==1)
+                {
+                    jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/1_estrella.png"))); // NOI18N
+
+                }else if ((int)calificacionSpinner.getValue()==2)
+                {
+                    jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/2_estrella.png"))); // NOI18N
+
+                }else if ((int)calificacionSpinner.getValue()==3)
+                {
+                    jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/3_estrella.png"))); // NOI18N
+
+                }else if ((int)calificacionSpinner.getValue()==4)
+                {
+                    jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/4_estrella.png"))); // NOI18N
+
+                }else
+                {
+                    jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/5_estrella.png"))); // NOI18N
+
+                }
+
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 153, 255));
 
         title.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -297,11 +394,8 @@ public class verPerfil extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton3.setText("jButton1");
-
         jButton4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton4.setText("Ver");
+        jButton4.setText("Ver datos devolución");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -313,7 +407,6 @@ public class verPerfil extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -322,26 +415,22 @@ public class verPerfil extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(51, 153, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Mascotas rescatadas", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
 
-        jButton5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton5.setText("Ver Mascota");
-
-        jButton8.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton8.setText("jButton1");
 
         tableRescates.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         tableRescates.setModel(new javax.swing.table.DefaultTableModel(
@@ -376,21 +465,19 @@ public class verPerfil extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(70, 70, 70)
-                        .addComponent(jButton8)))
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -460,6 +547,11 @@ public class verPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void atrasCalificaionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasCalificaionButtonActionPerformed
+        // TODO add your handling code here:
+        this.calificacionWindow.show(false);
+    }//GEN-LAST:event_atrasCalificaionButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -496,23 +588,28 @@ public class verPerfil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton atrasCalificaionButton;
     public javax.swing.JButton backButton;
+    public javax.swing.JSpinner calificacionSpinner;
+    private javax.swing.JDialog calificacionWindow;
+    public javax.swing.JButton calificarPersonaButton;
     private javax.swing.JLabel estadoBlackList;
     public javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     public javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton3;
     public javax.swing.JButton jButton4;
     public javax.swing.JButton jButton5;
-    public javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -137,7 +137,7 @@ public class Database_Connection {
     /*
         Método que 
     */
-    public boolean callProcedure(String comando,Object[] parametros) throws SQLException
+    public boolean callProcedure(String comando,Object[] parametros) throws SQLException, FileNotFoundException
     {
         try
         {
@@ -149,7 +149,7 @@ public class Database_Connection {
 
                    try{
                         System.out.println("Comenzando proceso de base de datos. Insertar usuario-persona");
-                        llamado = "{CALL INSERT_USER_PERSONA(?,?,?,?,?,?,?,?,?)}";
+                        llamado = "{CALL INSERT_USER_PERSONA(?,?,?,?,?,?,?,?)}";
                         storedPro = this.conn.prepareCall(llamado);
                         System.out.println("storedPro creado");
                         storedPro.setString(1, (String) parametros[0]);
@@ -203,10 +203,189 @@ public class Database_Connection {
                     establece el query a consultar y definiendo parámetros
                     "?", donde el primero será el resultado de la función 
                     */
+                    System.out.println("Creando storedPro...");
                     storedPro = this.conn.prepareCall(llamado);
-                    break;
+                    System.out.println("Creado. Ordenando parámetros...");
+                    storedPro.setString(1, (String) parametros[0]); //usuario
+                    storedPro.setString(2, (String)parametros[1]); //nombre
+                    storedPro.setString(3, (String)parametros[2]); //tipo
+                    storedPro.setString(4, (String)parametros[3]); //raza
+                    storedPro.setString(5, (String) parametros[4]); //color1
+                    if (parametros[5]!=null) //color 2
+                    {
+                      storedPro.setString(6, (String) parametros[5]);   
+                    }else
+                    {
+                        storedPro.setNull(6, java.sql.Types.NULL);
+                    }
+                    storedPro.setString(7, (String) parametros[6]); //espacio
+                    storedPro.setString(8, (String) parametros[7]); //tamano
+                    storedPro.setString(9, (String) parametros[8]); //training
+                    storedPro.setString(10, (String) parametros[9]); //energia
+                    storedPro.setString(11, (String) parametros[10]); //sexo
+                    if (parametros[11]!=null)//veterinario
+                    {
+                        storedPro.setString(12, (String) parametros[11]);
+                    }else
+                    {
+                        storedPro.setNull(12, java.sql.Types.NULL);
+                    }
+                    if (parametros[12]!=null)//medicamentos
+                    {
+                        storedPro.setString(13, (String) parametros[12]);
+                    }else
+                    {
+                        storedPro.setNull(13, java.sql.Types.NULL);
+                    }
+                    if (parametros[13]!=null)//enfermedades
+                    {
+                        storedPro.setString(14, (String) parametros[13]);
+                    }else
+                    {
+                        storedPro.setNull(14, java.sql.Types.NULL);
+                    }
+                    if (parametros[14]!=null)//notas
+                    {
+                        storedPro.setString(15, (String) parametros[13]);
+                    }else
+                    {
+                        storedPro.setNull(15, java.sql.Types.NULL);
+                    }
+                    if (parametros[15]!=null)//tratamientos
+                    {
+                        storedPro.setString(16, (String) parametros[15]);
+                    }else
+                    {
+                        storedPro.setNull(16, java.sql.Types.NULL);
+                    }
+                    if (parametros[16]!=null)//situacion
+                    {
+                        storedPro.setString(17, (String) parametros[16]);
+                    }else
+                    {
+                        storedPro.setNull(17, java.sql.Types.NULL);
+                    }
+                    storedPro.setString(18, (String) parametros[17]); //severidad
+                    if (parametros[18]!=null) //Foto_Antes
+                    {
+                       FileInputStream imagen = this.convertImageToBLOB((File) parametros[18]);
+                       storedPro.setBlob(19,imagen);
+                    }else
+                    {
+                       storedPro.setNull(19, java.sql.Types.NULL);
+                               
+                    }
+                    if (parametros[19]!=null) //Foto_Antes
+                    {
+                       FileInputStream imagen = this.convertImageToBLOB((File) parametros[19]);
+                       storedPro.setBlob(20,imagen);
+                    }else
+                    {
+                       storedPro.setNull(20, java.sql.Types.NULL);
+                               
+                    }
+                    storedPro.setNull(20, java.sql.Types.NULL); //Al insertar mascota, se le prohíbe al usuario insertat Foto_Después, ergo, siempre será null.
+                    storedPro.setString(21, (String) parametros[20]); //pContacto
+                    System.out.println("Parámetros asignados. Ejecutando...");
+                    storedPro.close();
+                    return true;
                 case "Modificar Mascota":
+                    llamado = "{call update_mascota(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    System.out.println("Modificando mascota...");                  
+                    System.out.println("Creando storedPro...");
                     storedPro = this.conn.prepareCall(llamado);
+                    System.out.println("Creado. Ordenando parámetros...");
+                    storedPro.setInt(1, (int) parametros[0]); //id
+                    storedPro.setString(2, (String) parametros[1]); //usuario
+                    storedPro.setString(3, (String)parametros[2]); //nombre
+                    storedPro.setString(4, (String)parametros[3]); //tipo
+                    storedPro.setString(5, (String)parametros[4]); //raza
+                    storedPro.setString(6, (String) parametros[5]); //color1
+                    if (parametros[6]!=null) //color 2
+                    {
+                      storedPro.setString(7, (String) parametros[6]);   
+                    }else
+                    {
+                        storedPro.setNull(7, java.sql.Types.NULL);
+                    }
+                    storedPro.setString(8, (String) parametros[7]); //espacio
+                    storedPro.setString(9, (String) parametros[8]); //tamano
+                    storedPro.setString(10, (String) parametros[9]); //training
+                    storedPro.setString(11, (String) parametros[10]); //energia
+                    storedPro.setString(12, (String) parametros[11]); //sexo
+                    if (parametros[12]!=null)//veterinario
+                    {
+                        storedPro.setString(13, (String) parametros[12]);
+                    }else
+                    {
+                        storedPro.setNull(13, java.sql.Types.NULL);
+                    }
+                    if (parametros[13]!=null)//medicamentos
+                    {
+                        storedPro.setString(14, (String) parametros[13]);
+                    }else
+                    {
+                        storedPro.setNull(14, java.sql.Types.NULL);
+                    }
+                    if (parametros[14]!=null)//enfermedades
+                    {
+                        storedPro.setString(15, (String) parametros[14]);
+                    }else
+                    {
+                        storedPro.setNull(15, java.sql.Types.NULL);
+                    }
+                    if (parametros[15]!=null)//notas
+                    {
+                        storedPro.setString(16, (String) parametros[15]);
+                    }else
+                    {
+                        storedPro.setNull(16, java.sql.Types.NULL);
+                    }
+                    if (parametros[16]!=null)//tratamientos
+                    {
+                        storedPro.setString(17, (String) parametros[16]);
+                    }else
+                    {
+                        storedPro.setNull(17, java.sql.Types.NULL);
+                    }
+                    if (parametros[17]!=null)//situacion
+                    {
+                        storedPro.setString(18, (String) parametros[17]);
+                    }else
+                    {
+                        storedPro.setNull(18, java.sql.Types.NULL);
+                    }
+                    storedPro.setString(19, (String) parametros[18]); //severidad
+                    if (parametros[19]!=null) //Foto_Antes
+                    {
+                       FileInputStream imagen = this.convertImageToBLOB((File) parametros[19]);
+                       storedPro.setBlob(20,imagen);
+                    }else
+                    {
+                       storedPro.setNull(20, java.sql.Types.NULL);
+                               
+                    }
+                    if (parametros[20]!=null) //Foto_Antes
+                    {
+                       FileInputStream imagen = this.convertImageToBLOB((File) parametros[20]);
+                       storedPro.setBlob(21,imagen);
+                    }else
+                    {
+                       storedPro.setNull(21, java.sql.Types.NULL);
+                               
+                    }
+                    if (parametros[21]!=null) //Foto_despues
+                    {
+                        FileInputStream imagen = this.convertImageToBLOB((File) parametros[21]);
+                        storedPro.setBlob(22, imagen);
+                    }else
+                    {
+                        storedPro.setNull(22, java.sql.Types.NULL);                   
+                    }
+                    storedPro.setString(23, (String) parametros[22]); //pContacto
+                    System.out.println("Parámetros asignados. Ejecutando...");
+                    storedPro.close();
+                    return true;
                 case "Enviar Solicitud":
                     storedPro = this.conn.prepareCall(llamado);
                 case "Aceptar Solicitud":
@@ -217,6 +396,10 @@ public class Database_Connection {
                     llamado ="{}";
                     storedPro = this.conn.prepareCall(llamado);
                 case "Calificar Adoptante":
+                    llamado = "{call calificar_adoptante(?,?,?,?)}";
+                    System.out.println("Llamando  a procedimiento calificar_adoptante");
+                    storedPro = this.conn.prepareCall(llamado);
+                    
                 case "Añadir adoptante a lista negra":
                 case "Quitar adoptante de lista negra":
                 default:
@@ -235,7 +418,6 @@ public class Database_Connection {
                 case "s"
                  */
             }
-            return true;
         }catch(SQLException e)
         {
             throw e;
@@ -335,6 +517,21 @@ public class Database_Connection {
                     return resultadoS;
                 case "get Datos Usuario":
                     System.out.println("Llamando a función get_datos_usuario() del usuario "+(String) parametros[0]+" DATO: "+parametros[1]);
+                    llamado ="{? = call  get_datos_usuario(?,?)}";
+                    stmt = this.conn.prepareCall(llamado);
+                    stmt.setString(2, (String) parametros[0]); //username
+                    stmt.setString(3, (String) parametros[1]); //valor a extraer, sea nombre, genero, lugar, etc.
+                    System.out.println("Parámetros asignados");
+                    stmt.registerOutParameter(1, java.sql.Types.VARCHAR);
+                    System.out.println("Salida asignada");
+                    stmt.execute();
+                    System.out.println("Ejecutado");
+                    resultadoS = stmt.getString(1);
+                    stmt.close();
+                    return resultadoS;
+                case "get Datos Mascota":
+                    //TO DO
+                    System.out.println("Llamando a función get_datos_mascota() de la mascota con id: "+(int) parametros[0]+" DATO: "+(String)parametros[1]);
                     llamado ="{? = call  get_datos_usuario(?,?)}";
                     stmt = this.conn.prepareCall(llamado);
                     stmt.setString(2, (String) parametros[0]); //username
