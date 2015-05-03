@@ -286,8 +286,10 @@ public class verPerfil extends javax.swing.JFrame {
             tablaAdopcionesDevoluciones.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        jButton1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jButton1.setText("Ver Mascota");
 
+        jButton2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jButton2.setText("Ver fotografías de la adopción");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,8 +297,10 @@ public class verPerfil extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jButton3.setText("jButton1");
 
+        jButton4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jButton4.setText("Ver");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -333,8 +337,10 @@ public class verPerfil extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(51, 153, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Mascotas rescatadas", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
 
+        jButton5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jButton5.setText("Ver Mascota");
 
+        jButton8.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jButton8.setText("jButton1");
 
         tableRescates.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N

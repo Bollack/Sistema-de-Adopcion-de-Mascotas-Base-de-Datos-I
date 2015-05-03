@@ -99,7 +99,10 @@ public class Model {
             System.out.println("Establecida la conexión. Comenzando insertado...");
             //Se llama a la función que ejecuta funciones de la DB y devuelve si se logró o no. 
             boolean resultado = this.conexion.callProcedure("Insertar usuario-persona", datos);
-            System.out.println("Insertado exitoso");
+            if (resultado)
+            {
+                System.out.println("Insertado exitoso");
+            }
             this.conexion.endConnection();
         }catch(SQLException e)
         {
@@ -170,49 +173,57 @@ public class Model {
     usuario insertado por parametro.
     */
     
-    public String[] getDatosFromUsername(String username) throws SQLException, NullPointerException
+    public String[] getDatosFromUsername(String username) throws SQLException, NullPointerException, ClassNotFoundException
     {
-        String[] datos = null;
-        String[] parametros = {username};
+        this.conexion.setConnection(1);
+        String[] datos = new String[8];
+        String[] parametros = new String[2];
+        parametros[0] = username;//"'"+username+"'";
         try {
-            parametros[1]="password";
+            parametros[1]="'password'";
             datos[0]=username;
-            String[] respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
-            datos[1]=respuesta[0];
+            String respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[1]=respuesta;
             
-            parametros[1]="nombre";
-            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
-            datos[2]=respuesta[0];
+            parametros[1]="'nombre'";
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[2]=respuesta;
             
             parametros[1]="apellido";
-            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
-            datos[2]=respuesta[0];
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[3]=respuesta;
             
             parametros[1]="telefono";
-            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
-            datos[3]=respuesta[0];
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[4]=respuesta;
             
             parametros[1]="correo";
-            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
-            datos[4]=respuesta[0];
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[5]=respuesta;
             
             parametros[1]="lugar";
-            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
-            datos[5]=respuesta[0];
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[6]=respuesta;
             
             parametros[1]="genero";
-            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
-            datos[6]=respuesta[0];
+            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            System.out.println(respuesta);
+            datos[7]=respuesta;
             
-            parametros[1]="nombre completo";
-            respuesta= ((String[]) this.conexion.callFunction("get Datos Usuario",parametros));
-            datos[7]=respuesta[0];
             
         } catch (SQLException ex) {
             throw ex;
         } catch (NullPointerException ex) {
+            System.out.println();
             throw ex;
         }
+        this.conexion.endConnection();
         return datos;
     }
     
@@ -263,10 +274,10 @@ public class Model {
             switch (comando)
             {   
                 case "Mascota visitante":
-                    this.conexion.setConnection(3);
-                    String[] datosAextraer = {"id","tipo","raza", "sexo","tamano","lugar", "severidad, telefono"};
+                    this.conexion.setConnection(1);
+                    String[] datosAextraer = {"id","tipo","raza", "sexo","tamano","Administrador.get_lugar_from_id(contacto) AS lugar", "severidad", "Administrador.get_nombrecompleto_from_id(contacto) AS contacto"};
                     DefaultTableModel modelo = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
-                    System.out.println(modelo.getColumnName(0));
+                    System.out.println(modelo.getColumnName(3));
                     //JTable tabla = new JTable(modelo);
                     // System.out.println(tabla.getColumnName(0));
                     this.conexion.endConnection();
@@ -296,6 +307,70 @@ public class Model {
         ImageIcon image=null;
         return image;
     }
+    
+    public void ModifyUser(String[] datos) throws SQLException, ClassNotFoundException
+    {
+        this.conexion.setConnection(2);
+        boolean resultado = this.conexion.callProcedure("Modificar usuario-persona", datos);
+        if (resultado)
+        {
+            System.out.println("Modificado usuario-persona exitoso");
+        }
+        this.conexion.endConnection();
+    }
+    
+    
+    /*
+        Método que devuelve un arreglo con los tipos de mascotas disponibles en el sistema.
+        Dicho arreglo de strings se insertará en los combobox disponibles para crear y modificar mascota.
+    */
+    public String[] getTiposMascota() throws SQLException, ClassNotFoundException
+    {
+        this.conexion.setConnection(1);
+        String[][] datos = (String[][]) this.conexion.select("Tipo_mascota", "Especie", null);
+        System.out.println(datos.length);
+        System.out.println(datos[0][0]);
+        System.out.println(datos[1][0]);
+        System.out.println(datos[2][0]);
+        System.out.println(datos[3][0]);
+        System.out.println(datos[4][0]);
+        String[] grupos = new String[datos.length];
+        for (int i=0;i<datos.length; i++)
+        {
+            grupos[i]=datos[i][0];
+        }
+        this.conexion.endConnection();
+        return grupos;
+    }
+    
+    
+    /*
+    Método que devuelve un arreglo con las razas disponibles para un tipoMascota insertado por parámetro.
+    Dicho arreglo de strings se insertará en los combobox disponibles para crear y modificar mascota.
+    */
+    
+    public String[] getRazasFromTipoMascota(String tipoMascota) throws SQLException, ClassNotFoundException
+    {
+        this.conexion.setConnection(1);
+        String condicion = "Grupo = "+"'"+tipoMascota+"'";
+        System.out.println(condicion);
+        String[][] datos = (String[][]) this.conexion.select("Raza_mascota", "Raza", condicion);
+        System.out.println(datos.length);
+        System.out.println(datos[0][0]);
+        System.out.println(datos[1][0]);
+        System.out.println(datos[2][0]);
+        System.out.println(datos[3][0]);
+        System.out.println(datos[4][0]);
+        String[] razas = new String[datos.length];
+        for (int i=0;i<datos.length; i++)
+        {
+            razas[i]=datos[i][0];
+        }
+        
+        this.conexion.endConnection();
+        return razas;
+    }
+    
     
     /*
     Método que devuelve un arreglo de imágenes de una adopción

@@ -247,19 +247,20 @@ public class Controller implements ActionListener
             Controller_User accesoUser = new Controller_User(this.modelo, username);
             this.gui.show(false);
             this.gui.dispose();
-            accesoUser.Start();
+            accesoUser.start();
         }catch(Exception e)
         {
-            /*
-            this.errorConn(e);
-            this.Start();    
-            */
             JOptionPane.showMessageDialog(this.gui, "Error accesando a su cuenta de usuario. Vuelva a intentar","Error de aplicación",
                                              JOptionPane.ERROR_MESSAGE);
             this.Start();
         }
     }
     
+    
+    /*
+        Método que es activado una vez la validación de datos al loguearse como admin devuelve
+    un valor positivo. Activa el controlador de modo administrador y pasa a ala ventana del mismo.
+    */
     private void Log_In_Admin()
     {
         try
@@ -289,19 +290,32 @@ public class Controller implements ActionListener
            System.out.println("Todos los campos validados");
            //De aquí en adelante se toma que todos los valores ingresados por el usuario son válidos nombre, apellido, telefono, correo, direccion, username, password, genero
            this.modelo.insertUsuario_Persona(data_Sign_up[0],data_Sign_up[1],data_Sign_up[2],data_Sign_up[3],data_Sign_up[4],data_Sign_up[5],data_Sign_up[6],data_Sign_up[7]);
-           
+           /*
+           Se le informa al usuario que la operación fue exitosa.
+           */
+           int a = JOptionPane.OK_OPTION;
+           JOptionPane.showConfirmDialog(this.gui, "Usuario registrado con éxito", "Operación exitosa", a);
        }catch (UnsupportedOperationException e)
        {
            System.out.println("Excepcion UnsupportedOperationException en Registrarse()");
+           int a = JOptionPane.ERROR_MESSAGE;
+           JOptionPane.showMessageDialog(this.gui, "El nombre de usuario deseado no es válido o ya existe en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
            
        }catch (NullPointerException e)
        {
            System.out.println(e.getMessage());
            System.out.println("Excepcion NullPointerException en Registrarse()");
+           int a = JOptionPane.ERROR_MESSAGE;
+           JOptionPane.showMessageDialog(this.gui, "Por favor, llene todos los valores mostrados como obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
        }catch (InputValueNotAcceptableException e)
        {
+           int a = JOptionPane.ERROR_MESSAGE;
+           JOptionPane.showMessageDialog(this.gui, "Por favor, inserte valores válidos.", "Error", JOptionPane.ERROR_MESSAGE);
            System.out.println("Excepcion InputValueNotAcceptableException en Registrarse()");
        }catch (SQLException e){
+           this.errorConn(e);
+           //int a = JOptionPane.ERROR_MESSAGE;
+           //JOptionPane.showMessageDialog(this.gui, "El nombre de usuario deseado no es válido o ya existe en la bsee de datos", "Error", JOptionPane.ERROR_MESSAGE);
            System.out.println("Excepcion SQLException en Registrarse()");
            this.errorConn(e);
        }catch (ClassNotFoundException e){
@@ -419,14 +433,7 @@ public class Controller implements ActionListener
                             //ventana.dispose();
                             //ventana.show(false);
                             }
-                            }); 
-                        
-                        
-
-                        
-                        
-                      
-                        
+                            });  
                     }
                     break;
                 case 1: //Validación como Admin

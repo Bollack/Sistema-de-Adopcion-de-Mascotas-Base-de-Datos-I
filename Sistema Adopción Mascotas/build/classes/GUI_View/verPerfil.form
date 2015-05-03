@@ -602,6 +602,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ver Mascota"/>
           </Properties>
           <AuxValues>
@@ -610,6 +613,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ver fotograf&#xed;as de la adopci&#xf3;n"/>
           </Properties>
           <Events>
@@ -621,6 +627,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
           <AuxValues>
@@ -629,6 +638,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ver"/>
           </Properties>
           <AuxValues>
@@ -689,6 +701,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ver Mascota"/>
           </Properties>
           <AuxValues>
@@ -697,6 +712,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton8">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="jButton1"/>
           </Properties>
           <AuxValues>

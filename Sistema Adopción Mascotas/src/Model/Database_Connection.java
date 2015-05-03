@@ -164,13 +164,36 @@ public class Database_Connection {
                         storedPro.setString(8, (String) parametros[7]);
                         storedPro.executeQuery();
                         System.out.println("Persona y usuario insertados");
+                        storedPro.close();
                         return true;
-                    }catch(SQLException e){
+                    }catch(SQLException e)
+                    {
                         throw e;
                     }
                 case "Modificar usuario-persona":
-                    llamado = "{CALL MODIFICAR_USER_PERSONA(usernameQueModifica, }";
-                    storedPro = this.conn.prepareCall(llamado);
+                    System.out.println("Comenzando proceso de base de datos. Modificar usuario-persona");
+                    llamado = "{CALL Update_User_Persona(?,?,?,?,?,?,?,?}";
+                    try{
+                        storedPro = this.conn.prepareCall(llamado);
+                        System.out.println("storedPro creado");
+                        storedPro.setString(1, (String) parametros[0]);
+                        storedPro.setString(2, (String) parametros[1]);
+                        storedPro.setString(3, (String) parametros[2]);
+                        storedPro.setString(4, (String) parametros[3]);
+                        storedPro.setString(5, (String) parametros[4]);
+                        storedPro.setString(6, (String) parametros[5]);
+                        storedPro.setString(7, (String) parametros[6]);
+                        storedPro.setString(8, (String) parametros[7]);
+                        System.out.println("Asignados parámetros. Ejecutando...");
+                        storedPro.executeQuery();
+                        System.out.println("Persona y usuario "+(String)parametros[0]+" modificados");
+                        storedPro.close();
+                        return true;
+                    }catch (SQLException e)
+                    {
+                        throw e;
+                    }
+
                     
                 case "Insertar Mascota":
                     llamado = "{call INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
@@ -182,18 +205,35 @@ public class Database_Connection {
                     */
                     storedPro = this.conn.prepareCall(llamado);
                     break;
-                case "Registrar Mascota":
+                case "Modificar Mascota":
                     storedPro = this.conn.prepareCall(llamado);
-                case "Generar Adopcion":
+                case "Enviar Solicitud":
                     storedPro = this.conn.prepareCall(llamado);
-                case "Generar Formulario":
+                case "Aceptar Solicitud":
                     storedPro = this.conn.prepareCall(llamado);
-                case "Devolver Mascota":                   
+                case "Denegar Solicitud":                   
                     storedPro = this.conn.prepareCall(llamado);
                 case "":
                     llamado ="{}";
                     storedPro = this.conn.prepareCall(llamado);
+                case "Calificar Adoptante":
+                case "Añadir adoptante a lista negra":
+                case "Quitar adoptante de lista negra":
+                default:
+                    return false;
+                    /*
                 case "s":
+                case "s":
+                case "s":
+                case "s":
+                case "s":
+                case "s":
+                case "s":
+                case "s":
+                case "s":
+                case "s":
+                case "s"
+                 */
             }
             return true;
         }catch(SQLException e)
@@ -214,8 +254,8 @@ public class Database_Connection {
             */
             String llamado;
             CallableStatement stmt;
-            
-            
+            String resultadoS = null;
+            int resultadoI = 0;
             switch (comando)
             {  
                 case "Check if password is correct":
@@ -248,7 +288,9 @@ public class Database_Connection {
                     
                     stmt.execute();
                     //Devuelve dicho parámetro.
-                    return stmt.getInt(1);
+                    resultadoI = stmt.getInt(1);
+                    stmt.close();
+                    return resultadoI;
                 case "Check if username exists":
                     llamado = "{? = call check_existing_username(?)}";
                     /*
@@ -264,27 +306,48 @@ public class Database_Connection {
                     System.out.println("stmt.registerOutParameter(1, java.sql.Types.numeric); hecho");
                     stmt.execute();
                     System.out.println("Ejecutado");
-                    return stmt.getInt(1);
+                    resultadoI = stmt.getInt(1);
+                    stmt.close();
+                    return resultadoI;
                 case "Get ID from Username - Persona":
-                    
-                case "Get name from ID - Persona":
-                    
-                case "Get Foto actual from ID - Mascota":
-                    
-                case "Get Foto antes from ID - Mascota":
-                case "get Datos Cuenta":
-                    llamado ="{? = CALL get_datos_usuario(?,?)}";
+                    llamado="{? = call funcion(?)}";
                     stmt = this.conn.prepareCall(llamado);
-                    
+                    stmt.close();
+                    stmt.execute();
+                    return resultadoS;
+                case "Get name from ID - Persona":
+                    llamado="{? = call funcion(?)}";
+                    stmt = this.conn.prepareCall(llamado);
+                    stmt.close();
+                    stmt.execute();
+                    return resultadoS;
+                case "Get Foto actual from ID - Mascota":
+                    llamado="{? = call funcion(?)}";
+                    stmt = this.conn.prepareCall(llamado);
+                    stmt.close();
+                    stmt.execute();
+                    return resultadoS;
+                case "Get Foto antes from ID - Mascota":
+                    llamado="{? = call funcion(?)}";
+                    stmt = this.conn.prepareCall(llamado);
+                    stmt.close();
+                    stmt.execute();
+                    return resultadoS;
+                case "get Datos Usuario":
+                    System.out.println("Llamando a función get_datos_usuario() del usuario "+(String) parametros[0]+" DATO: "+parametros[1]);
+                    llamado ="{? = call  get_datos_usuario(?,?)}";
+                    stmt = this.conn.prepareCall(llamado);
                     stmt.setString(2, (String) parametros[0]); //username
                     stmt.setString(3, (String) parametros[1]); //valor a extraer, sea nombre, genero, lugar, etc.
-                    
+                    System.out.println("Parámetros asignados");
                     stmt.registerOutParameter(1, java.sql.Types.VARCHAR);
-                    
+                    System.out.println("Salida asignada");
                     stmt.execute();
-                    
-                    return stmt.getString(1);
-                    
+                    System.out.println("Ejecutado");
+                    resultadoS = stmt.getString(1);
+                    stmt.close();
+                    return resultadoS;
+
             }
         }catch (SQLException e)
         {
@@ -293,7 +356,7 @@ public class Database_Connection {
             System.out.println(e.getSQLState());
             throw e;
         }
-        throw new NullPointerException();
+        return 0;
     }
 //___________________________________________________________________________________ Soy una barra separadora :)
 /* METODO PARA REALIZAR UNA CONSULTA A LA BASE DE DATOS
@@ -317,6 +380,7 @@ public class Database_Connection {
       }
       //obtenemos la cantidad de registros existentes en la tabla
       try{
+         System.out.println(q);
          PreparedStatement pstm = conn.prepareStatement(q2);
          ResultSet res = pstm.executeQuery();
          res.next();
@@ -343,6 +407,8 @@ public class Database_Connection {
     }
     return data;
  }
+    
+    
 /* METODO PARA INSERTAR UN REGISTRO EN LA BASE DE DATOS
  * INPUT:
 	table = Nombre de la tabla
@@ -368,7 +434,13 @@ public class Database_Connection {
             }
         }
         */
-        query+= "* FROM "+tabla;
+        for (int i=0; i<valoresAmostrar.length;i++)
+        {
+            query+=valoresAmostrar[i];
+            if (i!=valoresAmostrar.length-1)
+            query+=", ";
+        }
+        query+= " FROM "+tabla;
     
         Vector <Object> filas;
         

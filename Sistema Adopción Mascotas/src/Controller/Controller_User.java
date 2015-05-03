@@ -11,11 +11,15 @@ import GUI_View.Main_User;
 import GUI_View.ModificarCuenta;
 import GUI_View.Registro_Rescate_Mascota;
 import Model.Model;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.UnsupportedOperationException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -49,11 +53,10 @@ public class Controller_User implements ActionListener
         this.modelo = modelo;
         this.username = userLogeo;
         this.gui = new Main_User();
-        this.Start();
         
     }
     
-    public void Start()
+    public void start()
     {
         this.gui = new Main_User();
         Main_User ventana = (Main_User) this.gui;
@@ -95,10 +98,10 @@ public class Controller_User implements ActionListener
     }
     
     
-        private void Log_Out()
+        private void log_Out()
         {
             int warning =  JOptionPane.YES_NO_OPTION;
-            int answer = JOptionPane.showConfirmDialog (null, "¿Está seguro de que desea salir del programa y volver al menú de visitante","Advertencia",warning);
+            int answer = JOptionPane.showConfirmDialog (null, "¿Está seguro de que desea salir del programa y volver al menú de visitante?","Advertencia",warning);
             if (answer == JOptionPane.YES_OPTION)
             {
                 this.gui.dispose();
@@ -112,13 +115,11 @@ public class Controller_User implements ActionListener
     {
            this.gui.dispose();
            this.gui.show(false);
-           this.gui = new Main_User();
-           this.gui.show();
-           this.gui.pack();
+           this.start();
     }
     
     
-    private void AccountSettings_Window()
+    private void accountSettings_Window() 
     {
         try {
             this.gui.dispose();
@@ -134,6 +135,9 @@ public class Controller_User implements ActionListener
             
             ventana.backButton.addActionListener((ActionListener) this);
             ventana.backButton.setActionCommand("Atrás - Account Settings");
+            
+            ventana.generoButtonGroup.add(ventana.femaleRadioButton);
+            ventana.generoButtonGroup.add(ventana.maleRadioButton);
             /*
             Se extraen todos los datos del usuario de la base de datos y se insertan
             en los textfields que el usuario modificará, así este puede ver la data que modifica y
@@ -141,7 +145,6 @@ public class Controller_User implements ActionListener
             */
             String[] datos = this.modelo.getDatosFromUsername(this.username); //
             
-            ventana.userTextField.setText(datos[0]);
             ventana.passwordTextField.setText(datos[1]);
             ventana.nameTextField.setText(datos[2]);
             ventana.apellidoUsuarioTextField.setText(datos[3]);
@@ -151,34 +154,65 @@ public class Controller_User implements ActionListener
             if (datos[7]=="Masculino")
             {
                 ventana.maleRadioButton.setSelected(true);
-            }else
+            }else if (datos[7]=="Femenino")
             {
                 ventana.femaleRadioButton.setSelected(true);
+            }else{
+                
             }
             
             
             this.gui.show();
             this.gui.pack();
         } catch (SQLException ex) {
-            Logger.getLogger(Controller_User.class.getName()).log(Level.SEVERE, null, ex);
+
+            int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "Error de conexión SQL. Por favor, trate otra vez o contacte al desarollador para recibir asistencia.", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Excepcion SQL en accountSettings_Window()");
+            System.out.println(ex.getMessage());
+            this.backtoAccountScreen();
         } catch (NullPointerException ex) {
-            Logger.getLogger(Controller_User.class.getName()).log(Level.SEVERE, null, ex);
+            int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "Error de conexión NullPointer. Por favor, trate otra vez o contacte al desarollador para recibir asistencia.", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Excepcion NullPointerException en accountSettings_Window()");
+            this.backtoAccountScreen();
+        } catch (ClassNotFoundException ex) {
+                        int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "Error de conexión ClassNotFound. Por favor, trate otra vez o contacte al desarollador para recibir asistencia.", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Excepcion ClassNotFound en accountSettings_Window()");
+            this.backtoAccountScreen();
         }
     }
     
-    private void verMascotasAdoptadas_Window()
+    private void verMisMascotasAdoptadas_Window()
     {
         
     }
     
-    private void BuscarPersonas_Window(){
+    private void buscarPersonas_Window()
+    {
         
     }
     
-    private void registrar_Mascota_Window()
+    private void buscarMascotas_Window()
+    {
+        
+    }
+    
+    private void MascotasAdopcion_Window()
+    {
+        
+    }
+    
+    private void VerMisRescates_Window()
+    {
+        
+    }
+    
+    private void registrar_Mascota_Window() throws SQLException, ClassNotFoundException
     {
         this.gui.dispose();
-        this.gui.show();
+        this.gui.show(false);
         //Se istancia el objeto de la clase ventana
         Registro_Rescate_Mascota ventana_rescate = new Registro_Rescate_Mascota();
         
@@ -225,6 +259,50 @@ public class Controller_User implements ActionListener
         
         //Se comienza a alterar los componentes con restricciones en reemplazo de tablas catálogo
         
+        ventana_rescate.sexoMascotaButtonGroup.add(ventana_rescate.hembraMascotaRadioButton); //Se añaden los radiobuttons a un ButtonGroup, impidiendoq que ambos sean seleccionados a la vez.
+        ventana_rescate.sexoMascotaButtonGroup.add(ventana_rescate.machoMascotaRadioButton);
+        
+        /*
+        En el siguiente bloque de se asigna los tipos de mascota como items al combo box
+        de tipo mascota.
+        */
+        String[] grupos = this.modelo.getTiposMascota();
+        ventana_rescate.tipoMascotaComboBox.removeAllItems();
+        for (int i=0; i<grupos.length;i++)
+        {
+            ventana_rescate.tipoMascotaComboBox.addItem(grupos[i]);
+        }
+        
+        /*
+        En el siguiente bloque de código se añade un listener al combobox anterior que se activa
+        al ocurrir el evento de cambiar de item seleccionado, esto llama a la lista de razas del 
+        grupo de animales seleccionado y a la añade al combobox de raza.
+        */
+        
+        ventana_rescate.tipoMascotaComboBox.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e) 
+                {
+                    try 
+                    {
+                        String grupo = (String) ventana_rescate.tipoMascotaComboBox.getSelectedItem();
+                        Model a = new Model();
+                        ventana_rescate.razaMascotaComboBox.removeAllItems();
+                        String[] razas = a.getRazasFromTipoMascota((String) ventana_rescate.tipoMascotaComboBox.getSelectedItem());
+                        for (int i=0; i<razas.length;i++)
+                        {
+                            ventana_rescate.razaMascotaComboBox.addItem(razas[i]);
+                        }
+                    } catch (SQLException ex) 
+                    {
+                    } catch (ClassNotFoundException ex) 
+                    {
+                    }
+                }
+            
+        });
+     
+        
+        
         ventana_rescate.energiaMascotaComboBox.removeAllItems();
         ventana_rescate.energiaMascotaComboBox.addItem("Atlético");
         ventana_rescate.energiaMascotaComboBox.addItem("Activo");
@@ -236,6 +314,8 @@ public class Controller_User implements ActionListener
         ventana_rescate.espacioMascotaComboBox.addItem("Amplio");
         ventana_rescate.espacioMascotaComboBox.addItem("Mediano");
         ventana_rescate.espacioMascotaComboBox.addItem("Mínimo");
+        
+        
         
         ventana_rescate.entrenamientoMascotaComboBox.removeAllItems();
         ventana_rescate.entrenamientoMascotaComboBox.addItem("Obediente");
@@ -249,23 +329,48 @@ public class Controller_User implements ActionListener
         ventana_rescate.tamanoMascotaComboBox.addItem("Pequeño");
         
         ventana_rescate.color1MascotaComboBox.removeAllItems();
-        ventana_rescate.color1MascotaComboBox.addItem("");
-        ventana_rescate.color1MascotaComboBox.addItem("");
-        ventana_rescate.color1MascotaComboBox.addItem("");
-        ventana_rescate.color1MascotaComboBox.addItem("");
-        ventana_rescate.color1MascotaComboBox.addItem("");
-        ventana_rescate.color1MascotaComboBox.addItem("");
-        ventana_rescate.color1MascotaComboBox.addItem("");
+        ventana_rescate.color1MascotaComboBox.addItem("Negro");
+        ventana_rescate.color1MascotaComboBox.addItem("Blanco");
+        ventana_rescate.color1MascotaComboBox.addItem("Café");
+        ventana_rescate.color1MascotaComboBox.addItem("Gris");
+        ventana_rescate.color1MascotaComboBox.addItem("Beige");
+        ventana_rescate.color1MascotaComboBox.addItem("Morado");
+        ventana_rescate.color1MascotaComboBox.addItem("Rojo");
+        ventana_rescate.color1MascotaComboBox.addItem("Verde");
+        ventana_rescate.color1MascotaComboBox.addItem("Azul");
+        ventana_rescate.color1MascotaComboBox.addItem("Amarillo");
+        ventana_rescate.color1MascotaComboBox.addItem("Naranja");
+        ventana_rescate.color1MascotaComboBox.addItem("Dorado");
+        ventana_rescate.color1MascotaComboBox.addItem("Púrpura");
+        ventana_rescate.color1MascotaComboBox.addItem("Rosado");
+        ventana_rescate.color1MascotaComboBox.addItem("Lila");
+        ventana_rescate.color1MascotaComboBox.addItem("Celeste");
+        ventana_rescate.color1MascotaComboBox.addItem("Crema");
+        ventana_rescate.color1MascotaComboBox.addItem("Vino");
+        ventana_rescate.color1MascotaComboBox.addItem("Otro");
+        
         
         ventana_rescate.color2MascotaComboBox.removeAllItems();
-        ventana_rescate.color2MascotaComboBox.addItem("");
-        ventana_rescate.color2MascotaComboBox.addItem("");
-        ventana_rescate.color2MascotaComboBox.addItem("");
-        ventana_rescate.color2MascotaComboBox.addItem("");
-        ventana_rescate.color2MascotaComboBox.addItem("");
-        ventana_rescate.color2MascotaComboBox.addItem("");
-        ventana_rescate.color2MascotaComboBox.addItem("");
-        
+        ventana_rescate.color2MascotaComboBox.addItem("Negro");
+        ventana_rescate.color2MascotaComboBox.addItem("Blanco");
+        ventana_rescate.color2MascotaComboBox.addItem("Café");
+        ventana_rescate.color2MascotaComboBox.addItem("Gris");
+        ventana_rescate.color2MascotaComboBox.addItem("Beige");
+        ventana_rescate.color2MascotaComboBox.addItem("Morado");
+        ventana_rescate.color2MascotaComboBox.addItem("Rojo");
+        ventana_rescate.color2MascotaComboBox.addItem("Verde");
+        ventana_rescate.color2MascotaComboBox.addItem("Azul");
+        ventana_rescate.color2MascotaComboBox.addItem("Amarillo");
+        ventana_rescate.color2MascotaComboBox.addItem("Naranja");
+        ventana_rescate.color2MascotaComboBox.addItem("Dorado");
+        ventana_rescate.color2MascotaComboBox.addItem("Púrpura");
+        ventana_rescate.color2MascotaComboBox.addItem("Rosado");
+        ventana_rescate.color2MascotaComboBox.addItem("Lila");
+        ventana_rescate.color2MascotaComboBox.addItem("Celeste");
+        ventana_rescate.color2MascotaComboBox.addItem("Crema");
+        ventana_rescate.color2MascotaComboBox.addItem("Vino");
+        ventana_rescate.color2MascotaComboBox.addItem("Otro");
+       
         ventana_rescate.severidadMascotaComboBox.removeAllItems();
         ventana_rescate.severidadMascotaComboBox.addItem("Crítico");
         ventana_rescate.severidadMascotaComboBox.addItem("Mal estado");
@@ -282,56 +387,56 @@ public class Controller_User implements ActionListener
 
        if (comando=="Cerrar Sesión - Main Menu")
        {
-           this.Log_Out();
+           this.log_Out();
 
        }else if(comando=="Ver Cuenta - Main Menu")
        {
-           this.AccountSettings_Window();
+           this.accountSettings_Window();
            
        }else if(comando=="Guardar Cambios - Cuenta Window")
        {
-           try
-           {
-               cambiarDatosCuenta((ModificarCuenta)this.gui);
-           }catch (Exception e)
-           {
-               int a = JOptionPane.ERROR_MESSAGE;
-               JOptionPane.showMessageDialog(this.gui, "Ha ocurrido un error guardando los cambios", "Error", JOptionPane.ERROR_MESSAGE);
-           }
-           
+            cambiarDatosCuenta((ModificarCuenta)this.gui);
+  
        }else if(comando=="Atrás - Cuenta Window")
        {
            this.backtoAccountScreen();
            
        }else if(comando=="Buscar Mascotas - Main Menu")
        {
-           
+           this.buscarMascotas_Window();
        }else if(comando=="Buscar Personas - Main Menu")
        {
+           this.buscarPersonas_Window();
            
        }else if(comando=="Formulario - Main Menu")
        {
-           
+           //TO DO
          
        }else if(comando=="Registrar Mascota - Main Menu")
        {
-           this.registrar_Mascota_Window();
+           try {
+               this.registrar_Mascota_Window();
+           } catch (SQLException ex) {
+               this.errorConn(ex);
+           } catch (ClassNotFoundException ex) {
+               this.errorConn(ex);
+           }
            
        }else if(comando=="Ver Mascotas Adopción - Main Menu")
        {
-           
+           this.MascotasAdopcion_Window();
        }else if(comando=="Ver Mis Adopciones - Main Menu")
        {
-           
+           this.verMisMascotasAdoptadas_Window();
        }else if(comando=="Ver Mis Rescates - Main Menu")
        {
-           
+           this.VerMisRescates_Window();
        }
        /*
         Se comienzan a crear las acciones para los botones y eventos
         que provienen de la ventana de registro/rescate de mascota 
        */
-       else if(comando=="FileChooser-FotoAntesMascota-Registrar Mascota")
+       else if(comando=="FileChooser-FotoAntesMascota - Registrar Mascota")
        {        
            /*
            Se establece un filtro para que el FileChooser sólo muestre archivos con formatos
@@ -341,29 +446,34 @@ public class Controller_User implements ActionListener
            
            TO TEST
            */
+           Registro_Rescate_Mascota ventana = (Registro_Rescate_Mascota) this.gui;
             JFileChooser fileOpen = new JFileChooser();
-            String[] suffices = ImageIO.getReaderFileSuffixes();
-
-     
-            for (int i = 0; i < suffices.length; i++) {
-            FileFilter filter = new FileNameExtensionFilter(suffices[i] + " files", suffices[i]);
-            fileOpen.addChoosableFileFilter(filter);
-            }
+            FileNameExtensionFilter filter = new FileNameExtensionFilter ("Image Files", "jpg","png", "jpeg");
+            fileOpen.setFileFilter(filter);
+            fileOpen.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fileOpen.setAcceptAllFileFilterUsed(false);
+            fileOpen.setFont(new Font("Rockwell",Font.BOLD, 12));
             int ret = fileOpen.showDialog(null, "Open file");
-            String direccion = fileOpen.getSelectedFile().getAbsolutePath();
-            Registro_Rescate_Mascota ventana = (Registro_Rescate_Mascota)this.gui;
-            ventana.imageDirMascotaField.setText(direccion);
-
-           
+            if (ret == JFileChooser.APPROVE_OPTION) {
+                File direccion = fileOpen.getSelectedFile();
+                System.out.println("Dirección de imagen: "+direccion.getAbsolutePath());
+                ventana.imageDirMascotaField.setText(direccion.getAbsolutePath());
+                   ImageIcon icon = new ImageIcon(direccion.getAbsolutePath());
+                   ImageIcon imagen = this.displayImageInLabel(icon, 260, 178,ventana.foto.getX(),ventana.foto.getY());
+                   ventana.foto.setText("");
+                   ventana.foto.setIcon(imagen);
+                   ventana.foto.resize(260, 178);
+            }
        }else if(comando=="Registrar Mascota - Registrar Mascota")
        {
-           this.registrar_Mascota_Window();
-       }else if(comando=="Atrás -Registrar Mascota")
+           this.registrar_Mascota((Registro_Rescate_Mascota) this.gui);
+       }else if(comando=="Atras - Registrar Mascota")
        {
            this.backtoAccountScreen();
            
        }else if(comando=="Guardar Cambios - Account Settings")
        {
+           this.cambiarDatosCuenta((ModificarCuenta) this.gui);
            
        }else if(comando=="Atrás - Account Settings")
        {
@@ -419,39 +529,259 @@ public class Controller_User implements ActionListener
     
     private void cambiarDatosCuenta(ModificarCuenta ventana)
     {
-        //vent
+        /*
+        Utilizada en la ventana de ModificarCuenta y se encarga de guardar y actualizar en la 
+        base de datos todos los cambios que el usuario aplicó en sus datos personales y de cuenta.
+        */
+        String[] data = new String[8];
+        
+        
+        String correo = ventana.correoTextField.getText();
+        String telefono = ventana.telefonoTextField.getText();
+        String password = ventana.passwordTextField.getText();
+        String direccion = ventana.direccionTextField.getText();
+        String nombre = ventana.nameTextField.getText();
+        String apellido = ventana.apellidoUsuarioTextField.getText();
+        if (ventana.femaleRadioButton.isSelected())
+        {
+            String genero = ventana.femaleRadioButton.getText();
+            data[0]=this.username; //Usuario a modificar
+            data[1]=password;
+            data[2]=nombre;
+            data[3]=apellido;
+            data[4]=telefono;
+            data[5]=correo;
+            data[6]=direccion;
+            data[7]=genero;
+        }else if(ventana.maleRadioButton.isSelected())
+        {
+            String genero = ventana.maleRadioButton.getText();
+            data[0]=this.username; //Usuario a modificar
+            data[1]=password;
+            data[2]=nombre;
+            data[3]=apellido;
+            data[4]=telefono;
+            data[5]=correo;
+            data[6]=direccion;
+            data[7]=genero;
+        }else{
+           int a = JOptionPane.ERROR_MESSAGE;
+           JOptionPane.showMessageDialog(this.gui, "Por favor, seleccione algunos de los dos botones de selección de género.", "Error", JOptionPane.ERROR_MESSAGE);  
+        }
+        try
+        {         
+            this.validate_AllFieldsRegister(data);
+            System.out.println("Todos los campos validados");
+            //De aquí en adelante se toma que todos los valores ingresados por el usuario son válidos nombre, apellido, telefono, correo, direccion, username, password, genero
+            this.modelo.ModifyUser(data);
+            /*
+            Se modifica el usuario actual del controlador y el cual es utilizado para guardar
+            como usuario_creacion y usuario_modificación y de las inserciones y modificaciones realizadas
+            a tablas tales como mascota, adopciones y rescates. 
+            */
+            this.username=data[1];
+            //Se informa al usuario de la operación exitosa.
+            int a = JOptionPane.OK_OPTION;
+            JOptionPane.showConfirmDialog(ventana, "La alteración de datos se ha realizado con éxito.", "Operación exitosa", a);
+            this.backtoAccountScreen(); //Se vuelve al menú de usuario
+        }catch (UnsupportedOperationException e)
+        {
+            System.out.println("Excepcion UnsupportedOperationException en Registrarse()");
+            int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "El nombre de usuario deseado no es válido o ya existe en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }catch (NullPointerException e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Excepcion NullPointerException en Registrarse()");
+            int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "Por favor, llene todos los valores mostrados como obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+        }catch (InputValueNotAcceptableException e)
+        {
+            int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "Por favor, inserte valores válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Excepcion InputValueNotAcceptableException en Registrarse()");
+        }catch (SQLException e){
+            this.errorConn(e);
+            //int a = JOptionPane.ERROR_MESSAGE;
+            //JOptionPane.showMessageDialog(this.gui, "El nombre de usuario deseado no es válido o ya existe en la bsee de datos", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Excepcion SQLException en Registrarse()");
+            this.errorConn(e);
+        }catch (ClassNotFoundException e){
+            System.out.println("Excepcion ClassNotFoundException en Registrarse()");
+            this.errorConn(e);
+        }
     }
     
+    
+    
+    private void validate_AllFieldsRegister(String[] datos) throws UnsupportedOperationException, InputValueNotAcceptableException, UnsupportedOperationException, SQLException, ClassNotFoundException
+    {
+        if (datos[2]=="" || datos[2]==null) //Valida nombre     
+        {
+            throw new NullPointerException();
+        }
+        if (datos[4]=="" || datos[3]==null) //Valida apellido
+        {
+            throw new NullPointerException();
+        }
+        if (!this.validate_Tel(datos[4])) //Valida telefono
+        {
+            System.out.println(datos[4]);
+            System.out.println("Excepcion InputValueNotAcceptable en validación de teléfono en validate_AllFieldsRegister");
+            throw new InputValueNotAcceptableException(datos[4]);
+        }
+        if (!this.validate_Email(datos[5])) //Valida correo
+        {
+            System.out.println("Excepcion InputValueNotAcceptable en validación de correo en validate_AllFieldsRegister");
+            throw new InputValueNotAcceptableException(datos[5]);
+        }
+        if (datos[6]=="" || datos[6]==null) //Valida dirección
+        {
+            throw new NullPointerException();
+        }
+        if (!this.validate_Password(datos[1])) //Valida password
+        {
+            throw new NullPointerException();
+        }
+        if (datos[7]=="" || datos[7]==null) //Valida genero
+        {
+            throw new NullPointerException();
+        }        
+    }
 
+        private boolean validate_Email(String email)
+    {
+        if (email=="" || email==null)
+        {
+            return false;
+        }
+        EmailValidator validator=EmailValidator.getInstance(); //Verificación de mail mediante la utilización de la librería Validate de Apache Commons
+        if(validator.isValid(email)==false)
+        {
+            return false;
+        }
+        return true;
+
+    }
+    private boolean validate_Tel(String telefono)
+    {
+        if (telefono=="" || telefono==null)
+        {
+            return false;
+        }
+        if (telefono.matches("\\d{4}-\\d{2}-\\d{2}"))
+        {
+            return true;
+        }
+        return false;
+    }
+    
+        private boolean validate_Username_to_Create(String username) throws SQLException, ClassNotFoundException
+    {
+        if (username=="" || username==null)
+        {
+            return false;
+        }
+        try {
+            if (this.modelo.checkUserExists(username))
+            {
+                return false;
+            }else{
+                return true;
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+    }
+    
+    private boolean validate_Password(String pass)
+    {
+        if (pass=="" || pass==null)
+        {
+            return false;
+        }
+        return true;
+    }
     
     
   
-    
-    private void errorConn(SQLException e)
+    private void registrar_Mascota(Registro_Rescate_Mascota ventana)
     {
-        Error_connection_db error = new Error_connection_db(e);
-        error.show();
-        error.setResizable(false);
+        try
+        {
+            this.validate_AllFieldsRegistroMascota(ventana);
+            
+        }catch(NullPointerException e)
+        {
+            
+        }
+        
+    }
+    
+    private void validate_AllFieldsRegistroMascota(Registro_Rescate_Mascota ventana)
+    {
+        String nombre = ventana.nameMascotaField.getText();
+        if (nombre==null || nombre=="")
+        {
+            throw new NullPointerException();
+        }
+        String tipo_mascota = (String) ventana.tipoMascotaComboBox.getSelectedItem();
+        String raza = (String) ventana.razaMascotaComboBox.getSelectedItem();
+        String tamano = (String) ventana.tamanoMascotaComboBox.getSelectedItem();
+        String serveridad = (String) ventana.severidadMascotaComboBox.getSelectedItem();
+        
+        String sexo;
+        if  (ventana.machoMascotaRadioButton.isSelected())
+        {
+            sexo = "Macho";
+        }else if(ventana.hembraMascotaRadioButton.isSelected())
+        {
+            sexo = "Hembra";
+        }else{
+            throw new NullPointerException();
+        }
     }
     
 
         
-        private ImageIcon displayImageInLabel(ImageIcon icon, int width, int height, int x, int y)
-        {
-        
+    private ImageIcon displayImageInLabel(ImageIcon icon, int width, int height, int x, int y)
+    {
         Image img = icon.getImage();
         BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
         Graphics g = bi.createGraphics();
-        g.drawImage(img, x, y, width, y, null, null);
+        g.drawImage(img, x, y, width, height, null, null);
         icon = new ImageIcon(bi);
         return icon;
-        }
+    }
         
         
         //Función ejecutada cuando el usuario presiona el botón de Cerrar Sesión ya sea en la barra o en
         // esquina inferior derecha.
 
+
+
+
+    private void errorConn(Exception e)
+    {
+        if (e instanceof SQLException)
+        {
+            Error_connection_db error = new Error_connection_db((SQLException) e); 
+            error.show();
+            error.setSize(new Dimension(524,250));
+            error.setPreferredSize(new Dimension(524,250));
+            error.validate();
+            //error.pack();
+            error.setMinimumSize(new Dimension(524,250));
+        }else{
+            Error_connection_db error = new Error_connection_db(e);
+            error.show();
+            error.setSize(new Dimension(524,250));
+            error.setPreferredSize(new Dimension(524,250));
+            error.validate();
+            error.setMinimumSize(new Dimension(524,250));
+            //error.pack();
+        }
+    }
 }
-
-
 

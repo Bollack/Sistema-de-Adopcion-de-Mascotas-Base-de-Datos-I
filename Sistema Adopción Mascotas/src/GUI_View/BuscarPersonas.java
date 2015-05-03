@@ -41,6 +41,7 @@ public class BuscarPersonas extends javax.swing.JFrame {
         rescatistasRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 153, 255));
 
         tituloBuscarPersona.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         tituloBuscarPersona.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -57,7 +58,7 @@ public class BuscarPersonas extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "ID", "Nombre", "Lugar", "Telefono", "Correo"
             }
         ) {
             boolean[] canEdit = new boolean [] {

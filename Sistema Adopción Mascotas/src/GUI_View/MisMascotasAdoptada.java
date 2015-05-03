@@ -48,15 +48,16 @@ public class MisMascotasAdoptada extends javax.swing.JFrame {
         getContentPane().add(titleAdopciones);
         titleAdopciones.setBounds(0, 4, 720, 30);
 
+        tablaAdopciones.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         tablaAdopciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Nombre", "Rescatista", "Tipo", "Raza", "Fecha"
             }
         ));
         tablaAdopciones.setOpaque(false);
@@ -65,7 +66,7 @@ public class MisMascotasAdoptada extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 130, 452, 160);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opciones adopción", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Opciones adopción", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N
         jPanel1.setOpaque(false);
 
         verMascotaButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -107,9 +108,9 @@ public class MisMascotasAdoptada extends javax.swing.JFrame {
 
         enunciadoLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         enunciadoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        enunciadoLabel.setText("jLabel1");
+        enunciadoLabel.setText("<html><body> En esta ventana se administran las adopciones realizadas por el usuario. Puede ver las mascotas que ha adoptado, el perfil de rescatista de las mascotas, así como subir fotos de la mascota luego de la adopción y bajo su cuidado. Si por una razón, ya no puede mantener a la mascota, puede devolverla al rescatista presionando \"Devolver Mascota\".");
         getContentPane().add(enunciadoLabel);
-        enunciadoLabel.setBounds(10, 50, 700, 50);
+        enunciadoLabel.setBounds(10, 40, 700, 70);
         enunciadoLabel.setText("<html>En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones más avanzadas.</html>");
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/adopcion.jpg"))); // NOI18N

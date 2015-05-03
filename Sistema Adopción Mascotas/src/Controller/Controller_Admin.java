@@ -9,9 +9,13 @@ import GUI_View.Error_connection_db;
 import GUI_View.Main_Admin;
 import GUI_View.Main_Visitante;
 import Model.Model;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 /**
  *
@@ -48,22 +52,18 @@ public class Controller_Admin implements ActionListener
         
         //Se comienza a agregar los listener de los elementos en la pestaña de formulario
         
-        ventana.crearFormularioButton.addActionListener((ActionListener) this);
-        ventana;
+
         
         ventana.addPreguntaButton.addActionListener((ActionListener) this);
-        ventana;
+        ventana.addPreguntaButton.setActionCommand("Añadir Pregunta - Formulario");
         
-        ventana.borrarFormularioButton.addActionListener((ActionListener) this);
-        ventana;
         
         ventana.borrarPreguntaButton.addActionListener((ActionListener) this);
-        ventana;
+        ventana.borrarPreguntaButton.setActionCommand("Borrar Pregunta - Formulario");
         
         ventana.
         ventana;
-        ventana;
-        
+              
         ventana;
         ventana;
         
@@ -186,7 +186,16 @@ public class Controller_Admin implements ActionListener
         error.setResizable(false);
     }
 
-
+    private ImageIcon displayImageInLabel(ImageIcon icon, int width, int height, int x, int y)
+    {
+        
+        Image img = icon.getImage();
+        BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        Graphics g = bi.createGraphics();
+        g.drawImage(img, x, y, width, y, null, null);
+        icon = new ImageIcon(bi);
+        return icon;
+    }
  
  
  

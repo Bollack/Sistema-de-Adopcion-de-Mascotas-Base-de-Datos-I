@@ -27,6 +27,7 @@ public class ModificarCuenta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        generoButtonGroup = new javax.swing.ButtonGroup();
         telefonoTextField = new javax.swing.JTextField();
         femaleRadioButton = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
@@ -39,19 +40,18 @@ public class ModificarCuenta extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         correoTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         passwordTextField = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         apellidoUsuarioTextField = new javax.swing.JTextField();
-        userTextField = new javax.swing.JPasswordField();
         nameTextField = new javax.swing.JTextField();
         guardarCambiosButton = new javax.swing.JButton();
         title1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 153, 255));
 
         telefonoTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         telefonoTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -107,17 +107,14 @@ public class ModificarCuenta extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel5.setText("*Dirección:");
 
-        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel6.setText("*Nombre de Usuario:");
-
-        jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel7.setText("*Contraseña:");
 
-        title.setFont(new java.awt.Font("Rockwell", 1, 20)); // NOI18N
+        title.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("DATOS DE CUENTA");
 
-        passwordTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        passwordTextField.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         passwordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordTextFieldActionPerformed(evt);
@@ -128,8 +125,6 @@ public class ModificarCuenta extends javax.swing.JFrame {
         jLabel11.setText("*Correo Electrónico:");
 
         apellidoUsuarioTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-
-        userTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
         nameTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
 
@@ -149,61 +144,54 @@ public class ModificarCuenta extends javax.swing.JFrame {
             .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(title1)
-                        .addGap(152, 152, 152))
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(correoTextField))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(passwordTextField)
-                                    .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(correoTextField))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(femaleRadioButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(maleRadioButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(telefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(2, 2, 2)
+                        .addComponent(direccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(apellidoUsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(femaleRadioButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(maleRadioButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(telefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(2, 2, 2)
-                                .addComponent(direccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(apellidoUsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(passwordTextField))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(guardarCambiosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addContainerGap(24, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(backButton)
-                                .addContainerGap())))))
+                                .addComponent(guardarCambiosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(21, 21, 21)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backButton)
+                        .addContainerGap())))
+            .addComponent(title1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,15 +226,11 @@ public class ModificarCuenta extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(direccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(guardarCambiosButton)))
@@ -321,6 +305,7 @@ public class ModificarCuenta extends javax.swing.JFrame {
     public javax.swing.JTextField correoTextField;
     public javax.swing.JTextField direccionTextField;
     public javax.swing.JRadioButton femaleRadioButton;
+    public javax.swing.ButtonGroup generoButtonGroup;
     public javax.swing.JButton guardarCambiosButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -328,7 +313,6 @@ public class ModificarCuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -338,6 +322,5 @@ public class ModificarCuenta extends javax.swing.JFrame {
     public javax.swing.JTextField telefonoTextField;
     public javax.swing.JLabel title;
     public javax.swing.JLabel title1;
-    public javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }

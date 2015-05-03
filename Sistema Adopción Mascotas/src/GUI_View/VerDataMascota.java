@@ -198,6 +198,7 @@ public class VerDataMascota extends javax.swing.JFrame {
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
+        jTextArea3.setEnabled(false);
         jScrollPane3.setViewportView(jTextArea3);
 
         jLabel19.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -231,6 +232,7 @@ public class VerDataMascota extends javax.swing.JFrame {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
+        jTextArea2.setEnabled(false);
         jScrollPane2.setViewportView(jTextArea2);
 
         jLabel16.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -298,10 +300,12 @@ public class VerDataMascota extends javax.swing.JFrame {
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
+        jTextArea4.setEnabled(false);
         jScrollPane4.setViewportView(jTextArea4);
 
         jTextArea5.setColumns(20);
         jTextArea5.setRows(5);
+        jTextArea5.setEnabled(false);
         jScrollPane5.setViewportView(jTextArea5);
 
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

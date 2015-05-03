@@ -20,18 +20,15 @@ public class Error_connection_db extends javax.swing.JFrame {
     */
     public Error_connection_db(SQLException e) {
         initComponents();
-        this.mensajeErrorLabel.setText(e.getMessage());
-        int codigoError = e.getErrorCode();
-        String codigo = String.valueOf(codigoError);
-        this.codigoErrorLabel.setText(codigo);
-        this.moreInfoErrorLabel.setText(e.getSQLState());
+        String mensaje=e.getMessage();
+        this.mensajeErrorLabel.setText("<html><body>"+mensaje+"</body></html>");
     }
     
     public Error_connection_db(Exception e) {
         initComponents();
-        this.mensajeErrorLabel.setText(e.getMessage());
-        this.codigoErrorLabel.setText(e.getLocalizedMessage());
-        this.moreInfoErrorLabel.setText("");
+        String mensaje=e.getMessage();
+        this.mensajeErrorLabel.setText("<html><body>"+mensaje+"</body></html>");
+
     }
 
     /**
@@ -45,12 +42,8 @@ public class Error_connection_db extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         aceptarButton = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         mensajeErrorLabel = new javax.swing.JLabel();
-        codigoErrorLabel = new javax.swing.JLabel();
-        moreInfoErrorLabel = new javax.swing.JLabel();
         backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,19 +55,13 @@ public class Error_connection_db extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Error de conexión");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 11, 524, 29);
+        jLabel2.setBounds(0, 0, 524, 29);
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("¡Oh no! Ha ocurrido un error tratando de conectar la base de datos. ");
+        jLabel3.setText("<html><body>¡Oh no! Ha ocurrido un error tratando de conectar la base de datos.  Vuelve a intentarlo y si el problema persiste, contacte al desarollador de la aplicación para recibir asistencia. </body></html>");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(2, 51, 520, 18);
-
-        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("recibir asistencia");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 108, 462, 18);
+        jLabel3.setBounds(30, 40, 470, 60);
 
         aceptarButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         aceptarButton.setText("Aceptar");
@@ -88,36 +75,16 @@ public class Error_connection_db extends javax.swing.JFrame {
         getContentPane().add(aceptarButton);
         aceptarButton.setBounds(210, 180, 101, 31);
 
-        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Vuelve a intentar o contacta al desarrollador de la aplicación para ");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 80, 520, 18);
-
         mensajeErrorLabel.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         mensajeErrorLabel.setForeground(new java.awt.Color(204, 0, 0));
         mensajeErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mensajeErrorLabel.setText("a");
         getContentPane().add(mensajeErrorLabel);
-        mensajeErrorLabel.setBounds(30, 130, 462, 14);
-
-        codigoErrorLabel.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
-        codigoErrorLabel.setForeground(new java.awt.Color(204, 0, 0));
-        codigoErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        codigoErrorLabel.setText("a");
-        getContentPane().add(codigoErrorLabel);
-        codigoErrorLabel.setBounds(30, 140, 462, 14);
-
-        moreInfoErrorLabel.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
-        moreInfoErrorLabel.setForeground(new java.awt.Color(204, 0, 0));
-        moreInfoErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        moreInfoErrorLabel.setText("a");
-        getContentPane().add(moreInfoErrorLabel);
-        moreInfoErrorLabel.setBounds(30, 150, 462, 14);
+        mensajeErrorLabel.setBounds(30, 110, 462, 60);
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/perro-abandonado2.jpg"))); // NOI18N
         getContentPane().add(backgroundImage);
-        backgroundImage.setBounds(-6, -1, 530, 225);
+        backgroundImage.setBounds(-6, -1, 520, 220);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -132,12 +99,8 @@ public class Error_connection_db extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton aceptarButton;
     private javax.swing.JLabel backgroundImage;
-    public javax.swing.JLabel codigoErrorLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     public javax.swing.JLabel mensajeErrorLabel;
-    public javax.swing.JLabel moreInfoErrorLabel;
     // End of variables declaration//GEN-END:variables
 }
