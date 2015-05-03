@@ -134,7 +134,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="tamanoMascotaComboBox" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="tamanoMascotaComboBox" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

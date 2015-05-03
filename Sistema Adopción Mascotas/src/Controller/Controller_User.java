@@ -650,12 +650,10 @@ public class Controller_User implements ActionListener
        else if(comando=="FileChooser-FotoAntesMascota - Registrar Mascota")
        {        
            /*
-           Se establece un filtro para que el FileChooser sólo muestre archivos con formatos
-           de imágenes manejables por JAVA. Para esto se utiliza la clase FileFilter, así como
-           la librería ImageIO y la clase FileNameExtensionFilter, los cuales permiten la 
-           obtención de dichos formatos y su aplicación en el filtro. 
+           Se establece un filtro para que sólo se puedan seleccionar archivos de formato .jpg, .png y .jpeg.  
+           El usuario selecciona la imagen a subir y se realiza un resize de la misma para mostrarla en la 
+           pantalla.
            
-           TO TEST
            */
            Registro_Rescate_Mascota ventana = (Registro_Rescate_Mascota) this.gui;
             JFileChooser fileOpen = new JFileChooser();
@@ -692,18 +690,57 @@ public class Controller_User implements ActionListener
        {
            this.backtoAccountScreen();
            
-       }else if(comando=="Registrar Mascota - Main Menu ")
+       }else if(comando=="Modificar Mascota - Modificar Mascota")
        {
            
-       }else if(comando=="Registrar Mascota - Main Menu ")
+       }else if(comando=="FileChooser-FotoDespuesMascota - Modificar Mascota")
        {
-           
-       }else if(comando=="")
+            ModifyMascota ventana = (ModifyMascota) this.gui;
+            JFileChooser fileOpen = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter ("Image Files", "jpg","png", "jpeg");
+            fileOpen.setFileFilter(filter);
+            fileOpen.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fileOpen.setAcceptAllFileFilterUsed(false);
+            fileOpen.setFont(new Font("Rockwell",Font.BOLD, 12));
+            int ret = fileOpen.showDialog(null, "Open file");
+            if (ret == JFileChooser.APPROVE_OPTION) {
+                File direccion = fileOpen.getSelectedFile();
+                System.out.println("Dirección de imagen: "+direccion.getAbsolutePath());
+                ventana.imageDirMascotaField1.setText(direccion.getAbsolutePath());
+                   ImageIcon icon = new ImageIcon(direccion.getAbsolutePath());
+                   //ImageIcon imagen = this.displayImageInLabel(icon, 260, 178,ventana.foto.getX()+30,ventana.foto.getY());
+                   Image scaleImage = icon.getImage().getScaledInstance(260, 178,Image.SCALE_DEFAULT);
+                   icon =new ImageIcon(scaleImage);
+                   ventana.fotoDespues.setText("");
+                   ventana.fotoDespues.setIcon(icon);
+                   ventana.fotoDespues.resize(260, 178);
+            }
+       }else if(comando=="FileChooser-FotoAntesMascota - Modificar Mascota")
        {
-           
+            ModifyMascota ventana = (ModifyMascota) this.gui;
+            JFileChooser fileOpen = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter ("Image Files", "jpg","png", "jpeg");
+            fileOpen.setFileFilter(filter);
+            fileOpen.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fileOpen.setAcceptAllFileFilterUsed(false);
+            fileOpen.setFont(new Font("Rockwell",Font.BOLD, 12));
+            int ret = fileOpen.showDialog(null, "Open file");
+            if (ret == JFileChooser.APPROVE_OPTION) {
+                File direccion = fileOpen.getSelectedFile();
+                System.out.println("Dirección de imagen: "+direccion.getAbsolutePath());
+                ventana.imageDirMascotaField.setText(direccion.getAbsolutePath());
+                   ImageIcon icon = new ImageIcon(direccion.getAbsolutePath());
+                   //ImageIcon imagen = this.displayImageInLabel(icon, 260, 178,ventana.foto.getX()+30,ventana.foto.getY());
+                   Image scaleImage = icon.getImage().getScaledInstance(260, 178,Image.SCALE_DEFAULT);
+                   icon =new ImageIcon(scaleImage);
+                   ventana.fotoAntes.setText("");
+                   ventana.fotoAntes.setIcon(icon);
+                   ventana.fotoAntes.resize(260, 178);
+            }
    
-       }else if(comando==""){
+       }else if(comando=="Atras - Modificar Mascota"){
            
+           this.backtoAccountScreen();
        }else if(comando==""){
            
        }else if(comando==""){
@@ -865,7 +902,7 @@ public class Controller_User implements ActionListener
         }        
     }
 
-        private boolean validate_Email(String email)
+    private boolean validate_Email(String email)
     {
         if (email=="" || email==null)
         {
@@ -879,6 +916,7 @@ public class Controller_User implements ActionListener
         return true;
 
     }
+    
     private boolean validate_Tel(String telefono)
     {
         if (telefono=="" || telefono==null)
@@ -1010,12 +1048,11 @@ public class Controller_User implements ActionListener
                 foto_antes=null;
             }
             File foto_despues=null;
-            String contacto = this.username;
             
             
             this.modelo.insertMascota(this.username,nombre,tipo, raza, color1, color2, espacio, tamano, training, 
                                       energia, sexo, veterinario, medicamentos, enfermedades, notas, tratamientos,
-                                      situacion, severidad, foto_antes, foto_despues, contacto);
+                                      situacion, severidad, foto_antes, foto_despues);
             //Se informa al usuario de la operación exitosa.
             int a = JOptionPane.OK_OPTION;
             JOptionPane.showConfirmDialog(ventana, "El registro de la mascota ha sido exitosa. Puede modificar los datos insertados en la ventana Mis Mascotas Rescatadas.", "Operación exitosa", a);
@@ -1056,7 +1093,11 @@ public class Controller_User implements ActionListener
         }
     }
     
-
+    private void modificar_Mascota()
+    {
+        
+    }
+    
     /*
     Función cuya función es expuesta en el nombre. Recibe un ImageIcon y lo devuelve ajustado a las dimensiones
     insertadas por parámetro. Puede ser un poco lento con imágenes grandes.

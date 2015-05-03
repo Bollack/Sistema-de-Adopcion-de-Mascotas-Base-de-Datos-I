@@ -324,9 +324,9 @@ public class Model {
     public boolean insertMascota(String username, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
                                 String espacio, String tamano, String training, String energia,String sexo, String veterinario,
                                 String medicamentos, String enfermedades,String notas,String Tratamientos, String situacion, String severidad, File foto_antes,
-                                File foto_despues,String contacto) throws SQLException, ClassNotFoundException, FileNotFoundException
+                                File foto_despues) throws SQLException, ClassNotFoundException, FileNotFoundException
     {
-        Object[] datos = new Object[21];
+        Object[] datos = new Object[20];
         try //Trata de insertar la tupla en la tabla mascota, solicitándoselo a 
             //Database_Connection y esperando su respuesta
         {
@@ -351,7 +351,6 @@ public class Model {
             datos[17] = severidad;
             datos[18] = foto_antes;
             datos[19] = foto_despues;
-            datos[20] = contacto;
 
             this.conexion.callProcedure("Insertar Mascota",datos);
             
@@ -477,37 +476,37 @@ public class Model {
         this.conexion.endConnection();
     }
     
-    public void ModifyMascota(String username, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
+    public void ModifyMascota(int mascotaID,String username, String nombre, String tipoMascota, String Raza, String Color1, String Color2,
                                 String espacio, String tamano, String training, String energia,String sexo, String veterinario,
                                 String medicamentos, String enfermedades,String notas,String Tratamientos, String situacion, String severidad, File foto_antes,
-                                File foto_despues,String contacto) throws SQLException, ClassNotFoundException, FileNotFoundException
+                                File foto_despues) throws SQLException, ClassNotFoundException, FileNotFoundException
     {
-               Object[] datos = new Object[21];
+        Object[] datos = new Object[21];
         try //Trata de insertar la tupla en la tabla mascota, solicitándoselo a 
             //Database_Connection y esperando su respuesta
         {
             this.conexion = new Database_Connection(1); //Se conecta como usuario, 
-            datos[0] = username;
-            datos[1] = nombre;
-            datos[2] = tipoMascota;
-            datos[3] = Raza;
-            datos[4] = Color1;
-            datos[5] = Color2;
-            datos[6] = espacio;
-            datos[7] = tamano;
-            datos[8] = training;
-            datos[9] = energia;
-            datos[10] = sexo;
-            datos[11] = veterinario;
-            datos[12] = medicamentos;
-            datos[13] = enfermedades;
-            datos[14] = notas;
-            datos[15] = Tratamientos;
-            datos[16] = situacion;
-            datos[17] = severidad;
-            datos[18] = foto_antes;
-            datos[19] = foto_despues;
-            datos[20] = contacto;
+            datos[0] = mascotaID;
+            datos[1] = username;
+            datos[2] = nombre;
+            datos[3] = tipoMascota;
+            datos[4] = Raza;
+            datos[5] = Color1;
+            datos[6] = Color2;
+            datos[7] = espacio;
+            datos[8] = tamano;
+            datos[9] = training;
+            datos[10] = energia;
+            datos[11] = sexo;
+            datos[12] = veterinario;
+            datos[13] = medicamentos;
+            datos[14] = enfermedades;
+            datos[15] = notas;
+            datos[16] = Tratamientos;
+            datos[17] = situacion;
+            datos[18] = severidad;
+            datos[19] = foto_antes;
+            datos[20] = foto_despues;
 
             this.conexion.callProcedure("Modificar Mascota",datos);
             

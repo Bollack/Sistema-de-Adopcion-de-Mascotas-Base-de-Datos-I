@@ -196,7 +196,7 @@ public class Database_Connection {
 
                     
                 case "Insertar Mascota":
-                    llamado = "{call INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    llamado = "{call INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     /*
                     Genera una conexión con el atributo conexion y prepara
                     la llamada con el string definido anteriormente, el cual
@@ -276,14 +276,14 @@ public class Database_Connection {
                                
                     }
                     storedPro.setNull(20, java.sql.Types.NULL); //Al insertar mascota, se le prohíbe al usuario insertat Foto_Después, ergo, siempre será null.
-                    storedPro.setString(21, (String) parametros[20]); //pContacto
+
                     System.out.println("Parámetros asignados. Ejecutando...");
                     storedPro.execute();
                     System.out.println("Ejecutado");
                     storedPro.close();
                     return true;
                 case "Modificar Mascota":
-                    llamado = "{call update_mascota(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    llamado = "{call update_mascota(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     System.out.println("Modificando mascota...");                  
                     System.out.println("Creando storedPro...");
                     storedPro = this.conn.prepareCall(llamado);
@@ -375,7 +375,6 @@ public class Database_Connection {
                     {
                         storedPro.setNull(22, java.sql.Types.NULL);                   
                     }
-                    storedPro.setString(23, (String) parametros[22]); //pContacto
                     System.out.println("Parámetros asignados. Ejecutando...");
                     storedPro.execute();
                     System.out.println("Ejecutado");
