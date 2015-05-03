@@ -47,7 +47,7 @@ public class Error_connection_db extends javax.swing.JFrame {
         backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Error de conexión");
+        setTitle("¡Abandonen toda esperanza!");
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N

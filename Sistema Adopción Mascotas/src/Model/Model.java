@@ -6,8 +6,10 @@
 package Model;
 
 import Controller.InputValueNotAcceptableException;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -68,7 +70,7 @@ public class Model {
         }
     }
     
-    public boolean checkUserExists(String username) throws SQLException, ClassNotFoundException
+    public boolean checkUserExists(String username) throws SQLException, ClassNotFoundException, NullPointerException, IOException
     {
         /*
                 Hace uso de la función en la base de datos 
@@ -97,7 +99,7 @@ public class Model {
         }
     }      
  
-    public boolean checkPassword(String username,String password) throws SQLException, ClassNotFoundException{
+    public boolean checkPassword(String username,String password) throws SQLException, ClassNotFoundException, NullPointerException, IOException{
              /*
                 Hace uso de la función  en la base de datos 
                 que realiza dicha función y el cual devuelve un boolean.
@@ -131,7 +133,7 @@ public class Model {
     usuario insertado por parametro.
     */
     
-    public String[] getDatosFromUsername(String username) throws SQLException, NullPointerException, ClassNotFoundException
+    public String[] getDatosFromUsername(String username) throws SQLException, NullPointerException, ClassNotFoundException, IOException
     {
         this.conexion.setConnection(1);
         String[] datos = new String[8];
@@ -185,49 +187,128 @@ public class Model {
         return datos;
     }
     
-    public Object[] getDatosFromMascota(int id) throws SQLException
+    public Object[] getDatosFromMascota(int id) throws SQLException, IOException, ClassNotFoundException
     {
         this.conexion.setConnection(1);
         Object[] datos = new Object[23];
         Object[] parametros = new Object[2];
         parametros[0] = id;//"'"+username+"'";
         try {
-            parametros[1]="'password'";
-            datos[0]=username;
+            parametros[1]="nombre";
+            datos[0]=id;
             String respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
             System.out.println(respuesta);
             datos[1]=respuesta;
             
-            parametros[1]="'nombre'";
-            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            parametros[1]="tipo";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
             System.out.println(respuesta);
             datos[2]=respuesta;
             
-            parametros[1]="apellido";
-            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            parametros[1]="raza";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
             System.out.println(respuesta);
             datos[3]=respuesta;
             
-            parametros[1]="telefono";
-            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            parametros[1]="tamano";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
             System.out.println(respuesta);
             datos[4]=respuesta;
             
-            parametros[1]="correo";
-            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            parametros[1]="color1";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
             System.out.println(respuesta);
             datos[5]=respuesta;
             
-            parametros[1]="lugar";
-            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            parametros[1]="color2";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
             System.out.println(respuesta);
             datos[6]=respuesta;
             
-            parametros[1]="genero";
-            respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
+            parametros[1]="nivel_energia";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
             System.out.println(respuesta);
             datos[7]=respuesta;
             
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[8]=respuesta;
+                      
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[9]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[10]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[11]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[12]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[13]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[14]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[15]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[16]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[17]=respuesta;
+            
+            parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[18]=respuesta;
+            
+                        parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[18]=respuesta;
+            
+                        parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[18]=respuesta;
+            
+                        parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[18]=respuesta;
+            
+                        parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[18]=respuesta;
+            
+                        parametros[1]="";
+            respuesta= ((String) this.conexion.callFunction("get Datos Mascota",parametros));
+            System.out.println(respuesta);
+            datos[18]=respuesta;
             
         } catch (SQLException ex) {
             throw ex;
@@ -307,18 +388,42 @@ public class Model {
     {
         try
         {
+            String[] datosAextraer = new String[10];
+            DefaultTableModel modelo;
             switch (comando)
             {   
                 case "Mascota visitante":
                     this.conexion.setConnection(1);
-                    String[] datosAextraer = {"id","tipo","raza", "sexo","tamano","Administrador.get_lugar_from_id(contacto) AS lugar", "severidad", "Administrador.get_nombrecompleto_from_id(contacto) AS contacto"};
-                    DefaultTableModel modelo = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
+                    datosAextraer = new String[8];
+                    datosAextraer[0] = "id";
+                    datosAextraer[1] = "tipo";
+                    datosAextraer[2] = "raza";
+                    datosAextraer[3] = "sexo";
+                    datosAextraer[4] = "tamano";
+                    datosAextraer[5] = "Administrador.get_lugar_from_id(contacto) AS lugar";
+                    datosAextraer[6] = "severidad";
+                    datosAextraer[7] = "Administrador.get_nombrecompleto_from_id(contacto) AS contacto";
+                    modelo = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
                     System.out.println(modelo.getColumnName(3));
                     //JTable tabla = new JTable(modelo);
                     // System.out.println(tabla.getColumnName(0));
                     this.conexion.endConnection();
                     return modelo;
                 case "Personas administrador":
+                    this.conexion.setConnection(1);
+                    datosAextraer = new String[6];
+                    datosAextraer[0] = "Usuario";
+                    datosAextraer[1] = "Administrador.get_NombreCompleto_from_id(id) AS Nombre_completo";
+                    datosAextraer[2] = "lugar";
+                    datosAextraer[3] = "telefono";
+                    datosAextraer[4] = "email";
+                    datosAextraer[5] = "Fecha_creacion AS Fecha_Registro";
+                    modelo = this.conexion.getTablaSinCondicion("Persona",datosAextraer);
+                    System.out.println(modelo.getColumnName(3));
+                    //JTable tabla = new JTable(modelo);
+                    // System.out.println(tabla.getColumnName(0));
+                    this.conexion.endConnection();
+                    return modelo;
                 case "Mascotas administrador":
                 case "Adopciones administrador":                   
                 case "Devoluciones administrador":                    
@@ -331,17 +436,34 @@ public class Model {
         return null;
     }
     
-    public ImageIcon getImageFromTable(String orden)  throws InputValueNotAcceptableException
+    public ImageIcon getImageFromTable(String orden, int id)  throws InputValueNotAcceptableException, SQLException, ClassNotFoundException, NullPointerException, IOException
     {
+        this.conexion.setConnection(2);
+        Image imagen;
+        Object[] parametros = new String[1];
+        parametros[0] = id;
         switch (orden)
         {
-            case "Extraer imagen mascota actual":
-                
-                
-            case "Extraer imagen mascota amtes":
+            case "Extraer imagen mascota foto Despues":
+                imagen = (Image) this.conexion.callFunction("Extraer imagen mascota foto Despues", (Object[]) parametros[1]);
+                return new ImageIcon(imagen);
+            case "Extraer imagen mascota Foto Antes":
+                imagen = (Image) this.conexion.callFunction("Extraer imagen mascota foto Antes", (Object[]) parametros[1]);
+                return new ImageIcon(imagen);
         }
+        this.conexion.endConnection();
         ImageIcon image=null;
         return image;
+    }
+    
+    public String getUsernamefromID(int id) throws SQLException, ClassNotFoundException, NullPointerException, IOException
+    {
+        this.conexion.setConnection(2);
+        Object[] parametros = new Object[1];
+        parametros[0]=id;
+        String resultado = (String) this.conexion.callFunction("Get Username from ID", parametros);
+        this.conexion.endConnection();
+        return resultado;
     }
     
     public void ModifyUser(String[] datos) throws SQLException, ClassNotFoundException, FileNotFoundException

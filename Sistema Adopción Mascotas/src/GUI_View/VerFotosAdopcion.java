@@ -31,8 +31,8 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        anteriorFotoButton = new javax.swing.JButton();
+        SIguienteFotoButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -46,9 +46,11 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
         fechaAdopcionLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        foto2 = new javax.swing.JLabel();
+        foto1 = new javax.swing.JLabel();
+        descripcionFoto1 = new javax.swing.JLabel();
+        descripcionFoto2 = new javax.swing.JLabel();
+        atrasButton = new javax.swing.JButton();
         backgroungImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,15 +64,22 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
 
         jPanel2.setOpaque(false);
 
-        jButton1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton1.setText("Anterior");
-        jButton1.setBorderPainted(false);
-        jButton1.setOpaque(false);
+        anteriorFotoButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        anteriorFotoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/back_arrow.png"))); // NOI18N
+        anteriorFotoButton.setBorderPainted(false);
+        anteriorFotoButton.setContentAreaFilled(false);
+        anteriorFotoButton.setOpaque(false);
 
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton2.setText("Siguiente");
-        jButton2.setBorderPainted(false);
-        jButton2.setOpaque(false);
+        SIguienteFotoButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        SIguienteFotoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/next_arrow.png"))); // NOI18N
+        SIguienteFotoButton.setBorderPainted(false);
+        SIguienteFotoButton.setContentAreaFilled(false);
+        SIguienteFotoButton.setOpaque(false);
+        SIguienteFotoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SIguienteFotoButtonActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Datos de la adopción", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
         jPanel3.setDoubleBuffered(false);
@@ -184,30 +193,28 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(anteriorFotoButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SIguienteFotoButton))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36))
+                    .addComponent(SIguienteFotoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anteriorFotoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2);
@@ -216,46 +223,60 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Fotografías", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
         jPanel1.setOpaque(false);
 
-        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Foto2  (357,322)");
-        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        foto2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        foto2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        foto2.setText("Foto (257, 309)");
+        foto2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Foto1 (357,322)");
-        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        foto1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        foto1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        foto1.setText("Foto (357, 268)");
+        foto1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        descripcionFoto1.setText("jLabel8");
+        descripcionFoto1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Descripción", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
+
+        descripcionFoto2.setText("jLabel8");
+        descripcionFoto2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Descripción", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(foto1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .addComponent(descripcionFoto1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(foto2, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .addComponent(descripcionFoto2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(descripcionFoto2, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                    .addComponent(descripcionFoto1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(foto1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                    .addComponent(foto2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 270, 840, 370);
+        jPanel1.setBounds(20, 240, 840, 400);
 
-        jButton5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton5.setText("Atrás");
-        jButton5.setBorderPainted(false);
-        jButton5.setOpaque(false);
-        getContentPane().add(jButton5);
-        jButton5.setBounds(750, 640, 110, 31);
+        atrasButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        atrasButton.setText("Atrás");
+        atrasButton.setBorderPainted(false);
+        atrasButton.setOpaque(false);
+        getContentPane().add(atrasButton);
+        atrasButton.setBounds(750, 640, 110, 31);
 
         backgroungImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/FOTO_ADOPCION.jpg"))); // NOI18N
         getContentPane().add(backgroungImage);
@@ -263,6 +284,10 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SIguienteFotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIguienteFotoButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SIguienteFotoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,14 +325,16 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton SIguienteFotoButton;
+    public javax.swing.JButton anteriorFotoButton;
+    public javax.swing.JButton atrasButton;
     private javax.swing.JLabel backgroungImage;
+    public javax.swing.JLabel descripcionFoto1;
+    public javax.swing.JLabel descripcionFoto2;
     public javax.swing.JLabel fechaAdopcionLabel;
-    public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton5;
+    public javax.swing.JLabel foto1;
+    public javax.swing.JLabel foto2;
     private javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

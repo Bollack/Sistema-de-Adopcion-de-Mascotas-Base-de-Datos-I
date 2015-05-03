@@ -1,4 +1,3 @@
-
 package Controller;
 
 import Controller.Controller_User;
@@ -16,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import javax.swing.JFrame;
@@ -35,6 +35,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -86,9 +87,10 @@ public class Controller implements ActionListener
         
         //vista.Foto.setMaximumSize(new Dimension(225,156));
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/GUI_View/Images/logo.jpg"));
+        icon = this.resizeImage(icon, 218, 156);
          //218,156//g.drawImage(img, x, y, 197, 143, null, null); //218,156
         vista.Foto.setText("");
-        vista.Foto.setIcon(this.displayImageInLabel(icon, 197, 143, 0, 0));
+        vista.Foto.setIcon(icon);
         //vista.Foto.resize(218, 156);
 
         
@@ -96,12 +98,39 @@ public class Controller implements ActionListener
         {
             vista.tablaMascotas.setModel(this.modelo.getModelFromResultSet("Mascota visitante")); 
             System.out.println(vista.tablaMascotas.getColumnName(0));
-            //vista.tablaMascotas.setModel((TableModel) this.modelo.getModelFromResultSet("Mascota visitante"));
-            //vista.jScrollPane2.removeAll();
-            //vista.jScrollPane2.add(vista.tablaMascotas);
-        }catch(Exception e)
+            vista.tablaMascotas.setRowSelectionAllowed(true);
+            ListSelectionModel rowSelectionModel = vista.tablaMascotas.getSelectionModel();
+            rowSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+            rowSelectionModel.addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent e){
+                    String selectedData = null;
+                    int fila = vista.tablaMascotas.getSelectedRow();
+                    int id = (int) vista.tablaMascotas.getValueAt(fila, 0);
+                    ImageIcon imagen;
+                    try {
+                        imagen = new Model().getImageFromTable(selectedData, id);
+                    } catch (SQLException ex) {
+                        errorConn(e);
+                    } catch (ClassNotFoundException ex) {
+                        errorConn(e);
+                    } catch (InputValueNotAcceptableException ex) {
+                        errorConn(e);
+                    } catch (NullPointerException ex) {
+                        errorConn(e);
+                    } catch (IOException ex) {
+                        errorConn(e);                    
+                    }
+                }
+            
+            
+        });}catch(SQLException e)
         {
+            this.errorConn(e);
             System.out.println(e.getMessage());
+        } catch (ClassNotFoundException ex) {
+            this.errorConn(ex);
         }
     }
     
@@ -125,6 +154,12 @@ public class Controller implements ActionListener
            } catch (ClassNotFoundException ex) {
                Log_In ventana = (Log_In) this.gui;
                ventana.datos_no_validos_OptionPane.createDialog(ventana, "Datos no válidos. Por favor, introduzca un nombre de usuario y contraseña válidos.");
+           } catch (NullPointerException ex) {
+                int warning =  JOptionPane.ERROR_MESSAGE;
+                JOptionPane.showConfirmDialog (null, "Ha ocurrido un error NullPointerException extrayendo datos de la base de datos. Por favor, vuelva a intentar más tarde o contacte al desarollador para recibir soporte.","Error",warning);
+           } catch (IOException ex) {
+                 int warning =  JOptionPane.ERROR_MESSAGE;
+                 JOptionPane.showConfirmDialog (null, "Ha ocurrido un error IOException extrayendo datos de la base de datos. Por favor, vuelva a intentar más tarde o contacte al desarollador para recibir soporte.","Error",warning);
            }
   
        }else if(comando=="Cambio de Vista-Ventana Logeo")
@@ -155,8 +190,16 @@ public class Controller implements ActionListener
            this.Registrase_Window();
        }else if(comando=="Registrarse-Ventana Registro")
        {
-           this.Registrarse();
-           
+           try {
+               this.Registrarse();
+           } catch (UnsupportedOperationException ex) {
+                 int warning =  JOptionPane.ERROR_MESSAGE;
+                 JOptionPane.showConfirmDialog (null, "Ha ocurrido un error UnsupportedOperationException extrayendo datos de la base de datos. Por favor, vuelva a intentar más tarde o contacte al desarollador para recibir soporte.","Error",warning);
+           } catch (IOException ex) {
+                 int warning =  JOptionPane.ERROR_MESSAGE;
+                 JOptionPane.showConfirmDialog (null, "Ha ocurrido un error IOException extrayendo datos de la base de datos. Por favor, vuelva a intentar más tarde o contacte al desarollador para recibir soporte.","Error",warning);;
+           }
+           //this.Start();
        }else if(comando=="Atrás-Ventana Registro")
        {
            this.gui.dispose();
@@ -183,22 +226,18 @@ public class Controller implements ActionListener
        }
     }
     
-    private void valueChanged(ListSelectionEvent event) throws InputValueNotAcceptableException
-    {
-        Main_Visitante ventana =(Main_Visitante) this.gui;
-        int id =(int) ventana.tablaMascotas.getValueAt(ventana.tablaMascotas.getSelectedRow(),0);
-        ImageIcon imagen= this.modelo.getImageFromTable(null);
-    }
+
        
-   
-    private ImageIcon displayImageInLabel(ImageIcon icon, int width, int height, int x, int y)
+    /*
+    Función cuya función es expuesta en el nombre. Recibe un ImageIcon y lo devuelve ajustado a las dimensiones
+    insertadas por parámetro. Puede ser un poco lento con imágenes grandes.
+    */
+        
+    private ImageIcon resizeImage(ImageIcon icon, int width, int height)
     {
         
-        Image img = icon.getImage();
-        BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-        Graphics g = bi.createGraphics();
-        g.drawImage(img, x, y, width, y, null, null);
-        icon = new ImageIcon(bi);
+        Image scaleImage = icon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT);
+        icon = new ImageIcon(scaleImage);
         return icon;
     }
         
@@ -227,6 +266,7 @@ public class Controller implements ActionListener
         ventanalogeo.asAdmin = 0;
         ventanalogeo.show();  
         ventanalogeo.setResizable(false);
+        ventanalogeo.getRootPane().setDefaultButton(ventanalogeo.LogInButton);
     }
     
     private void Registrase_Window()
@@ -286,7 +326,7 @@ public class Controller implements ActionListener
     en caso de que estos errores se den y se encarga de transmitirle los datos al modelo para su inserción en la db si los datos
     son válidos.
     */
-    private void Registrarse()
+    private void Registrarse() throws UnsupportedOperationException, IOException
     {
        try
        {
@@ -371,7 +411,7 @@ public class Controller implements ActionListener
     y valida que estén correctos, permitiéndole al usuario ingresar a su cuenta y abre
     las ventanas correspondientes así como todo el proceso lógico necesario. 
     */
-    private void validate_data_Log_in(Log_In ventana) throws ClassNotFoundException
+    private void validate_data_Log_in(Log_In ventana) throws ClassNotFoundException, NullPointerException, IOException
     {
         
         
@@ -526,7 +566,7 @@ public class Controller implements ActionListener
         }
         return validez;
     }
-    private boolean validate_Username_to_Create(String username) throws SQLException, ClassNotFoundException
+    private boolean validate_Username_to_Create(String username) throws SQLException, ClassNotFoundException, NullPointerException, IOException
     {
         if (username=="" || username==null)
         {
@@ -553,7 +593,7 @@ public class Controller implements ActionListener
         return true;
     }
     
-    private boolean validate_Password_to_Log_in( String username,String pass) throws SQLException, ClassNotFoundException
+    private boolean validate_Password_to_Log_in( String username,String pass) throws SQLException, ClassNotFoundException, NullPointerException, IOException
     {
         if (!this.modelo.checkUserExists(username))
         {
@@ -565,7 +605,7 @@ public class Controller implements ActionListener
         }
         return true;
     }
-    private void validate_AllFieldsRegister(String[] datos) throws UnsupportedOperationException, InputValueNotAcceptableException, UnsupportedOperationException, SQLException, ClassNotFoundException
+    private void validate_AllFieldsRegister(String[] datos) throws UnsupportedOperationException, InputValueNotAcceptableException, UnsupportedOperationException, SQLException, ClassNotFoundException, NullPointerException, IOException
     {
         if (datos[2]=="" || datos[2]==null) //Valida nombre     
         {

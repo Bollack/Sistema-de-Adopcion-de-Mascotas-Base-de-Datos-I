@@ -275,22 +275,15 @@ public class Database_Connection {
                        storedPro.setNull(19, java.sql.Types.NULL);
                                
                     }
-                    if (parametros[19]!=null) //Foto_Antes
-                    {
-                       FileInputStream imagen = this.convertImageToBLOB((File) parametros[19]);
-                       storedPro.setBlob(20,imagen);
-                    }else
-                    {
-                       storedPro.setNull(20, java.sql.Types.NULL);
-                               
-                    }
                     storedPro.setNull(20, java.sql.Types.NULL); //Al insertar mascota, se le prohíbe al usuario insertat Foto_Después, ergo, siempre será null.
                     storedPro.setString(21, (String) parametros[20]); //pContacto
                     System.out.println("Parámetros asignados. Ejecutando...");
+                    storedPro.execute();
+                    System.out.println("Ejecutado");
                     storedPro.close();
                     return true;
                 case "Modificar Mascota":
-                    llamado = "{call update_mascota(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    llamado = "{call update_mascota(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     System.out.println("Modificando mascota...");                  
                     System.out.println("Creando storedPro...");
                     storedPro = this.conn.prepareCall(llamado);
@@ -384,6 +377,8 @@ public class Database_Connection {
                     }
                     storedPro.setString(23, (String) parametros[22]); //pContacto
                     System.out.println("Parámetros asignados. Ejecutando...");
+                    storedPro.execute();
+                    System.out.println("Ejecutado");
                     storedPro.close();
                     return true;
                 case "Enviar Solicitud":
@@ -426,7 +421,7 @@ public class Database_Connection {
     
 
     
-    public Object callFunction(String comando, Object[] parametros) throws SQLException, NullPointerException 
+    public Object callFunction(String comando, Object[] parametros) throws SQLException, NullPointerException, IOException 
     {
         try
         {
@@ -494,26 +489,46 @@ public class Database_Connection {
                 case "Get ID from Username - Persona":
                     llamado="{? = call funcion(?)}";
                     stmt = this.conn.prepareCall(llamado);
-                    stmt.close();
+                    stmt.setString(1, (String) parametros[0]);
+                    stmt.registerOutParameter(1, java.sql.Types.NUMERIC);
                     stmt.execute();
-                    return resultadoS;
+                    resultadoI = stmt.getInt(1);
+                    stmt.close();
+                    return resultadoI;
                 case "Get name from ID - Persona":
                     llamado="{? = call funcion(?)}";
                     stmt = this.conn.prepareCall(llamado);
                     stmt.close();
                     stmt.execute();
                     return resultadoS;
-                case "Get Foto actual from ID - Mascota":
-                    llamado="{? = call funcion(?)}";
+                case "Extraer imagen mascota foto Despues":
+                    llamado="{? = call get_foto_despues(?)}";
                     stmt = this.conn.prepareCall(llamado);
+                    stmt.setInt(2, (int) parametros[0]);
+                    stmt.registerOutParameter(1, java.sql.Types.BLOB);
+                    stmt.execute();
+                    BLOB resultadoImagen = (BLOB) stmt.getBlob(1);
+                    Image imagen = this.convertBLOBtoImage((BLOB) resultadoImagen);
+                    stmt.close();
+                    return imagen;
+                case "Extraer imagen mascota foto Antes":
+                    llamado="{? = call get_foto_antes(?)}";
+                    stmt = this.conn.prepareCall(llamado);
+                    stmt.setInt(2, (int) parametros[0]);
+                    stmt.registerOutParameter(1, java.sql.Types.BLOB);
+                    stmt.execute();
+                    resultadoImagen = (BLOB) stmt.getBlob(1);
+                    imagen = this.convertBLOBtoImage((BLOB) resultadoImagen);
+                    stmt.close();
+                    return imagen;
+                case "Get Username from ID":
+                    llamado = "{? = get_username_from_id(?)}";
+                    stmt = this.conn.prepareCall(llamado);
+                    stmt.setInt(2, (int) parametros[0]);
+                    stmt.registerOutParameter(1, java.sql.Types.VARCHAR);
                     stmt.close();
                     stmt.execute();
-                    return resultadoS;
-                case "Get Foto antes from ID - Mascota":
-                    llamado="{? = call funcion(?)}";
-                    stmt = this.conn.prepareCall(llamado);
-                    stmt.close();
-                    stmt.execute();
+                    resultadoS = stmt.getString(1);
                     return resultadoS;
                 case "get Datos Usuario":
                     System.out.println("Llamando a función get_datos_usuario() del usuario "+(String) parametros[0]+" DATO: "+parametros[1]);
@@ -711,6 +726,7 @@ public class Database_Connection {
                     //rs.next() al vector de cafa fila
                     
                     filaDeTabla.addElement(rs.getObject(j));
+                    System.out.println("Añadiendo "+rs.getObject(j));
                 }
                 
                 /*

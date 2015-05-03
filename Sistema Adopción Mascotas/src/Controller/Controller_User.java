@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.UnsupportedOperationException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -181,6 +182,11 @@ public class Controller_User implements ActionListener
         } catch (ClassNotFoundException ex) {
                         int a = JOptionPane.ERROR_MESSAGE;
             JOptionPane.showMessageDialog(this.gui, "Error de conexión ClassNotFound. Por favor, trate otra vez o contacte al desarollador para recibir asistencia.", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Excepcion ClassNotFound en accountSettings_Window()");
+            this.backtoAccountScreen();
+        } catch (IOException ex) {
+            int a = JOptionPane.ERROR_MESSAGE;
+            JOptionPane.showMessageDialog(this.gui, "Error de conexión IOException. Por favor, trate otra vez o contacte al desarollador para recibir asistencia.", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Excepcion ClassNotFound en accountSettings_Window()");
             this.backtoAccountScreen();
         }
@@ -393,9 +399,10 @@ public class Controller_User implements ActionListener
         ventana_rescate.show(true);
         ventana_rescate.pack();
         ventana_rescate.setResizable(false);
+        this.gui = ventana_rescate;
     }  
     
-    private void modificar_Mascota_Window() throws SQLException, ClassNotFoundException
+    private void modificar_Mascota_Window(int id) throws SQLException, ClassNotFoundException, IOException
     {
         this.gui.dispose();
         this.gui.show(false);
@@ -437,7 +444,7 @@ public class Controller_User implements ActionListener
         
         
         ventana.razaMascotaComboBox.addActionListener((ActionListener) this);
-        ventana.registrarMascotaButton.addActionListener((ActionListener) this);
+        ventana.modificarMascotaButton.addActionListener((ActionListener) this);
         
         
         ventana.tamanoMascotaComboBox.addActionListener((ActionListener) this);
@@ -492,7 +499,7 @@ public class Controller_User implements ActionListener
             
         });
         
-        v
+        
         
         
         ventana.energiaMascotaComboBox.removeAllItems();
@@ -567,12 +574,24 @@ public class Controller_User implements ActionListener
         ventana.severidadMascotaComboBox.addItem("Crítico");
         ventana.severidadMascotaComboBox.addItem("Mal estado");
         ventana.severidadMascotaComboBox.addItem("Buen estado");
-        
-        ventana.show(true);
-        ventana.pack();
-        ventana.setResizable(false);
+        try
+        {
+            this.actualizarValoresMascota_VentanaModificacion(ventana, id);
+            ventana.show(true);
+            ventana.pack();
+            ventana.setResizable(false); 
+        }catch(SQLException e)
+        {
+            this.errorConn(e);
+            this.backtoAccountScreen();
+        }
+
     }
     
+    private void actualizarValoresMascota_VentanaModificacion(ModifyMascota ventana, int id) throws SQLException, IOException, ClassNotFoundException
+    {
+        Object[] datosMascota = this.modelo.getDatosFromMascota(id);
+    }
     
     public void actionPerformed(ActionEvent e) {
        String comando = e.getActionCommand();
@@ -651,14 +670,16 @@ public class Controller_User implements ActionListener
                 System.out.println("Dirección de imagen: "+direccion.getAbsolutePath());
                 ventana.imageDirMascotaField.setText(direccion.getAbsolutePath());
                    ImageIcon icon = new ImageIcon(direccion.getAbsolutePath());
-                   ImageIcon imagen = this.displayImageInLabel(icon, 260, 178,ventana.foto.getX()+30,ventana.foto.getY());
+                   //ImageIcon imagen = this.displayImageInLabel(icon, 260, 178,ventana.foto.getX()+30,ventana.foto.getY());
+                   Image scaleImage = icon.getImage().getScaledInstance(260, 178,Image.SCALE_DEFAULT);
+                   icon =new ImageIcon(scaleImage);
                    ventana.foto.setText("");
-                   ventana.foto.setIcon(imagen);
+                   ventana.foto.setIcon(icon);
                    ventana.foto.resize(260, 178);
             }
        }else if(comando=="Registrar Mascota - Registrar Mascota")
        {
-           this.registrar_Mascota((Registro_Rescate_Mascota) this.gui);
+           this.registrar_Mascota();
        }else if(comando=="Atras - Registrar Mascota")
        {
            this.backtoAccountScreen();
@@ -871,7 +892,7 @@ public class Controller_User implements ActionListener
         return false;
     }
     
-        private boolean validate_Username_to_Create(String username) throws SQLException, ClassNotFoundException
+        private boolean validate_Username_to_Create(String username) throws SQLException, ClassNotFoundException, NullPointerException, IOException
     {
         if (username=="" || username==null)
         {
@@ -900,8 +921,9 @@ public class Controller_User implements ActionListener
     
     
   
-    private void registrar_Mascota(Registro_Rescate_Mascota ventana) 
+    private void registrar_Mascota() 
     {
+        Registro_Rescate_Mascota ventana = (Registro_Rescate_Mascota) this.gui;
         try
         {
             this.validate_AllFieldsRegistroMascota(ventana);
@@ -1035,14 +1057,16 @@ public class Controller_User implements ActionListener
     }
     
 
+    /*
+    Función cuya función es expuesta en el nombre. Recibe un ImageIcon y lo devuelve ajustado a las dimensiones
+    insertadas por parámetro. Puede ser un poco lento con imágenes grandes.
+    */
         
-    private ImageIcon displayImageInLabel(ImageIcon icon, int width, int height, int x, int y)
+    private ImageIcon resizeImage(ImageIcon icon, int width, int height)
     {
-        Image img = icon.getImage();
-        BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-        Graphics g = bi.createGraphics();
-        g.drawImage(img, x, y, width, height, null, null);
-        icon = new ImageIcon(bi);
+        
+        Image scaleImage = icon.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT);
+        icon = new ImageIcon(scaleImage);
         return icon;
     }
         

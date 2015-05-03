@@ -36,11 +36,13 @@ public class Formulario extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        atrasButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        NextButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Formulario de adopción");
         getContentPane().setLayout(null);
 
         buttonGroup1.add(jRadioButton4);
@@ -114,11 +116,16 @@ public class Formulario extends javax.swing.JFrame {
         getContentPane().add(jRadioButton5);
         jRadioButton5.setBounds(10, 240, 310, 23);
 
-        jButton1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton1.setText("Siguiente");
-        jButton1.setOpaque(false);
-        getContentPane().add(jButton1);
-        jButton1.setBounds(150, 320, 120, 30);
+        atrasButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        atrasButton.setText("Volver al menú");
+        atrasButton.setOpaque(false);
+        atrasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(atrasButton);
+        atrasButton.setBounds(410, 330, 170, 30);
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,6 +133,12 @@ public class Formulario extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 120, 340, 50);
+
+        NextButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        NextButton.setText("Siguiente");
+        NextButton.setOpaque(false);
+        getContentPane().add(NextButton);
+        NextButton.setBounds(100, 310, 140, 30);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/perro_abandono.png"))); // NOI18N
@@ -138,6 +151,10 @@ public class Formulario extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void atrasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_atrasButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,17 +192,18 @@ public class Formulario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton NextButton;
+    public javax.swing.JButton atrasButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel encabezadoFormulario;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
+    public javax.swing.JRadioButton jRadioButton1;
+    public javax.swing.JRadioButton jRadioButton2;
+    public javax.swing.JRadioButton jRadioButton3;
+    public javax.swing.JRadioButton jRadioButton4;
+    public javax.swing.JRadioButton jRadioButton5;
     // End of variables declaration//GEN-END:variables
 }

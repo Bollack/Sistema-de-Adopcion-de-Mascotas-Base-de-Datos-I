@@ -180,7 +180,7 @@
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt; En esta ventana se administran las adopciones realizadas por el usuario. Puede ver las mascotas que ha adoptado, el perfil de rescatista de las mascotas, as&#xed; como subir fotos de la mascota luego de la adopci&#xf3;n y bajo su cuidado. Si por una raz&#xf3;n, ya no puede mantener a la mascota, puede devolverla al rescatista presionando &quot;Devolver Mascota&quot;."/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="enunciadoLabel.setText(&quot;&lt;html&gt;En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones m&#xe1;s avanzadas.&lt;/html&gt;&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="enunciadoLabel2.setText(&quot;&lt;html&gt;En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones m&#xe1;s avanzadas.&lt;/html&gt;&quot;);"/>
         <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
       </AuxValues>

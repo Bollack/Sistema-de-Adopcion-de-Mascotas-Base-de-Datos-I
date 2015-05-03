@@ -70,29 +70,29 @@ public class Main_Admin extends javax.swing.JFrame {
         jComboBox6 = new javax.swing.JComboBox();
         EditarPreguntaButton = new javax.swing.JButton();
         addPreguntaButton = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        ModificarPreguntaButton = new javax.swing.JButton();
         borrarPreguntaButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        variableAaveriguarComboBox = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        asignarVariableAaveriguarButton = new javax.swing.JButton();
         UsuarioPersona_AdminPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        verPerfilCalificadoBlackListButton = new javax.swing.JButton();
+        verPerfilCalificadorBlackListButton = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tablaUsuariosAdmin1 = new javax.swing.JTable();
+        listaNegraUsuariosAdmin = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
-        jButton12 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        verPerfilCalificadoAdminButton = new javax.swing.JButton();
+        verPerfilCalificadorAdminButton = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        tablaUsuariosAdmin2 = new javax.swing.JTable();
+        tablacalificacionesUsuariosAdmin = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaUsuariosAdmin = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        verPefilUsuarioAdminButton = new javax.swing.JButton();
+        verAdopcionesyRescatesButton = new javax.swing.JButton();
         MascotasRescatadas_AdminPanel = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
@@ -139,6 +139,7 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jButton6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton6.setText("Ver Datos Mascota");
+        jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -147,6 +148,7 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jButton8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton8.setText("Ver Datos Adoptante");
+        jButton8.setEnabled(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -190,9 +192,11 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jButton15.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton15.setText("Ver Datos Adoptante");
+        jButton15.setEnabled(false);
 
         jButton16.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jButton16.setText("Ver Datos Mascota");
+        jButton16.setEnabled(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -237,7 +241,7 @@ public class Main_Admin extends javax.swing.JFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         AdopcionesDevoluciones_AdminPanelLayout.setVerticalGroup(
             AdopcionesDevoluciones_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,6 +264,7 @@ public class Main_Admin extends javax.swing.JFrame {
         jLabel9.setText("<html><body>En esta sección se puede generar, modificar o borrar el formulario de adopción el cual llenarán los usuarios que desean adoptar una mascota. Puede añadir preguntas, junto con sus respetivas preguntas y añadir qué tipo de valor o variable es el deseable a averiguar. También puede navegar a través de las preguntas y ver cuál remover o modificar. Para más dudas, consulte el manual de usuario.</body></html>");
         jLabel9.setToolTipText("");
 
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "VISTA PREVIA DEL FORMULARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N
 
         nextQuestionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/next_arrow.png"))); // NOI18N
@@ -282,10 +287,12 @@ public class Main_Admin extends javax.swing.JFrame {
         jRadioButton1.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         jRadioButton1.setText("RESPUESTA 1");
         jRadioButton1.setToolTipText("");
+        jRadioButton1.setOpaque(false);
 
         jRadioButton2.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         jRadioButton2.setText("RESPUESTA 2");
         jRadioButton2.setToolTipText("");
+        jRadioButton2.setOpaque(false);
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -295,6 +302,7 @@ public class Main_Admin extends javax.swing.JFrame {
         jRadioButton3.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         jRadioButton3.setText("RESPUESTA 3");
         jRadioButton3.setToolTipText("");
+        jRadioButton3.setOpaque(false);
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton3ActionPerformed(evt);
@@ -304,6 +312,7 @@ public class Main_Admin extends javax.swing.JFrame {
         jRadioButton4.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         jRadioButton4.setText("RESPUESTA 4");
         jRadioButton4.setToolTipText("");
+        jRadioButton4.setOpaque(false);
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton4ActionPerformed(evt);
@@ -313,6 +322,7 @@ public class Main_Admin extends javax.swing.JFrame {
         jRadioButton5.setFont(new java.awt.Font("Rockwell", 0, 11)); // NOI18N
         jRadioButton5.setText("RESPUESTA 5");
         jRadioButton5.setToolTipText("");
+        jRadioButton5.setOpaque(false);
 
         preguntaPreviewFormulario.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         preguntaPreviewFormulario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -383,10 +393,12 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jTextField1.setText("jTextField1");
+        jTextField1.setEnabled(false);
 
         espacioPreguntaEnunciadoPanel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         espacioPreguntaEnunciadoPanel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         espacioPreguntaEnunciadoPanel.setText("jTextField2");
+        espacioPreguntaEnunciadoPanel.setEnabled(false);
         espacioPreguntaEnunciadoPanel.setOpaque(false);
         espacioPreguntaEnunciadoPanel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,15 +408,19 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jTextField3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jTextField3.setText("jTextField1");
+        jTextField3.setEnabled(false);
 
         jTextField4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jTextField4.setText("jTextField1");
+        jTextField4.setEnabled(false);
 
         jTextField5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jTextField5.setText("jTextField1");
+        jTextField5.setEnabled(false);
 
         jTextField6.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jTextField6.setText("jTextField1");
+        jTextField6.setEnabled(false);
 
         estadoPreguntaPanel.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         estadoPreguntaPanel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -412,18 +428,23 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jComboBox2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setEnabled(false);
 
         jComboBox3.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setEnabled(false);
 
         jComboBox4.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.setEnabled(false);
 
         jComboBox5.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setEnabled(false);
 
         jComboBox6.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setEnabled(false);
 
         javax.swing.GroupLayout panelVisualizacionRespuestasLayout = new javax.swing.GroupLayout(panelVisualizacionRespuestas);
         panelVisualizacionRespuestas.setLayout(panelVisualizacionRespuestasLayout);
@@ -499,11 +520,12 @@ public class Main_Admin extends javax.swing.JFrame {
             }
         });
 
-        jButton13.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton13.setText("Modificar Pregunta");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        ModificarPreguntaButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        ModificarPreguntaButton.setText("Modificar Pregunta");
+        ModificarPreguntaButton.setEnabled(false);
+        ModificarPreguntaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                ModificarPreguntaButtonActionPerformed(evt);
             }
         });
 
@@ -518,14 +540,16 @@ public class Main_Admin extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 153, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignar Variable a averiguar", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 14))); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        variableAaveriguarComboBox.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        variableAaveriguarComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        variableAaveriguarComboBox.setEnabled(false);
 
         jLabel12.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         jLabel12.setText("Pregunta");
 
-        jButton1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jButton1.setText("Asignar");
+        asignarVariableAaveriguarButton.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        asignarVariableAaveriguarButton.setText("Asignar");
+        asignarVariableAaveriguarButton.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -534,11 +558,11 @@ public class Main_Admin extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(variableAaveriguarComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(asignarVariableAaveriguarButton)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -546,9 +570,9 @@ public class Main_Admin extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(variableAaveriguarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addComponent(asignarVariableAaveriguarButton))
         );
 
         javax.swing.GroupLayout Formularios_AdminPanelLayout = new javax.swing.GroupLayout(Formularios_AdminPanel);
@@ -571,7 +595,7 @@ public class Main_Admin extends javax.swing.JFrame {
                             .addComponent(EditarPreguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Formularios_AdminPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ModificarPreguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelVisualizacionRespuestas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -591,7 +615,7 @@ public class Main_Admin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(EditarPreguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ModificarPreguntaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Formularios_AdminPanelLayout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -608,29 +632,33 @@ public class Main_Admin extends javax.swing.JFrame {
         UsuarioPersona_AdminPanel.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setText("<html><body>En esta pestaña se muestra información acerca de los usuarios reciente registrados así como una tabla que muestra la calificación dada a usuarios por otros rescatistas. También se puede visualiar los adoptantes añadidos a la lista negra .Seleccione una fila de las tablas y presione algunas de las opciones válidas en los botones mostrados al lado derecho de la pantalla.</body></html>");
         jLabel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Lista Negra", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N
 
-        jButton5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jButton5.setText("Ver Perfil Calificado");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        verPerfilCalificadoBlackListButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        verPerfilCalificadoBlackListButton.setText("Ver Perfil Calificado");
+        verPerfilCalificadoBlackListButton.setEnabled(false);
+        verPerfilCalificadoBlackListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                verPerfilCalificadoBlackListButtonActionPerformed(evt);
             }
         });
 
-        jButton11.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jButton11.setText("Ver Perfil Calificador");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        verPerfilCalificadorBlackListButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        verPerfilCalificadorBlackListButton.setText("Ver Perfil Calificador");
+        verPerfilCalificadorBlackListButton.setEnabled(false);
+        verPerfilCalificadorBlackListButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                verPerfilCalificadorBlackListButtonActionPerformed(evt);
             }
         });
 
-        tablaUsuariosAdmin1.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        tablaUsuariosAdmin1.setModel(new javax.swing.table.DefaultTableModel(
+        listaNegraUsuariosAdmin.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        listaNegraUsuariosAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -638,7 +666,7 @@ public class Main_Admin extends javax.swing.JFrame {
                 "Usuario", "Nombre", "Añadido por", "Fecha"
             }
         ));
-        jScrollPane4.setViewportView(tablaUsuariosAdmin1);
+        jScrollPane4.setViewportView(listaNegraUsuariosAdmin);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -649,17 +677,17 @@ public class Main_Admin extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton11)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(verPerfilCalificadorBlackListButton)
+                    .addComponent(verPerfilCalificadoBlackListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton5)
+                .addComponent(verPerfilCalificadoBlackListButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton11)
+                .addComponent(verPerfilCalificadorBlackListButton)
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -669,24 +697,26 @@ public class Main_Admin extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(51, 153, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Tabla de calificaciones de usuarios", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N
 
-        jButton12.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jButton12.setText("Ver Perfil Calificado");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        verPerfilCalificadoAdminButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        verPerfilCalificadoAdminButton.setText("Ver Perfil Calificado");
+        verPerfilCalificadoAdminButton.setEnabled(false);
+        verPerfilCalificadoAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                verPerfilCalificadoAdminButtonActionPerformed(evt);
             }
         });
 
-        jButton14.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jButton14.setText("Ver Perfil Calificador");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        verPerfilCalificadorAdminButton.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        verPerfilCalificadorAdminButton.setText("Ver Perfil Calificador");
+        verPerfilCalificadorAdminButton.setEnabled(false);
+        verPerfilCalificadorAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                verPerfilCalificadorAdminButtonActionPerformed(evt);
             }
         });
 
-        tablaUsuariosAdmin2.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        tablaUsuariosAdmin2.setModel(new javax.swing.table.DefaultTableModel(
+        tablacalificacionesUsuariosAdmin.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        tablacalificacionesUsuariosAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -694,7 +724,7 @@ public class Main_Admin extends javax.swing.JFrame {
                 "Calificado", "Calificador", "Nota", "Fecha"
             }
         ));
-        jScrollPane7.setViewportView(tablaUsuariosAdmin2);
+        jScrollPane7.setViewportView(tablacalificacionesUsuariosAdmin);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -705,17 +735,17 @@ public class Main_Admin extends javax.swing.JFrame {
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton14)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(verPerfilCalificadorAdminButton)
+                    .addComponent(verPerfilCalificadoAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton12)
+                .addComponent(verPerfilCalificadoAdminButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton14)
+                .addComponent(verPerfilCalificadorAdminButton)
                 .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
@@ -737,20 +767,22 @@ public class Main_Admin extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaUsuariosAdmin);
 
-        jButton2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton2.setText("Ver Perfil Usuario");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        verPefilUsuarioAdminButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        verPefilUsuarioAdminButton.setText("Ver Perfil Usuario");
+        verPefilUsuarioAdminButton.setEnabled(false);
+        verPefilUsuarioAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                verPefilUsuarioAdminButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton3.setText("<html><body>Ver adopciones & rescates</body></html>");
-        jButton3.setToolTipText("");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        verAdopcionesyRescatesButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        verAdopcionesyRescatesButton.setText("<html><body>Ver adopciones & rescates</body></html>");
+        verAdopcionesyRescatesButton.setToolTipText("");
+        verAdopcionesyRescatesButton.setEnabled(false);
+        verAdopcionesyRescatesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                verAdopcionesyRescatesButtonActionPerformed(evt);
             }
         });
 
@@ -763,8 +795,8 @@ public class Main_Admin extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(verAdopcionesyRescatesButton)
+                    .addComponent(verPefilUsuarioAdminButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -774,9 +806,9 @@ public class Main_Admin extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(verPefilUsuarioAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(verAdopcionesyRescatesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -785,13 +817,13 @@ public class Main_Admin extends javax.swing.JFrame {
         UsuarioPersona_AdminPanelLayout.setHorizontalGroup(
             UsuarioPersona_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuarioPersona_AdminPanelLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(UsuarioPersona_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(35, 35, 35))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         UsuarioPersona_AdminPanelLayout.setVerticalGroup(
             UsuarioPersona_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -819,6 +851,7 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jButton4.setText("Ver Datos Mascota");
+        jButton4.setEnabled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -829,6 +862,7 @@ public class Main_Admin extends javax.swing.JFrame {
 
         jButton9.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jButton9.setText("Ver Datos Rescatista");
+        jButton9.setEnabled(false);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -841,7 +875,7 @@ public class Main_Admin extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -857,10 +891,11 @@ public class Main_Admin extends javax.swing.JFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
                         .addComponent(jButton9)
-                        .addGap(22, 22, 22))))
+                        .addGap(53, 53, 53))))
         );
 
         jPanel9.setBackground(new java.awt.Color(51, 153, 255));
@@ -968,29 +1003,29 @@ public class Main_Admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void verPefilUsuarioAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPefilUsuarioAdminButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_verPefilUsuarioAdminButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void verPerfilCalificadoBlackListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPerfilCalificadoBlackListButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_verPerfilCalificadoBlackListButtonActionPerformed
 
     private void SalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SalirButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void verAdopcionesyRescatesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verAdopcionesyRescatesButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_verAdopcionesyRescatesButtonActionPerformed
 
     private void borrarPreguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarPreguntaButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_borrarPreguntaButtonActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void ModificarPreguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPreguntaButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_ModificarPreguntaButtonActionPerformed
 
     private void addPreguntaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPreguntaButtonActionPerformed
         // TODO add your handling code here:
@@ -1036,17 +1071,17 @@ public class Main_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void verPerfilCalificadorBlackListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPerfilCalificadorBlackListButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_verPerfilCalificadorBlackListButtonActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void verPerfilCalificadoAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPerfilCalificadoAdminButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_verPerfilCalificadoAdminButtonActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void verPerfilCalificadorAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPerfilCalificadorAdminButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }//GEN-LAST:event_verPerfilCalificadorAdminButtonActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -1097,28 +1132,21 @@ public class Main_Admin extends javax.swing.JFrame {
     private javax.swing.JMenuItem ExitMenuItem;
     private javax.swing.JPanel Formularios_AdminPanel;
     private javax.swing.JPanel MascotasRescatadas_AdminPanel;
+    public javax.swing.JButton ModificarPreguntaButton;
     public javax.swing.JButton SalirButton;
     private javax.swing.JPanel UsuarioPersona_AdminPanel;
     public javax.swing.JButton addPreguntaButton;
+    public javax.swing.JButton asignarVariableAaveriguarButton;
     public javax.swing.JButton borrarPreguntaButton;
     public javax.swing.JTextField espacioPreguntaEnunciadoPanel;
     public javax.swing.JLabel estadoPreguntaPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    public javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    public javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox jComboBox1;
+    public javax.swing.JButton jButton9;
     public javax.swing.JComboBox jComboBox2;
     public javax.swing.JComboBox jComboBox3;
     public javax.swing.JComboBox jComboBox4;
@@ -1162,6 +1190,7 @@ public class Main_Admin extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField4;
     public javax.swing.JTextField jTextField5;
     public javax.swing.JTextField jTextField6;
+    public javax.swing.JTable listaNegraUsuariosAdmin;
     public javax.swing.JButton nextQuestionButton;
     public javax.swing.JLabel numeroPreguntaPreviewFormulario;
     private javax.swing.JPanel panelVisualizacionRespuestas;
@@ -1169,8 +1198,14 @@ public class Main_Admin extends javax.swing.JFrame {
     public javax.swing.JButton previousQuestionButton;
     private javax.swing.JTable tablaAdopcionesRecientes;
     private javax.swing.JTable tablaDevolucionesRecientes;
-    private javax.swing.JTable tablaUsuariosAdmin;
-    private javax.swing.JTable tablaUsuariosAdmin1;
-    private javax.swing.JTable tablaUsuariosAdmin2;
+    public javax.swing.JTable tablaUsuariosAdmin;
+    public javax.swing.JTable tablacalificacionesUsuariosAdmin;
+    public javax.swing.JComboBox variableAaveriguarComboBox;
+    public javax.swing.JButton verAdopcionesyRescatesButton;
+    public javax.swing.JButton verPefilUsuarioAdminButton;
+    public javax.swing.JButton verPerfilCalificadoAdminButton;
+    public javax.swing.JButton verPerfilCalificadoBlackListButton;
+    public javax.swing.JButton verPerfilCalificadorAdminButton;
+    public javax.swing.JButton verPerfilCalificadorBlackListButton;
     // End of variables declaration//GEN-END:variables
 }

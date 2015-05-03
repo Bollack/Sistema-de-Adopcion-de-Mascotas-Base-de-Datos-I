@@ -182,6 +182,7 @@ public class Log_In extends javax.swing.JFrame {
 
         LogInButton.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         LogInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/ingresar.png"))); // NOI18N
+        LogInButton.setBorderPainted(false);
         LogInButton.setContentAreaFilled(false);
         LogInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

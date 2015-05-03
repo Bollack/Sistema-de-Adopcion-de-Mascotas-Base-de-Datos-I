@@ -99,7 +99,7 @@ public class User_Mascotas_Adoptadas extends javax.swing.JFrame {
         enunciadoLabel2.setText("<html><body> En esta ventana se administran las adopciones realizadas por el usuario. Puede ver las mascotas que ha adoptado, el perfil de rescatista de las mascotas, así como subir fotos de la mascota luego de la adopción y bajo su cuidado. Si por una razón, ya no puede mantener a la mascota, puede devolverla al rescatista presionando \"Devolver Mascota\".");
         getContentPane().add(enunciadoLabel2);
         enunciadoLabel2.setBounds(10, 40, 700, 70);
-        enunciadoLabel.setText("<html>En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones más avanzadas.</html>");
+        enunciadoLabel2.setText("<html>En esta ventana se muestra las mascotas que usted ha adoptado hasta el momento. Seleccione una fila de la tabla para poder ver a opciones más avanzadas.</html>");
 
         backgroundImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/adopcion.jpg"))); // NOI18N
         getContentPane().add(backgroundImage1);
