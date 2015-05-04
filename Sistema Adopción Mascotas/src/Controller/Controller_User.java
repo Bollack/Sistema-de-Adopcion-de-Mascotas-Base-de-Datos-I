@@ -18,30 +18,20 @@ import GUI_View.Registro_Rescate_Mascota;
 import Model.Model;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.UnsupportedOperationException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.stage.FileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import org.apache.commons.lang3.*;
-import org.apache.commons.mail.*;
 import org.apache.commons.validator.*;
-import javax.imageio.*;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import oracle.net.aso.a;
 
 
 /*
@@ -89,6 +79,9 @@ public class Controller_User implements ActionListener
         ventana.verMisMascotasRescatadasButton.addActionListener((ActionListener)this);
         ventana.verMisMascotasRescatadasButton.setActionCommand("Ver Mis Rescates - Main Menu");
         
+        ventana.verMascotasEnEsperaButton.addActionListener((ActionListener) this);
+        ventana.verMascotasEnEsperaButton.setActionCommand("Ver mascotas en adopción - Main Menu");   
+        
         ventana.verDatosCuenta.addActionListener((ActionListener)this);
         ventana.verDatosCuenta.setActionCommand("Ver Cuenta - Main Menu");
                 
@@ -96,6 +89,8 @@ public class Controller_User implements ActionListener
         ventana.logOutUsuarioButton.setActionCommand("Cerrar Sesión - Main Menu");
         
 
+        
+        
         ventana.show();
         ventana.setResizable(false);
     }

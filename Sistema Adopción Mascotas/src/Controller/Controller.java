@@ -7,34 +7,20 @@ import GUI_View.Log_In;
 import GUI_View.Registro_Usuario;
 import Model.Model;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
-import org.apache.commons.lang3.*;
-import org.apache.commons.mail.*;
 import org.apache.commons.validator.*;
 import java.lang.ClassNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 /**
@@ -56,12 +42,10 @@ public class Controller implements ActionListener
         try {
             this.modelo = new Model();
         } catch (SQLException ex) {
-            Error_connection_db errorVentana = new Error_connection_db(ex);
-            errorVentana.show();
-            System.out.println(ex.getMessage());
+            this.errorConn(ex);
         }catch (ClassNotFoundException a)
         {
-        
+            this.errorConn(a);
         }
     }
     
@@ -69,8 +53,7 @@ public class Controller implements ActionListener
     {
         Main_Visitante vista = new Main_Visitante();
         this.gui = vista;
-        this.gui.show();
-        this.gui.setResizable(false);
+
         //this.gui.pack();
         
         
@@ -86,6 +69,8 @@ public class Controller implements ActionListener
         
         try
         {
+            this.gui.show();
+            this.gui.setResizable(false);
             vista.tablaMascotas.setModel(this.modelo.getModelFromResultSet("Mascota visitante")); 
             vista.tablaMascotas.setRowSelectionAllowed(true);
             ListSelectionModel rowSelectionModel = vista.tablaMascotas.getSelectionModel();
