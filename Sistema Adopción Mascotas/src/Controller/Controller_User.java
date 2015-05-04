@@ -7,8 +7,11 @@ package Controller;
 
 
 import GUI_View.BuscarPersonas;
+import GUI_View.Buscar_Mascota;
 import GUI_View.Error_connection_db;
 import GUI_View.Main_User;
+import GUI_View.MisMascotasAdoptada;
+import GUI_View.MisMascotasRescatadas;
 import GUI_View.ModificarCuenta;
 import GUI_View.ModifyMascota;
 import GUI_View.Registro_Rescate_Mascota;
@@ -79,9 +82,6 @@ public class Controller_User implements ActionListener
         
         ventana.registrarMascota.addActionListener((ActionListener)this);
         ventana.registrarMascota.setActionCommand("Registrar Mascota - Main Menu");
-                
-        ventana.verMascotasEnEsperaButton.addActionListener((ActionListener)this);
-        ventana.verMascotasEnEsperaButton.setActionCommand("Ver Mascotas Adopción - Main Menu");
         
         ventana.verMisAdopcionesButton.addActionListener((ActionListener)this);
         ventana.verMisAdopcionesButton.setActionCommand("Ver Mis Adopciones - Main Menu");
@@ -97,7 +97,7 @@ public class Controller_User implements ActionListener
         
 
         ventana.show();
-        ventana.setResizable(true);
+        ventana.setResizable(false);
     }
     
     
@@ -192,10 +192,7 @@ public class Controller_User implements ActionListener
         }
     }
     
-    private void verMisMascotasAdoptadas_Window()
-    {
-        
-    }
+
     
     private void buscarPersonas_Window()
     {
@@ -210,21 +207,46 @@ public class Controller_User implements ActionListener
         ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
         ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
         ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+        
+        ventana.backButton.addActionListener((ActionListener) this);
+        ventana.backButton.setActionCommand("Atras - BuscarPersonas");
+        
+        ventana.verPersonaButton.addActionListener((ActionListener) this);
+        ventana.verPersonaButton.setActionCommand("Ver Perfil Persona - Buscar Persona");
+        
+        ventana.show();
+        ventana.setResizable(false);
     }
     
     private void buscarMascotas_Window()
     {
-        
+            
+        this.gui.show(false);
+        this.gui.dispose();
+        this.gui = new Buscar_Mascota(); 
+        Buscar_Mascota ventana = (Buscar_Mascota) this.gui;
+        ventana.show();
+        ventana.setResizable(false);
     }
     
-    private void MascotasAdopcion_Window()
+    private void MisMascotasAdoptadas_Window()
     {
-        
+        this.gui.show(false);
+        this.gui.dispose();
+        this.gui = new MisMascotasAdoptada(); 
+        MisMascotasAdoptada ventana = (MisMascotasAdoptada) this.gui;
+        ventana.show();
+        ventana.setResizable(false);
     }
     
     private void VerMisRescates_Window()
     {
-        
+        this.gui.show(false);
+        this.gui.dispose();
+        this.gui = new MisMascotasRescatadas(); 
+        MisMascotasRescatadas ventana = (MisMascotasRescatadas) this.gui;
+        ventana.show();
+        ventana.setResizable(false);
     }
     
     private void registrar_Mascota_Window() throws SQLException, ClassNotFoundException
@@ -635,10 +657,10 @@ public class Controller_User implements ActionListener
            
        }else if(comando=="Ver Mascotas Adopción - Main Menu")
        {
-           this.MascotasAdopcion_Window();
+           this.buscarMascotas_Window();
        }else if(comando=="Ver Mis Adopciones - Main Menu")
        {
-           this.verMisMascotasAdoptadas_Window();
+           this.MisMascotasAdoptadas_Window();
        }else if(comando=="Ver Mis Rescates - Main Menu")
        {
            this.VerMisRescates_Window();
@@ -738,10 +760,13 @@ public class Controller_User implements ActionListener
                    ventana.fotoAntes.resize(260, 178);
             }
    
-       }else if(comando=="Atras - Modificar Mascota"){
-           
+       }else if(comando=="Atras - Modificar Mascota")
+       {
+           this.MisMascotasAdoptadas_Window();
            this.backtoAccountScreen();
-       }else if(comando==""){
+       }else if(comando=="Atras - BuscarPersonas")
+       {
+           this.backtoAccountScreen();
            
        }else if(comando==""){
            
@@ -853,10 +878,7 @@ public class Controller_User implements ActionListener
             System.out.println("Excepcion InputValueNotAcceptableException en Registrarse()");
         }catch (SQLException e){
             this.errorConn(e);
-            //int a = JOptionPane.ERROR_MESSAGE;
-            //JOptionPane.showMessageDialog(this.gui, "El nombre de usuario deseado no es válido o ya existe en la bsee de datos", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("Excepcion SQLException en Registrarse()");
-            this.errorConn(e);
         }catch (ClassNotFoundException e){
             System.out.println("Excepcion ClassNotFoundException en Registrarse()");
             this.errorConn(e);
@@ -1062,9 +1084,7 @@ public class Controller_User implements ActionListener
             System.out.println("Excepcion NullPointerException en RegistrarMascota()");
             int a = JOptionPane.ERROR_MESSAGE;
             JOptionPane.showMessageDialog(this.gui, "Por favor, inserte valores válidos y llene los valores indicados como obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (SQLException ex) {
-            this.errorConn(ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             this.errorConn(ex);
         } catch (FileNotFoundException ex) {
             System.out.println("Excepcion NullPointerException en RegistrarMascota()");
@@ -1129,6 +1149,7 @@ public class Controller_User implements ActionListener
             error.validate();
             //error.pack();
             error.setMinimumSize(new Dimension(524,250));
+            error.setResizable(false);
         }else{
             Error_connection_db error = new Error_connection_db(e);
             error.show();
@@ -1136,7 +1157,7 @@ public class Controller_User implements ActionListener
             error.setPreferredSize(new Dimension(524,250));
             error.validate();
             error.setMinimumSize(new Dimension(524,250));
-            //error.pack();
+            error.setResizable(false);
         }
     }
 }

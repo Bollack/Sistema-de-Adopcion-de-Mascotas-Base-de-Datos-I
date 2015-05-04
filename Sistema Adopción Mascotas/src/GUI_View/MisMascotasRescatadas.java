@@ -30,7 +30,7 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaMascotasRescatadasNoAdoptadas = new javax.swing.JTable();
         verDatosMascotaEnAdopcion = new javax.swing.JButton();
         verSolicitudesMascotaButton = new javax.swing.JButton();
         shareOnFacebook = new javax.swing.JButton();
@@ -39,8 +39,8 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
         verFotosAdopcion = new javax.swing.JButton();
         VerDatosMascotaAdoptadaButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton9 = new javax.swing.JButton();
+        tablaMascotasRescatadasAdoptadas = new javax.swing.JTable();
+        atrasButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,7 +57,7 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
 
         jScrollPane1.setOpaque(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMascotasRescatadasNoAdoptadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -68,8 +68,8 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
                 "ID", "Nombre", "Tipo", "Raza", "Sexo", "Fecha Rescate"
             }
         ));
-        jTable1.setOpaque(false);
-        jScrollPane1.setViewportView(jTable1);
+        tablaMascotasRescatadasNoAdoptadas.setOpaque(false);
+        jScrollPane1.setViewportView(tablaMascotasRescatadasNoAdoptadas);
 
         verDatosMascotaEnAdopcion.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         verDatosMascotaEnAdopcion.setText("Ver datos mascota");
@@ -147,7 +147,7 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
         VerDatosMascotaAdoptadaButton.setEnabled(false);
         VerDatosMascotaAdoptadaButton.setOpaque(false);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMascotasRescatadasAdoptadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -158,7 +158,7 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
                 "ID", "Nombre", "Tipo", "Raza", "Sexo", "Fecha Rescate"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tablaMascotasRescatadasAdoptadas);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -192,12 +192,12 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(10, 260, 660, 163);
 
-        jButton9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton9.setText("Atrás");
-        jButton9.setBorderPainted(false);
-        jButton9.setOpaque(false);
-        getContentPane().add(jButton9);
-        jButton9.setBounds(570, 430, 100, 31);
+        atrasButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        atrasButton.setText("Atrás");
+        atrasButton.setBorderPainted(false);
+        atrasButton.setOpaque(false);
+        getContentPane().add(atrasButton);
+        atrasButton.setBounds(570, 430, 100, 31);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/rescate_mascotas.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -243,16 +243,16 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton VerDatosMascotaAdoptadaButton;
-    public javax.swing.JButton jButton9;
+    public javax.swing.JButton atrasButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    public javax.swing.JTable jTable1;
-    public javax.swing.JTable jTable3;
     private javax.swing.JButton shareOnFacebook;
+    public javax.swing.JTable tablaMascotasRescatadasAdoptadas;
+    public javax.swing.JTable tablaMascotasRescatadasNoAdoptadas;
     public javax.swing.JButton verDatosMascotaEnAdopcion;
     public javax.swing.JButton verFotosAdopcion;
     public javax.swing.JButton verPerfilAdoptanteButton;

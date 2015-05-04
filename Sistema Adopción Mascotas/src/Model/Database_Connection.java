@@ -184,8 +184,9 @@ public class Database_Connection {
                         storedPro.setString(6, (String) parametros[5]);
                         storedPro.setString(7, (String) parametros[6]);
                         storedPro.setString(8, (String) parametros[7]);
+                        System.out.println((String)parametros[0] +" "+(String)parametros[1]+" "+(String)parametros[2]+" "+(String)parametros[3]+(String)parametros[4]+(String)parametros[5]+(String)parametros[6]+(String)parametros[7]);
                         System.out.println("Asignados parámetros. Ejecutando...");
-                        storedPro.executeQuery();
+                        storedPro.execute();
                         System.out.println("Persona y usuario "+(String)parametros[0]+" modificados");
                         storedPro.close();
                         return true;
@@ -196,7 +197,7 @@ public class Database_Connection {
 
                     
                 case "Insertar Mascota":
-                    llamado = "{call INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    llamado = "{ INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     /*
                     Genera una conexión con el atributo conexion y prepara
                     la llamada con el string definido anteriormente, el cual
@@ -207,10 +208,15 @@ public class Database_Connection {
                     storedPro = this.conn.prepareCall(llamado);
                     System.out.println("Creado. Ordenando parámetros...");
                     storedPro.setString(1, (String) parametros[0]); //usuario
+                    System.out.println(parametros[0]);
                     storedPro.setString(2, (String)parametros[1]); //nombre
+                    System.out.println(parametros[1]);
                     storedPro.setString(3, (String)parametros[2]); //tipo
+                    System.out.println(parametros[2]);
                     storedPro.setString(4, (String)parametros[3]); //raza
+                    System.out.println(parametros[3]);
                     storedPro.setString(5, (String) parametros[4]); //color1
+                    System.out.println(parametros[4]);
                     if (parametros[5]!=null) //color 2
                     {
                       storedPro.setString(6, (String) parametros[5]);   
@@ -218,11 +224,17 @@ public class Database_Connection {
                     {
                         storedPro.setNull(6, java.sql.Types.NULL);
                     }
+                    System.out.println(parametros[5]);
                     storedPro.setString(7, (String) parametros[6]); //espacio
+                    System.out.println(parametros[6]);
                     storedPro.setString(8, (String) parametros[7]); //tamano
+                    System.out.println(parametros[7]);
                     storedPro.setString(9, (String) parametros[8]); //training
+                    System.out.println(parametros[8]);
                     storedPro.setString(10, (String) parametros[9]); //energia
+                    System.out.println(parametros[9]);
                     storedPro.setString(11, (String) parametros[10]); //sexo
+                    System.out.println(parametros[10]);
                     if (parametros[11]!=null)//veterinario
                     {
                         storedPro.setString(12, (String) parametros[11]);
@@ -230,6 +242,7 @@ public class Database_Connection {
                     {
                         storedPro.setNull(12, java.sql.Types.NULL);
                     }
+                    System.out.println(parametros[11]);
                     if (parametros[12]!=null)//medicamentos
                     {
                         storedPro.setString(13, (String) parametros[12]);
@@ -237,6 +250,7 @@ public class Database_Connection {
                     {
                         storedPro.setNull(13, java.sql.Types.NULL);
                     }
+                    System.out.println(parametros[12]);
                     if (parametros[13]!=null)//enfermedades
                     {
                         storedPro.setString(14, (String) parametros[13]);
@@ -244,6 +258,7 @@ public class Database_Connection {
                     {
                         storedPro.setNull(14, java.sql.Types.NULL);
                     }
+                    System.out.println(parametros[13]);
                     if (parametros[14]!=null)//notas
                     {
                         storedPro.setString(15, (String) parametros[13]);
@@ -251,6 +266,7 @@ public class Database_Connection {
                     {
                         storedPro.setNull(15, java.sql.Types.NULL);
                     }
+                    System.out.println(parametros[14]);
                     if (parametros[15]!=null)//tratamientos
                     {
                         storedPro.setString(16, (String) parametros[15]);
@@ -258,6 +274,7 @@ public class Database_Connection {
                     {
                         storedPro.setNull(16, java.sql.Types.NULL);
                     }
+                    System.out.println(parametros[15]);
                     if (parametros[16]!=null)//situacion
                     {
                         storedPro.setString(17, (String) parametros[16]);
@@ -265,7 +282,10 @@ public class Database_Connection {
                     {
                         storedPro.setNull(17, java.sql.Types.NULL);
                     }
+                    System.out.println(parametros[16]);
                     storedPro.setString(18, (String) parametros[17]); //severidad
+                    System.out.println(parametros[17]);
+                 
                     if (parametros[18]!=null) //Foto_Antes
                     {
                        FileInputStream imagen = this.convertImageToBLOB((File) parametros[18]);
@@ -274,11 +294,12 @@ public class Database_Connection {
                     {
                        storedPro.setNull(19, java.sql.Types.NULL);
                                
-                    }
+                    } 
+                    System.out.println(parametros[18]);
                     storedPro.setNull(20, java.sql.Types.NULL); //Al insertar mascota, se le prohíbe al usuario insertat Foto_Después, ergo, siempre será null.
-
+                    System.out.println(parametros[19]);
                     System.out.println("Parámetros asignados. Ejecutando...");
-                    storedPro.execute();
+                    storedPro.executeQuery();
                     System.out.println("Ejecutado");
                     storedPro.close();
                     return true;
@@ -299,7 +320,7 @@ public class Database_Connection {
                       storedPro.setString(7, (String) parametros[6]);   
                     }else
                     {
-                        storedPro.setNull(7, java.sql.Types.NULL);
+                        //storedPro.setNull(7, java.sql.Types.NULL);
                     }
                     storedPro.setString(8, (String) parametros[7]); //espacio
                     storedPro.setString(9, (String) parametros[8]); //tamano
@@ -311,42 +332,48 @@ public class Database_Connection {
                         storedPro.setString(13, (String) parametros[12]);
                     }else
                     {
-                        storedPro.setNull(13, java.sql.Types.NULL);
+                        storedPro.setString(13, (String) parametros[12]);
+                        //storedPro.setNull(13, java.sql.Types.NULL);
                     }
                     if (parametros[13]!=null)//medicamentos
                     {
                         storedPro.setString(14, (String) parametros[13]);
                     }else
                     {
-                        storedPro.setNull(14, java.sql.Types.NULL);
+                        storedPro.setString(14, (String) parametros[13]);
+                        //storedPro.setNull(14, java.sql.Types.NULL);
                     }
                     if (parametros[14]!=null)//enfermedades
                     {
                         storedPro.setString(15, (String) parametros[14]);
                     }else
                     {
-                        storedPro.setNull(15, java.sql.Types.NULL);
+                        storedPro.setString(15, (String) parametros[14]);
+                        //storedPro.setNull(15, java.sql.Types.NULL);
                     }
                     if (parametros[15]!=null)//notas
                     {
                         storedPro.setString(16, (String) parametros[15]);
                     }else
                     {
-                        storedPro.setNull(16, java.sql.Types.NULL);
+                        storedPro.setString(16, (String) parametros[15]);
+                        //storedPro.setNull(16, java.sql.Types.NULL);
                     }
                     if (parametros[16]!=null)//tratamientos
                     {
                         storedPro.setString(17, (String) parametros[16]);
                     }else
                     {
-                        storedPro.setNull(17, java.sql.Types.NULL);
+                        storedPro.setString(17, (String) parametros[16]);
+                        //storedPro.setNull(17, java.sql.Types.NULL);
                     }
                     if (parametros[17]!=null)//situacion
                     {
                         storedPro.setString(18, (String) parametros[17]);
                     }else
                     {
-                        storedPro.setNull(18, java.sql.Types.NULL);
+                        storedPro.setString(18, (String) parametros[17]);
+                        //storedPro.setNull(18, java.sql.Types.NULL);
                     }
                     storedPro.setString(19, (String) parametros[18]); //severidad
                     if (parametros[19]!=null) //Foto_Antes
@@ -355,7 +382,7 @@ public class Database_Connection {
                        storedPro.setBlob(20,imagen);
                     }else
                     {
-                       storedPro.setNull(20, java.sql.Types.NULL);
+                       //storedPro.setNull(20, java.sql.Types.NULL);
                                
                     }
                     if (parametros[20]!=null) //Foto_Antes
@@ -364,7 +391,8 @@ public class Database_Connection {
                        storedPro.setBlob(21,imagen);
                     }else
                     {
-                       storedPro.setNull(21, java.sql.Types.NULL);
+                       FileInputStream imagen = this.convertImageToBLOB((File) parametros[20]);
+                       storedPro.setBlob(21,imagen);//storedPro.setNull(21, java.sql.Types.NULL);
                                
                     }
                     if (parametros[21]!=null) //Foto_despues
@@ -373,7 +401,9 @@ public class Database_Connection {
                         storedPro.setBlob(22, imagen);
                     }else
                     {
-                        storedPro.setNull(22, java.sql.Types.NULL);                   
+                        FileInputStream imagen = this.convertImageToBLOB((File) parametros[21]);
+                        storedPro.setBlob(22, imagen);
+                        //storedPro.setNull(22, java.sql.Types.NULL);                   
                     }
                     System.out.println("Parámetros asignados. Ejecutando...");
                     storedPro.execute();

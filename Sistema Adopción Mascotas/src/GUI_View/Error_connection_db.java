@@ -80,7 +80,7 @@ public class Error_connection_db extends javax.swing.JFrame {
         mensajeErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mensajeErrorLabel.setText("a");
         getContentPane().add(mensajeErrorLabel);
-        mensajeErrorLabel.setBounds(30, 110, 462, 60);
+        mensajeErrorLabel.setBounds(30, 100, 462, 70);
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/perro-abandonado2.jpg"))); // NOI18N
         getContentPane().add(backgroundImage);

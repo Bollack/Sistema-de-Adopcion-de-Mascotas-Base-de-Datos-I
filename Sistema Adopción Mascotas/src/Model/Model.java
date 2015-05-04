@@ -140,13 +140,13 @@ public class Model {
         String[] parametros = new String[2];
         parametros[0] = username;//"'"+username+"'";
         try {
-            parametros[1]="'password'";
+            parametros[1]="password";
             datos[0]=username;
             String respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
             System.out.println(respuesta);
             datos[1]=respuesta;
             
-            parametros[1]="'nombre'";
+            parametros[1]="nombre";
             respuesta= ((String) this.conexion.callFunction("get Datos Usuario",parametros));
             System.out.println(respuesta);
             datos[2]=respuesta;
@@ -532,12 +532,6 @@ public class Model {
     {
         this.conexion.setConnection(1);
         String[][] datos = (String[][]) this.conexion.select("Tipo_mascota", "Especie", null);
-        System.out.println(datos.length);
-        System.out.println(datos[0][0]);
-        System.out.println(datos[1][0]);
-        System.out.println(datos[2][0]);
-        System.out.println(datos[3][0]);
-        System.out.println(datos[4][0]);
         String[] grupos = new String[datos.length];
         for (int i=0;i<datos.length; i++)
         {
@@ -557,14 +551,7 @@ public class Model {
     {
         this.conexion.setConnection(1);
         String condicion = "Grupo = "+"'"+tipoMascota+"'";
-        System.out.println(condicion);
         String[][] datos = (String[][]) this.conexion.select("Raza_mascota", "Raza", condicion);
-        System.out.println(datos.length);
-        System.out.println(datos[0][0]);
-        System.out.println(datos[1][0]);
-        System.out.println(datos[2][0]);
-        System.out.println(datos[3][0]);
-        System.out.println(datos[4][0]);
         String[] razas = new String[datos.length];
         for (int i=0;i<datos.length; i++)
         {

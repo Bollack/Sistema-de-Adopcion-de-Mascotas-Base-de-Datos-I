@@ -81,23 +81,12 @@ public class Controller implements ActionListener
         vista.exitButton.setActionCommand("Salir");
         vista.LogInButton.setActionCommand("Log In");
         /*
-
-            */    
-        vista.Foto.setLayout(new GridBagLayout());
-        
-        //vista.Foto.setMaximumSize(new Dimension(225,156));
-        ImageIcon icon = new ImageIcon(this.getClass().getResource("/GUI_View/Images/logo.jpg"));
-        icon = this.resizeImage(icon, 218, 156);
-         //218,156//g.drawImage(img, x, y, 197, 143, null, null); //218,156
-        vista.Foto.setText("");
-        vista.Foto.setIcon(icon);
-        //vista.Foto.resize(218, 156);
-
+            Se asigna el listener y el modelo a la tabla.
+        */
         
         try
         {
             vista.tablaMascotas.setModel(this.modelo.getModelFromResultSet("Mascota visitante")); 
-            System.out.println(vista.tablaMascotas.getColumnName(0));
             vista.tablaMascotas.setRowSelectionAllowed(true);
             ListSelectionModel rowSelectionModel = vista.tablaMascotas.getSelectionModel();
             rowSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

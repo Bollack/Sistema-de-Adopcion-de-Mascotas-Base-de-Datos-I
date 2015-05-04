@@ -136,6 +136,7 @@ public class Formulario extends javax.swing.JFrame {
 
         NextButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         NextButton.setText("Siguiente");
+        NextButton.setEnabled(false);
         NextButton.setOpaque(false);
         getContentPane().add(NextButton);
         NextButton.setBounds(100, 310, 140, 30);

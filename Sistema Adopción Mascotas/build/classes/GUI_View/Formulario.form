@@ -254,6 +254,7 @@
           <Font name="Rockwell" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Siguiente"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
