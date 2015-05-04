@@ -21,7 +21,7 @@ CREATE TABLE Mascota --Aplicado
   Enfermedades VARCHAR2(200),
   Veterinario VARCHAR2(200),
   Medicamentos VARCHAR2(200),
-  Fotografia_antes BLOB CONSTRAINT foto_antes_mascota_nn NOT NULL,
+  Fotografia_antes BLOB,
   Fotografia_despues BLOB,
   Estado VARCHAR2(30) DEFAULT('En adopción'),
   CONSTRAINT mascota_estado_check CHECK(Estado IN ('En adopción','Adoptada')),
@@ -30,7 +30,7 @@ CREATE TABLE Mascota --Aplicado
   Sexo VARCHAR2(20) CONSTRAINT mascota_sexo_nn NOT NULL,
   CONSTRAINT mascota_sexo_check CHECK(Estado IN ('Macho','Hembra')),
   Situacion_abandono VARCHAR2(100),
-  Sevetidad VARCHAR2(30) CONSTRAINT mascota_severidad_nn NOT NULL,
+  Severidad VARCHAR2(30) CONSTRAINT mascota_severidad_nn NOT NULL,
   
   Usuario_creacion VARCHAR2(20) CONSTRAINT mascota_ucreacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT mascota_fcreacion_nn NOT NULL,
