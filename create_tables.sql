@@ -233,6 +233,7 @@ CREATE TABLE Adopcion( --CREADA(n)
   rescatista NUMBER CONSTRAINT adopcion_rescatista_nn NOT NULL,
   CONSTRAINT adopcion_rescatista_fk FOREIGN KEY(rescatista) REFERENCES Persona(id), --Foreign key del que dio en adopcion
   fecha DATE DEFAULT (SYSDATE),
+  estado VARCHAR2(20) DEFAULT('Pendiente'),
   
   Usuario_creacion VARCHAR(20) CONSTRAINT adopcion_usuario_creacion_nn NOT NULL,
   Fecha_creacion DATE CONSTRAINT adopcion_fecha_creacion_nn NOT NULL,

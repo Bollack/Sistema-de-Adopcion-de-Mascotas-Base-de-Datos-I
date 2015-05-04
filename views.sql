@@ -21,3 +21,8 @@ SELECT  get_nombreCompleto_from_id(id_calificador) AS calificador,
 calificacion, get_nombreCompleto_from_id(id_calificado) AS calificado, Fecha_creacion AS Fecha
 FROM Califica_a;
 
+CREATE VIEW fotos_adopcion(foto, descr) AS
+SELECT foto, descripcion
+FROM foto_adopcion
+WHERE id_adopcion = pId_adopcion);
+

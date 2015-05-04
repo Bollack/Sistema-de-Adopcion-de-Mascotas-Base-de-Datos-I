@@ -206,3 +206,144 @@ BEGIN
   END IF;
   RETURN vParametro;
 END;
+
+--COMPILADO
+CREATE OR REPLACE FUNCTION get_datos_mascota(pId IN NUMBER, parametro IN VARCHAR2)
+RETURN VARCHAR2 AS
+vParametro VARCHAR2(200);
+BEGIN
+  IF(parametro = 'tipo') THEN
+    SELECT tipo
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'raza') THEN
+    SELECT raza
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'tamano') THEN
+    SELECT tamano
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'color1') THEN
+    SELECT color1
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'color2') THEN
+    SELECT color2
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'nivel_energia') THEN
+    SELECT nivel_energia
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'espacio_requerido') THEN
+    SELECT espacio_requerido
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'facilidad_entrenamiento') THEN
+    SELECT facilidad_entrenamiento
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'enfermedades') THEN
+    SELECT enfermedades
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'veterinario') THEN
+    SELECT veterinario
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'medicamentos') THEN
+    SELECT medicamentos
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'estado') THEN
+    SELECT estado
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'notas') THEN
+    SELECT notas
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSIF(parametro = 'tratamientos') THEN
+    SELECT tratamientos
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  ELSE
+    SELECT nombre
+    INTO vParametro
+    FROM mascota
+    WHERE id = pId;
+  END IF;
+  RETURN vParametro;
+END;
+
+--COMPILADO
+CREATE OR REPLACE FUNCTION get_lugar_from_id(pID IN NUMBER) 
+RETURN VARCHAR2 AS
+vNombre VARCHAR2(100):=NULL;
+BEGIN 
+  SELECT lugar
+  INTO vNombre
+  FROM PERSONA
+  WHERE id=pID;
+  RETURN vNombre;
+  EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    RETURN NULL;
+  WHEN OTHERS THEN 
+    RETURN NULL;
+END get_lugar_from_id;
+
+--COMPILADA
+CREATE OR REPLACE FUNCTION get_Person_Black_List(pId IN NUMBER)
+RETURN NUMBER AS
+resultado NUMBER;
+CURSOR in_Black_List IS
+SELECT id_agregado FROM agrega_a_lista_negra WHERE id_agregado = pId;
+BEGIN
+  OPEN in_Black_List;
+  IF(in_Black_List%FOUND)THEN
+    CLOSE in_Black_List;
+    resultado:=1;
+    RETURN resultado;
+  ELSE
+    CLOSE in_Black_List;
+    resultado:=0;
+    RETURN resultado;
+  END IF;
+  EXCEPTION
+    WHEN OTHERS THEN
+    RETURN NULL;
+END;
+
+--COMPILADA
+CREATE OR REPLACE FUNCTION get_Id_Adopcion(pId_mascota IN NUMBER, pId_adoptante IN NUMBER)
+RETURN NUMBER AS
+vId NUMBER;
+BEGIN
+  SELECT id_adopcion
+  INTO vId
+  FROM adopcion
+  WHERE persona = pId_adoptante AND mascota = pId_mascota;
+  RETURN vId;
+  EXCEPTION
+    WHEN OTHERS THEN
+    RETURN NULL;
+END;
+
+
+

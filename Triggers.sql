@@ -97,7 +97,7 @@ CREATE OR REPLACE TRIGGER BeforeInsertAdopcion        --APLICADO
   END;
 
 CREATE OR REPLACE TRIGGER BeforeUpdateAdopcion        --APLICADO
-  BEFORE UPDATE ON Administrador.Persona FOR EACH ROW
+  BEFORE UPDATE ON Administrador.Adopcion FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
   END;
@@ -174,6 +174,8 @@ CREATE OR REPLACE TRIGGER BeforeUpdateDevoluciones    --APLICADO
 CREATE OR REPLACE TRIGGER BeforeInsertRespuesta       --APLICADO
   BEFORE INSERT ON Administrador.Respuesta FOR EACH ROW
   BEGIN
+    :new.Usuario_creacion:=user;
+    :new.Usuario_Modificacion:=user;
     :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
     SELECT id_respuesta.NEXTVAL
@@ -185,12 +187,15 @@ CREATE OR REPLACE TRIGGER BeforeUpdateRespuesta       --APLICADO
   BEFORE UPDATE ON Administrador.Respuesta FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
+    :new.Usuario_Modificacion:=user;
   END;
 
 --Pregunta
 CREATE OR REPLACE TRIGGER BeforeInsertPregunta        --APLICADO
   BEFORE INSERT ON Administrador.Pregunta FOR EACH ROW
   BEGIN
+    :new.Usuario_creacion:=user;
+    :new.Usuario_Modificacion:=user;
     :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
     SELECT id_pregunta.NEXTVAL
@@ -202,12 +207,15 @@ CREATE OR REPLACE TRIGGER BeforeUpdatePregunta        --APLICADO
   BEFORE UPDATE ON Administrador.Pregunta FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
+    :new.Usuario_Modificacion:=user;
   END;
   
 --Formulario
 CREATE OR REPLACE TRIGGER BeforeInsertFormulario      --APLICADO
   BEFORE INSERT ON Administrador.Formulario FOR EACH ROW
   BEGIN
+    :new.Usuario_creacion:=user;
+    :new.Usuario_Modificacion:=user;
     :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
     SELECT id_formulario.NEXTVAL
@@ -219,6 +227,7 @@ CREATE OR REPLACE TRIGGER BeforeUpdateFormulario      --APLICADO
   BEFORE UPDATE ON Administrador.Formulario FOR EACH ROW
   BEGIN
     :new.Fecha_Modificacion:= sysdate;
+    :new.Usuario_Modificacion:=user;
   END;
   
 --Bitacora
