@@ -80,24 +80,16 @@ public class Controller implements ActionListener
                 public void valueChanged(ListSelectionEvent e){
                     String selectedData = null;
                     int fila = vista.tablaMascotas.getSelectedRow();
-                    int id = (int) vista.tablaMascotas.getValueAt(fila, 0);
+                    Number id = (Number) vista.tablaMascotas.getValueAt(fila, 0);
                     ImageIcon imagen;
+                    int id1 =id.intValue();
                     try {
-                        imagen = new Model().getImageFromTable(selectedData, id);
-                    } catch (SQLException ex) {
-                        errorConn(e);
-                    } catch (ClassNotFoundException ex) {
-                        errorConn(e);
-                    } catch (InputValueNotAcceptableException ex) {
-                        errorConn(e);
-                    } catch (NullPointerException ex) {
-                        errorConn(e);
-                    } catch (IOException ex) {
-                        errorConn(e);                    
+                        imagen = new Model().getImageFromTable(selectedData,  id1);
+                    } catch (SQLException | ClassNotFoundException | InputValueNotAcceptableException | NullPointerException | IOException ex) {
+                        vista.Foto.setText(ex.getMessage());
                     }
                 }
-            
-            
+
         });}catch(SQLException e)
         {
             this.errorConn(e);
@@ -312,8 +304,8 @@ public class Controller implements ActionListener
            /*
            Se le informa al usuario que la operación fue exitosa.
            */
-           int a = JOptionPane.OK_OPTION;
-           JOptionPane.showConfirmDialog(this.gui, "Usuario registrado con éxito", "Operación exitosa", a);
+           int a = JOptionPane.INFORMATION_MESSAGE;
+           JOptionPane.showMessageDialog(this.gui, "Usuario registrado con éxito", "Operación exitosa", a);
        }catch (UnsupportedOperationException e)
        {
            System.out.println("Excepcion UnsupportedOperationException en Registrarse()");
@@ -628,18 +620,18 @@ public class Controller implements ActionListener
         {
             Error_connection_db error = new Error_connection_db((SQLException) e); 
             error.show();
-            error.setSize(new Dimension(524,225));
-            error.setPreferredSize(new Dimension(524,225));
+            error.setSize(new Dimension(524,250));
+            error.setPreferredSize(new Dimension(524,250));
             error.validate();
             //error.pack();
-            error.setMinimumSize(new Dimension(524,225));
+            error.setMinimumSize(new Dimension(524,250));
         }else{
             Error_connection_db error = new Error_connection_db(e);
             error.show();
-            error.setSize(new Dimension(524,225));
-            error.setPreferredSize(new Dimension(524,225));
+            error.setSize(new Dimension(524,250));
+            error.setPreferredSize(new Dimension(524,250));
             error.validate();
-            error.setMinimumSize(new Dimension(524,225));
+            error.setMinimumSize(new Dimension(524,250));
             //error.pack();
         }
     }

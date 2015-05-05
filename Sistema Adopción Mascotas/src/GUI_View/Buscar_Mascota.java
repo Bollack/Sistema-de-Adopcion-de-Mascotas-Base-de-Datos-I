@@ -687,7 +687,7 @@ public class Buscar_Mascota extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JCheckBox RazaCheckBox;
-    private javax.swing.JButton backButton;
+    public javax.swing.JButton backButton;
     public javax.swing.JButton buscarButton;
     public javax.swing.JComboBox colorComboBox;
     public javax.swing.JCheckBox correoContactoCheckBox;

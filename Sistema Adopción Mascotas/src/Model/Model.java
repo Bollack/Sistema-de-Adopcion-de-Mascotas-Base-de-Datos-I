@@ -139,6 +139,7 @@ public class Model {
         String[] datos = new String[8];
         String[] parametros = new String[2];
         parametros[0] = username;//"'"+username+"'";
+        System.out.println("Usuario en model.getDatosFromUsername() == "+parametros[0]);
         try {
             parametros[1]="password";
             datos[0]=username;
@@ -466,7 +467,7 @@ public class Model {
     {
         this.conexion.setConnection(2);
         Image imagen;
-        Object[] parametros = new String[1];
+        Object[] parametros = new Object[1];
         parametros[0] = id;
         switch (orden)
         {

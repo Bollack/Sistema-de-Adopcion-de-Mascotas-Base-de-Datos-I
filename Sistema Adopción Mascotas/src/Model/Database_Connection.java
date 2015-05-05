@@ -137,7 +137,11 @@ public class Database_Connection {
     }
     
     /*
-        Método que 
+        Método que realiza una acción insertada como string y la cual es realizada por DB como un procedimiento almacenado, 
+    recibe una serie de parametros tipo Object (puesto que pueden ser File, String o int), los cuales insertará como parámetros
+    al procedimiento almacenado. Los comandos insertados como string serán siempre los mismos puestos que se envcían desde 
+    distintos  métodos de Model. Devolverá true cuando todo el proceso se haya realizado.
+    
     */
     public boolean callProcedure(String comando,Object[] parametros) throws SQLException, FileNotFoundException
     {
@@ -174,7 +178,7 @@ public class Database_Connection {
                     }
                 case "Modificar usuario-persona":
                     System.out.println("Comenzando proceso de base de datos. Modificar usuario-persona");
-                    llamado = "{CALL Administrador.Procesos.Update_User_Persona(?,?,?,?,?,?,?,?}";
+                    llamado = "{ call Administrador.Procesos.Update_User_Persona(?,?,?,?,?,?,?,?) }";
                     try{
                         storedPro = this.conn.prepareCall(llamado);
                         System.out.println("storedPro creado");

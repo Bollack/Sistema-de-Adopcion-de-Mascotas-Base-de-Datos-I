@@ -143,6 +143,7 @@ public class VerDataMascota extends javax.swing.JFrame {
         jLabel29.setBounds(0, 0, 599, 378);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Información de la mascota");
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

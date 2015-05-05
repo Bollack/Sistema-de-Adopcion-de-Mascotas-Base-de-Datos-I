@@ -39,6 +39,7 @@ public class User_Mascotas_Adoptadas extends javax.swing.JFrame {
         backgroundImage1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Adopciones realizadas por usuario");
         getContentPane().setLayout(null);
 
         titleAdopciones1.setFont(new java.awt.Font("Rockwell", 1, 22)); // NOI18N

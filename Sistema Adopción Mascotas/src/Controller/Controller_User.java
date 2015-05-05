@@ -9,6 +9,7 @@ package Controller;
 import GUI_View.BuscarPersonas;
 import GUI_View.Buscar_Mascota;
 import GUI_View.Error_connection_db;
+import GUI_View.Formulario;
 import GUI_View.Main_User;
 import GUI_View.MisMascotasAdoptada;
 import GUI_View.MisMascotasRescatadas;
@@ -28,6 +29,7 @@ import java.lang.UnsupportedOperationException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -67,7 +69,7 @@ public class Controller_User implements ActionListener
         de usuario. 
         */
         ventana.BuscarMascotasButton.addActionListener((ActionListener)this);
-        ventana.BuscarMascotasButton.setActionCommand("Buscar Mascotas - Main User");
+        ventana.BuscarMascotasButton.setActionCommand("Buscar Mascotas - Main Menu");
         
         ventana.BuscarPersonasButton.addActionListener((ActionListener)this);
         ventana.BuscarPersonasButton.setActionCommand("Buscar Personas - Main Menu");
@@ -164,12 +166,13 @@ public class Controller_User implements ActionListener
             ventana.telefonoTextField.setText(datos[4]);
             ventana.correoTextField.setText(datos[5]);
             ventana.direccionTextField.setText(datos[6]);
+            System.out.println("Género: " +datos[7]);
             if (datos[7]=="Masculino")
             {
-                ventana.maleRadioButton.setSelected(true);
+                ventana.generoButtonGroup.setSelected((ButtonModel) ventana.maleRadioButton, true);
             }else if (datos[7]=="Femenino")
             {
-                ventana.femaleRadioButton.setSelected(true);
+                ventana.generoButtonGroup.setSelected((ButtonModel) ventana.femaleRadioButton, true);
             }else{
                 
             }
@@ -282,6 +285,10 @@ public class Controller_User implements ActionListener
         Buscar_Mascota ventana = (Buscar_Mascota) this.gui;
         ventana.show();
         ventana.setResizable(false);
+        
+        ventana.backButton.addActionListener((ActionListener) this);
+        ventana.backButton.setActionCommand("Atras - Buscar Mascotas");
+        
     }
     
     private void MisMascotasAdoptadas_Window()
@@ -294,6 +301,27 @@ public class Controller_User implements ActionListener
         ventana.setPreferredSize(new Dimension(722,363));
         ventana.show();
         ventana.setResizable(false);
+        
+        ventana.atrasButton.addActionListener((ActionListener) this);
+        ventana.atrasButton.setActionCommand("Atras - Mis Mascotas Adoptadas");
+    }
+    
+    private void formulario_Window() 
+    {
+        this.gui.disable();
+        this.gui.show(false);
+        Formulario ventana = new Formulario();
+        this.gui = ventana;
+        
+        ventana.atrasButton.addActionListener((ActionListener) this);
+        ventana.atrasButton.setActionCommand("Atras - Formulario");
+        
+        ventana.jLabel1.setText("Soon...");
+        
+        ventana.show();
+        ventana.setSize(600,400);
+        ventana.setPreferredSize(new Dimension(600,400));
+        ventana.setResizable(false);
     }
     
     private void VerMisRescates_Window()
@@ -302,10 +330,15 @@ public class Controller_User implements ActionListener
         this.gui.dispose();
         this.gui = new MisMascotasRescatadas(); 
         MisMascotasRescatadas ventana = (MisMascotasRescatadas) this.gui;
-        ventana.setSize(722, 363);
-        ventana.setPreferredSize(new Dimension(722,363));
+        ventana.setSize(695, 473);
+        ventana.setPreferredSize(new Dimension(695, 473));
         ventana.show();
         ventana.setResizable(false);
+        
+        ventana.atrasButton.addActionListener((ActionListener) this);
+        ventana.atrasButton.setActionCommand("Atras - Mis Rescates");
+        
+
     }
     
     private void registrar_Mascota_Window() throws SQLException, ClassNotFoundException
@@ -681,30 +714,59 @@ public class Controller_User implements ActionListener
        {
            this.log_Out();
 
-       }else if(comando=="Ver Cuenta - Main Menu")
+       }
+
+        /*
+        Se comienzan a crear las acciones para los botones y eventos
+        que provienen de la ventana de Modificación de cuenta.
+       */
+
+       else if(comando=="Ver Cuenta - Main Menu")
        {
            this.accountSettings_Window();
            
-       }else if(comando=="Guardar Cambios - Cuenta Window")
+       }else if(comando=="Guardar Cambios - Account Settings")
        {
-            cambiarDatosCuenta((ModificarCuenta)this.gui);
-  
-       }else if(comando=="Atrás - Cuenta Window")
+           this.cambiarDatosCuenta((ModificarCuenta) this.gui);
+           
+       }else if(comando=="Atrás - Account Settings")
        {
            this.backtoAccountScreen();
            
-       }else if(comando=="Buscar Mascotas - Main Menu")
+       }
+       
+       /*
+        Se comienzan a crear las acciones para los botones y eventos
+        que provienen de la ventana de Búsqueda de mascotas
+       */
+       
+       else if(comando=="Buscar Mascotas - Main Menu")
        {
            this.buscarMascotas_Window();
-       }else if(comando=="Buscar Personas - Main Menu")
+       }else if (comando=="Atras - Buscar Mascotas")
        {
-           this.buscarPersonas_Window();
-           
-       }else if(comando=="Formulario - Main Menu")
+           this.start();
+       }
+       /*
+        Se comienzan a crear las acciones para los botones y eventos
+        que provienen de la ventana de FORMULARIO.
+       */
+       
+       else if(comando=="Formulario - Main Menu")
        {
-           //TO DO
+           this.formulario_Window();
          
-       }else if(comando=="Registrar Mascota - Main Menu")
+       }else if(comando=="Atras - Formulario")
+       {
+           this.start();
+       }
+
+                     /*
+        Se comienzan a crear las acciones para los botones y eventos
+        que provienen de la ventana de registro/rescate de mascota 
+       */
+       
+       else if(comando=="Registrar Mascota - Main Menu")
        {
            try {
                this.registrar_Mascota_Window();
@@ -713,24 +775,10 @@ public class Controller_User implements ActionListener
            } catch (ClassNotFoundException ex) {
                this.errorConn(ex);
            }
-           
-       }else if(comando=="Ver Mascotas Adopción - Main Menu")
-       {
-           this.buscarMascotas_Window();
-       }else if(comando=="Ver Mis Adopciones - Main Menu")
-       {
-           this.MisMascotasAdoptadas_Window();
-       }else if(comando=="Ver Mis Rescates - Main Menu")
-       {
-           this.VerMisRescates_Window();
-       }
-       /*
-        Se comienzan a crear las acciones para los botones y eventos
-        que provienen de la ventana de registro/rescate de mascota 
-       */
-       else if(comando=="FileChooser-FotoAntesMascota - Registrar Mascota")
-       {        
-           /*
+       }else if(comando=="FileChooser-FotoAntesMascota - Registrar Mascota")
+       {       
+            /*
+           Abre el explorar para seleccionar el archivo de foto antes de la mascota.
            Se establece un filtro para que sólo se puedan seleccionar archivos de formato .jpg, .png y .jpeg.  
            El usuario selecciona la imagen a subir y se realiza un resize de la misma para mostrarla en la 
            pantalla.
@@ -763,15 +811,46 @@ public class Controller_User implements ActionListener
        {
            this.backtoAccountScreen();
            
-       }else if(comando=="Guardar Cambios - Account Settings")
+       }
+
+        /*
+        Se comienzan a crear las acciones para los botones y eventos
+        que provienen de la ventana de Ver mis adopciones
+       */
+ 
+       else if(comando=="Ver Mis Adopciones - Main Menu")
        {
-           this.cambiarDatosCuenta((ModificarCuenta) this.gui);
-           
-       }else if(comando=="Atrás - Account Settings")
+           this.MisMascotasAdoptadas_Window();
+       }else if (comando=="Atras - Mis Mascotas Adoptadas")
+       { 
+           this.start();
+       }
+       /*
+        Se comienzan a crear las acciones para los botones y eventos
+        que provienen de la ventana de Ver mis mascotas en adopción 
+       */
+       else if (comando=="Ver mascotas en adopción - Main Menu")
        {
-           this.backtoAccountScreen();
-           
-       }else if(comando=="Modificar Mascota - Modificar Mascota")
+           int soon = JOptionPane.INFORMATION_MESSAGE;
+           JOptionPane.showMessageDialog(gui, "Característica aún no disponible", "To be announced", soon);
+       }
+        /*
+        Se comienzan a crear las acciones para los botones y eventos
+        que provienen de la ventana de Ver mis mascotas rescatadas
+       */
+       
+       else if(comando=="Ver Mis Rescates - Main Menu")
+       {
+           this.VerMisRescates_Window();
+       }else if(comando=="Atras - Mis Rescates")
+       {
+           this.start();
+       }
+       /*
+        Se comienzan a crear las acciones para los botones y eventos
+        que provienen de la ventana de modificación de datos de mascota.
+       */
+       else if(comando=="Modificar Mascota - Modificar Mascota")
        {
            
        }else if(comando=="FileChooser-FotoDespuesMascota - Modificar Mascota")
@@ -822,7 +901,10 @@ public class Controller_User implements ActionListener
        }else if(comando=="Atras - Modificar Mascota")
        {
            this.MisMascotasAdoptadas_Window();
-           this.backtoAccountScreen();
+           //this.backtoAccountScreen();
+       }else if (comando=="Buscar Personas - Main Menu")
+       {
+           this.buscarPersonas_Window();
        }else if(comando=="Atras - BuscarPersonas")
        {
            this.backtoAccountScreen();
@@ -908,15 +990,10 @@ public class Controller_User implements ActionListener
             System.out.println("Todos los campos validados");
             //De aquí en adelante se toma que todos los valores ingresados por el usuario son válidos nombre, apellido, telefono, correo, direccion, username, password, genero
             this.modelo.ModifyUser(data);
-            /*
-            Se modifica el usuario actual del controlador y el cual es utilizado para guardar
-            como usuario_creacion y usuario_modificación y de las inserciones y modificaciones realizadas
-            a tablas tales como mascota, adopciones y rescates. 
-            */
-            this.username=data[1];
+
             //Se informa al usuario de la operación exitosa.
-            int a = JOptionPane.OK_OPTION;
-            JOptionPane.showConfirmDialog(ventana, "La alteración de datos se ha realizado con éxito.", "Operación exitosa", a);
+            int a = JOptionPane.INFORMATION_MESSAGE;
+            JOptionPane.showMessageDialog(ventana, "La alteración de datos se ha realizado con éxito.", "Operación exitosa", a);
             this.backtoAccountScreen(); //Se vuelve al menú de usuario
         }catch (UnsupportedOperationException e)
         {

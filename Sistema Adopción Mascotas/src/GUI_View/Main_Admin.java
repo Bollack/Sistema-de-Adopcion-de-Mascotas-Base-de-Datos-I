@@ -100,6 +100,26 @@ public class Main_Admin extends javax.swing.JFrame {
         jTable5 = new javax.swing.JTable();
         jButton9 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cantidadMascotasRegistradas = new javax.swing.JLabel();
+        cantidadUsuarios = new javax.swing.JLabel();
+        cantidadMascotasEnAdopcion = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
 
         jButton10.setText("jButton10");
 
@@ -128,6 +148,14 @@ public class Main_Admin extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(51, 153, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Adopciones realizadas recientemente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N
 
+        tablaAdopcionesRecientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre Mascota", "Tipo Mascota", "Adoptante", "Rescatista", "Fecha Adopción"
+            }
+        ));
         jScrollPane3.setViewportView(tablaAdopcionesRecientes);
 
         jButton6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -181,6 +209,22 @@ public class Main_Admin extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(51, 153, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Devoluciones realizadas recientemente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N
 
+        tablaDevolucionesRecientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mascota", "Adoptante", "Rescatista", "Motivo", "Fecha Devolución"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane6.setViewportView(tablaDevolucionesRecientes);
 
         jButton15.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -197,12 +241,12 @@ public class Main_Admin extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton15)
+                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -658,7 +702,15 @@ public class Main_Admin extends javax.swing.JFrame {
             new String [] {
                 "Usuario", "Nombre", "Añadido por", "Fecha"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(listaNegraUsuariosAdmin);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -716,7 +768,15 @@ public class Main_Admin extends javax.swing.JFrame {
             new String [] {
                 "Calificado", "Calificador", "Nota", "Fecha"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane7.setViewportView(tablacalificacionesUsuariosAdmin);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -757,7 +817,15 @@ public class Main_Admin extends javax.swing.JFrame {
             new String [] {
                 "Usuario", "Nombre Completo", "Lugar", "Telefono", "Correo", "Fecha"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tablaUsuariosAdmin);
 
         verPefilUsuarioAdminButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
@@ -795,13 +863,13 @@ public class Main_Admin extends javax.swing.JFrame {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(verPefilUsuarioAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(verAdopcionesyRescatesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(verPefilUsuarioAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(verAdopcionesyRescatesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -851,6 +919,22 @@ public class Main_Admin extends javax.swing.JFrame {
             }
         });
 
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Tipo Mascota", "Raza Mascota", "Sexo", "Lugar", "Rescatista", "Fecha rescate"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane5.setViewportView(jTable5);
 
         jButton9.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -895,15 +979,169 @@ public class Main_Admin extends javax.swing.JFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Estadísticas del Sistema", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N
         jPanel9.setToolTipText("");
 
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Cantidad de mascotas registradas:");
+
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Cantidad de usuarios en el sistema:");
+
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Cantidad de mascotas en espera de adopción:");
+
+        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Cantidad de mascotas adoptadas:");
+
+        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Cantidad de mascotas devueltas:");
+
+        cantidadMascotasRegistradas.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        cantidadMascotasRegistradas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cantidadMascotasRegistradas.setText("00");
+
+        cantidadUsuarios.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        cantidadUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cantidadUsuarios.setText("00");
+
+        cantidadMascotasEnAdopcion.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        cantidadMascotasEnAdopcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cantidadMascotasEnAdopcion.setText("00");
+
+        jLabel14.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("00");
+
+        jLabel15.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel15.setText("00");
+
+        jLabel16.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel16.setText("Cantidad de mascotas registradas:");
+
+        jLabel17.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel17.setText("00");
+
+        jLabel18.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel18.setText("00");
+
+        jLabel19.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel19.setText("Cantidad de usuarios en el sistema:");
+
+        jLabel20.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel20.setText("Cantidad de mascotas en espera de adopción:");
+
+        jLabel21.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel21.setText("00");
+
+        jLabel22.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel22.setText("Cantidad de mascotas adoptadas:");
+
+        jLabel23.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel23.setText("Cantidad de mascotas devueltas:");
+
+        jLabel24.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel24.setText("00");
+
+        jLabel25.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel25.setText("00");
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cantidadMascotasRegistradas)
+                    .addComponent(cantidadUsuarios)
+                    .addComponent(cantidadMascotasEnAdopcion)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addGap(71, 71, 71)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel24))
+                .addGap(153, 153, 153))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addComponent(jLabel17)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel18)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel21)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel25)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel24))
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addComponent(jLabel16)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel19)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel20)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel22)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel23)))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addComponent(cantidadMascotasRegistradas)
+                            .addGap(18, 18, 18)
+                            .addComponent(cantidadUsuarios)
+                            .addGap(18, 18, 18)
+                            .addComponent(cantidadMascotasEnAdopcion)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel14)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel15))
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel4)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel5)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel6)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel8))))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout MascotasRescatadas_AdminPanelLayout = new javax.swing.GroupLayout(MascotasRescatadas_AdminPanel);
@@ -922,12 +1160,12 @@ public class Main_Admin extends javax.swing.JFrame {
             .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(37, 37, 37))
         );
 
-        jTabbedPane1.addTab("Mascotas rescatadas", MascotasRescatadas_AdminPanel);
+        jTabbedPane1.addTab("Mascotas rescatadas e información del sistema", MascotasRescatadas_AdminPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1087,6 +1325,9 @@ public class Main_Admin extends javax.swing.JFrame {
     public javax.swing.JButton addPreguntaButton;
     public javax.swing.JButton asignarVariableAaveriguarButton;
     public javax.swing.JButton borrarPreguntaButton;
+    public javax.swing.JLabel cantidadMascotasEnAdopcion;
+    public javax.swing.JLabel cantidadMascotasRegistradas;
+    public javax.swing.JLabel cantidadUsuarios;
     public javax.swing.JTextField espacioPreguntaEnunciadoPanel;
     public javax.swing.JLabel estadoPreguntaPanel;
     private javax.swing.JButton jButton10;
@@ -1103,8 +1344,25 @@ public class Main_Admin extends javax.swing.JFrame {
     public javax.swing.JComboBox jComboBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
+    public javax.swing.JLabel jLabel14;
+    public javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    public javax.swing.JLabel jLabel17;
+    public javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    public javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    public javax.swing.JLabel jLabel24;
+    public javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
