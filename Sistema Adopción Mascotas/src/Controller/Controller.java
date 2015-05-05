@@ -23,8 +23,7 @@ import java.lang.ClassNotFoundException;
 import javax.swing.ImageIcon;
 import javax.swing.ListSelectionModel;
 
-/**
- *
+/*
  * @author Daniel Troyo
  * 3/04/2015  6:21 p.m
  */
