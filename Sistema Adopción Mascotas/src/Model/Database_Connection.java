@@ -26,6 +26,8 @@ import oracle.sql.BLOB;
 /**
  *
  * @author Daniel
+ * CLASE QUE SE ENCARGA DE MANEJAR DIRECTAMENTE LAS CONEXIONES, CONSULTAS Y LLAMADOS A PROCESOS Y FUNCIONES A LA BASE DE DATOS.
+ * 
  */
 public class Database_Connection {
     
@@ -149,7 +151,7 @@ public class Database_Connection {
 
                    try{
                         System.out.println("Comenzando proceso de base de datos. Insertar usuario-persona");
-                        llamado = "{CALL INSERT_USER_PERSONA(?,?,?,?,?,?,?,?)}";
+                        llamado = "{CALL Procesos.INSERT_USER_PERSONA(?,?,?,?,?,?,?,?)}";
                         storedPro = this.conn.prepareCall(llamado);
                         System.out.println("storedPro creado");
                         storedPro.setString(1, (String) parametros[0]);
@@ -172,7 +174,7 @@ public class Database_Connection {
                     }
                 case "Modificar usuario-persona":
                     System.out.println("Comenzando proceso de base de datos. Modificar usuario-persona");
-                    llamado = "{CALL Update_User_Persona(?,?,?,?,?,?,?,?}";
+                    llamado = "{CALL Administrador.Procesos.Update_User_Persona(?,?,?,?,?,?,?,?}";
                     try{
                         storedPro = this.conn.prepareCall(llamado);
                         System.out.println("storedPro creado");
@@ -197,7 +199,7 @@ public class Database_Connection {
 
                     
                 case "Insertar Mascota":
-                    llamado = "{ INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    llamado = "{call Administrador.Procesos.INSERT_MASCOTA(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     /*
                     Genera una conexión con el atributo conexion y prepara
                     la llamada con el string definido anteriormente, el cual
@@ -304,7 +306,7 @@ public class Database_Connection {
                     storedPro.close();
                     return true;
                 case "Modificar Mascota":
-                    llamado = "{call update_mascota(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    llamado = "{call Administrador.Procesos.update_mascota(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     System.out.println("Modificando mascota...");                  
                     System.out.println("Creando storedPro...");
                     storedPro = this.conn.prepareCall(llamado);
@@ -411,36 +413,36 @@ public class Database_Connection {
                     storedPro.close();
                     return true;
                 case "Enviar Solicitud":
+                    //TO DO
                     storedPro = this.conn.prepareCall(llamado);
                 case "Aceptar Solicitud":
+                    //TO DO
                     storedPro = this.conn.prepareCall(llamado);
-                case "Denegar Solicitud":                   
+                case "Denegar Solicitud":  
+                    //TO DO
                     storedPro = this.conn.prepareCall(llamado);
                 case "":
+                    //TO DO CONTINUOUSLY
                     llamado ="{}";
                     storedPro = this.conn.prepareCall(llamado);
                 case "Calificar Adoptante":
+                    //TO DO
                     llamado = "{call calificar_adoptante(?,?,?,?)}";
                     System.out.println("Llamando  a procedimiento calificar_adoptante");
                     storedPro = this.conn.prepareCall(llamado);
                     
                 case "Añadir adoptante a lista negra":
+                    //TO DO
                 case "Quitar adoptante de lista negra":
+                    //TO DO
+                case "Devolver Mascota":
+                    //TO DO
                 default:
                     return false;
+                    
                     /*
-                case "s":
-                case "s":
-                case "s":
-                case "s":
-                case "s":
-                case "s":
-                case "s":
-                case "s":
-                case "s":
-                case "s":
-                case "s"
-                 */
+                    FUNCIÓN INCOMPLETA
+                    */
             }
         }catch(SQLException e)
         {
@@ -483,8 +485,8 @@ public class Database_Connection {
                     Dicho método se utiliza en otras partes del proyecto, para así
                     tratar de evitar mayores posibilidades de SQL Injection.
                     */
-                    stmt.setString(2, username);
-                    stmt.setString(3, password);
+                    stmt.setString(3, username);
+                    stmt.setString(2, password);
                     /*
                     Registra el parámetro extraído, el cual es el primer parámetro
                     predeterminado en el string llamado y se asegura que sea un
@@ -590,6 +592,9 @@ public class Database_Connection {
                     return resultadoS;
 
             }
+            /*
+            FUNCIÓN INCOMPLETA
+            */
         }catch (SQLException e)
         {
             System.out.println(e.getMessage());
@@ -862,6 +867,10 @@ public class Database_Connection {
       }
     }
     
+    
+    /*
+    Función que devuelve el tipo de clase de una istancia objeto insertada
+    */
     private String whatClassIsIt(Object objeto)
     {
         if (objeto instanceof String)

@@ -392,7 +392,8 @@ public class Model {
             switch (comando)
             {   
                 case "Mascota visitante":
-                    this.conexion.setConnection(1);
+                    this.conexion.setConnection(3);
+                    
                     datosAextraer = new String[8];
                     datosAextraer[0] = "id";
                     datosAextraer[1] = "tipo";
@@ -402,14 +403,18 @@ public class Model {
                     datosAextraer[5] = "Administrador.get_lugar_from_id(contacto) AS lugar";
                     datosAextraer[6] = "severidad";
                     datosAextraer[7] = "Administrador.get_nombrecompleto_from_id(contacto) AS contacto";
+                    
                     modelo = this.conexion.getTablaSinCondicion("Mascota",datosAextraer);
                     System.out.println(modelo.getColumnName(3));
-                    //JTable tabla = new JTable(modelo);
-                    // System.out.println(tabla.getColumnName(0));
+
+                    
                     this.conexion.endConnection();
+                    
                     return modelo;
+                    
                 case "Personas administrador":
                     this.conexion.setConnection(1);
+                    
                     datosAextraer = new String[6];
                     datosAextraer[0] = "Usuario";
                     datosAextraer[1] = "Administrador.get_NombreCompleto_from_id(id) AS Nombre_completo";
@@ -417,12 +422,34 @@ public class Model {
                     datosAextraer[3] = "telefono";
                     datosAextraer[4] = "email";
                     datosAextraer[5] = "Fecha_creacion AS Fecha_Registro";
+                    
                     modelo = this.conexion.getTablaSinCondicion("Persona",datosAextraer);
                     System.out.println(modelo.getColumnName(3));
-                    //JTable tabla = new JTable(modelo);
-                    // System.out.println(tabla.getColumnName(0));
+
+                    
                     this.conexion.endConnection();
+                    
                     return modelo;
+                    
+                case "Búsqueda Personas Main":
+                    this.conexion.setConnection(2);
+                    
+                    datosAextraer = new String[7];
+                    datosAextraer[0] = "id";
+                    datosAextraer[1] = "Usuario";
+                    datosAextraer[2] = "Administrador.get_NombreCompleto_from_id(id) AS Nombre_completo";
+                    datosAextraer[3] = "lugar";
+                    datosAextraer[4] = "telefono";
+                    datosAextraer[5] = "email";
+                    datosAextraer[6] = "Fecha_creacion AS Fecha_Registro";
+                    
+                    modelo = this.conexion.getTablaSinCondicion("Persona", datosAextraer);
+                    System.out.println(modelo.getColumnName(3));
+                    
+                    this.conexion.endConnection();
+                    
+                    return modelo;
+                    
                 case "Mascotas administrador":
                 case "Adopciones administrador":                   
                 case "Devoluciones administrador":                    

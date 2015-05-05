@@ -26,11 +26,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.UnsupportedOperationException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import org.apache.commons.validator.*;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
@@ -96,6 +101,10 @@ public class Controller_User implements ActionListener
     }
     
     
+    
+     /*
+    Función que se encarga de cerrar la cuenta de usuario 
+    */
     private void log_Out()
     {
         int warning =  JOptionPane.YES_NO_OPTION;
@@ -117,6 +126,12 @@ public class Controller_User implements ActionListener
     }
     
     
+    /*
+    Función creadora de ventana. Se encarga de configurar todos los componentes, métodos, atributos, listeners, 
+    eventos y variables necesarios para que una ventana funcione adecuadamente. Se encarga de configurar esto 
+    para la ventana de Ver Cuenta.
+    */ 
+   
     private void accountSettings_Window() 
     {
         try {
@@ -188,29 +203,74 @@ public class Controller_User implements ActionListener
     }
     
 
+    /*
+    Función creadora de ventana. Se encarga de configurar todos los componentes, métodos, atributos, listeners, 
+    eventos y variables necesarios para que una ventana funcione adecuadamente. Se encarga de configurar esto 
+    para la ventana de Buscar Personas.
+    */
     
     private void buscarPersonas_Window()
     {
-        this.gui.show(false);
-        this.gui.dispose();
-        BuscarPersonas ventana = new BuscarPersonas();
-        this.gui = ventana;
-        /*
-        Se añaden los radio buttons a un buttonGroup para que sólo uno pueda ser seleccionado.
-        */
-        ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
-        ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
-        ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
-        ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+        try {
+            this.gui.show(false);
+            this.gui.dispose();
+            BuscarPersonas ventana = new BuscarPersonas();
+            this.gui = ventana;
+            /*
+            Se añaden los radio buttons a un buttonGroup para que sólo uno pueda ser seleccionado.
+            */
+            ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+            ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+            ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+            ventana.buttonGroup1.add(ventana.adoptantesRadioButton);
+            
+            ventana.backButton.addActionListener((ActionListener) this);
+            ventana.backButton.setActionCommand("Atras - BuscarPersonas");
+            
+            ventana.verPersonaButton.addActionListener((ActionListener) this);
+            ventana.verPersonaButton.setActionCommand("Ver Perfil Persona - Buscar Persona");
+             
+            ventana.tablaPersona.setModel(this.modelo.getModelFromResultSet("Búsqueda Personas Main"));
+            ventana.tablaPersona.setRowSelectionAllowed(true);
+            ListSelectionModel rowSelectionModel = ventana.tablaPersona.getSelectionModel();
+            rowSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+            rowSelectionModel.addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent e){
+                    String selectedData = null;
+                    int fila = ventana.tablaPersona.getSelectedRow();
+                    int id = (int) ventana.tablaPersona.getValueAt(fila, 0);
+
+                }
+                
+                
+            });
+            
+            
+            
+            ventana.show();
+            ventana.setResizable(false);
+        } catch (SQLException ex) {
+            this.errorConn(ex);
+            this.backtoAccountScreen();
+        } catch (ClassNotFoundException ex) {
+            this.errorConn(ex);
+            this.backtoAccountScreen();
+        }
+    }
+    
+    
+    /*
+    Esta función se encarga de alterar la tabla de personas en la ventana de Buscar Personas y es activada
+    por un evento que proviene de la activación o desactivación de al menos uno de los radio botones 
+    en la parte superior de la ventana. Se encarga de activar las instrucciones que se harán cargo de alterar
+    la tabla y la data mostrada en ella.
+    */
+    
+    private void filtroPersona_buscarPersonas_Window(BuscarPersonas ventana)
+    {
         
-        ventana.backButton.addActionListener((ActionListener) this);
-        ventana.backButton.setActionCommand("Atras - BuscarPersonas");
-        
-        ventana.verPersonaButton.addActionListener((ActionListener) this);
-        ventana.verPersonaButton.setActionCommand("Ver Perfil Persona - Buscar Persona");
-        
-        ventana.show();
-        ventana.setResizable(false);
     }
     
     private void buscarMascotas_Window()
@@ -230,6 +290,8 @@ public class Controller_User implements ActionListener
         this.gui.dispose();
         this.gui = new MisMascotasAdoptada(); 
         MisMascotasAdoptada ventana = (MisMascotasAdoptada) this.gui;
+        ventana.setSize(722, 363);
+        ventana.setPreferredSize(new Dimension(722,363));
         ventana.show();
         ventana.setResizable(false);
     }
@@ -240,6 +302,8 @@ public class Controller_User implements ActionListener
         this.gui.dispose();
         this.gui = new MisMascotasRescatadas(); 
         MisMascotasRescatadas ventana = (MisMascotasRescatadas) this.gui;
+        ventana.setSize(722, 363);
+        ventana.setPreferredSize(new Dimension(722,363));
         ventana.show();
         ventana.setResizable(false);
     }
