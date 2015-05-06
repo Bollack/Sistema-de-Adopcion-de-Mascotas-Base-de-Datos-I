@@ -40,6 +40,7 @@ public class MisMascotasAdoptada extends javax.swing.JFrame {
         backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Adopciones realizadas");
         getContentPane().setLayout(null);
 
         titleAdopciones.setFont(new java.awt.Font("Rockwell", 1, 22)); // NOI18N

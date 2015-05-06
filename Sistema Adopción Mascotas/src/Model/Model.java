@@ -25,8 +25,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Model {
     
-    private Database_Connection conexion;
+    /*
+    Esra clase funcionará como el modelo a los datos, viniendo a llenar una parte del modelo MVC. Es la intermediario entre los controladores y la base
+    de datos, tomando los datos enviados por los controladores y adaptándoles al formato deseado en los parámetros de la clase Database_Connection, quien es
+    un atributo de esta clase, funcionando como un sistema de capas.
     
+    También mantiene como atributos los id de mascota y persona en manejo, siendo el primero a mascota sobre la cual se está trabajando actualmente (dígase
+    adoptando, rescatando o simplemente visualizando sus datos) y el segundo la persona con la que se está "interactuando", más no la que usa la aplicación,
+    pues dicha persona se almacena mediante su username como atributo del controlador de usuario. 
+    
+    Los atributos id_Persona_en_manejo_actual y id_Mascota_en_manejo_actual funcionan tanto para el Controlador Admin como para el Controlador User, puesto
+    que ambos visualizan datos de persona y de mascota.
+    */
+    
+    
+    
+    private Database_Connection conexion;
+    private int id_Persona_en_manejo_actual;
+    private int id_Mascota_en_manejo_actual;
     
     public Model() throws SQLException, ClassNotFoundException { //Prueba la conexión a la DB ingresando como visitante.
         try
@@ -36,6 +52,34 @@ public class Model {
         }catch (SQLException e){
              throw e;
         }
+    }
+
+    /**
+     * @return the id_Persona_en_manejo_actual
+     */
+    public int getId_Persona_en_manejo_actual() {
+        return id_Persona_en_manejo_actual;
+    }
+
+    /**
+     * @return the id_Mascota_en_manejo_actual
+     */
+    public int getId_Mascota_en_manejo_actual() {
+        return id_Mascota_en_manejo_actual;
+    }
+
+    /**
+     * @param id_Persona_en_manejo_actual the id_Persona_en_manejo_actual to set
+     */
+    public void setId_Persona_en_manejo_actual(int id_Persona_en_manejo_actual) {
+        this.id_Persona_en_manejo_actual = id_Persona_en_manejo_actual;
+    }
+
+    /**
+     * @param id_Mascota_en_manejo_actual the id_Mascota_en_manejo_actual to set
+     */
+    public void setId_Mascota_en_manejo_actual(int id_Mascota_en_manejo_actual) {
+        this.id_Mascota_en_manejo_actual = id_Mascota_en_manejo_actual;
     }
     
     /*
@@ -136,6 +180,7 @@ public class Model {
     public String[] getDatosFromUsername(String username) throws SQLException, NullPointerException, ClassNotFoundException, IOException
     {
         this.conexion.setConnection(1);
+        
         String[] datos = new String[8];
         String[] parametros = new String[2];
         parametros[0] = username;//"'"+username+"'";
@@ -181,7 +226,7 @@ public class Model {
         } catch (SQLException ex) {
             throw ex;
         } catch (NullPointerException ex) {
-            System.out.println();
+            System.out.println(ex);
             throw ex;
         }
         this.conexion.endConnection();
@@ -416,13 +461,12 @@ public class Model {
                 case "Personas administrador":
                     this.conexion.setConnection(1);
                     
-                    datosAextraer = new String[6];
+                    datosAextraer = new String[5];
                     datosAextraer[0] = "Usuario";
                     datosAextraer[1] = "Administrador.get_NombreCompleto_from_id(id) AS Nombre_completo";
                     datosAextraer[2] = "lugar";
                     datosAextraer[3] = "telefono";
                     datosAextraer[4] = "email";
-                    datosAextraer[5] = "Fecha_creacion AS Fecha_Registro";
                     
                     modelo = this.conexion.getTablaSinCondicion("Persona",datosAextraer);
                     System.out.println(modelo.getColumnName(3));
@@ -435,14 +479,14 @@ public class Model {
                 case "Búsqueda Personas Main":
                     this.conexion.setConnection(2);
                     
-                    datosAextraer = new String[7];
+                    datosAextraer = new String[6];
                     datosAextraer[0] = "id";
                     datosAextraer[1] = "Usuario";
                     datosAextraer[2] = "Administrador.get_NombreCompleto_from_id(id) AS Nombre_completo";
                     datosAextraer[3] = "lugar";
                     datosAextraer[4] = "telefono";
                     datosAextraer[5] = "email";
-                    datosAextraer[6] = "Fecha_creacion AS Fecha_Registro";
+
                     
                     modelo = this.conexion.getTablaSinCondicion("Persona", datosAextraer);
                     System.out.println(modelo.getColumnName(3));
@@ -452,9 +496,14 @@ public class Model {
                     return modelo;
                     
                 case "Mascotas administrador":
-                case "Adopciones administrador":                   
-                case "Devoluciones administrador":                    
-                case "Lista negra administrador":                    
+                    
+                case "Adopciones administrador":  
+                    
+                case "Devoluciones administrador": 
+                    
+                case "Lista negra administrador": 
+                    
+                    
             }
         }catch(SQLException e)
         {

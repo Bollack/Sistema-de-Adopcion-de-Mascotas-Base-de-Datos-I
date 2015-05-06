@@ -332,7 +332,7 @@ public class Log_In extends javax.swing.JFrame {
     public javax.swing.JButton aceptarWrongDataMessageBox;
     private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JDialog correctDataMessageBox;
-    public javax.swing.JOptionPane datos_no_validos_OptionPane;
+    private javax.swing.JOptionPane datos_no_validos_OptionPane;
     public javax.swing.JButton exitButton;
     private javax.swing.JFileChooser jFileChooser1;
     public javax.swing.JLabel jLabel1;

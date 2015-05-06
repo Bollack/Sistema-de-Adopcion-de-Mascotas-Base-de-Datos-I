@@ -289,6 +289,7 @@ public class VerFotosMiAdopcion extends javax.swing.JFrame {
         backgroungImage.setBounds(0, 0, 890, 675);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Edición de adopción");
         getContentPane().setLayout(null);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Datos de la adopción", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Rockwell", 1, 18))); // NOI18N

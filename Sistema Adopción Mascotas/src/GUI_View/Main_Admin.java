@@ -112,14 +112,7 @@ public class Main_Admin extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         jButton10.setText("jButton10");
 
@@ -153,7 +146,7 @@ public class Main_Admin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre Mascota", "Tipo Mascota", "Adoptante", "Rescatista", "Fecha Adopción"
+                "ID", "Nombre Mascota", "Tipo Mascota", "Adoptante", "Rescatista"
             }
         ));
         jScrollPane3.setViewportView(tablaAdopcionesRecientes);
@@ -214,11 +207,11 @@ public class Main_Admin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mascota", "Adoptante", "Rescatista", "Motivo", "Fecha Devolución"
+                "Mascota", "Adoptante", "Rescatista", "Motivo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, false, true
+                false, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -278,7 +271,7 @@ public class Main_Admin extends javax.swing.JFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         AdopcionesDevoluciones_AdminPanelLayout.setVerticalGroup(
             AdopcionesDevoluciones_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -700,11 +693,11 @@ public class Main_Admin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Usuario", "Nombre", "Añadido por", "Fecha"
+                "Usuario", "Nombre", "Añadido por"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -766,11 +759,11 @@ public class Main_Admin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Calificado", "Calificador", "Nota", "Fecha"
+                "Calificado", "Calificador", "Nota"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -815,11 +808,11 @@ public class Main_Admin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Usuario", "Nombre Completo", "Lugar", "Telefono", "Correo", "Fecha"
+                "Usuario", "Nombre Completo", "Lugar", "Telefono", "Correo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -924,11 +917,11 @@ public class Main_Admin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Tipo Mascota", "Raza Mascota", "Sexo", "Lugar", "Rescatista", "Fecha rescate"
+                "ID", "Tipo Mascota", "Raza Mascota", "Sexo", "Lugar", "Rescatista"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -952,12 +945,12 @@ public class Main_Admin extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1005,7 +998,7 @@ public class Main_Admin extends javax.swing.JFrame {
 
         cantidadUsuarios.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         cantidadUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cantidadUsuarios.setText("00");
+        cantidadUsuarios.setText("3");
 
         cantidadMascotasEnAdopcion.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         cantidadMascotasEnAdopcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1020,44 +1013,16 @@ public class Main_Admin extends javax.swing.JFrame {
         jLabel15.setText("00");
 
         jLabel16.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel16.setText("Cantidad de mascotas registradas:");
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("Cantidad de personas en lista negra:");
 
         jLabel17.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("00");
 
-        jLabel18.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("00");
-
-        jLabel19.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel19.setText("Cantidad de usuarios en el sistema:");
-
-        jLabel20.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel20.setText("Cantidad de mascotas en espera de adopción:");
-
-        jLabel21.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel21.setText("00");
-
-        jLabel22.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel22.setText("Cantidad de mascotas adoptadas:");
-
-        jLabel23.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel23.setText("Cantidad de mascotas devueltas:");
-
-        jLabel24.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel24.setText("00");
-
-        jLabel25.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel25.setText("00");
+        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 16)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("<html><body>En este panel se muestran las estadísticas generales del sistema como datos numéricos, esto con el fin de que el administrador vea el uso y recibimiento que ha recibido la aplicación en la comunidad de rescate animal.</body></html>");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1078,69 +1043,46 @@ public class Main_Admin extends javax.swing.JFrame {
                     .addComponent(cantidadMascotasEnAdopcion)
                     .addComponent(jLabel14)
                     .addComponent(jLabel15))
-                .addGap(71, 71, 71)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel24))
-                .addGap(153, 153, 153))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel17))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1012, 1012, 1012))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addComponent(jLabel17)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel18)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel21)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel25)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel24))
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addComponent(jLabel16)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel19)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel20)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel22)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel23)))
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cantidadMascotasRegistradas)
-                            .addGap(18, 18, 18)
-                            .addComponent(cantidadUsuarios)
-                            .addGap(18, 18, 18)
-                            .addComponent(cantidadMascotasEnAdopcion)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel14)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel15))
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel4)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel5)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel8))))
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17))
+                        .addGap(18, 18, 18)
+                        .addComponent(cantidadUsuarios)
+                        .addGap(18, 18, 18)
+                        .addComponent(cantidadMascotasEnAdopcion)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel14)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel10)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -1151,8 +1093,10 @@ public class Main_Admin extends javax.swing.JFrame {
             .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(MascotasRescatadas_AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(MascotasRescatadas_AdminPanelLayout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 26, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         MascotasRescatadas_AdminPanelLayout.setVerticalGroup(
@@ -1343,20 +1287,13 @@ public class Main_Admin extends javax.swing.JFrame {
     public javax.swing.JComboBox jComboBox5;
     public javax.swing.JComboBox jComboBox6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     public javax.swing.JLabel jLabel14;
     public javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     public javax.swing.JLabel jLabel17;
-    public javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    public javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    public javax.swing.JLabel jLabel24;
-    public javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

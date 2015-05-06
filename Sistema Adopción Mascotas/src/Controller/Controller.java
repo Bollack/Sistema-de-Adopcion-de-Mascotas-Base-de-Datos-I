@@ -118,7 +118,9 @@ public class Controller implements ActionListener
                this.validate_data_Log_in((Log_In)this.gui);
            } catch (ClassNotFoundException ex) {
                Log_In ventana = (Log_In) this.gui;
-               ventana.datos_no_validos_OptionPane.createDialog(ventana, "Datos no válidos. Por favor, introduzca un nombre de usuario y contraseña válidos.");
+               int b =JOptionPane.ERROR;
+               JOptionPane.showMessageDialog(ventana, "Datos no válidos. Por favor, introduzca un nombre de usuario y contraseña válidos.","Error",b);
+               
            } catch (NullPointerException ex) {
                 int warning =  JOptionPane.ERROR_MESSAGE;
                 JOptionPane.showConfirmDialog (null, "Ha ocurrido un error NullPointerException extrayendo datos de la base de datos. Por favor, vuelva a intentar más tarde o contacte al desarollador para recibir soporte.","Error",warning);
@@ -414,7 +416,7 @@ public class Controller implements ActionListener
 
                         
                         ventana.tituloWrongDataMessageBox.setForeground(new java.awt.Color(204, 0, 0)); //Rojo
-                        ventana.tituloWrongDataMessageBox.setText("Datos ingesados erróneos");
+                        ventana.tituloWrongDataMessageBox.setText("Datos ingresados erróneos");
                         ventana.label1MessageBox.setText("La contraseña ingresada no es correcta.");
                         ventana.label2MessageBox.setText("Por favor, ingrese una contraseña válida.");
                         ventana.wrongDataMessageBox.pack();

@@ -55,17 +55,17 @@ public class BuscarPersonas extends javax.swing.JFrame {
 
         tablaPersona.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Usuario", "Nombre Completo", "Lugar", "Teléfono", "Correo", "Fecha_Registro"
+                "ID", "Usuario", "Nombre Completo", "Lugar", "Teléfono", "Correo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true, true
+                false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

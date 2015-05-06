@@ -44,6 +44,7 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mascotas rescatadas");
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
@@ -59,13 +60,13 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
 
         tablaMascotasRescatadasNoAdoptadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Tipo", "Raza", "Sexo", "Fecha Rescate"
+                "ID", "Nombre", "Tipo", "Raza", "Sexo"
             }
         ));
         tablaMascotasRescatadasNoAdoptadas.setOpaque(false);
@@ -149,13 +150,13 @@ public class MisMascotasRescatadas extends javax.swing.JFrame {
 
         tablaMascotasRescatadasAdoptadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Tipo", "Raza", "Sexo", "Fecha Rescate"
+                "ID", "Nombre", "Tipo", "Raza", "Sexo"
             }
         ));
         jScrollPane3.setViewportView(tablaMascotasRescatadasAdoptadas);

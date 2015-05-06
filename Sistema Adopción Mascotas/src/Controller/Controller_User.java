@@ -16,6 +16,7 @@ import GUI_View.MisMascotasRescatadas;
 import GUI_View.ModificarCuenta;
 import GUI_View.ModifyMascota;
 import GUI_View.Registro_Rescate_Mascota;
+import GUI_View.verPerfil;
 import Model.Model;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -243,8 +244,12 @@ public class Controller_User implements ActionListener
                 public void valueChanged(ListSelectionEvent e){
                     String selectedData = null;
                     int fila = ventana.tablaPersona.getSelectedRow();
-                    int id = (int) ventana.tablaPersona.getValueAt(fila, 0);
-
+                    Number id1 = (Number) ventana.tablaPersona.getValueAt(fila, 0);
+                    int id = id1.intValue();
+                    System.out.println(id);
+                    ventana.verPersonaButton.setEnabled(true);
+                    
+                    filtroPersona_buscarPersonas_Window(ventana, id);
                 }
                 
                 
@@ -268,27 +273,194 @@ public class Controller_User implements ActionListener
     Esta función se encarga de alterar la tabla de personas en la ventana de Buscar Personas y es activada
     por un evento que proviene de la activación o desactivación de al menos uno de los radio botones 
     en la parte superior de la ventana. Se encarga de activar las instrucciones que se harán cargo de alterar
-    la tabla y la data mostrada en ella.
+    la tabla y la data mostrada en ella. 
     */
     
-    private void filtroPersona_buscarPersonas_Window(BuscarPersonas ventana)
+    private void filtroPersona_buscarPersonas_Window(BuscarPersonas ventana, int id)
     {
-        
+       ventana.verPersonaButton.addActionListener((ActionListener) this);
+       ventana.verPersonaButton.setActionCommand("Ver Persona Button - Ver Persona"); 
+       
+       this.modelo.setId_Persona_en_manejo_actual(id);
     }
     
     private void buscarMascotas_Window()
     {
-            
+          
         this.gui.show(false);
         this.gui.dispose();
-        this.gui = new Buscar_Mascota(); 
-        Buscar_Mascota ventana = (Buscar_Mascota) this.gui;
+        this.gui = new Buscar_Mascota();
+        Buscar_Mascota ventana_rescate = (Buscar_Mascota) this.gui;
+        try {
+
+            /*
+            En el siguiente bloque de se asigna los tipos de mascota como items al combo box
+            de tipo mascota.
+            */
+            String[] grupos = this.modelo.getTiposMascota();
+            ventana_rescate.tipoMascotaComboBox.removeAllItems();
+            for (int i=0; i<grupos.length;i++)
+            {
+                ventana_rescate.tipoMascotaComboBox.addItem(grupos[i]);
+            }
+            
+            /*
+            En el siguiente bloque de código se añade un listener al combobox anterior que se activa
+            al ocurrir el evento de cambiar de item seleccionado, esto llama a la lista de razas del
+            grupo de animales seleccionado y a la añade al combobox de raza.
+            */
+            
+            ventana_rescate.razaComboBox.removeAllItems();
+            
+            ventana_rescate.tipoMascotaComboBox.addActionListener(new ActionListener(){ 
+                public void actionPerformed(ActionEvent e)
+                {
+                    try 
+                    {
+                        String grupo = (String) ventana_rescate.tipoMascotaComboBox.getSelectedItem();
+                        Model a = new Model();
+                        ventana_rescate.razaComboBox.removeAllItems();
+                        String[] razas = a.getRazasFromTipoMascota((String) ventana_rescate.tipoMascotaComboBox.getSelectedItem());
+                        for (int i=0; i<razas.length;i++)
+                        {
+                            ventana_rescate.razaComboBox.addItem(razas[i]);
+                        }
+                    } catch (SQLException ex) 
+                    {
+                    } catch (ClassNotFoundException ex) 
+                    {
+                    }
+                }
+                
+            });
+            
+            
+            
+            ventana_rescate.energiaComboBox.removeAllItems();
+            ventana_rescate.energiaComboBox .addItem("Atlético");
+            ventana_rescate.energiaComboBox .addItem("Activo");
+            ventana_rescate.energiaComboBox .addItem("Regular");
+            ventana_rescate.energiaComboBox .addItem("Pasivo");
+            ventana_rescate.energiaComboBox .addItem("Perezoso");
+            ventana_rescate.energiaComboBox .addItem("No importante");
+            
+            ventana_rescate.espacioComboBox.removeAllItems();
+            ventana_rescate.espacioComboBox.addItem("Amplio");
+            ventana_rescate.espacioComboBox.addItem("Mediano");
+            ventana_rescate.espacioComboBox.addItem("Mínimo");
+            ventana_rescate.espacioComboBox.addItem("No importante");
+            
+            
+            
+            
+            ventana_rescate.entrenamientoComboBox.removeAllItems();
+            ventana_rescate.entrenamientoComboBox.addItem("Obediente");
+            ventana_rescate.entrenamientoComboBox.addItem("Tranquilo");
+            ventana_rescate.entrenamientoComboBox.addItem("Disperso");
+            ventana_rescate.entrenamientoComboBox.addItem("Hiperactivo");
+            ventana_rescate.entrenamientoComboBox.addItem("No importante");
+            
+            ventana_rescate.tamanoComboBox.removeAllItems();
+            ventana_rescate.tamanoComboBox.addItem("Grande");
+            ventana_rescate.tamanoComboBox.addItem("Mediano");
+            ventana_rescate.tamanoComboBox.addItem("Pequeño");
+            ventana_rescate.tamanoComboBox.addItem("No importante");
+            
+            ventana_rescate.colorComboBox.removeAllItems();
+            ventana_rescate.colorComboBox.addItem("Negro");
+            ventana_rescate.colorComboBox.addItem("Blanco");
+            ventana_rescate.colorComboBox.addItem("Café");
+            ventana_rescate.colorComboBox.addItem("Gris");
+            ventana_rescate.colorComboBox.addItem("Beige");
+            ventana_rescate.colorComboBox.addItem("Morado");
+            ventana_rescate.colorComboBox.addItem("Rojo");
+            ventana_rescate.colorComboBox.addItem("Verde");
+            ventana_rescate.colorComboBox.addItem("Azul");
+            ventana_rescate.colorComboBox.addItem("Amarillo");
+            ventana_rescate.colorComboBox.addItem("Naranja");
+            ventana_rescate.colorComboBox.addItem("Dorado");
+            ventana_rescate.colorComboBox.addItem("Púrpura");
+            ventana_rescate.colorComboBox.addItem("Rosado");
+            ventana_rescate.colorComboBox.addItem("Lila");
+            ventana_rescate.colorComboBox.addItem("Celeste");
+            ventana_rescate.colorComboBox.addItem("Crema");
+            ventana_rescate.colorComboBox.addItem("Vino");
+            ventana_rescate.colorComboBox.addItem("Otro");
+            ventana_rescate.colorComboBox.addItem("No importante");
+            
+            
+            
+            
+            ventana_rescate.severidadComboBox.removeAllItems();
+            ventana_rescate.severidadComboBox.addItem("Crítico");
+            ventana_rescate.severidadComboBox.addItem("Mal estado");
+            ventana_rescate.severidadComboBox.addItem("Buen estado");
+            
+            
+            
+            
+            
+            
+            ventana_rescate.show();
+            ventana_rescate.setResizable(false);
+            
+            ventana_rescate.backButton.addActionListener((ActionListener) this);
+            ventana_rescate.backButton.setActionCommand("Atras - Buscar Mascotas");
+        } catch (SQLException ex) {
+            this.errorConn(ex);
+            this.backtoAccountScreen();
+            
+        } catch (ClassNotFoundException ex) {
+            this.errorConn(ex);
+            this.backtoAccountScreen();
+        }
+
+        
+    }
+    
+    private void verPersona_Window()
+    {
+
+            verPerfil ventana = new verPerfil();
+        try 
+        {
+            System.out.println("Iniciando verPersona_Window");
+            int id = this.modelo.getId_Persona_en_manejo_actual();
+            String usuario = this.modelo.getUsernamefromID(id);
+            System.out.println("Usuario dentro de verPersona_Window: "+ id);
+            System.out.println("Usuario dentro de verPersona_Window: "+ usuario);
+            String[] datos = this.modelo.getDatosFromUsername(usuario);
+            //[username, password, nombre, apellido, telefono, correo, direccion, geoero]
+            ventana.nombreLabel.setText(datos[2]+" "+datos[3]);
+            ventana.usernameLabel.setText(datos[0]);
+            ventana.telefonoLabel.setText(datos[4]);
+            ventana.correoLabel.setText(datos[5]);
+            ventana.generoLabel.setText(datos[7]);
+            ventana.direccionlabel.setText("<html><body>"+datos[6]+"</body></html>");
+            
+            ventana.backButton.addActionListener((ActionListener) this);
+            ventana.backButton.setActionCommand("Atras - Ver Perfil");
+            
+        } catch (SQLException ex) {
+            this.errorConn(ex);
+            return;
+        } catch (ClassNotFoundException ex) {
+            this.errorConn(ex);
+            return;
+        } catch (NullPointerException ex) {
+            this.errorConn(ex);
+            return;
+        } catch (IOException ex) {
+            this.errorConn(ex);
+            return;
+        }
+        
+        this.gui.show(false);
+        this.gui.dispose();
+        this.gui = ventana;
+        
         ventana.show();
         ventana.setResizable(false);
-        
-        ventana.backButton.addActionListener((ActionListener) this);
-        ventana.backButton.setActionCommand("Atras - Buscar Mascotas");
-        
     }
     
     private void MisMascotasAdoptadas_Window()
@@ -330,8 +502,8 @@ public class Controller_User implements ActionListener
         this.gui.dispose();
         this.gui = new MisMascotasRescatadas(); 
         MisMascotasRescatadas ventana = (MisMascotasRescatadas) this.gui;
-        ventana.setSize(695, 473);
-        ventana.setPreferredSize(new Dimension(695, 473));
+        ventana.setSize(695, 495);
+        ventana.setPreferredSize(new Dimension(695, 495));
         ventana.show();
         ventana.setResizable(false);
         
@@ -745,7 +917,7 @@ public class Controller_User implements ActionListener
            this.buscarMascotas_Window();
        }else if (comando=="Atras - Buscar Mascotas")
        {
-           this.start();
+           this.backtoAccountScreen();
        }
        /*
         Se comienzan a crear las acciones para los botones y eventos
@@ -758,7 +930,7 @@ public class Controller_User implements ActionListener
          
        }else if(comando=="Atras - Formulario")
        {
-           this.start();
+           this.backtoAccountScreen();
        }
 
                      /*
@@ -823,7 +995,7 @@ public class Controller_User implements ActionListener
            this.MisMascotasAdoptadas_Window();
        }else if (comando=="Atras - Mis Mascotas Adoptadas")
        { 
-           this.start();
+           this.backtoAccountScreen();
        }
        /*
         Se comienzan a crear las acciones para los botones y eventos
@@ -832,7 +1004,7 @@ public class Controller_User implements ActionListener
        else if (comando=="Ver mascotas en adopción - Main Menu")
        {
            int soon = JOptionPane.INFORMATION_MESSAGE;
-           JOptionPane.showMessageDialog(gui, "Característica aún no disponible", "To be announced", soon);
+           JOptionPane.showMessageDialog(gui, "Característica aún no disponible. Coming Soon.", "Coming soon", soon);
        }
         /*
         Se comienzan a crear las acciones para los botones y eventos
@@ -844,7 +1016,7 @@ public class Controller_User implements ActionListener
            this.VerMisRescates_Window();
        }else if(comando=="Atras - Mis Rescates")
        {
-           this.start();
+           this.backtoAccountScreen();
        }
        /*
         Se comienzan a crear las acciones para los botones y eventos
@@ -905,12 +1077,18 @@ public class Controller_User implements ActionListener
        }else if (comando=="Buscar Personas - Main Menu")
        {
            this.buscarPersonas_Window();
-       }else if(comando=="Atras - BuscarPersonas")
+       }else if (comando=="Ver Persona Button - Ver Persona")
+       {
+           this.verPersona_Window();
+       }
+       
+       
+       else if(comando=="Atras - BuscarPersonas")
        {
            this.backtoAccountScreen();
            
-       }else if(comando==""){
-           
+       }else if(comando=="Atras - Ver Perfil"){
+           this.buscarPersonas_Window();
        }else if(comando==""){
            
        }else if(comando==""){

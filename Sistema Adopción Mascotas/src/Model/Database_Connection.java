@@ -431,12 +431,14 @@ public class Database_Connection {
                     storedPro = this.conn.prepareCall(llamado);
                 case "Calificar Adoptante":
                     //TO DO
-                    llamado = "{call calificar_adoptante(?,?,?,?)}";
+                    llamado = "{call Administrador.Procesos.calificar_adoptante(?,?,?,?)}";
                     System.out.println("Llamando  a procedimiento calificar_adoptante");
                     storedPro = this.conn.prepareCall(llamado);
                     
                 case "Añadir adoptante a lista negra":
-                    //TO DO
+                    llamado = "{call Administrador.Procesos.calificar_adoptante(?,?,?,?)}";
+                    System.out.println("Llamando  a procedimiento calificar_adoptante");
+                    storedPro = this.conn.prepareCall(llamado);
                 case "Quitar adoptante de lista negra":
                     //TO DO
                 case "Devolver Mascota":
@@ -471,7 +473,7 @@ public class Database_Connection {
             switch (comando)
             {  
                 case "Check if password is correct":
-                    llamado ="{? = call check_password(?,?) }";
+                    llamado ="{? = call Administrador.Funciones.check_password(?,?) }";
                     /*
                     Genera una conexión con el atributo conexion y prepara
                     la llamada con el string definido anteriormente, el cual
@@ -504,7 +506,7 @@ public class Database_Connection {
                     stmt.close();
                     return resultadoI;
                 case "Check if username exists":
-                    llamado = "{? = call check_existing_username(?)}";
+                    llamado = "{? = call Administrador.Funciones.check_existing_username(?)}";
                     /*
                     Procedimiento similar al case pasado. 
                     */
@@ -537,7 +539,7 @@ public class Database_Connection {
                     stmt.execute();
                     return resultadoS;
                 case "Extraer imagen mascota foto Despues":
-                    llamado="{? = call get_foto_despues(?)}";
+                    llamado="{? = call Administrador.Funciones.get_foto_despues(?)}";
                     stmt = this.conn.prepareCall(llamado);
                     stmt.setInt(2, (int) parametros[0]);
                     stmt.registerOutParameter(1, java.sql.Types.BLOB);
@@ -547,7 +549,7 @@ public class Database_Connection {
                     stmt.close();
                     return imagen;
                 case "Extraer imagen mascota foto Antes":
-                    llamado="{? = call get_foto_antes(?)}";
+                    llamado="{? = call Administrador.Funciones.get_foto_antes(?)}";
                     stmt = this.conn.prepareCall(llamado);
                     stmt.setInt(2, (int) parametros[0]);
                     stmt.registerOutParameter(1, java.sql.Types.BLOB);
@@ -557,7 +559,7 @@ public class Database_Connection {
                     stmt.close();
                     return imagen;
                 case "Get Username from ID":
-                    llamado = "{? = get_username_from_id(?)}";
+                    llamado = "{? = Administrador.Funciones.get_username_from_id(?)}";
                     stmt = this.conn.prepareCall(llamado);
                     stmt.setInt(2, (int) parametros[0]);
                     stmt.registerOutParameter(1, java.sql.Types.VARCHAR);
@@ -567,7 +569,7 @@ public class Database_Connection {
                     return resultadoS;
                 case "get Datos Usuario":
                     System.out.println("Llamando a función get_datos_usuario() del usuario "+(String) parametros[0]+" DATO: "+parametros[1]);
-                    llamado ="{? = call  get_datos_usuario(?,?)}";
+                    llamado ="{? = call  Administrador.Funciones.get_datos_usuario(?,?)}";
                     stmt = this.conn.prepareCall(llamado);
                     stmt.setString(2, (String) parametros[0]); //username
                     stmt.setString(3, (String) parametros[1]); //valor a extraer, sea nombre, genero, lugar, etc.
@@ -582,10 +584,10 @@ public class Database_Connection {
                 case "get Datos Mascota":
                     //TO DO
                     System.out.println("Llamando a función get_datos_mascota() de la mascota con id: "+(int) parametros[0]+" DATO: "+(String)parametros[1]);
-                    llamado ="{? = call  get_datos_usuario(?,?)}";
+                    llamado ="{? = call  Administrador.Funciones.get_datos_mascota(?,?)}";
                     stmt = this.conn.prepareCall(llamado);
-                    stmt.setString(2, (String) parametros[0]); //username
-                    stmt.setString(3, (String) parametros[1]); //valor a extraer, sea nombre, genero, lugar, etc.
+                    stmt.setString(2, (String) parametros[0]); //id mascota
+                    stmt.setString(3, (String) parametros[1]); //valor a extraer
                     System.out.println("Parámetros asignados");
                     stmt.registerOutParameter(1, java.sql.Types.VARCHAR);
                     System.out.println("Salida asignada");

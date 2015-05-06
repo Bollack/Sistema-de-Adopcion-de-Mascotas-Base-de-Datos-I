@@ -41,17 +41,17 @@ public class verPerfil extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
-        javax.swing.JLabel nombreApellidoLabek = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        javax.swing.JLabel usernameLabel = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        javax.swing.JLabel telefonoLabel = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        javax.swing.JLabel generoLabel = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        javax.swing.JLabel correoLabel = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel36 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
+        nombreLabel = new javax.swing.JLabel();
+        generoLabel = new javax.swing.JLabel();
+        telefonoLabel = new javax.swing.JLabel();
+        direccionlabel = new javax.swing.JLabel();
+        correoLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         estadoBlackList = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -160,6 +160,7 @@ public class verPerfil extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Perfil de Usuario");
         setBackground(new java.awt.Color(102, 153, 255));
 
         title.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
@@ -180,117 +181,122 @@ public class verPerfil extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel25.setText("Nombre:");
 
-        nombreApellidoLabek.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        nombreApellidoLabek.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombreApellidoLabek.setText("jLabel2");
-        nombreApellidoLabek.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-
         jLabel27.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel27.setText("Nombre de Usuario:");
-
-        usernameLabel.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
-        usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usernameLabel.setText("jLabel2");
-        usernameLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         jLabel29.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel29.setText("Teléfono:");
 
-        telefonoLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        telefonoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        telefonoLabel.setText("jLabel2");
-        telefonoLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-
         jLabel31.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel31.setText("Género:");
-
-        generoLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        generoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        generoLabel.setText("jLabel2");
-        generoLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         jLabel33.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel33.setText("Correo Electrónico:");
 
-        correoLabel.setFont(new java.awt.Font("Rockwell", 1, 13)); // NOI18N
-        correoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        correoLabel.setText("jLabel2");
-        correoLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-
         jLabel35.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel35.setText("Dirección:");
 
-        jLabel36.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setText("jLabel2");
-        jLabel36.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        usernameLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usernameLabel.setText("Nombre:");
+        usernameLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        nombreLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        nombreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreLabel.setText("Nombre:");
+        nombreLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        generoLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        generoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        generoLabel.setText("Nombre:");
+        generoLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        telefonoLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        telefonoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        telefonoLabel.setText("Nombre:");
+        telefonoLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        direccionlabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        direccionlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        direccionlabel.setText("Nombre:");
+        direccionlabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        correoLabel.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        correoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        correoLabel.setText("Nombre:");
+        correoLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 355, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel29))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telefonoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(generoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(correoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(18, 18, 18)
+                        .addComponent(direccionlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(nombreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel29)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(telefonoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel33)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(correoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel31)
-                                .addGap(18, 18, 18)
-                                .addComponent(generoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel35)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel25)
-                            .addGap(11, 11, 11)
-                            .addComponent(nombreApellidoLabek, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel25)
+                    .addContainerGap(284, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nombreLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameLabel)
+                    .addComponent(jLabel27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(telefonoLabel)
+                            .addComponent(jLabel29))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(generoLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel35))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(correoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(direccionlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nombreApellidoLabek)
-                        .addComponent(jLabel25))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel27)
-                        .addComponent(usernameLabel))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel29)
-                        .addComponent(telefonoLabel))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel31)
-                        .addComponent(generoLabel))
-                    .addGap(2, 2, 2)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel33)
-                        .addComponent(correoLabel))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel35)
-                        .addComponent(jLabel36))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel25)
+                    .addContainerGap(172, Short.MAX_VALUE)))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 102, 102));
@@ -511,7 +517,7 @@ public class verPerfil extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(title, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE))
+                .addComponent(title, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,7 +539,7 @@ public class verPerfil extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(title)
-                    .addContainerGap(697, Short.MAX_VALUE)))
+                    .addContainerGap(714, Short.MAX_VALUE)))
         );
 
         pack();
@@ -593,7 +599,10 @@ public class verPerfil extends javax.swing.JFrame {
     public javax.swing.JSpinner calificacionSpinner;
     private javax.swing.JDialog calificacionWindow;
     public javax.swing.JButton calificarPersonaButton;
+    public javax.swing.JLabel correoLabel;
+    public javax.swing.JLabel direccionlabel;
     private javax.swing.JLabel estadoBlackList;
+    public javax.swing.JLabel generoLabel;
     public javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     public javax.swing.JButton jButton2;
@@ -618,9 +627,12 @@ public class verPerfil extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    public javax.swing.JLabel nombreLabel;
     public javax.swing.JTable tablaAdopcionesDevoluciones;
     public javax.swing.JTable tablacalificaciones;
     public javax.swing.JTable tableRescates;
+    public javax.swing.JLabel telefonoLabel;
     public javax.swing.JLabel title;
+    public javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }

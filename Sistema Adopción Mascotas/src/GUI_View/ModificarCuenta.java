@@ -51,7 +51,9 @@ public class ModificarCuenta extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Configuración de cuenta");
         setBackground(new java.awt.Color(102, 153, 255));
+        setResizable(false);
 
         telefonoTextField.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         telefonoTextField.addActionListener(new java.awt.event.ActionListener() {

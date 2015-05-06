@@ -54,6 +54,8 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
         backgroungImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fotografías de la adopción");
+        setPreferredSize(new java.awt.Dimension(900, 675));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
@@ -68,13 +70,11 @@ public class VerFotosAdopcion extends javax.swing.JFrame {
         anteriorFotoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/back_arrow.png"))); // NOI18N
         anteriorFotoButton.setBorderPainted(false);
         anteriorFotoButton.setContentAreaFilled(false);
-        anteriorFotoButton.setOpaque(false);
 
         SIguienteFotoButton.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         SIguienteFotoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI_View/Images/next_arrow.png"))); // NOI18N
         SIguienteFotoButton.setBorderPainted(false);
         SIguienteFotoButton.setContentAreaFilled(false);
-        SIguienteFotoButton.setOpaque(false);
         SIguienteFotoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SIguienteFotoButtonActionPerformed(evt);
