@@ -134,7 +134,7 @@ CREATE OR REPLACE PACKAGE BODY Procesos AS
   pNotas IN VARCHAR2, pTratamientos IN VARCHAR2, pSituacion IN VARCHAR2,
   pSeveridad IN VARCHAR2, pFotoAntes IN BLOB, pFotoDespues IN BLOB) AS
   pId NUMBER;
-  pcontacto NUMBER:=get_id_from_username(pUsuario);
+  pcontacto NUMBER:=Funciones.get_id_from_username(pUsuario);
   BEGIN
   
     INSERT INTO mascota (tipo, raza, nombre, tamano, facilidad_entrenamiento,color1, color2, contacto, nivel_energia,
@@ -196,7 +196,7 @@ CREATE OR REPLACE PACKAGE BODY Procesos AS
   pNotas IN VARCHAR2, pTratamientos IN VARCHAR2, pSituacion IN VARCHAR2,
   pSeveridad IN VARCHAR2, pFotoAntes IN BLOB, pFotoDespues IN BLOB) AS
   
-  contacto NUMBER := get_id_from_username(pUsuario);
+  contacto NUMBER := Funciones.get_id_from_username(pUsuario);
   BEGIN
     UPDATE MASCOTA
     SET tipo = pTipo, raza = pRaza, nombre = pNombre, tamano = pTamano, color1 = pColor1,
