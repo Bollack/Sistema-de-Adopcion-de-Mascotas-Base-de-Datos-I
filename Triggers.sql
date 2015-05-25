@@ -85,14 +85,14 @@ CREATE OR REPLACE TRIGGER BeforeUpdatePersona         --APLICADO
     :new.Fecha_Modificacion:= sysdate;
   END;
   
---Adopción  
+--AdopciÃ³n  
 CREATE OR REPLACE TRIGGER BeforeInsertAdopcion        --APLICADO
   BEFORE INSERT ON Administrador.Adopcion FOR EACH ROW
   BEGIN
     :new.Fecha_creacion:=sysdate;
     :new.Fecha_Modificacion:= sysdate;
     SELECT id_adopcion.NEXTVAL
-    INTO   :new.ID
+    INTO   :new.ID_adopcion
     FROM   dual;
   END;
 
