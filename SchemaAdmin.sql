@@ -35,6 +35,8 @@ GRANT CREATE TRIGGER TO Administrador; --APLICADO
 GRANT UNLIMITED TABLESPACE TO Administrador; --APLICADO
 GRANT CREATE SEQUENCE TO Administrador; --APLICADO
 GRANT CREATE ANY JOB TO Administrador; --APLICADO
+GRANT CREATE PROCEDURE TO Admnistrador; 
+GRANT EXECUTE ANY PROCEDURE TO Administrador;
 
     
 --VISITANTE--------------------------------------
